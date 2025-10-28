@@ -1,0 +1,481 @@
+
+================================================================================
+Page 1
+================================================================================
+  1/11 
+ 
+ 
+ISYE 6202 Supply Chain Facilities  
+ 
+Professor Benoit Montreuil  
+Casework 3 
+ 
+FeMoaSa  Manufacturing & Warehousing Facility  Design  
+ 
+ 
+Due at the latest on Novem ber 12th, 2025 , at 23 h55 
+ 
+To be real ized solo or in teams of up to 6 students , with no impact on evaluation  
+ 
+Weight :  20% 
+ 
+A worksheet is provided with all Tables and Basic Layouts depicted in this document.  
+ 
+Deliverables should be well documented, with joined files as pertinent ( software, spreadsheets, 
+drawings, simulations, etc.), yet not forcing to rely on the joined files to evaluate the core of your 
+deliverables.  
+ 
+ 
+Overall Context and Mission  
+FaMoaSa  is a parts manufacturing service provider specialized in implementing factories and 
+warehouses dedicated to its clients and implemented near the assembly  plants of their clients , 
+robustly delivering demanded products in swift in -time fashion . 
+Up to now, FaMoaSa  has considered its implemented factories mostly as  job shops  and has thus 
+always designed them according to a function organization.  
+Recently, FaMo aSa leaders have been made aware that they may be restricting its manufacturing and 
+logistic capability and service performance potential by (1) designing its factories only as function 
+organizations, as there are numerous other organizational options that may be more appropriate in 
+specific cases  and (2) factory organization has impact on its warehouses generally located adjacent 
+to each specific client , notably their sizing and performance . 
+FaMoaSa  has selected the factory and the warehouse it has implemented for two of its current clients 
+A and B as a testbed for assessing the impact of alternative organizational designs.  This factory is 
+built along a North -South highway with the product assembly factor ies of client s A and B respectively 
+90 miles  to the North and 110 miles to the South . Currently FaMoaSa operates two warehouse s, 
+respectively dedicated to  clients  A and B  and located on a  site adjacent to the client’s  factory.  
+FaMoaSa  is requesting your help to perform  a rigorous assessment of the potentiality of leveraging 
+alternative fac ility  organization designs , using the testbed as exemplar. The leadership wants your 
+team to provide a fresh look, untainted by FaMoaSa  internal history and paradigms , so it will keep 
+you at arm’s length while you perform the study.  
+
+================================================================================
+Page 2
+================================================================================
+  2/11 
+ 
+ Casework 3: FaMoaSa  Manufacturing & Warehousing Facility  Design  ISYE 6202 Fall 202 5, Prof. B enoit  Montreuil  
+Therefore , your team is hereafter provided with key functional and technical specifications for the 
+testbed , yet not a single information about FaMoaSa’s  client s A & B, and about the factory  designed 
+and implemented by  FaMoaSa ’s team three years ago to serve these  client s. 
+Year +1  Demand Forecast and Performance Expectations from Client  
+Located in the U.S.A., FaMoaSa ’s testbed factory produces parts for  the plant  of client A assembling 
+products A1 to A3 and for the plant of client B that assembles products B1 and B2. The Year +1  
+demand forecast provided by the two client s for their  products during the 12 -month period from 
+January  1st to December 21st. First, they  provided the overall expected annual demand for each 
+product. Second, as they both  recognize there is uncertainty on the overall quantity to be assembled 
+for each product over Year +1 , they  provided the expected standard deviation of to -be-realized Year 
++1 demand around the provided forecast for each product.  
+ 
+ 
+ 
+ 
+Third, as neither of them  foresee any seasonal pattern in its assembly factory demand, they  provided 
+the expected average weekly demand forecast for each of their  products over Year +1 , which is simply 
+the annual demand forecast divided by 52. Fourth, as they  know there are to be actual fluctuation of 
+assembly production around this weekly average expectation, they both  provide d the expected Year 
++1 coefficient of variation of weekly demand  for each product.  Fifth, as their  daily assembly schedules 
+within a week are  highly smoothed , the two client s specified that the weekly demand is smoothed 
+over the five days a week  in two shifts of 8 hours a day . 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+FaMoaSa ’s client s A and B assemble  their  products , respectively A1 to A3  for A  and B1  and B2  for B, 
+from 20 parts  provided by FaMoaSa ’s parts factory. Here is the Product -Parts matrix  for these 
+products .  
+
+
+================================================================================
+Page 3
+================================================================================
+  3/11 
+ 
+ Casework 3: FaMoaSa  Manufacturing & Warehousing Facility  Design  ISYE 6202 Fall 202 5, Prof. B enoit  Montreuil  
+   
+ 
+Clients A and B respectively keep a buffer of each FaMoaSa’s parts offering a 99% autonomy of four 
+and 12 hours respectively. The client s request that their  assembly plant  be replenished continuously 
+from FaMoaSa ’s parts factory  during operating shifts , once an hour for client A  and once every four 
+hours for client B , with on-time in -full (OTIF) replenishment service level of 99.5% . subject to 
+financial penalties for exceeding 0.5% of late replenishments  and for stopping assembly of any of the 
+client’s products . So, the parts factory must  be designed to robustly meet this service level agreement.  
+Testbed Factory Specifications  
+FaMoaSa ’s parts  factory is to be operating according to one or two 8-hour/day shifts over 5 days a 
+week  while warehousing is to operate two 8 -hour/day shifts over 5 days a week  as the clients do .  
+FaMoaSa  knows that it can leverage overtime and extra shifts to compensate for major disruptions, 
+yet it wants to make sure the factory is designed not to need extra working hours and days through 
+its normal operation.  
+Hereafter are listed the parts manufactured by FaMoaSa  with their X, Y and Z (height) dimensions, 
+their weight and their materials cost.  
+ 
+
+
+================================================================================
+Page 4
+================================================================================
+  4/11 
+ 
+ Casework 3: FaMoaSa  Manufacturing & Warehousing Facility  Design  ISYE 6202 Fall 202 5, Prof. B enoit  Montreuil  
+ 
+Materials for each part are to be brought from FaMoaSa ’s Materials Supply  Center (MSC) to the parts 
+factory in 100 -part kits whose total weight and volume is 150% of the sum of the individual part 
+weight and volume. As several other factories of FaMoaSa, t he testbed factory is inbound fed once a 
+week for each part  from the MSC located 250 miles away . The factory is aiming to maintain a 99.9% 
+robust two -week materials inventory.  
+ 
+Making the parts portfolio requires FaMoaSa  to be equipped to realize  13 processes  A to M. The 
+following Table provides the manufacturing process for each part, expressing at each step the type 
+of operation s to be performed. The part materials kit is brought as input to the first step of its 
+manufacturing process  and follows the parts through the process . 
+ 
+ 
+Part Materials
+Identifier X	(in.) Y	(in.) Z	(in.) Weight	(lbs)Price/unit
+P1 2 6 6 2 12 $													
+P2 8 8 4 14 100 $											
+P3 6 6 6 6 50 $													
+P4 12 6 4 16 120 $											
+P5 8 4 6 5 50 $													
+P6 2 8 6 3 15 $													
+P7 2 2 12 1 25 $													
+P8 4 4 4 1 20 $													
+P9 2 4 12 2 40 $													
+P10 4 4 4 1 20 $													
+P11 4 6 4 2 30 $													
+P12 6 6 4 2 30 $													
+P13 2 2 12 1 25 $													
+P14 2 4 6 1 20 $													
+P15 4 6 4 2 25 $													
+P16 4 4 4 1 20 $													
+P17 12 2 2 4 80 $													
+P18 12 2 2 4 80 $													
+P19 12 2 2 4 80 $													
+P20 12 2 2 4 80 $													Dimensions
+Part
+Step	1 Step	2 Step	3 Step	4 Step	5 Step	6 Step	7
+P1 B A B C D I J
+P2 A C D H J
+P3 B D C I J
+P4 A B D G H
+P5 B C D I
+P6 A B C D H I J
+P7 E F C D I J
+P8 E H J I
+P9 F G E G I J
+P10 E F I J
+P11 E G E G I
+P12 E G F I J
+P13 E F G F G H I
+P14 E F G H
+P15 E G F H J
+P16 F H I J
+P17 K L M
+P18 K L K M
+P19 L M L M
+P20 L K MProcess
+
+================================================================================
+Page 5
+================================================================================
+  5/11 
+ 
+ Casework 3: FaMoaSa  Manufacturing & Warehousing Facility  Design  ISYE 6202 Fall 202 5, Prof. B enoit  Montreuil  
+At each process step for each part, the following Table provides the process time in minutes  per unit 
+for performing the required operation. FaMoaSa  requires you to assume 90% efficiency and 9 8% 
+reliability of all equipment, with 100% quality  at each operation .  
+ 
+ 
+Each of these process operations requires specialized equipment that must  be staffed by expert 
+operators. The following Table provides a portfolio of equipment available on the market. Each is 
+identified by a letter code expressing which process operations it can perform . For example, CD 
+equipment can perform  operations C and/or D on any part.  The Table  below provides  for each 
+equipment type its installed price as well as the expected cost induced every time a unit of this 
+equipment is to be later relocated within the factory. It also provides the expected equipment useful 
+life, at which time the equipment would be discarded with negligible residual value.  
+Part
+Step 1 Step 2 Step 3 Step 4 Step 5 Step 6 Step 7
+P1 2.5 1 2.5 0.5 2.5 1.25 2.5
+P2 1.25 0.5 2.5 1 2.5
+P3 1.75 3 0.75 1.5 2.5
+P4 1 2 3 0.25 1.25
+P5 1.5 0.75 3.5 1.75
+P6 0.75 1.25 0.5 3 1 1.25 2.75
+P7 1 1.5 0.75 3.5 1.25 2
+P8 1.25 2 0.5 1
+P9 1.75 0.75 1.25 0.5 1.25 3
+P10 1.5 1.75 1.25 2
+P11 1.25 0.5 1.25 0.25 0.75
+P12 1 0.5 1 1.25 2.25
+P13 1.25 1.25 0.5 1 0.25 2 1.25
+P14 1 1.5 0.5 1.75
+P15 0.75 0.5 1.25 2.5 2.5
+P16 1.25 5 1.25 2.5
+P17 0.75 3 3.5
+P18 0.75 1.25 0.5 3.75
+P19 2.25 2.5 2 3.75
+P20 2 0.75 3Process Time (minutes/unit)
+
+================================================================================
+Page 6
+================================================================================
+  6/11 
+ 
+ Casework 3: FaMoaSa  Manufacturing & Warehousing Facility  Design  ISYE 6202 Fall 202 5, Prof. B enoit  Montreuil  
+ 
+Each equipment type requires a distinct staffing level. FaMoaSa  has three types of operators, termed 
+C1, C2 and C3. The Table above provides the number of operators of each type required for each 
+implemented equipment unit in a specific center. For example , equipment A requires the full -time 
+presence of one C1 operator and one fourth of a C2 operator. Fractions of an operator may be shared 
+within a center, but not between centers, except for small adjacent centers such in a holographic 
+factory.  Based on exp erience, w orker s are expected to work 49 weeks out of the 52 each year , 
+accounting for holiday , sick days,  and vacations . The following Table provides the hourly cost of each 
+type of operator, including salary, benefits, and support.  
+ 
+Operator  Hourly Cost  
+C1  $40  
+C2  $75  
+C3  $100  
+Hereafter  are provided layout schematics for each category of equipment: A -B-C-D, E -F-G, H -I-J and 
+K-L-M. Each one depicts the shape of the equipment unit itself, the typical position of an operator, 
+zone -s for inbound materials or parts and outbound work -in-proces s or completed parts, and zone 
+to be left open for maintenance purposes. These layouts are indicative and may be improved upon as 
+desired.  
+A 150,000 $									 10,000 $					 10 1	C1+1/4	C2
+B 200,000 $									 10,000 $					 10 1	C1+1/4	C2
+C 250,000 $									 10,000 $					 10 1	C1+1/4	C2
+D 300,000 $									 10,000 $					 10 1	C1+1/4	C2
+AB 250,000 $									 10,000 $					 10 1	C1+1/4	C2
+AC 280,000 $									 10,000 $					 10 1	C1+1/4	C2
+CD 350,000 $									 10,000 $					 10 1	C1+1/4	C2
+ABC 300,000 $									 10,000 $					 10 1	C1+1/4	C2
+ABCD 400,000 $									 10,000 $					 10 1	C1+1/4	C2
+E 400,000 $									 50,000 $					 10 1	C1	+	1/2	C3
+F 400,000 $									 50,000 $					 10 1	C1	+	1/2	C3
+G 400,000 $									 50,000 $					 10 1	C1	+	1/2	C3
+EF 450,000 $									 50,000 $					 10 1	C1	+	1/2	C3
+EG 450,000 $									 50,000 $					 10 1	C1	+	1/2	C3
+FG 450,000 $									 50,000 $					 10 1	C1	+	1/2	C3
+EFG 500,000 $									 50,000 $					 10 1	C1	+	1/2	C3
+H 1,000,000 $					 100,000 $			 15 2	C3
+I 500,000 $									 100,000 $			 15 2	C3
+J 500,000 $									 100,000 $			 15 2	C3
+IJ 750,000 $									 100,000 $			 15 2	C3
+K 80,000 $											 2,000 $								 8 1/2	C2
+L 100,000 $									 2,000 $								 8 1/2	C2
+M 50,000 $											 2,000 $								 8 1/2	C2
+KL 140,000 $									 2,000 $								 8 1/2	C2
+KM 100,000 $									 2,000 $								 8 1/2	C2
+LM 120,000 $									 2,000 $								 8 1/2	C2
+KLM 150,000 $									 2,000 $								 8 1/2	C2Equipment Installed	priceRelocation	
+costUseful	life	
+(years)Number	of	
+operators
+
+================================================================================
+Page 7
+================================================================================
+  7/11 
+ 
+ Casework 3: FaMoaSa  Manufacturing & Warehousing Facility  Design  ISYE 6202 Fall 202 5, Prof. B enoit  Montreuil  
+ 
+Full lines are meant to state rigid boundaries not to be shared with other equipment units while 
+dotted lines express areas sharable with adjacent equipment unit when pertinent. It is possible to 
+alter these schematics as long as the proposed alterations are plausible.  
+All handling within the above zones, from inbound to outbound, is performed by the assigned 
+operators. All handling of material kits and parts between centers and non -adjacent equipment zones 
+is performed by handlers, costing 40 $/hour as the C1 operators. You are responsible for suggesting 
+handling/storage units and means (vehicles, racking, etc.) and get documented rough -cut pricing for 
+these.  
+Assume that the factory building implementation costs are 250 $/ft 2, the equipment is to have 
+negligible residual value at the end of its useful life, and FaMoaSa  uses a 10% rate for its financial 
+expenses, including inventory.  
+ 
+Task 1  
+Leveraging the client’s information on demand forecast and service performance expectation s, develop 
+a demand fulfillment capacity plan  for each part  in the overall FaMoaSa  factory over  the Year +1  
+horizon . 
+14	feet	*7	feet	spacial	envelope
+1	foot	sharable	with	others
+22	feet	*15	feet	spacial	envelope
+Maintenance	access
+6	feet	*	16	feet
+Maintenance	access
+Maintenance	access14	feet	*36	feet	spacial	envelope
+2	feet	sharable	with	others
+2	feet	sharable	with	others
+3	feet	*6	feet
+Inbound		OutboundInbound
+Outbound
+H-I-J	Category	EquipmentInbound					Outbound7	feet	*	8	feet
+A-B-C-D	Category	Equipment14	feet	*14	feet	spacial	envelope
+5	feet	*	24	feetMaintenance	access
+Maintenance	access
+Inbound OutboundE-F-G	Category	EquipmentK-L-M	Category	
+Equipment
+
+
+================================================================================
+Page 8
+================================================================================
+  8/11 
+ 
+ Casework 3: FaMoaSa  Manufacturing & Warehousing Facility  Design  ISYE 6202 Fall 202 5, Prof. B enoit  Montreuil  
+ 
+Task 2  
+Develop an  overall finished storage capacity plan for each part  for the Year +1 horizon , then propose  
+how much storage of each part should be kept as outbound storage in the factory and how much 
+should be kept in each of the two warehouses near clients A and B respectively, to ensure service 
+level agreement is robustly respected.  
+Note that there is no obligation for you to use the three locations for parts storage .  
+Assume that parts are stored in standard rackin g without reliance on automated storage and 
+handling equipment. Also assume that the near -client storage building s, if used, have an internal 
+usable height of 20 feet and are costing 200$  per square feet .  
+Task 3 
+Consider  the following eight alternative parts factories  to satisfy the client’s demand over the Year +1  
+planning horizon : 
+a. Function  organization : A factory organized as a network of elementary -process -dedicated 
+centers with a single center per process , including  centers dedicated to  receiving, inbound 
+storage, outbound storage, and shipping processes . 
+b. Process organization : A factory organized as a network of composite -process -dedicated 
+centers with a single instance of each cente r, including centers dedicated to  receiving, inbound 
+storage, outbound storage, and shipping processes . 
+c. Parts organization : A factory organized as a network of part -dedicated centers  with a single 
+center per part . You are allowed  to include the  receiving, storage, and shipping processes are 
+included in each  part center  or to propose some other  organization for these processes . 
+d. Group organization : A factory organized as a network of parts -group -dedicated production 
+centers  with each part assigned to a single group center . You are allowed to include the 
+receiving, , inbound and outbound storage, and shipping processes are included in each group 
+center or to propose some other organization for these processes.  
+e. Product  organization : A factory organized as a network of product dedicated production 
+centers , each  making all parts required for its dedicated client product . You are allowed to 
+include the receiving, inbound and outbound storage, and shipping processes are included in 
+each product center or to propose some other organization for these processes.  
+f. Fractal organization : A factory organized as a network of  f fractal centers capable of making  
+all products, with approximately 1/f of the overall demand satisfaction capacity required from 
+the factory.  You are allowed to include the receiving,  inbound and outbound storage, and 
+shipping processes are included in each product center or to propose some other organization 
+for these processes.  
+g. Holographic organization : A factory organized a s a network of small, focused  process centers  
+(elementary or composite processes), most of these centers having several instances distributed 
+throughout the factory , jointly capable of making all products at the required capacity.  
+h. Free -style organization : Learning from a to g, a factory organized as a network combining as 
+you best prefer any of the types of center  types used in a to g, or any other type using the 
+framework introduced in class. This one is expected to be according to your assessment your 
+best performing design, or at least be among the top three contenders.  
+ 
+
+================================================================================
+Page 9
+================================================================================
+  9/11 
+ 
+ Casework 3: FaMoaSa  Manufacturing & Warehousing Facility  Design  ISYE 6202 Fall 202 5, Prof. B enoit  Montreuil  
+Select five factory organization types for which you will realize a factory design , respecting  the following 
+constraints : 
+• Function organization -based factory  (a) is mandatory  
+• At least one  between the fractal and holographic factories  (f, g)  
+• Free -style organization -based factory (h) is mandatory  
+Justify your selection.  
+ 
+For each of the five facility design s, provide the following:  
+1. Its network organization, including a network diagram and the mission of each center  in the 
+factory and used near -client warehouse -s 
+2. Center -specific and overall resource requirements plan in terms of equipment and personnel  for 
+production, storage, and material handling  
+3. Layout of each center and of the overall factory  and the near -client  warehouse -s (if used)  
+4. Estimated intra -center work and flow patterns and utilization profile in each center, clearly 
+outlining how you proceeded, providing your results through both Table and Schematic formats  
+overlaid on the layout  
+5. Estimated inter -center flows and travel distances and traffic, with graphical flow diagrams, 
+heatmaps, and tabular results  
+6. Expected key factory and warehouse performance indicators  
+7. Overall expected investment and direct operating costs , including those induced by production, 
+storage, and material handling  
+ 
+Systematically contrast and rank your  generated alternative fac ility designs, then discuss your results, 
+with emphasis on key insights to FaMoaSa  and on your key learning.  
+ 
+ 
+Year +2 to +5  Demand Forecast and Performance Expectations from Client  
+ 
+During the planning horizon  spanning years +2 to +5 , FaMoaSa ’s testbed factory will have to extend 
+its capacity to make parts for one new product A 4 of client A and for two new products B3 and B4 of 
+client B .  
+The demand forecast for years +2 to +5 provided by the client s for feeding assembly of their  products 
+is as follows. First, the clients  provided the overall expected demand for each product. Second, as t hey 
+both  recognize there is still uncertainty on the overall quantity to be assembled for each product from 
+to Year +2  to Year +5 , they  provided the expected standard deviation of to -be-realized Year +2 to +5  
+demand around the provided forecast for each product.  
+ 
+
+
+================================================================================
+Page 10
+================================================================================
+  10/11 
+ 
+ Casework 3: FaMoaSa  Manufacturing & Warehousing Facility  Design  ISYE 6202 Fall 202 5, Prof. B enoit  Montreuil  
+ 
+Third, as they  still do not foresee any seasonal pattern in their  assembly factory demand, they  
+provided the expected average weekly demand forecast for each of their  products over Year +2 to +5  
+as done for Year +1 . Fourth, as they  know there are to be actual fluctuation of assembly production 
+around this weekly average expectation, they  provide d the expected Year +2 to +5  coefficient of 
+variation of weekly demand for each product. Fifth, as their  daily assembly schedules within a week 
+are highly smoothed, the client s specified that the weekly demand will keep being smoothed over the 
+five days a week, one or two shifts a day, and 8 hours a shift operation.  
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+================================================================================
+Page 11
+================================================================================
+  11/11 
+ 
+ Casework 3: FaMoaSa  Manufacturing & Warehousing Facility  Design  ISYE 6202 Fall 202 5, Prof. B enoit  Montreuil  
+FaMoaSa ’s clients assemble  the new three products using the same 20 parts  provided by FaMoaSa’s 
+parts factory as in Year +1. The Table above  is the Product -Parts matrix  for these products . 
+The client s request the same service performance in Year +2 to +5  as in Year +1 .  So, the parts factory 
+and the warehouse -s must be designed to robustly meet the same service level agreement.  
+ 
+Task 4 
+ 
+Consider  the following facility designs  realized in task 2:  
+i. Function -organization -based factory design from task 2.a  
+ii. Top-ranked factory design among those produced in tasks 2.b to 2.g  
+iii. Free-style factory design  from task 2.h  
+a. For each of these three designs, develop a proposal for evolving the organization (while respecting 
+its type ), the set of equipment and the pool of personnel, as well as the layout, to be ready as best 
+as possible  at the beginning of each year  to satisfy the demand for that year.  Specifically, you have 
+to provide : 
+1. Its network organization  planned in each , including a network diagram and the mission of 
+each center , providing clear depiction of its evolution (when pertinent)  
+2. Yearly c enter -specific and overall resource requirements plan in terms of equipment and 
+personnel for production, storage, and material handling  
+3. Yearly l ayout of each center and of the overall factory  and warehouse -s 
+4. Yearly relayout p lan identifying all changes to be made in the factory  and warehouse -s to 
+accommodate changing demand  and the evolving  sets of center s, equipment , and personnel ; 
+coupled with vivid graphical depiction of  all relayout efforts  
+5. For each year, e stimated intra -center work and flow patterns and utilization profile in each 
+center, providing your results through both Table and Schematic formats overlaid on layout  
+6. For each year, e stimated inter -center flows and travel distances and traffic, with graphical 
+flow diagrams, heatmaps, and tabular results  
+7. For each year and overall, e xpected key factory  and warehouse  performance indicators  
+8. Yearly and o verall expected investment and direct operating costs, including those induced 
+by production, storage, and material handling  
+b. Systematically contrast and rank your generated alternative factory designs, then discuss your 
+results,  
+Task 5 
+Provide FaMoaSa  an Executive Summary highlighting your overall assessments, insights, and 
+recommendations, in a two -page -max  format including compelling Figures and/or Tables.  
+Task 6 
+Synthesize your team’s key learnings from performing this casework.  
+ 
+I hope this casework proves to be a challenging, stimulating, and worthwhile learning experience.  
+Professor Benoit Montreuil  

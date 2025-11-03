@@ -26,6 +26,7 @@ product_demand_raw_yo1 = pd.read_csv(r'data\csv_outputs\+1 Year Product Demand.c
 # # Row 2 (index 2) has annual demand: columns 2-6 are A1, A2, A3, B1, B2
 annual_demand = product_demand_raw.iloc[2:6, 2:10].astype(float)  # années 2→5, 8 colonnes
 cols = ["A1","A2","A3","B1","B2","A4","B3","B4"]
+years = [f"Year {i}" for i in range(1, 6)]
 annual_demand.columns = cols
 
 
@@ -146,215 +147,300 @@ process_times = {
 }
 
 print(f"[OK] Process times loaded (manual entry from PDF): {len(process_times)} parts")
-print(f"\n{'='*80}")
-print("DATA LOADING COMPLETE - All data loaded from CSV files")
-print(f"{'='*80}\n")
 
  # ============================================================================
 # TASK 4: DEMAND FULFILLMENT CAPACITY PLAN
 # ============================================================================
 
 print("="*80)
-print("TASK 1: DEMAND FULFILLMENT CAPACITY PLAN (Year +1)")
+print("TASK 4: DEMAND FULFILLMENT CAPACITY PLAN (Year +5)")
 print("="*80)
 
 print("\n--- Step 1: Calculate Parts Demand from Products ---\n")
 
-# print("="*80)
-# print("INPUT DATA: Product Demand")
-# print("="*80)
-# print(f"{'Product':<10} {'Annual (units)':<18} {'Weekly (units)':<18} {'CV':<8} {'Weekly Std Dev':<18}")
-# print("-" * 80)
-# for product in products:
-#     print(f"{product:<10} {annual_demand[product]:>16,.0f}  {weekly_demand[product]:>16,.2f}  {cv_weekly[product]:>6.2f}  {weekly_std_dev[product]:>16,.2f}")
 
-# print("\n" + "="*80)
-# print("CALCULATION METHODOLOGY: Parts Demand Aggregation")
-# print("="*80)
-# print("""
-# Each part is used in multiple products according to the BOM (Bill of Materials).
-# To calculate part demand, we aggregate across all products that use each part.
+print("\n" + "="*80)
+print("CALCULATION METHODOLOGY: Parts Demand Aggregation")
+print("="*80)
+print("""
+Each part is used in multiple products according to the BOM (Bill of Materials).
+To calculate part demand, we aggregate across all products that use each part.
 
-# Formula for each part P:
-#   Annual Demand(P) = SUM [BOM(P, Product_i) x Annual Demand(Product_i)]
-#   Weekly Demand(P) = SUM [BOM(P, Product_i) x Weekly Demand(Product_i)]
+Formula for each part P:
+  Annual Demand(P) = SUM [BOM(P, Product_i) x Annual Demand(Product_i)]
+  Weekly Demand(P) = SUM [BOM(P, Product_i) x Weekly Demand(Product_i)]
   
-# For variance (since product demands are independent):
-#   Variance(P) = SUM [BOM(P, Product_i)^2 x Variance(Product_i)]
-#   Std Dev(P) = SQRT(Variance(P))
+For variance (since product demands are independent):
+  Variance(P) = SUM [BOM(P, Product_i)^2 x Variance(Product_i)]
+  Std Dev(P) = SQRT(Variance(P))
   
-# where:
-#   - BOM(P, Product_i) = quantity of part P required per unit of Product_i
-#   - Variance(Product_i) = (Weekly Std Dev of Product_i)^2
-# """)
+where:
+  - BOM(P, Product_i) = quantity of part P required per unit of Product_i
+  - Variance(Product_i) = (Weekly Std Dev of Product_i)^2
+""")
 
-# # Calculate parts demand WITH DETAILED BREAKDOWN
-# parts_annual_demand = {}
-# parts_weekly_demand = {}
-# parts_weekly_variance = {}
+print(bom_lines['A1']['P1'])
+parts = bom_lines.index
+print(parts[0])
 
-# print("\n" + "="*80)
-# print("DETAILED CALCULATION for EACH PART")
-# print("="*80)
+index = pd.Index(parts, name="Part")
+dtypes = {
+    "parts_annual_demand": "float64",
+    "parts_weekly_demand": "float64",
+    "parts_weekly_variance": "float64",
+    "required_capacity_minutes": "float64",
+    "parts_weekly_std_dev": "float64"
+}
+fillers = {"parts_annual_demand": 0.0, "parts_weekly_demand": 0.0, "parts_weekly_variance": 0.0}
 
-# for part in parts:
-#     annual = 0
-#     weekly = 0
-#     variance = 0
-    
-#     print(f"\n{part}: Calculation Breakdown")
-#     print("-" * 80)
-    
-#     for product in products:
-#         qty = bom[part].get(product, 0)
-#         if qty > 0:
-#             prod_annual = qty * annual_demand[product]
-#             prod_weekly = qty * weekly_demand[product]
-#             prod_variance = (qty * weekly_std_dev[product]) ** 2
-            
-#             annual += prod_annual
-#             weekly += prod_weekly
-#             variance += prod_variance
-            
-#             print(f"  {product}: {qty} parts/unit x {annual_demand[product]:>7,.0f} units/year = {prod_annual:>8,.0f} parts/year")
-#             print(f"       {qty} parts/unit x {weekly_demand[product]:>8,.2f} units/week = {prod_weekly:>8,.2f} parts/week")
-#             print(f"       Variance contribution: ({qty} x {weekly_std_dev[product]:>7,.2f})^2 = {prod_variance:>10,.2f}")
-    
-#     parts_annual_demand[part] = annual
-#     parts_weekly_demand[part] = weekly
-#     parts_weekly_variance[part] = variance
-    
-#     std_dev = np.sqrt(variance)
-#     print(f"  {'-'*60}")
-#     print(f"  TOTAL {part}: Annual = {annual:>8,.0f}, Weekly = {weekly:>8,.2f}, Std Dev = {std_dev:>8,.2f}")
+def make_empty():
+    return (pd.DataFrame(index=index, columns=list(dtypes))
+              .astype(dtypes)
+              .fillna(fillers))
 
-# parts_weekly_std_dev = {p: np.sqrt(parts_weekly_variance[p]) for p in parts}
+parts_demand_Y1 = make_empty()
+parts_demand_Y2 = make_empty()
+parts_demand_Y3 = make_empty()
+parts_demand_Y4 = make_empty()
+parts_demand_Y5 = make_empty()
 
-# print("\n\n" + "="*80)
-# print("SUMMARY: Parts Demand Results")
-# print("="*80)
-# print(f"{'Part':<6} {'Annual Demand':<18} {'Weekly Demand':<18} {'Weekly Std Dev':<18}")
-# print("-" * 70)
-# for part in parts:
-#     print(f"{part:<6} {parts_annual_demand[part]:>16,.0f}  {parts_weekly_demand[part]:>16,.2f}  {parts_weekly_std_dev[part]:>16,.2f}")
+parts_demand = pd.concat(
+    {
+        "Year 1": parts_demand_Y1,
+        "Year 2": parts_demand_Y2,
+        "Year 3": parts_demand_Y3,
+        "Year 4": parts_demand_Y4,
+        "Year 5": parts_demand_Y5,
+    },
+    names=["year"]  # niveau 0; le niveau 1 garde le nom "Part"
+)
+# (optionnel) s'assurer des noms des deux niveaux :
+parts_demand.index = parts_demand.index.set_names(["year", "Part"])
 
-# # ============================================================================
-# # Step 2: Calculate Production Capacity Requirements
-# # ============================================================================
+years = parts_demand.index.unique("year").tolist()
 
-# print("\n--- Step 2: Production Capacity Requirements ---\n")
 
-# # Operating parameters
-# SHIFTS_PER_DAY = 2
-# HOURS_PER_SHIFT = 8
-# DAYS_PER_WEEK = 5
-# WEEKS_PER_YEAR = 52
-# EFFICIENCY = 0.90
-# RELIABILITY = 0.98
-# EFFECTIVE_AVAILABILITY = EFFICIENCY * RELIABILITY
+print("\n" + "="*80)
+print("DETAILED CALCULATION for EACH PART")
+print("="*80)
 
-# hours_per_week = SHIFTS_PER_DAY * HOURS_PER_SHIFT * DAYS_PER_WEEK
-# minutes_per_week = hours_per_week * 60
-
-# print(f"Operating Schedule:")
-# print(f"  - {SHIFTS_PER_DAY} shifts/day x {HOURS_PER_SHIFT} hours/shift x {DAYS_PER_WEEK} days/week")
-# print(f"  - Available: {hours_per_week} hours/week = {minutes_per_week} minutes/week")
-# print(f"  - Efficiency: {EFFICIENCY:.0%}, Reliability: {RELIABILITY:.0%}")
-# print(f"  - Effective availability: {EFFECTIVE_AVAILABILITY:.2%}\n")
-
-# # Calculate total process time per part
-# total_process_time = {p: sum(process_times[p]) for p in parts}
-
-# print("Total Process Time per Part:")
-# for part in parts:
-#     print(f"  {part}: {total_process_time[part]:>6.2f} minutes/unit")
-
-# # Calculate required capacity
-# print("\n\nRequired Production Capacity:")
-# print(f"{'Part':<6} {'Weekly Demand':<16} {'Time/Unit':<12} {'Total Min/Week':<18} {'w/ Availability':<20}")
-# print("-" * 90)
-
-# required_capacity_minutes = {}
-# for part in parts:
-#     demand = parts_weekly_demand[part]
-#     time_unit = total_process_time[part]
-#     total_min = demand * time_unit
-#     effective_min = total_min / EFFECTIVE_AVAILABILITY
-#     required_capacity_minutes[part] = effective_min
-    
-#     print(f"{part:<6} {demand:>14,.2f}  {time_unit:>10,.2f}  {total_min:>16,.2f}  {effective_min:>18,.2f}")
-
-# # ============================================================================
-# # Step 3: Equipment Requirements by Process
-# # ============================================================================
-
-# print("\n--- Step 3: Equipment Requirements by Process ---\n")
-
-# # Aggregate by process type
-# process_requirements = {}
-
-# for part in parts:
-#     demand = parts_weekly_demand[part]
-#     operations = process_operations[part]
-#     times = process_times[part]
-    
-#     for operation, time in zip(operations, times):
-#         if operation not in process_requirements:
-#             process_requirements[operation] = 0
+for year in years:
+    #print(f"Calculation {year}")
+    for part in parts:
+        annual = 0
+        weekly = 0
+        variance = 0
         
-#         total_time = demand * time
-#         effective_time = total_time / EFFECTIVE_AVAILABILITY
-#         process_requirements[operation] += effective_time
+        #print(f"Calculation {part}")
+        # print("-" * 80)
+        
+        for product in cols:
+            
+            qty = bom_lines.loc[part, product]
+            if qty > 0:
+                prod_annual = qty * annual_demand_values[product][year]
+                prod_weekly = qty * weekly_demand_values[product][year]
+                prod_variance = (qty * weekly_std_dev[product][year]) ** 2
+                
+                annual += prod_annual
+                weekly += prod_weekly
+                variance += prod_variance
+                
+                # print(f"  {product}: {qty} parts/unit x {annual_demand_values[product][year]:>7,.0f} units/year = {prod_annual:>8,.0f} parts/year")
+                # print(f"       {qty} parts/unit x {weekly_demand_values[product][year]:>8,.2f} units/week = {prod_weekly:>8,.2f} parts/week")
+                # print(f"       Variance contribution: ({qty} x {weekly_std_dev[product][year]:>7,.2f})^2 = {prod_variance:>10,.2f}")
+        
+        parts_demand.loc[(year, part), "parts_annual_demand"] = annual
+        parts_demand.loc[(year, part), "parts_weekly_demand"] = weekly
+        parts_demand.loc[(year, part), "parts_weekly_variance"] = variance
+        parts_demand.loc[(year, part), "parts_weekly_std_dev"] = np.sqrt(variance)
 
-# print("Process Requirements:")
-# print(f"{'Process':<10} {'Required Min/Week':<20} {'Required Hours':<18} {'# Equipment Needed':<20}")
-# print("-" * 80)
+        
+        std_dev = np.sqrt(variance)
+        #print(f"  {'-'*60}")
+        #print(f"  Year {year} TOTAL {part}: Annual = {annual:>8,.0f}, Weekly = {weekly:>8,.2f}, Std Dev = {std_dev:>8,.2f}")
 
-# equipment_needed = {}
-# for process in sorted(process_requirements.keys()):
-#     req_min = process_requirements[process]
-#     req_hours = req_min / 60
-#     num_equip = req_min / minutes_per_week
-#     equipment_needed[process] = np.ceil(num_equip)
-    
-#     print(f"{process:<10} {req_min:>18,.2f}  {req_hours:>16,.2f}  {num_equip:>18,.3f} -> {int(np.ceil(num_equip))}")
 
-# # ============================================================================
-# # Step 4: Safety Stock Calculations
-# # ============================================================================
+print("\n\n" + "="*80)
+print("SUMMARY: Parts Demand Results")
+print("="*80)
+# print(parts_demand.loc["Year 1"])
 
-# print("\n--- Step 4: Safety Stock for 99.5% Service Level ---\n")
+# ============================================================================
+# Step 2: Calculate Production Capacity Requirements
+# ============================================================================
 
-# SERVICE_LEVEL = 0.995
-# Z_SCORE = stats.norm.ppf(SERVICE_LEVEL)
+print("\n--- Step 2: Production Capacity Requirements ---\n")
 
-# print(f"Target Service Level: {SERVICE_LEVEL:.1%}")
-# print(f"Z-score: {Z_SCORE:.3f}\n")
+# Operating parameters
+SHIFTS_PER_DAY = 2
+HOURS_PER_SHIFT = 8
+DAYS_PER_WEEK = 5
+WEEKS_PER_YEAR = 52
+EFFICIENCY = 0.90
+RELIABILITY = 0.98
+EFFECTIVE_AVAILABILITY = EFFICIENCY * RELIABILITY
 
-# safety_stock = {p: Z_SCORE * parts_weekly_std_dev[p] for p in parts}
+hours_per_week = SHIFTS_PER_DAY * HOURS_PER_SHIFT * DAYS_PER_WEEK
+minutes_per_week = hours_per_week * 60
 
-# print("Safety Stock Requirements:")
-# print(f"{'Part':<6} {'Weekly Demand':<18} {'Weekly Std Dev':<18} {'Safety Stock':<18}")
-# print("-" * 70)
+print(f"Operating Schedule:")
+print(f"  - {SHIFTS_PER_DAY} shifts/day x {HOURS_PER_SHIFT} hours/shift x {DAYS_PER_WEEK} days/week")
+print(f"  - Available: {hours_per_week} hours/week = {minutes_per_week} minutes/week")
+print(f"  - Efficiency: {EFFICIENCY:.0%}, Reliability: {RELIABILITY:.0%}")
+print(f"  - Effective availability: {EFFECTIVE_AVAILABILITY:.2%}\n")
+
+# Calculate total process time per part
+total_process_time = {p: sum(process_times[p]) for p in parts}
+
+print("Total Process Time per Part:")
 # for part in parts:
-#     print(f"{part:<6} {parts_weekly_demand[part]:>16,.2f}  {parts_weekly_std_dev[part]:>16,.2f}  {safety_stock[part]:>16,.2f}")
+    # print(f"  {part}: {total_process_time[part]:>6.2f} minutes/unit")
 
-# # ============================================================================
-# # Save Task 1 Results
-# # ============================================================================
+# Calculate required capacity
 
-# task1_df = pd.DataFrame({
-#     'Part': parts,
-#     'Annual_Demand_Units': [parts_annual_demand[p] for p in parts],
-#     'Weekly_Demand_Units': [parts_weekly_demand[p] for p in parts],
-#     'Weekly_StdDev_Units': [parts_weekly_std_dev[p] for p in parts],
-#     'Total_Process_Time_Min': [total_process_time[p] for p in parts],
-#     'Required_Capacity_Min_Week': [required_capacity_minutes[p] for p in parts],
-#     'Safety_Stock_Units': [safety_stock[p] for p in parts]
-# })
+for year in years:
+    for part in parts:
+        demand = parts_demand.loc[(year,part), "parts_weekly_demand"]
+        time_unit = total_process_time[part]
+        total_min = demand * time_unit
+        effective_min = total_min / EFFECTIVE_AVAILABILITY
+        parts_demand.loc[(year,part), "required_capacity_minutes"]= effective_min
+        
+        # print(f"{part:<6} {demand:>14,.2f}  {time_unit:>10,.2f}  {total_min:>16,.2f}  {effective_min:>18,.2f}")
 
-# task1_df.to_csv('Task1_Demand_Fulfillment_Capacity_Plan.csv', index=False)
-# print("\n[OK] Task 1 results saved to: Task1_Demand_Fulfillment_Capacity_Plan.csv")
+
+print("\n\n" + "="*80)
+print("SUMMARY: Parts required capacity minutes")
+print("="*80)
+# print(parts_demand.loc["Year 1"])
+
+# ============================================================================
+# Step 3: Equipment Requirements by Process
+# ============================================================================
+from collections import defaultdict
+
+print("\n--- Step 3: Equipment Requirements by Process ---\n")
+
+# process_requirements[year][operation] = minutes requises / semaine
+process_requirements = defaultdict(lambda: defaultdict(float))
+
+for year in years:              # ex. "Year 1", ...
+    for part in parts:          # ex. "P1"..."P20"
+        demand = parts_demand.loc[(year, part), "parts_weekly_demand"]
+        # récupère les opérations et temps de ce part
+        operations = process_operations[part]
+        times = process_times[part]
+        for operation, time in zip(operations, times):
+            # charge en minutes sur ce poste/opération pour ce part
+            total_time = demand * time
+            # ajuste par l’efficacité / fiabilité
+            effective_time = total_time / EFFECTIVE_AVAILABILITY
+            process_requirements[year][operation] += effective_time
+
+# Affichage + calcul du nombre d’équipements par année
+equipment_needed = defaultdict(dict)
+
+for year in years:
+    # print(f"\nProcess Requirements — {year}")
+    # print(f"{'Process':<18} {'Req Min/Week':>16} {'Req Hours':>14} {'# Equip Needed':>16}")
+    # print("-" * 70)
+
+    for operation in sorted(process_requirements[year].keys()):
+        req_min = process_requirements[year][operation]             # minutes/semaine
+        req_hours = req_min / 60.0
+        num_equip = req_min / minutes_per_week                      # minutes dispo/machine/sem.
+        equipment_needed[year][operation] = int(np.ceil(num_equip)) # arrondi au dessus
+        #print(f"{operation:<18} {req_min:>16,.2f} {req_hours:>14,.2f} {num_equip:>16,.3f} -> {equipment_needed[year][operation]}")
+
+
+# DF: lignes = années, colonnes = opérations, valeurs = minutes requises / semaine
+proc_req_df = pd.DataFrame.from_dict(process_requirements, orient="index").fillna(0.0)
+# DF équipements nécessaires (arrondi)
+equip_needed_df = np.ceil(proc_req_df / minutes_per_week).astype(int)
+
+print("\nRésumé minutes requises (min/sem) par process et par année :")
+print(proc_req_df)
+
+print("\nRésumé équipements nécessaires par process et par année :")
+print(equip_needed_df)
+
+
+# ============================================================================
+# Step 4: Safety Stock Calculations
+# ============================================================================
+
+print("\n--- Step 4: Safety Stock for 99.5% Service Level ---\n")
+
+SERVICE_LEVEL = 0.995
+Z_SCORE = stats.norm.ppf(SERVICE_LEVEL)
+
+LEAD_TIME_WEEKS = 1  
+print(f"Target Service Level: {SERVICE_LEVEL:.1%}")
+print(f"Z-score: {Z_SCORE:.3f}")
+print(f"Lead time (weeks): {LEAD_TIME_WEEKS}\n")
+
+if "parts_weekly_std_dev" not in parts_demand.columns:
+    parts_demand["parts_weekly_std_dev"] = np.sqrt(parts_demand["parts_weekly_variance"])
+
+# Safety stock par (year, Part) : Z * sigma * sqrt(L)
+parts_demand["safety_stock_99_5"] = (
+    Z_SCORE * parts_demand["parts_weekly_std_dev"] * np.sqrt(LEAD_TIME_WEEKS)
+)
+
+
+for year in years:
+    print(f"Safety Stock Requirements — {year}")
+    print(f"{'Part':<6} {'Weekly Demand':>16}  {'Weekly Std Dev':>16}  {'Safety Stock':>16}")
+    print("-" * 70)
+    df_y = parts_demand.loc[year, ["parts_weekly_demand", "parts_weekly_std_dev", "safety_stock_99_5"]]
+    # garder l'ordre des parts si tu as la liste `parts`
+    df_y = df_y.reindex(parts)
+
+    for part, row in df_y.iterrows():
+        print(f"{part:<6} {row['parts_weekly_demand']:>16,.2f}  "
+              f"{row['parts_weekly_std_dev']:>16,.2f}  "
+              f"{row['safety_stock_99_5']:>16,.2f}")
+    print()
+
+# ============================================================================
+# Save Task 1 Results
+# ============================================================================
+from pathlib import Path
+task1_df = (
+    parts_demand
+      .reset_index()  # remet 'year' et 'Part' en colonnes
+      .rename(columns={
+          "year": "Year",
+          "parts_annual_demand": "Annual_Demand_Units",
+          "parts_weekly_demand": "Weekly_Demand_Units",
+          "parts_weekly_std_dev": "Weekly_StdDev_Units",
+          "required_capacity_minutes": "Required_Capacity_Min_Week",
+          "safety_stock_99_5": "Safety_Stock_Units",
+      })
+)
+
+# Ajouter le temps process total (min/unité) par pièce
+task1_df["Total_Process_Time_Min"] = task1_df["Part"].map(total_process_time)
+
+# Ordonner les colonnes
+task1_df = task1_df[
+    ["Year", "Part",
+     "Annual_Demand_Units", "Weekly_Demand_Units", "Weekly_StdDev_Units",
+     "Total_Process_Time_Min", "Required_Capacity_Min_Week", "Safety_Stock_Units"]
+]
+
+# (option) garder l'ordre Year 1..Year 5
+task1_df["Year"] = pd.Categorical(task1_df["Year"], categories=[f"Year {i}" for i in range(1,6)], ordered=True)
+task1_df = task1_df.sort_values(["Year","Part"])
+
+# --- Export CSV ---
+out_dir = Path("data/csv_outputs/results")
+out_dir.mkdir(parents=True, exist_ok=True)
+out_file = out_dir / "Task4_Demand_Fulfillment_Capacity_Plan_by_year.csv"
+
+task1_df.to_csv(out_file, index=False, encoding="utf-8-sig")
+print(f"\n[OK] Task 1 results saved to: {out_file}")
 
 # # ============================================================================
 # # TASK 2: FINISHED STORAGE CAPACITY PLAN

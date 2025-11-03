@@ -265,6 +265,9 @@ for part in parts:
     
     print(f"{part:<6} {demand:>14,.2f}  {time_unit:>10,.2f}  {total_min:>16,.2f}  {effective_min:>18,.2f}")
 
+print("required by minutes")
+print(required_capacity_minutes)
+
 # ============================================================================
 # Step 3: Equipment Requirements by Process
 # ============================================================================

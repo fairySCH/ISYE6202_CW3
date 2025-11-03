@@ -433,11 +433,11 @@ task1_df["Year"] = pd.Categorical(task1_df["Year"], categories=[f"Year {i}" for 
 task1_df = task1_df.sort_values(["Year","Part"])
 
 # --- Export CSV ---
-out_dir = Path("data/csv_outputs/results")
+out_dir = Path("results")
 out_dir.mkdir(parents=True, exist_ok=True)
 out_file = out_dir / "Task4_Demand_Fulfillment_Capacity_Plan_by_year.csv"
 
-#task1_df.to_csv(out_file, index=False, encoding="utf-8-sig")
+task1_df.to_csv(out_file, index=False, encoding="utf-8-sig")
 print(f"\n[OK] Task 1 results saved to: {out_file}")
 
 # # ============================================================================
@@ -597,63 +597,53 @@ for year in years:
 
 
 storage_summary_by_year = pd.DataFrame(summary_rows).set_index("Year")
-storage_summary_by_year.to_csv("data/csv_outputs/results/Task4_storage_summary_by_year.csv",
+storage_summary_by_year.to_csv("results/Task4_storage_summary_by_year.csv",
                                encoding="utf-8-sig", float_format="%.2f")
 
 
-# # ============================================================================
-# # Save Task 2 Results
-# # ============================================================================
 
-# task2_df = pd.DataFrame({
-#     'Part': parts,
-#     'Safety_Stock_Units': [safety_stock[p] for p in parts],
-#     'Cycle_Stock_Units': [cycle_stock[p] for p in parts],
-#     'Factory_Storage_Units': [factory_storage[p] for p in parts],
-#     'Warehouse_A_Units': [buffer_stock_a[p] for p in parts],
-#     'Warehouse_B_Units': [buffer_stock_b[p] for p in parts],
-#     'Part_Volume_CuFt': [part_volumes_cuft[p] for p in parts]
-# })
 
-# task2_df.to_csv('Task2_Finished_Storage_Capacity_Plan.csv', index=False)
-# print("\n[OK] Task 2 results saved to: Task2_Finished_Storage_Capacity_Plan.csv")
+task2_detail_rows = []
 
-# # ============================================================================
-# # COMPREHENSIVE SUMMARY
-# # ============================================================================
+for year in years:
 
-# print("\n\n" + "="*80)
-# print("COMPREHENSIVE SUMMARY - TASKS 1 & 2")
-# print("="*80)
+    ss  = parts_demand.loc[year, "safety_stock_99_5"].reindex(parts).astype(float)
+    cs  = parts_demand.loc[year, "cycle_stock_units"].reindex(parts).astype(float)
+    fs  = parts_demand.loc[year, "factory_storage_units"].reindex(parts).astype(float)
 
-# print("\n--- TASK 1 SUMMARY ---")
-# print(f"\nTotal Annual Parts Demand: {sum(parts_annual_demand.values()):>15,.0f} units")
-# print(f"Total Weekly Parts Demand: {sum(parts_weekly_demand.values()):>15,.2f} units")
-# print(f"\nEquipment Requirements:")
-# for process in sorted(equipment_needed.keys()):
-#     print(f"  Process {process}: {int(equipment_needed[process])} units")
-# total_equipment = sum(equipment_needed.values())
-# print(f"  TOTAL: {int(total_equipment)} equipment units")
 
-# print("\n--- TASK 2 SUMMARY ---")
-# print(f"\nFactory Outbound Storage:")
-# print(f"  Total Units:    {sum(factory_storage.values()):>12,.2f}")
-# print(f"  Floor Space:    {factory_floor_sqft:>12,.2f} sq ft")
-# print(f"\nWarehouse A (Client A - 90 miles North):")
-# print(f"  Total Units:    {sum(buffer_stock_a.values()):>12,.2f}")
-# print(f"  Floor Space:    {warehouse_a_floor_sqft:>12,.2f} sq ft")
-# print(f"  Building Cost:  ${warehouse_a_cost:>12,.2f}")
-# print(f"\nWarehouse B (Client B - 110 miles South):")
-# print(f"  Total Units:    {sum(buffer_stock_b.values()):>12,.2f}")
-# print(f"  Floor Space:    {warehouse_b_floor_sqft:>12,.2f} sq ft")
-# print(f"  Building Cost:  ${warehouse_b_cost:>12,.2f}")
-# print(f"\nTotal Warehouse Investment: ${warehouse_a_cost + warehouse_b_cost:>15,.2f}")
+    wa = buffer_A_units.loc[parts, year].astype(float)
+    wb = buffer_B_units.loc[parts, year].astype(float)
 
-# print("\n" + "="*80)
-# print("[OK] ANALYSIS COMPLETE")
-# print("="*80)
-# print("\nOutput Files:")
-# print("  1. Task1_Demand_Fulfillment_Capacity_Plan.csv")
-# print("  2. Task2_Finished_Storage_Capacity_Plan.csv")
-# print("\n[OK] All calculations verified - data loaded from CSV files")
-# print("="*80)
+
+    part_volumes_cuft = pd.Series(
+        {p: (part_dimensions[p]['X'] * part_dimensions[p]['Y'] * part_dimensions[p]['Z']) / (12**3) for p in parts},
+        index=parts, name="Part_Volume_CuFt"
+    ).astype(float)
+
+    detail_y = pd.DataFrame({
+        "Safety_Stock_Units":   ss,
+        "Cycle_Stock_Units":    cs,
+        "Factory_Storage_Units":fs,
+        "Warehouse_A_Units":    wa,
+        "Warehouse_B_Units":    wb,
+        "Part_Volume_CuFt":     part_volumes_cuft,
+    })
+    detail_y.index.name = "Part"
+    detail_y = detail_y.reset_index()
+    detail_y.insert(0, "Year", year)  
+
+    task2_detail_rows.extend(detail_y.to_dict(orient="records"))
+
+
+task2_df = pd.DataFrame(task2_detail_rows)[
+    ["Year","Part","Safety_Stock_Units","Cycle_Stock_Units","Factory_Storage_Units",
+     "Warehouse_A_Units","Warehouse_B_Units","Part_Volume_CuFt"]
+]
+
+
+out_dir = Path("results")
+out_dir.mkdir(parents=True, exist_ok=True)
+task2_df.to_csv(out_dir / "Task2_Storage_Allocation_by_year_and_part.csv",
+                index=False, encoding="utf-8-sig", float_format="%.2f")
+

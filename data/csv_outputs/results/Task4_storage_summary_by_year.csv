@@ -1,0 +1,6 @@
+﻿Year,Factory_Volume_cuft,Warehouse_A_Volume_cuft,Warehouse_B_Volume_cuft,Factory_Floor_sqft,Warehouse_A_Floor_sqft,Warehouse_B_Floor_sqft,Warehouse_A_Cost,Warehouse_B_Cost,Total_Investment
+Year 1,8934.84,346.29,607.37,638.20,24.73,43.38,4946.96,8676.74,13623.70
+Year 2,12267.16,463.45,1027.92,876.23,33.10,73.42,6620.70,14684.52,21305.22
+Year 3,13624.78,466.76,1296.04,973.20,33.34,92.57,6667.99,18514.88,25182.87
+Year 4,15081.19,470.07,1564.17,1077.23,33.58,111.73,6715.28,22345.24,29060.52
+Year 5,17166.15,496.74,1848.61,1226.15,35.48,132.04,7096.23,26408.73,33504.96

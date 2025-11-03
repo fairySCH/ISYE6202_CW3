@@ -380,8 +380,6 @@ print(f"Target Service Level: {SERVICE_LEVEL:.1%}")
 print(f"Z-score: {Z_SCORE:.3f}")
 print(f"Lead time (weeks): {LEAD_TIME_WEEKS}\n")
 
-if "parts_weekly_std_dev" not in parts_demand.columns:
-    parts_demand["parts_weekly_std_dev"] = np.sqrt(parts_demand["parts_weekly_variance"])
 
 # Safety stock par (year, Part) : Z * sigma * sqrt(L)
 parts_demand["safety_stock_99_5"] = (
@@ -390,18 +388,18 @@ parts_demand["safety_stock_99_5"] = (
 
 
 for year in years:
-    print(f"Safety Stock Requirements — {year}")
-    print(f"{'Part':<6} {'Weekly Demand':>16}  {'Weekly Std Dev':>16}  {'Safety Stock':>16}")
-    print("-" * 70)
+    # print(f"Safety Stock Requirements — {year}")
+    # print(f"{'Part':<6} {'Weekly Demand':>16}  {'Weekly Std Dev':>16}  {'Safety Stock':>16}")
+    # print("-" * 70)
     df_y = parts_demand.loc[year, ["parts_weekly_demand", "parts_weekly_std_dev", "safety_stock_99_5"]]
     # garder l'ordre des parts si tu as la liste `parts`
     df_y = df_y.reindex(parts)
 
-    for part, row in df_y.iterrows():
-        print(f"{part:<6} {row['parts_weekly_demand']:>16,.2f}  "
-              f"{row['parts_weekly_std_dev']:>16,.2f}  "
-              f"{row['safety_stock_99_5']:>16,.2f}")
-    print()
+    # for part, row in df_y.iterrows():
+        # print(f"{part:<6} {row['parts_weekly_demand']:>16,.2f}  "
+        #       f"{row['parts_weekly_std_dev']:>16,.2f}  "
+        #       f"{row['safety_stock_99_5']:>16,.2f}")
+    #print()
 
 # ============================================================================
 # Save Task 1 Results
@@ -439,124 +437,169 @@ out_dir = Path("data/csv_outputs/results")
 out_dir.mkdir(parents=True, exist_ok=True)
 out_file = out_dir / "Task4_Demand_Fulfillment_Capacity_Plan_by_year.csv"
 
-task1_df.to_csv(out_file, index=False, encoding="utf-8-sig")
+#task1_df.to_csv(out_file, index=False, encoding="utf-8-sig")
 print(f"\n[OK] Task 1 results saved to: {out_file}")
 
 # # ============================================================================
 # # TASK 2: FINISHED STORAGE CAPACITY PLAN
 # # ============================================================================
 
-# print("\n\n" + "="*80)
-# print("TASK 2: FINISHED STORAGE CAPACITY PLAN (Year +1)")
-# print("="*80)
+print("\n\n" + "="*80)
+print("TASK 2: FINISHED STORAGE CAPACITY PLAN (Year +1)")
+print("="*80)
 
-# print("\n--- Step 1: Storage Requirements Analysis ---\n")
+print("\n--- Step 1: Storage Requirements Analysis ---\n")
 
-# # Client requirements
-# CLIENT_A_BUFFER_HOURS = 4
-# CLIENT_B_BUFFER_HOURS = 12
-# OPERATING_HOURS_PER_WEEK = hours_per_week
+CLIENT_A_BUFFER_HOURS = 4
+CLIENT_B_BUFFER_HOURS = 12
+OPERATING_HOURS_PER_WEEK = hours_per_week  # 2×8×5 = 80
 
-# print(f"Client A: {CLIENT_A_BUFFER_HOURS}-hour buffer autonomy (99% service)")
-# print(f"Client B: {CLIENT_B_BUFFER_HOURS}-hour buffer autonomy (99% service)")
-# print(f"Operating hours: {OPERATING_HOURS_PER_WEEK} hours/week\n")
+client_a_products = ['A1', 'A2', 'A3', 'A4']
+client_b_products = ['B1', 'B2', 'B3', 'B4']
 
-# # Calculate client-specific demand
-# client_a_products = ['A1', 'A2', 'A3']
-# client_b_products = ['B1', 'B2']
+# DataFrames vides (parts × years) en float
+parts_demand_CA_hourly = pd.DataFrame(0.0, index=parts, columns=years)
+parts_demand_CB_hourly = pd.DataFrame(0.0, index=parts, columns=years)
 
-# parts_demand_a_hourly = {}
-# parts_demand_b_hourly = {}
+# Calcul vectoriel par année
+BOM_A = bom_lines[client_a_products].fillna(0)
+BOM_B = bom_lines[client_b_products].fillna(0)
 
+for year in years:
+    # Demande hebdo (parts) = (parts×products) @ (products)
+    a_weekly = BOM_A @ weekly_demand_values.loc[year, client_a_products].fillna(0)
+    b_weekly = BOM_B @ weekly_demand_values.loc[year, client_b_products].fillna(0)
+
+    parts_demand_CA_hourly.loc[:, year] = a_weekly / OPERATING_HOURS_PER_WEEK
+    parts_demand_CB_hourly.loc[:, year] = b_weekly / OPERATING_HOURS_PER_WEEK
+
+# Buffer stock (unités finies à stocker) pour l’autonomie demandée
+buffer_A_units = parts_demand_CA_hourly * CLIENT_A_BUFFER_HOURS
+buffer_B_units = parts_demand_CB_hourly * CLIENT_B_BUFFER_HOURS
+buffer_total_units = buffer_A_units.add(buffer_B_units, fill_value=0)
+
+
+print("Client-Specific Hourly Demand and Buffer Stock:")
+print(f"{'Part':<6} {'A Hourly':<16} {'A Buffer':<16} {'B Hourly':<16} {'B Buffer':<16}")
+print("-" * 75)
 # for part in parts:
-#     demand_a = sum(bom[part].get(prod, 0) * weekly_demand[prod] for prod in client_a_products)
-#     demand_b = sum(bom[part].get(prod, 0) * weekly_demand[prod] for prod in client_b_products)
-    
-#     parts_demand_a_hourly[part] = demand_a / OPERATING_HOURS_PER_WEEK
-#     parts_demand_b_hourly[part] = demand_b / OPERATING_HOURS_PER_WEEK
+#     print(
+#         f"{part:<6} "
+#         f"{parts_demand_CA_hourly.loc[part, 'Year 2']:>14,.1f}  "
+#         f"{buffer_A_units.loc[part, 'Year 2']:>14,.1f}  "
+#         f"{parts_demand_CB_hourly.loc[part, 'Year 2']:>14,.1f}  "
+#         f"{buffer_B_units.loc[part, 'Year 2']:>14,.1f}"
+#     )
 
-# # Buffer stock at client sites
-# buffer_stock_a = {p: parts_demand_a_hourly[p] * CLIENT_A_BUFFER_HOURS for p in parts}
-# buffer_stock_b = {p: parts_demand_b_hourly[p] * CLIENT_B_BUFFER_HOURS for p in parts}
+# ============================================================================
+# Step 2: Total Storage Allocation
+# ============================================================================
 
-# print("Client-Specific Hourly Demand and Buffer Stock:")
-# print(f"{'Part':<6} {'A Hourly':<16} {'A Buffer':<16} {'B Hourly':<16} {'B Buffer':<16}")
-# print("-" * 75)
-# for part in parts:
-#     print(f"{part:<6} {parts_demand_a_hourly[part]:>14,.4f}  {buffer_stock_a[part]:>14,.2f}  "
-#           f"{parts_demand_b_hourly[part]:>14,.4f}  {buffer_stock_b[part]:>14,.2f}")
+print("\n--- Step 2: Storage Allocation Plan ---\n")
 
-# # ============================================================================
-# # Step 2: Total Storage Allocation
-# # ============================================================================
 
-# print("\n--- Step 2: Storage Allocation Plan ---\n")
+# Cycle stock (average inventory between production runs)
+# Assuming weekly production batches
+parts_demand["cycle_stock_units"] = parts_demand["parts_weekly_demand"] / 2.0
 
-# # Cycle stock (average inventory between production runs)
-# # Assuming weekly production batches
-# cycle_stock = {p: parts_weekly_demand[p] / 2 for p in parts}
+# Factory storage = Safety stock + Cycle stock
+parts_demand["factory_storage_units"] = (
+    parts_demand["safety_stock_99_5"] + parts_demand["cycle_stock_units"]
+)
 
-# # Factory storage = Safety stock + Cycle stock
-# factory_storage = {p: safety_stock[p] + cycle_stock[p] for p in parts}
 
-# print("Storage Allocation:")
-# print(f"{'Part':<6} {'Safety Stock':<16} {'Cycle Stock':<16} {'Factory Total':<18} {'Warehouse A':<16} {'Warehouse B':<16}")
-# print("-" * 105)
-# for part in parts:
-#     print(f"{part:<6} {safety_stock[part]:>14,.2f}  {cycle_stock[part]:>14,.2f}  {factory_storage[part]:>16,.2f}  "
-#           f"{buffer_stock_a[part]:>14,.2f}  {buffer_stock_b[part]:>14,.2f}")
+for target_year in years:
+    print(f"\nStorage Allocation — {target_year}\n")
+    print(f"{'Part':<6} {'Safety Stock':>14}  {'Cycle Stock':>14}  {'Factory Total':>16}  {'Warehouse A':>14}  {'Warehouse B':>14}")
+    print("-" * 92)
+    df_y = parts_demand.loc[target_year, ["safety_stock_99_5", "cycle_stock_units", "factory_storage_units"]].reindex(parts)
+    for part in parts:
+        ss = df_y.loc[part, "safety_stock_99_5"]
+        cs = df_y.loc[part, "cycle_stock_units"]
+        ft = df_y.loc[part, "factory_storage_units"]
+        wa = float(buffer_A_units.loc[part, target_year])
+        wb = float(buffer_B_units.loc[part, target_year])
+        print(f"{part:<6} {ss:>14,.2f}  {cs:>14,.2f}  {ft:>16,.2f}  {wa:>14,.2f}  {wb:>14,.2f}")
 
-# # ============================================================================
-# # Step 3: Physical Storage Space Requirements
-# # ============================================================================
 
-# print("\n--- Step 3: Physical Storage Space Requirements ---\n")
+# ============================================================================
+# Step 3: Physical Storage Space Requirements — by year
+# ============================================================================
 
-# # Calculate volumes
-# part_volumes_cuft = {}
-# for part in parts:
-#     x, y, z = part_dimensions[part]['X'], part_dimensions[part]['Y'], part_dimensions[part]['Z']
-#     volume_cuin = x * y * z
-#     volume_cuft = volume_cuin / (12**3)  # Convert to cubic feet
-#     part_volumes_cuft[part] = volume_cuft
+print("\n--- Step 3: Physical Storage Space Requirements (by year) ---\n")
 
-# # Total volumes
-# factory_volume = sum(factory_storage[p] * part_volumes_cuft[p] for p in parts)
-# warehouse_a_volume = sum(buffer_stock_a[p] * part_volumes_cuft[p] for p in parts)
-# warehouse_b_volume = sum(buffer_stock_b[p] * part_volumes_cuft[p] for p in parts)
+# Calculate volumes
+volumes_cuft = pd.Series(
+    {p: (part_dimensions[p]['X'] * part_dimensions[p]['Y'] * part_dimensions[p]['Z']) / (12**3)
+     for p in parts},
+    name="volume_cuft"
+).reindex(parts).astype(float)
 
-# # Floor space (20 ft height, 70% utilization)
-# WAREHOUSE_HEIGHT = 20
-# STORAGE_UTILIZATION = 0.70
+WAREHOUSE_HEIGHT = 20.0
+STORAGE_UTILIZATION = 0.70
+DENOM = WAREHOUSE_HEIGHT * STORAGE_UTILIZATION  
 
-# factory_floor_sqft = factory_volume / (WAREHOUSE_HEIGHT * STORAGE_UTILIZATION)
-# warehouse_a_floor_sqft = warehouse_a_volume / (WAREHOUSE_HEIGHT * STORAGE_UTILIZATION)
-# warehouse_b_floor_sqft = warehouse_b_volume / (WAREHOUSE_HEIGHT * STORAGE_UTILIZATION)
 
-# print(f"Storage Volumes:")
-# print(f"  Factory:     {factory_volume:>12,.2f} cubic feet")
-# print(f"  Warehouse A: {warehouse_a_volume:>12,.2f} cubic feet")
-# print(f"  Warehouse B: {warehouse_b_volume:>12,.2f} cubic feet")
-# print(f"\nFloor Space (20 ft height, 70% utilization):")
-# print(f"  Factory:     {factory_floor_sqft:>12,.2f} sq ft")
-# print(f"  Warehouse A: {warehouse_a_floor_sqft:>12,.2f} sq ft")
-# print(f"  Warehouse B: {warehouse_b_floor_sqft:>12,.2f} sq ft")
+buffer_A_df = buffer_A_units   # parts × years
+buffer_B_df = buffer_B_units
 
-# # ============================================================================
-# # Step 4: Storage Costs
-# # ============================================================================
 
-# print("\n--- Step 4: Storage Investment ---\n")
+summary_rows = []
 
-# WAREHOUSE_COST_PER_SQFT = 200
+for year in years:
+    factory_units  = parts_demand.loc[year, "factory_storage_units"].reindex(parts).fillna(0.0).astype(float)
+    wh_a_units     = buffer_A_df.loc[parts, year].fillna(0.0).astype(float)
+    wh_b_units     = buffer_B_df.loc[parts, year].fillna(0.0).astype(float)
 
-# warehouse_a_cost = warehouse_a_floor_sqft * WAREHOUSE_COST_PER_SQFT
-# warehouse_b_cost = warehouse_b_floor_sqft * WAREHOUSE_COST_PER_SQFT
 
-# print(f"Warehouse Building Costs:")
-# print(f"  Warehouse A: {warehouse_a_floor_sqft:>10,.2f} sq ft x ${WAREHOUSE_COST_PER_SQFT}/sq ft = ${warehouse_a_cost:>15,.2f}")
-# print(f"  Warehouse B: {warehouse_b_floor_sqft:>10,.2f} sq ft x ${WAREHOUSE_COST_PER_SQFT}/sq ft = ${warehouse_b_cost:>15,.2f}")
-# print(f"  Total Investment:                                         ${warehouse_a_cost + warehouse_b_cost:>15,.2f}")
+    factory_volume_cuft    = (factory_units * volumes_cuft).sum()
+    warehouse_a_volume_cuft = (wh_a_units * volumes_cuft).sum()
+    warehouse_b_volume_cuft = (wh_b_units * volumes_cuft).sum()
+
+
+    factory_floor_sqft     = factory_volume_cuft / DENOM
+    warehouse_a_floor_sqft = warehouse_a_volume_cuft / DENOM
+    warehouse_b_floor_sqft = warehouse_b_volume_cuft / DENOM
+
+
+    print(f"Storage Volumes — {year}:")
+    print(f"  Factory:     {factory_volume_cuft:>12,.2f} cubic feet")
+    print(f"  Warehouse A: {warehouse_a_volume_cuft:>12,.2f} cubic feet")
+    print(f"  Warehouse B: {warehouse_b_volume_cuft:>12,.2f} cubic feet")
+    print(f"\nFloor Space (20 ft height, 70% utilization) — {year}:")
+    print(f"  Factory:     {factory_floor_sqft:>12,.2f} sq ft")
+    print(f"  Warehouse A: {warehouse_a_floor_sqft:>12,.2f} sq ft")
+    print(f"  Warehouse B: {warehouse_b_floor_sqft:>12,.2f} sq ft\n")
+
+
+    WAREHOUSE_COST_PER_SQFT = 200.0
+    warehouse_a_cost = warehouse_a_floor_sqft * WAREHOUSE_COST_PER_SQFT
+    warehouse_b_cost = warehouse_b_floor_sqft * WAREHOUSE_COST_PER_SQFT
+    total_investment = warehouse_a_cost + warehouse_b_cost
+
+    print(f"Warehouse Building Costs — {year}:")
+    print(f"  Warehouse A: {warehouse_a_floor_sqft:>10,.2f} sq ft × ${WAREHOUSE_COST_PER_SQFT:.0f}/sq ft = ${warehouse_a_cost:>15,.2f}")
+    print(f"  Warehouse B: {warehouse_b_floor_sqft:>10,.2f} sq ft × ${WAREHOUSE_COST_PER_SQFT:.0f}/sq ft = ${warehouse_b_cost:>15,.2f}")
+    print(f"  Total Investment:                                            ${total_investment:>15,.2f}\n")
+
+    summary_rows.append({
+        "Year": year,
+        "Factory_Volume_cuft": factory_volume_cuft,
+        "Warehouse_A_Volume_cuft": warehouse_a_volume_cuft,
+        "Warehouse_B_Volume_cuft": warehouse_b_volume_cuft,
+        "Factory_Floor_sqft": factory_floor_sqft,
+        "Warehouse_A_Floor_sqft": warehouse_a_floor_sqft,
+        "Warehouse_B_Floor_sqft": warehouse_b_floor_sqft,
+        "Warehouse_A_Cost": warehouse_a_cost,
+        "Warehouse_B_Cost": warehouse_b_cost,
+        "Total_Investment": total_investment,
+    })
+
+
+storage_summary_by_year = pd.DataFrame(summary_rows).set_index("Year")
+storage_summary_by_year.to_csv("data/csv_outputs/results/Task4_storage_summary_by_year.csv",
+                               encoding="utf-8-sig", float_format="%.2f")
+
 
 # # ============================================================================
 # # Save Task 2 Results

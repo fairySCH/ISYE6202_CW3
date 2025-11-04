@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 
 # Load weekly demand from Task1 results
-task1_df = pd.read_csv('results/Task1_Demand_Fulfillment_Capacity_Plan.csv')
+task1_df = pd.read_csv('../results/Task1_Demand_Fulfillment_Capacity_Plan.csv')
 weekly_demand = dict(zip(task1_df['Part'], task1_df['Weekly_Demand_Units']))
 
 # Process operations from Parts Specs
@@ -112,7 +112,7 @@ def calculate_for_shifts(shifts_per_day):
     df = df.merge(part_operation_totals[['Part', 'Operation', 'Number_of_Machines']], on=['Part', 'Operation'], how='left')
 
     # Save to CSV
-    csv_filename = f'Part_Step_Process_Capacity_Requirements_{shifts_per_day}_shifts.csv'
+    csv_filename = f'../results/Part_Step_Process_Capacity_Requirements_{shifts_per_day}_shifts.csv'
     df.to_csv(csv_filename, index=False)
 
     print(f"CSV generated: {csv_filename}")
@@ -120,7 +120,7 @@ def calculate_for_shifts(shifts_per_day):
     # Create summary CSV with machines per part per step
     df['Step_Info'] = df['Operation'] + ': ' + df['Number_of_Machines'].astype(str)
     step_summary_df = df.pivot(index='Part', columns='Step', values='Step_Info').fillna('')
-    step_summary_csv_filename = f'Part_Step_Machines_Summary_{shifts_per_day}_shifts.csv'
+    step_summary_csv_filename = f'../results/Part_Step_Machines_Summary_{shifts_per_day}_shifts.csv'
     step_summary_df.to_csv(step_summary_csv_filename)
     
     print(f"Step Summary CSV generated: {step_summary_csv_filename}")

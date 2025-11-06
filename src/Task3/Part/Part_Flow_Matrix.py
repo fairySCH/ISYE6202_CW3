@@ -2,9 +2,14 @@
 
 import pandas as pd
 import numpy as np
+from pathlib import Path
+
+# Configuration
+BASE_DIR = Path(__file__).parent.parent.parent.parent  # Go up to ISYE6202_CW3 directory
+RESULTS_DIR = BASE_DIR / "results"
 
 # Load weekly demand from Task1 results
-task1_df = pd.read_csv('../results/Task1_Demand_Fulfillment_Capacity_Plan.csv')
+task1_df = pd.read_csv(RESULTS_DIR / "task12" / "Task1_Demand_Fulfillment_Capacity_Plan.csv")
 weekly_demand = dict(zip(task1_df['Part'], task1_df['Weekly_Demand_Units']))
 
 # Process operations from Parts Specs
@@ -49,7 +54,7 @@ for part in process_operations:
         flow_matrix.loc[from_op, to_op] += demand
 
     # Save to CSV
-    filename = f'../results/Task3/Part/Flow_Matrix/{part}_Flow_Matrix.csv'
+    filename = RESULTS_DIR / "Task3" / "Part" / "Flow_Matrix" / f"{part}_Flow_Matrix.csv"
     flow_matrix.to_csv(filename)
     print(f"Flow matrix for {part} saved to {filename}")
 

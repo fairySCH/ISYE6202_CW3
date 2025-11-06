@@ -30,7 +30,7 @@ def create_visualizations():
     process_capacity_2shift = capacity_2shift_df.groupby('Operation')['Number_of_Machines'].sum().reset_index()
     
     # Load part demand from Task1 results (used by both scripts)
-    task1_df = pd.read_csv(RESULTS_DIR / "Task1_Demand_Fulfillment_Capacity_Plan.csv")
+    task1_df = pd.read_csv(RESULTS_DIR / "task12" / "Task1_Demand_Fulfillment_Capacity_Plan.csv")
     part_demand_df = task1_df[['Part', 'Weekly_Demand_Units']].copy()
     part_demand_df.columns = ['Part', 'Weekly_Demand']
     
@@ -230,7 +230,7 @@ def generate_summary_report():
     process_capacity_2shift = capacity_2shift_df.groupby('Operation')['Number_of_Machines'].sum().reset_index()
     
     # Load part demand
-    task1_df = pd.read_csv(RESULTS_DIR / "Task1_Demand_Fulfillment_Capacity_Plan.csv")
+    task1_df = pd.read_csv(RESULTS_DIR / "task12" / "Task1_Demand_Fulfillment_Capacity_Plan.csv")
     part_demand_df = task1_df[['Part', 'Weekly_Demand_Units']].copy()
     part_demand_df.columns = ['Part', 'Weekly_Demand']
     

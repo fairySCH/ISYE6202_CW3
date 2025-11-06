@@ -1,0 +1,125 @@
+{
+  "year": 4,
+  "num_fractals": 3,
+  "scaling_factor": 1.0,
+  "centers": [
+    {
+      "center_id": 1,
+      "x": 0.0,
+      "y": 0.0,
+      "width": 80.0,
+      "height": 80.0,
+      "scaling_factor": 1.0
+    },
+    {
+      "center_id": 2,
+      "x": 100.0,
+      "y": 0.0,
+      "width": 80.0,
+      "height": 80.0,
+      "scaling_factor": 1.0
+    },
+    {
+      "center_id": 3,
+      "x": 0.0,
+      "y": 100.0,
+      "width": 80.0,
+      "height": 80.0,
+      "scaling_factor": 1.0
+    }
+  ],
+  "processes": {
+    "A": {
+      "x": -3.403740513937108,
+      "y": 29.15324044247184,
+      "width": 22,
+      "height": 22,
+      "equipment_count": 6
+    },
+    "B": {
+      "x": 2.166361479478319,
+      "y": 18.518206696116405,
+      "width": 48,
+      "height": 48,
+      "equipment_count": 19
+    },
+    "C": {
+      "x": -28.958325538272867,
+      "y": -2.9143260474771377,
+      "width": 22,
+      "height": 22,
+      "equipment_count": 6
+    },
+    "D": {
+      "x": -26.117949135211706,
+      "y": 4.328649670850686,
+      "width": 64,
+      "height": 64,
+      "equipment_count": 27
+    },
+    "E": {
+      "x": -0.628495331884889,
+      "y": 7.516994211713449,
+      "width": 42,
+      "height": 42,
+      "equipment_count": 16
+    },
+    "F": {
+      "x": -15.252216347834002,
+      "y": 11.391340481710838,
+      "width": 40,
+      "height": 40,
+      "equipment_count": 15
+    },
+    "G": {
+      "x": -4.69975723520697,
+      "y": 1.6279912915255514,
+      "width": 22,
+      "height": 22,
+      "equipment_count": 6
+    },
+    "H": {
+      "x": -19.913351882466586,
+      "y": -11.39787668706809,
+      "width": 48,
+      "height": 48,
+      "equipment_count": 19
+    },
+    "I": {
+      "x": -17.622396728646116,
+      "y": -2.7494629110458186,
+      "width": 50,
+      "height": 50,
+      "equipment_count": 20
+    },
+    "J": {
+      "x": -13.393657859017532,
+      "y": -12.144439414466234,
+      "width": 74,
+      "height": 74,
+      "equipment_count": 32
+    },
+    "K": {
+      "x": -0.8700552992489404,
+      "y": -15.430598776765873,
+      "width": 20,
+      "height": 20,
+      "equipment_count": 5
+    },
+    "L": {
+      "x": -5.445509961753495,
+      "y": -6.447930188321132,
+      "width": 50,
+      "height": 50,
+      "equipment_count": 20
+    },
+    "M": {
+      "x": -10.575084006775691,
+      "y": 3.776885668442226,
+      "width": 72,
+      "height": 72,
+      "equipment_count": 31
+    }
+  },
+  "layout_method": "flow_based"
+}

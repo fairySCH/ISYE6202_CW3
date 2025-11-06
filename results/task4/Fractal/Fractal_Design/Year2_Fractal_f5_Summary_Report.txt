@@ -1,0 +1,34 @@
+
+================================================================================
+FRACTAL ORGANIZATION ANALYSIS - Year 2
+================================================================================
+
+Configuration:
+- Year: +2
+- Number of Fractal Centers: 5
+- Each center handles: 20.0% of total demand
+- Operating Schedule: 5 days/week, 2 shifts/day, 8 hours/shift
+- Effective Availability: 88.2% (Efficiency: 90%, Reliability: 98%)
+
+Summary Statistics:
+- Total Equipment Units: 570
+- Equipment per Center: 114.0 (average)
+- Average Utilization per Center: 92.5%
+
+Equipment Distribution by Process:
+
+  A:   3 units/center × 5 centers =  15 total ( 97.7% utilization)
+  B:  10 units/center × 5 centers =  50 total ( 93.1% utilization)
+  C:   3 units/center × 5 centers =  15 total ( 84.9% utilization)
+  D:  14 units/center × 5 centers =  70 total ( 97.4% utilization)
+  E:   8 units/center × 5 centers =  40 total ( 90.5% utilization)
+  F:   8 units/center × 5 centers =  40 total ( 92.3% utilization)
+  G:   3 units/center × 5 centers =  15 total ( 93.6% utilization)
+  H:  10 units/center × 5 centers =  50 total ( 95.2% utilization)
+  I:  10 units/center × 5 centers =  50 total ( 92.4% utilization)
+  J:  16 units/center × 5 centers =  80 total ( 98.9% utilization)
+  K:   3 units/center × 5 centers =  15 total ( 72.5% utilization)
+  L:  10 units/center × 5 centers =  50 total ( 97.5% utilization)
+  M:  16 units/center × 5 centers =  80 total ( 97.1% utilization)
+
+================================================================================

@@ -1,0 +1,39 @@
+================================================================================
+TASK 4: PARTS-BASED DESIGN — CAPACITY & FLOW SUMMARY (Year 4)
+================================================================================
+
+KEY FINDINGS
+--------------------------------------------------------------------------------
+
+1) EQUIPMENT REQUIREMENTS
+   • 1-Shift: 1617 units
+   • 2-Shifts: 827 units
+   • Savings with 2-shift: 790 units (48.9% reduction)
+
+2) BOTTLENECK PROCESSES (Top 5 by equipment @ 2-shift):
+   • Process M: 137 units
+   • Process J: 100 units
+   • Process B: 91 units
+   • Process L: 90 units
+   • Process D: 81 units
+
+3) HIGHEST DEMAND PARTS (Top 5):
+   • P19: 29,400 units/week
+   • P1: 28,500 units/week
+   • P14: 25,800 units/week
+   • P12: 25,200 units/week
+   • P20: 23,900 units/week
+
+4) PROCESS FREQUENCY (from flow matrix):
+   • Total operations/week (in+out): 2,677,000
+   • Most frequent processes:
+     - I: 339,400 ops/wk (12.7%)
+     - G: 333,200 ops/wk (12.4%)
+     - F: 244,800 ops/wk (9.1%)
+
+5) MATERIAL FLOW (from flow matrix):
+   • Total weekly flow volume (sum of all transitions): 1,338,500 units
+   • Highest flow process pairs:
+     - I → J: 137,300 units/week
+     - E → G: 92,600 units/week
+     - C → D: 82,400 units/week

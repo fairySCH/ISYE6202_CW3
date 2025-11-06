@@ -1,0 +1,169 @@
+
+FRACTAL LAYOUT COMPREHENSIVE COST ANALYSIS REPORT
+============================================================
+
+EXECUTIVE SUMMARY
+--------------------
+This report provides a comprehensive cost analysis for all fractal layout configurations (f2, f3, f4, f5),
+including capital investment, operating costs, depreciation, and comparative efficiency analysis.
+
+FRACTAL CONFIGURATION OVERVIEW
+-----------------------------------
+
+Scenario F2:
+  Centers: 2
+  Total Equipment: 392 units
+  Equipment per Center: 196.0
+  Average Utilization: 94.7%
+
+Scenario F3:
+  Centers: 3
+  Total Equipment: 402 units
+  Equipment per Center: 134.0
+  Average Utilization: 90.8%
+
+Scenario F4:
+  Centers: 4
+  Total Equipment: 400 units
+  Equipment per Center: 100.0
+  Average Utilization: 91.7%
+
+Scenario F5:
+  Centers: 5
+  Total Equipment: 405 units
+  Equipment per Center: 81.0
+  Average Utilization: 90.0%
+
+
+CAPITAL INVESTMENT ANALYSIS
+------------------------------
+
+Scenario F2 - Total Capital Investment: $152,920,000
+Top cost components:
+  Process H: $37,400,000 (34 units)
+  Process J: $33,600,000 (56 units)
+  Process I: $19,200,000 (32 units)
+  Process D: $15,500,000 (50 units)
+  Process F: $12,600,000 (28 units)
+
+Scenario F3 - Total Capital Investment: $157,734,000
+Top cost components:
+  Process H: $39,600,000 (36 units)
+  Process J: $34,200,000 (57 units)
+  Process I: $19,800,000 (33 units)
+  Process D: $15,810,000 (51 units)
+  Process F: $12,150,000 (27 units)
+
+Scenario F4 - Total Capital Investment: $157,160,000
+Top cost components:
+  Process H: $39,600,000 (36 units)
+  Process J: $33,600,000 (56 units)
+  Process I: $19,200,000 (32 units)
+  Process D: $16,120,000 (52 units)
+  Process F: $12,600,000 (28 units)
+
+Scenario F5 - Total Capital Investment: $157,900,000
+Top cost components:
+  Process H: $38,500,000 (35 units)
+  Process J: $33,000,000 (55 units)
+  Process I: $21,000,000 (35 units)
+  Process D: $15,500,000 (50 units)
+  Process F: $13,500,000 (30 units)
+
+
+OPERATING COST ANALYSIS
+-------------------------
+
+Scenario F2:
+  Annual Operating Cost: $46,675,200
+  Total Operators Required: 491.0 FTEs
+  Average Cost per Operator: $95,062/year
+
+Labor cost breakdown (top 5 processes):
+  Process J: $9,318,400/year (112.0 operators)
+  Process B: $7,488,000/year (45.0 operators)
+  Process H: $5,657,600/year (68.0 operators)
+  Process I: $5,324,800/year (64.0 operators)
+  Process D: $5,200,000/year (62.5 operators)
+
+Scenario F3:
+  Annual Operating Cost: $48,235,200
+  Total Operators Required: 504.8 FTEs
+  Average Cost per Operator: $95,563/year
+
+Labor cost breakdown (top 5 processes):
+  Process J: $9,484,800/year (114.0 operators)
+  Process B: $7,488,000/year (45.0 operators)
+  Process H: $5,990,400/year (72.0 operators)
+  Process I: $5,491,200/year (66.0 operators)
+  Process D: $5,304,000/year (63.8 operators)
+
+Scenario F4:
+  Annual Operating Cost: $48,006,400
+  Total Operators Required: 502.0 FTEs
+  Average Cost per Operator: $95,630/year
+
+Labor cost breakdown (top 5 processes):
+  Process J: $9,318,400/year (112.0 operators)
+  Process B: $7,488,000/year (45.0 operators)
+  Process H: $5,990,400/year (72.0 operators)
+  Process D: $5,408,000/year (65.0 operators)
+  Process I: $5,324,800/year (64.0 operators)
+
+Scenario F5:
+  Annual Operating Cost: $48,568,000
+  Total Operators Required: 508.8 FTEs
+  Average Cost per Operator: $95,465/year
+
+Labor cost breakdown (top 5 processes):
+  Process J: $9,152,000/year (110.0 operators)
+  Process B: $8,320,000/year (50.0 operators)
+  Process H: $5,824,000/year (70.0 operators)
+  Process I: $5,824,000/year (70.0 operators)
+  Process D: $5,200,000/year (62.5 operators)
+
+
+COST EFFICIENCY ANALYSIS
+--------------------------
+
+Cost Efficiency Comparison:
+  F2: $41.76/hour, 94.7% utilization
+  F3: $43.13/hour, 90.8% utilization
+  F4: $42.95/hour, 91.7% utilization
+  F5: $43.40/hour, 90.0% utilization
+
+
+OPTIMAL CONFIGURATION: F2
+------------------------------
+• Lowest cost per operating hour: $41.76
+• 2 fractal centers
+• Average utilization: 94.7%
+• Total equipment: 392 units
+• Capital investment: $152,920,000
+• Annual operating cost: $46,675,200
+
+SCALING ANALYSIS
+------------------
+Equipment scaling with centers:
+  F2: 196.0 equipment units per center
+  F3: 134.0 equipment units per center
+  F4: 100.0 equipment units per center
+  F5: 81.0 equipment units per center
+
+
+Cost scaling with centers:
+  F2: $76,460,000 capital per center
+  F3: $52,578,000 capital per center
+  F4: $39,290,000 capital per center
+  F5: $31,580,000 capital per center
+
+
+RECOMMENDATIONS
+---------------
+1. OPTIMAL CHOICE: F2 configuration provides the best cost-efficiency balance
+2. Equipment scaling shows diminishing returns beyond 2 centers
+3. Higher center counts (5) increase complexity without proportional efficiency gains
+4. Focus on utilization optimization rather than excessive decentralization
+5. Consider hybrid approaches combining fractal centers with functional specialization
+
+All analysis results and visualizations saved to: D:\Adarsh GATech Files\6335 Benoit SC1\CW3\ISYE6202_CW3\results\Task3\Fractal\Cost_Analysis

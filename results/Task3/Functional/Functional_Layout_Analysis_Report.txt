@@ -1,0 +1,77 @@
+
+FUNCTIONAL LAYOUT ANALYSIS - COMPREHENSIVE SUMMARY REPORT
+=================================================================
+
+ANALYSIS OVERVIEW:
+The functional layout analysis evaluates organizing production by process type,
+grouping similar operations together to maximize efficiency and minimize material handling.
+
+KEY FINDINGS:
+
+• Active Processes: 13/13 total processes utilized
+• Total Equipment Required (2 shifts): 386 units
+• Total Weekly Workload: 26,657.1 hours
+• Average Equipment Utilization: 96.0%
+
+• High Utilization Processes (>80%): 13 processes
+• Low Utilization Processes (<60%): 0 processes
+
+
+EQUIPMENT REQUIREMENTS BY PROCESS (2-Shift Operation):
+--------------------------------------------------
+Process A: 12 units (92.8% utilization)
+Process B: 36 units (98.1% utilization)
+Process C: 10 units (90.4% utilization)
+Process D: 50 units (99.8% utilization)
+Process E: 23 units (96.4% utilization)
+Process F: 27 units (96.7% utilization)
+Process G: 10 units (90.6% utilization)
+Process H: 34 units (99.3% utilization)
+Process I: 31 units (99.9% utilization)
+Process J: 55 units (99.0% utilization)
+Process K: 8 units (87.9% utilization)
+Process L: 35 units (97.5% utilization)
+Process M: 55 units (99.5% utilization)
+
+
+MATERIAL FLOW ANALYSIS:
+-------------------------
+Total material flow volume: 1,510,000.0 units per week
+
+Top 3 processes by flow volume:
+  Process I: 185,384.6 units/week
+  Process G: 166,923.1 units/week
+  Process D: 144,615.4 units/week
+
+
+FUNCTIONAL LAYOUT ADVANTAGES:
+------------------------------
+• Specialized equipment grouping improves process efficiency
+• Easier supervision and quality control per process type
+• Simplified maintenance and equipment management
+• Better skill specialization for operators
+• Reduced setup times for similar operations
+
+FUNCTIONAL LAYOUT CHALLENGES:
+------------------------------
+• Higher material handling requirements between processes
+• Work-in-progress inventory accumulation
+• Complex material flow patterns
+• Potential bottlenecks at high-volume processes
+• Longer production lead times
+
+RECOMMENDATIONS:
+---------------
+1. Focus on balancing process capacities to avoid bottlenecks
+2. Optimize material handling systems between functional areas
+3. Implement pull systems to reduce work-in-progress
+4. Consider hybrid layouts for high-volume product families
+5. Regular monitoring of process utilization and flow efficiency
+
+VISUALIZATIONS GENERATED:
+-------------------------
+• Comprehensive analysis dashboard (6-panel chart)
+• Process flow matrix heatmap
+• Equipment requirements summary with utilization
+
+All results and visualizations saved to: D:\Adarsh GATech Files\6335 Benoit SC1\CW3\ISYE6202_CW3\results\Task3\Functional

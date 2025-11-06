@@ -1,0 +1,2 @@
+total_equipment_1shift,total_equipment_2shifts,active_processes,total_workload_hours,average_utilization,high_workload_processes
+763,386,13,26657.051282051285,95.9896863806241,"['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M']"

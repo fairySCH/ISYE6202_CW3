@@ -1,0 +1,84 @@
+
+FUNCTIONAL LAYOUT COST ANALYSIS REPORT
+==================================================
+
+EXECUTIVE SUMMARY
+--------------------
+This report provides a comprehensive cost analysis for the functional layout implementation,
+including capital investment, operating costs, depreciation, and key performance indicators.
+
+CAPITAL INVESTMENT ANALYSIS
+------------------------------
+
+Total Capital Investment Required: $150,666,000
+Breakdown by major cost components:
+
+High-cost processes (>$10M each):
+  Process D: $15,500,000 (50 units)
+  Process E: $10,350,000 (23 units)
+  Process F: $12,150,000 (27 units)
+  Process H: $37,400,000 (34 units)
+  Process I: $18,600,000 (31 units)
+  Process J: $33,000,000 (55 units)
+
+OPERATING COST ANALYSIS
+-------------------------
+
+Annual Operating Cost: $46,092,800
+Total Operators Required: 484.0 FTEs
+Average Cost per Operator: $95,233/year
+
+Labor cost breakdown by process:
+  Process J: $9,152,000/year (110.0 operators)
+  Process B: $7,488,000/year (45.0 operators)
+  Process H: $5,657,600/year (68.0 operators)
+  Process D: $5,200,000/year (62.5 operators)
+  Process I: $5,158,400/year (62.0 operators)
+  Process C: $3,120,000/year (12.5 operators)
+  Process M: $2,288,000/year (27.5 operators)
+  Process F: $2,246,400/year (27.0 operators)
+  Process E: $1,913,600/year (23.0 operators)
+  Process L: $1,456,000/year (17.5 operators)
+  Process A: $1,248,000/year (15.0 operators)
+  Process G: $832,000/year (10.0 operators)
+  Process K: $332,800/year (4.0 operators)
+
+
+DEPRECIATION ANALYSIS
+----------------------
+
+Annual Depreciation: $11,044,583
+Average equipment useful life: 10.7 years
+
+KEY PERFORMANCE INDICATORS
+----------------------------
+• Total Equipment Units Required: 386
+• Total Annual Production Hours: 1,386,167
+• Average Equipment Utilization: 96.0%
+• Capital Cost per Equipment Unit: $390,326
+• Operating Cost per Hour: $33.25
+• Total Cost per Hour: $41.22
+
+COST EFFICIENCY ANALYSIS
+--------------------------
+
+• Cost Efficiency Ratio: $42.94 per hour per utilization percentage point
+• Labor Cost as % of Total Annual Cost: 80.7%
+• Depreciation as % of Total Annual Cost: 19.3%
+
+BREAK-EVEN ANALYSIS
+--------------------
+Assuming 5-year payback period for capital investment:
+• Annual Capital Recovery: $30,133,200
+• Total Annual Cost (including capital recovery): $87,270,583
+• Break-even Hourly Rate Required: $62.96/hour
+
+RECOMMENDATIONS
+---------------
+1. Focus on high-utilization processes (D, I, H, J, M) for maximum ROI
+2. Consider preventive maintenance to extend equipment life and reduce depreciation costs
+3. Optimize operator scheduling to maximize utilization during peak hours
+4. Evaluate automation opportunities for high-volume processes to reduce labor costs
+5. Monitor cost per hour metrics regularly to identify efficiency improvements
+
+All cost analysis results and visualizations saved to: D:\Adarsh GATech Files\6335 Benoit SC1\CW3\ISYE6202_CW3\results\Task3\Functional\Cost_Analysis

@@ -34,7 +34,10 @@ YEARS = [2, 3, 4, 5]
 def load_flow_matrix(year, num_fractals):
     """Load flow matrix for a single fractal center"""
     flow_file = FRACTAL_FLOW_DIR / f"year{year}" / f"f{num_fractals}_centers" / "Single_Center_Flow_Matrix.csv"
-    return pd.read_csv(flow_file, index_col=0)
+    df = pd.read_csv(flow_file, index_col=0)
+    # Ensure all values are numeric
+    df = df.astype(float)
+    return df
 
 
 def load_equipment_requirements(year, num_fractals):
@@ -252,18 +255,15 @@ def load_yearly_product_demand(year):
     """Load yearly product demand for specified year"""
     df = pd.read_csv(BASE_DIR / "data" / "csv_outputs" / '+2 to +5 Year Product Demand.csv', header=None)
 
-    # Find the row for the specified year
-    year_row_idx = None
-    for i, row in df.iterrows():
-        if str(row[1]).strip() == f'+{year}':
-            year_row_idx = i
-            break
+    # Find the row for the specified year in the weekly demand section
+    # The weekly demand starts around row 18
+    year_to_row = {2: 18, 3: 19, 4: 20, 5: 21}
+    weekly_row_idx = year_to_row.get(year)
 
-    if year_row_idx is None:
+    if weekly_row_idx is None:
         raise ValueError(f"Year +{year} not found in demand data")
 
-    # Extract weekly demand values (row 18-22 for years 2-5)
-    weekly_row_idx = 17 + (year - 1)  # Year 2 = row 18, Year 3 = row 19, etc.
+    # Extract weekly demand values (columns 2-9 for products A1-B4)
     products = ['A1', 'A2', 'A3', 'B1', 'B2', 'A4', 'B3', 'B4']
     weekly_demand_values = df.iloc[weekly_row_idx, 2:10].astype(float).tolist()
 
@@ -338,7 +338,7 @@ def generate_complete_layout_yearly(year, num_fractals, layout_method='flow_base
 
         for from_proc in PROCESSES:
             for to_proc in PROCESSES:
-                flow = flow_matrix.loc[from_proc, to_proc]
+                flow = float(flow_matrix.loc[from_proc, to_proc])
 
                 if flow > 0:
                     from_coords = process_coords[from_proc]
@@ -469,8 +469,8 @@ def main():
     print()
 
     # Generate layouts for different years and configurations
-    # Focus on Year 4 for primary design, then scale others
-    primary_fractal_configs = [3, 4]  # Focus on these configurations
+    # Generate for all fractal configurations like Task 3
+    all_fractal_configs = [2, 3, 4, 5]
 
     for year in YEARS:
         print(f"\n{'='*60}")
@@ -479,7 +479,7 @@ def main():
 
         scaling_factor = scaling_factors[year]
 
-        for f in primary_fractal_configs:
+        for f in all_fractal_configs:
             layout_data = generate_complete_layout_yearly(year, f, layout_method='flow_based',
                                                          scaling_factor=scaling_factor)
 
@@ -496,7 +496,7 @@ def main():
     print("Layout Generation Complete!")
     print("="*80 + "\n")
 
-    print("Generated layouts for Years 2-5 with f=3,4 configurations")
+    print("Generated layouts for Years 2-5 with f=2,3,4,5 configurations")
     print("\nEach layout directory contains:")
     print("  - Process_Locations.csv (process coordinates)")
     print("  - Flow_Connections.csv (material flow paths)")
@@ -506,7 +506,7 @@ def main():
 
     print("\nScaling Strategy:")
     print("  - Year 4: Baseline design (scaling factor = 1.000)")
-    print("  - Years 2-3,5: Scaled down from Year 4 design")
+    print("  - Years 2-3,5: Scaled from Year 4 design")
     print("  - Equipment counts adjusted per year")
     print("  - Layout dimensions scaled by demand ratio")
 

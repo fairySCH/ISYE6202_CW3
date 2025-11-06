@@ -93,34 +93,64 @@ def main():
         print("\n❌ Layout generation failed. Stopping execution.")
         return
 
+    # Step 4: Visualization Generation
+    success = run_script("Fractal_Visualization_Task4.py",
+                        "Layout Visualization")
+
+    if not success:
+        print("\n❌ Visualization generation failed. Stopping execution.")
+        return
+
+    # Step 5: Cost Analysis
+    success = run_script("Fractal_Cost_Analysis_Task4.py",
+                        "Cost Analysis")
+
+    if not success:
+        print("\n❌ Cost analysis failed. Stopping execution.")
+        return
+
     # Success summary
     print("\n" + "="*80)
     print("🎉 ALL FRACTAL ANALYSES COMPLETED SUCCESSFULLY!")
     print("="*80 + "\n")
 
     print("Generated Results:")
-    print("├── Equipment Analysis:")
-    print("│   ├── Year2_Fractal_f*_Equipment_Requirements.csv")
-    print("│   ├── Year3_Fractal_f*_Equipment_Requirements.csv")
-    print("│   ├── Year4_Fractal_f*_Equipment_Requirements.csv")
-    print("│   ├── Year5_Fractal_f*_Equipment_Requirements.csv")
-    print("│   ├── Fractal_Comparison_All_Years.csv")
-    print("│   └── Fractal_Scaling_Analysis.csv")
-    print("│")
-    print("├── Flow Matrices:")
-    print("│   └── year*/f*_centers/")
-    print("│       ├── Single_Center_Flow_Matrix.csv")
-    print("│       ├── Aggregate_Factory_Flow_Matrix.csv")
-    print("│       ├── Flow_Summary.csv")
-    print("│       └── Layout_Edges.csv")
-    print("│")
-    print("└── Layout Designs:")
-    print("    └── year*/f*_layout/")
-    print("        ├── Process_Locations.csv")
-    print("        ├── Flow_Connections.csv")
-    print("        ├── Center_Boundaries.csv")
-    print("        ├── Layout_Data.json")
-    print("        └── Layout_Summary.txt")
+    print("+- Equipment Analysis:")
+    print("|   +- Year2_Fractal_f*_Equipment_Requirements.csv")
+    print("|   +- Year3_Fractal_f*_Equipment_Requirements.csv")
+    print("|   +- Year4_Fractal_f*_Equipment_Requirements.csv")
+    print("|   +- Year5_Fractal_f*_Equipment_Requirements.csv")
+    print("|   +- Fractal_Comparison_All_Years.csv")
+    print("|   +- Fractal_Scaling_Analysis.csv")
+    print("|")
+    print("+- Flow Matrices:")
+    print("|   +- year*/f*_centers/")
+    print("|       +- Single_Center_Flow_Matrix.csv")
+    print("|       +- Aggregate_Factory_Flow_Matrix.csv")
+    print("|       +- Flow_Summary.csv")
+    print("|       +- Layout_Edges.csv")
+    print("|")
+    print("+- Layout Designs:")
+    print("|   +- year*/f*_layout/")
+    print("|       +- Process_Locations.csv")
+    print("|       +- Flow_Connections.csv")
+    print("|       +- Center_Boundaries.csv")
+    print("|       +- Layout_Data.json")
+    print("|       +- Layout_Summary.txt")
+    print("|")
+    print("+- Visualizations:")
+    print("|   +- Year*_Fractal_f*_Layout.png")
+    print("|   +- Fractal_Scaling_Comparison.png")
+    print("|   +- Fractal_Yearly_Equipment_Comparison.png")
+    print("|")
+    print("+- Cost Analysis:")
+    print("    +- Cost_Analysis/")
+    print("    |   +- Fractal_Cost_Analysis_Summary.txt")
+    print("    |   +- Fractal_Cost_Summary.csv")
+    print("    +- Fractal_Visuals/")
+    print("        +- Fractal_Capital_Investment_Comparison.png")
+    print("        +- Fractal_Operating_Cost_Comparison.png")
+    print("        +- Fractal_Cost_Efficiency_Analysis.png")
 
     print("\nKey Insights:")
     print("• Year 4 represents peak demand - design factory for this capacity")
@@ -132,7 +162,7 @@ def main():
     print("\nNext Steps:")
     print("1. Compare fractal designs with functional and part-based approaches")
     print("2. Evaluate cost implications of scaling strategy")
-    print("3. Generate visualization plots for presentations")
+    print("3. Review generated visualizations and cost analysis reports")
     print("4. Document final design recommendations")
 
 if __name__ == "__main__":

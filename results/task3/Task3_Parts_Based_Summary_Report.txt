@@ -1,0 +1,71 @@
+================================================================================
+TASK 3: PARTS-BASED DESIGN - CAPACITY ANALYSIS SUMMARY
+================================================================================
+
+KEY FINDINGS:
+--------------------------------------------------------------------------------
+
+1. EQUIPMENT REQUIREMENTS:
+   • 1-Shift Operation: 986.0 total equipment units
+   • 2-Shift Operation: 518.0 total equipment units
+   • Savings with 2-shift: 468.0 units (47.5% reduction)
+
+2. BOTTLENECK PROCESSES (Top 5 by Equipment Count):
+   • Process M: 87 units
+   • Process B: 63 units
+   • Process J: 61 units
+   • Process L: 57 units
+   • Process D: 53 units
+
+3. HIGHEST DEMAND PARTS (Top 5):
+   • P1: 20,962 units/week
+   • P19: 20,000 units/week
+   • P14: 18,077 units/week
+   • P20: 14,808 units/week
+   • P7: 13,846 units/week
+
+4. PROCESS FREQUENCY:
+   • Total operations per week: 1,510,000
+   • Most frequent processes:
+     - Process I: 185,385 ops/week (12.3%)
+     - Process G: 166,923 ops/week (11.1%)
+     - Process D: 144,615 ops/week (9.6%)
+
+5. MATERIAL FLOW ANALYSIS:
+   • Total weekly flow volume: 755,000 units
+   • Highest flow process pairs:
+     - I → J: 80,385 units/week
+     - C → D: 56,923 units/week
+     - L → M: 45,000 units/week
+
+================================================================================
+STRATEGIC RECOMMENDATIONS:
+================================================================================
+
+1. OPERATION STRATEGY:
+   - Recommend 2-SHIFT operation to minimize equipment investment
+   - Reduces equipment count by 468.0 units
+
+2. CAPACITY PLANNING:
+   - Focus on bottleneck processes: M, B, J, L, D
+   - Consider equipment flexibility (multi-process machines)
+   - Plan for maintenance windows given high utilization
+
+3. MATERIAL FLOW OPTIMIZATION:
+   - Analyze process adjacency based on flow matrices
+   - Minimize transport between high-flow process pairs
+   - Consider cellular manufacturing layout
+
+4. PARTS-BASED DESIGN IMPLICATIONS:
+   - Each of 20 parts would have dedicated production cell
+   - Cells contain all processes needed for that part
+   - Simplifies material flow and reduces WIP
+   - May duplicate equipment across cells (consider Group Tech)
+
+5. POTENTIAL PROCESS GROUPINGS (for optimization):
+   • A-B-C-D group: High interaction in many parts
+   • E-F-G group: Similar equipment requirements
+   • H-I-J group: Heavy finishing operations
+   • K-L-M group: Lightweight operations
+
+================================================================================

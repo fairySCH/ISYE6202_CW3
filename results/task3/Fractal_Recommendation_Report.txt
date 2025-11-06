@@ -1,0 +1,129 @@
+
+================================================================================
+FRACTAL ORGANIZATION - DESIGN RECOMMENDATION REPORT
+================================================================================
+
+1. EXECUTIVE SUMMARY
+-------------------
+Fractal organization offers a compelling alternative to traditional functional
+design, with tradeoffs between redundancy, flexibility, and capital investment.
+
+2. KEY FINDINGS
+--------------
+
+Best for Redundancy:
+- Design: Fractal f=5
+- Redundancy Score: 80.0
+- Interpretation: If one center fails, 80% capacity remains
+
+Best for Equipment Efficiency:
+- Design: Functional
+- Utilization: 95.0%
+- Equipment: 386 units
+
+Lowest Equipment Overhead (Fractal):
+- Design: Fractal f=2
+- Overhead: 1.6%
+- Additional Equipment: 6 units
+
+3. DESIGN COMPARISON
+-------------------
+
+Design_Type                  Configuration  Total_Equipment  Avg_Utilization_%  Equipment_Overhead_%  Redundancy_Score  Flexibility_Score  Complexity_Score Space_Efficiency Capital_Investment
+ Functional    1 factory, 13 process areas              386          95.000000              0.000000          0.000000              40.00              30.0             High           Baseline
+Fractal f=2 2 centers, 13 processes/center              392          94.694105              1.554404         50.000000              43.75              40.0           Medium              +1.6%
+Fractal f=3 3 centers, 13 processes/center              402          90.824275              4.145078         66.666667              62.50              60.0           Medium              +4.1%
+Fractal f=4 4 centers, 13 processes/center              400          91.653644              3.626943         75.000000              81.25              80.0              Low              +3.6%
+Fractal f=5 5 centers, 13 processes/center              405          90.022463              4.922280         80.000000             100.00             100.0              Low              +4.9%
+
+
+4. RECOMMENDATIONS
+-----------------
+
+Scenario A - Prioritize Redundancy & Service Level:
+--> RECOMMENDED: Fractal f=3
+  * 66.7% capacity remains if one center fails
+  * Balanced equipment overhead (moderate cost increase)
+  * Good flexibility for demand variations
+  * Three centers allow easy maintenance scheduling
+
+Scenario B - Prioritize Cost Efficiency:
+--> RECOMMENDED: Fractal f=2
+  * Lowest equipment overhead among fractal designs
+  * Simplest coordination (only 2 centers)
+  * 50% redundancy (acceptable for most cases)
+  * Easier to implement and operate
+
+Scenario C - Prioritize Maximum Flexibility:
+--> RECOMMENDED: Fractal f=4
+  * Each center handles only 25% of demand
+  * Easy to scale up/down
+  * Excellent load balancing
+  * Higher capital investment justified by operational flexibility
+
+Scenario D - Prioritize Capital Efficiency:
+--> RECOMMENDED: Functional (Baseline)
+  * Lowest total equipment requirement
+  * Minimal space requirements
+  * Highest utilization rates
+  * Trade-off: No redundancy, single points of failure
+
+5. IMPLEMENTATION CONSIDERATIONS
+--------------------------------
+
+For Fractal Organization (any f):
++ Each center is a complete mini-factory
++ Standardized design simplifies training and operations
++ Easier to expand capacity (add centers)
++ Better fault isolation and recovery
+
+Challenges:
+- Higher initial capital investment
+- More complex coordination between centers
+- Potential for uneven loading if demand is not balanced
+- Increased overhead for material handling between centers
+
+Storage Strategy Recommendation:
+• Centralized receiving for all centers (economies of scale)
+• Distributed WIP storage within each center
+• Centralized finished goods warehouse
+• Centralized shipping operations
+
+6. FINANCIAL ANALYSIS
+--------------------
+
+Fractal f=2:
+  Equipment Cost Impact: +1.6% vs. baseline
+  Estimated Additional Investment: $15544
+  Benefit: 50% fault tolerance
+Fractal f=3:
+  Equipment Cost Impact: +4.1% vs. baseline
+  Estimated Additional Investment: $41451
+  Benefit: 67% fault tolerance
+Fractal f=4:
+  Equipment Cost Impact: +3.6% vs. baseline
+  Estimated Additional Investment: $36269
+  Benefit: 75% fault tolerance
+Fractal f=5:
+  Equipment Cost Impact: +4.9% vs. baseline
+  Estimated Additional Investment: $49223
+  Benefit: 80% fault tolerance
+
+7. FINAL RECOMMENDATION
+----------------------
+
+For the FeMoaSa facility serving Clients A & B:
+
+PRIMARY RECOMMENDATION: Fractal f=3
+
+Rationale:
+1. Service Level: 99.5% OTIF requirement met with redundancy
+2. Scalability: Can easily adjust to demand changes
+3. Maintenance: Can service one center without major disruption
+4. Cost: Moderate 2-3% equipment overhead is justified
+5. Future Growth: Easy to add 4th center if demand increases
+
+This design provides the best balance of operational excellence,
+service reliability, and financial prudence.
+
+================================================================================

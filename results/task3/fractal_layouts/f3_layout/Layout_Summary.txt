@@ -1,0 +1,39 @@
+
+================================================================================
+FRACTAL LAYOUT SUMMARY - f=3 Centers
+================================================================================
+
+Factory Configuration:
+- Number of Fractal Centers: 3
+- Total Processes per Center: 13
+- Total Process Locations: 39
+- Total Flow Connections: 93
+
+Center Arrangement:
+  Center 1.0: (0, 0) - 80m × 80m
+  Center 2.0: (100, 0) - 80m × 80m
+  Center 3.0: (0, 100) - 80m × 80m
+
+Factory Dimensions:
+- Width: 181 meters
+- Length: 190 meters
+- Total Area: 34329 m²
+
+Equipment Distribution:
+  A: 4 units/center × 3 centers = 12 total
+  B: 12 units/center × 3 centers = 36 total
+  C: 4 units/center × 3 centers = 12 total
+  D: 17 units/center × 3 centers = 51 total
+  E: 8 units/center × 3 centers = 24 total
+  F: 9 units/center × 3 centers = 27 total
+  G: 4 units/center × 3 centers = 12 total
+  H: 12 units/center × 3 centers = 36 total
+  I: 11 units/center × 3 centers = 33 total
+  J: 19 units/center × 3 centers = 57 total
+  K: 3 units/center × 3 centers = 9 total
+  L: 12 units/center × 3 centers = 36 total
+  M: 19 units/center × 3 centers = 57 total
+
+Total Equipment: 402 units
+
+================================================================================

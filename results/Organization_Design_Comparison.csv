@@ -1,0 +1,6 @@
+Design_Type,Configuration,Total_Equipment,Avg_Utilization_%,Equipment_Overhead_%,Redundancy_Score,Flexibility_Score,Complexity_Score,Space_Efficiency,Capital_Investment
+Functional,"1 factory, 13 process areas",386,95.0,0.0,0.0,40.0,30.0,High,Baseline
+Fractal f=2,"2 centers, 13 processes/center",392,94.69410518041109,1.5544041450777202,50.0,43.75,40.0,Medium,+1.6%
+Fractal f=3,"3 centers, 13 processes/center",402,90.8242750283632,4.145077720207254,66.66666666666666,62.5,60.0,Medium,+4.1%
+Fractal f=4,"4 centers, 13 processes/center",400,91.65364443844022,3.6269430051813467,75.0,81.25,80.0,Low,+3.6%
+Fractal f=5,"5 centers, 13 processes/center",405,90.0224625021034,4.922279792746114,80.0,100.0,100.0,Low,+4.9%

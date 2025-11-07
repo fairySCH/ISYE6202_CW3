@@ -1,0 +1,66 @@
+
+FUNCTIONAL LAYOUT COST ANALYSIS SUMMARY (YEARS 2-5)
+============================================================
+
+Cost Analysis Overview:
+- Analysis Period: Years +2 to +5
+- Depreciation Period: 10 years (straight-line)
+- Operating Schedule: 2 shifts/day, 5 days/week
+
+YEAR-BY-YEAR COST SUMMARY:
+
+Year 2.0:
+- Total Capital Investment: $216.0M
+- Annual Operating Cost: $12.3M
+- Annual Depreciation: $19.2M
+- Total Equipment Units: 546.0
+- Average Utilization: 98.4%
+- Capital Cost/Hour: $10.92
+- Operating Cost/Hour: $6.22
+- Total Cost/Hour: $17.14
+
+Year 3.0:
+- Total Capital Investment: $237.8M
+- Annual Operating Cost: $13.3M
+- Annual Depreciation: $21.2M
+- Total Equipment Units: 598.0
+- Average Utilization: 98.9%
+- Capital Cost/Hour: $10.94
+- Operating Cost/Hour: $6.13
+- Total Cost/Hour: $17.06
+
+Year 4.0:
+- Total Capital Investment: $259.2M
+- Annual Operating Cost: $14.5M
+- Annual Depreciation: $23.1M
+- Total Equipment Units: 651.0
+- Average Utilization: 98.5%
+- Capital Cost/Hour: $10.95
+- Operating Cost/Hour: $6.11
+- Total Cost/Hour: $17.06
+
+Year 5.0:
+- Total Capital Investment: $289.2M
+- Annual Operating Cost: $15.6M
+- Annual Depreciation: $25.7M
+- Total Equipment Units: 721.0
+- Average Utilization: 98.5%
+- Capital Cost/Hour: $11.03
+- Operating Cost/Hour: $5.97
+- Total Cost/Hour: $17.00
+
+
+COST TRENDS ANALYSIS:
+- Average Annual Capital Cost Growth: 10.2%
+- Average Annual Operating Cost Growth: 8.3%
+
+KEY INSIGHTS:
+- All processes require equipment investment (functional layout specialization)
+- Operating costs scale with equipment requirements and utilization
+- Higher utilization in later years improves cost efficiency
+- Capital costs represent significant long-term investment
+
+RECOMMENDATIONS:
+- Consider equipment sharing opportunities between similar processes
+- Monitor utilization rates for capacity optimization
+- Plan for technology upgrades to improve cost efficiency

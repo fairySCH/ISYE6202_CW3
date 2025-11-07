@@ -1,0 +1,40 @@
+
+FUNCTIONAL LAYOUT CAPACITY ANALYSIS SUMMARY (YEARS 2-5)
+============================================================
+
+Operating Parameters:
+- Days per week: 5
+- Hours per shift: 8
+- Efficiency: 90.0%
+- Reliability: 98.0%
+- Effective availability: 88.2%
+
+Year-by-Year Capacity Results (2-shift operation recommended):
+
+Year +2:
+- Active processes: 13/13
+- Total equipment needed: 546
+- Total weekly workload: 38,062.1 hours
+- Average utilization: 98.4%
+- High-workload processes (>100 hours/week): A, B, C, D, E, F, G, H, I, J, K, L, M
+
+Year +3:
+- Active processes: 13/13
+- Total equipment needed: 598
+- Total weekly workload: 41,795.4 hours
+- Average utilization: 98.9%
+- High-workload processes (>100 hours/week): A, B, C, D, E, F, G, H, I, J, K, L, M
+
+Year +4:
+- Active processes: 13/13
+- Total equipment needed: 651
+- Total weekly workload: 45,528.8 hours
+- Average utilization: 98.5%
+- High-workload processes (>100 hours/week): A, B, C, D, E, F, G, H, I, J, K, L, M
+
+Year +5:
+- Active processes: 13/13
+- Total equipment needed: 721
+- Total weekly workload: 50,415.8 hours
+- Average utilization: 98.5%
+- High-workload processes (>100 hours/week): A, B, C, D, E, F, G, H, I, J, K, L, M

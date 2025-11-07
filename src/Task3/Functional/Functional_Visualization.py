@@ -19,6 +19,8 @@ import numpy as np
 import matplotlib
 matplotlib.use('Agg')  # Use non-interactive backend
 import matplotlib.pyplot as plt
+from matplotlib import cm
+import matplotlib.colors as mcolors
 import seaborn as sns
 from pathlib import Path
 
@@ -85,7 +87,7 @@ def create_functional_visualizations():
     ax2 = plt.subplot(2, 3, 2)
     # Filter out processes with zero workload
     active_equipment = equipment_df[equipment_df['Weekly_Hours'] > 0]
-    colors = plt.cm.viridis(np.linspace(0, 1, len(active_equipment)))
+    colors = plt.get_cmap('viridis')(np.linspace(0, 1, len(active_equipment)))
     bars = ax2.barh(active_equipment['Process'], active_equipment['Weekly_Hours'],
                     color=colors, alpha=0.8)
     ax2.set_xlabel('Weekly Hours Required', fontweight='bold', fontsize=11)
@@ -107,8 +109,8 @@ def create_functional_visualizations():
     if len(process_flow_volume) > 0:
         # Sort by flow volume
         process_flow_volume = process_flow_volume.sort_values(ascending=True)
-        colors_flow = plt.cm.plasma(np.linspace(0, 1, len(process_flow_volume)))
-        bars = ax3.barh(process_flow_volume.index, process_flow_volume.values / 1000,
+        colors_flow = plt.get_cmap('plasma')(np.linspace(0, 1, len(process_flow_volume)))
+        bars = ax3.barh(process_flow_volume.index, np.array(process_flow_volume.values) / 1000,
                         color=colors_flow, alpha=0.8)
         ax3.set_xlabel('Total Flow Volume (thousands)', fontweight='bold', fontsize=11)
         ax3.set_ylabel('Process', fontweight='bold', fontsize=11)
@@ -132,7 +134,7 @@ def create_functional_visualizations():
     active_processes = active_processes.sort_values('Utilization_2_Shifts', ascending=True)
 
     if len(active_processes) > 0:
-        colors_util = plt.cm.RdYlGn(np.linspace(0, 1, len(active_processes)))
+        colors_util = plt.get_cmap('RdYlGn')(np.linspace(0, 1, len(active_processes)))
         bars = ax4.barh(active_processes['Process'], active_processes['Utilization_2_Shifts'],
                         color=colors_util, alpha=0.8)
         ax4.set_xlabel('Utilization Percentage (%)', fontweight='bold', fontsize=11)
@@ -258,9 +260,9 @@ def create_functional_visualizations():
 
     if len(equip_summary) > 0:
         # Create horizontal bar chart with utilization as color
-        norm = plt.Normalize(equip_summary['Utilization_2_Shifts'].min(),
+        norm = mcolors.Normalize(equip_summary['Utilization_2_Shifts'].min(),
                            equip_summary['Utilization_2_Shifts'].max())
-        colors = plt.cm.RdYlGn(norm(equip_summary['Utilization_2_Shifts']))
+        colors = plt.get_cmap('RdYlGn')(norm(equip_summary['Utilization_2_Shifts']))
 
         bars = plt.barh(equip_summary['Process'], equip_summary['Equipment_2_Shifts'],
                        color=colors, alpha=0.8)

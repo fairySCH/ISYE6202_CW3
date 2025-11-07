@@ -1,0 +1,5 @@
+Year,total_equipment_1shift,total_equipment_2shifts,active_processes,total_workload_hours,average_utilization,high_workload_processes
++2,1087,546,13,38062.083333333336,98.3821509842422,"A, B, C, D, E, F, G, H, I, J, K, L, M"
++3,1191,598,13,41795.416666666664,98.89056780508918,"A, B, C, D, E, F, G, H, I, J, K, L, M"
++4,1296,651,13,45528.75,98.45411140732747,"A, B, C, D, E, F, G, H, I, J, K, L, M"
++5,1438,721,13,50415.833333333336,98.54197376461545,"A, B, C, D, E, F, G, H, I, J, K, L, M"

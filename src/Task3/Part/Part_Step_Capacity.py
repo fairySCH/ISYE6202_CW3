@@ -332,6 +332,17 @@ def calculate_detailed_part_step_capacity(weekly_part_demand, process_sequences,
     part_operation_totals = df.groupby(['Part', 'Operation'])['Time_Required_Min_Week'].sum().reset_index()
     part_operation_totals['Number_of_Machines'] = np.ceil(part_operation_totals['Time_Required_Min_Week'] / minutes_per_week_per_machine)
 
+    # Create pivot table: Parts vs Operations showing machine requirements
+    pivot_df = part_operation_totals.pivot(index='Part', columns='Operation', values='Number_of_Machines').fillna(0).astype(int)
+
+    # Save the pivot table
+    pivot_filename = RESULTS_DIR / f'Part_Operation_Machine_Requirements_{shifts_per_day}_shifts.csv'
+    pivot_df.to_csv(pivot_filename)
+    print(f"Part-Operation Machine Requirements CSV generated: {pivot_filename}")
+
+    print(f"\nMachine Requirements per Part per Operation ({shifts_per_day} shifts):")
+    print(pivot_df.to_string())
+
     # Merge back to df
     df = df.merge(part_operation_totals[['Part', 'Operation', 'Number_of_Machines']], on=['Part', 'Operation'], how='left')
 

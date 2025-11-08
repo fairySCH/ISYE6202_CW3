@@ -25,7 +25,7 @@ Equipment Distribution by Process:
   G:   2 units/center × 5 centers =  10 total ( 90.6% utilization)
   H:   7 units/center × 5 centers =  35 total ( 96.5% utilization)
   I:   7 units/center × 5 centers =  35 total ( 88.4% utilization)
-  J:  11 units/center × 5 centers =  55 total ( 99.0% utilization)
+  J:  11 units/center × 5 centers =  55 total ( 99.1% utilization)
   K:   2 units/center × 5 centers =  10 total ( 70.3% utilization)
   L:   7 units/center × 5 centers =  35 total ( 97.5% utilization)
   M:  11 units/center × 5 centers =  55 total ( 99.5% utilization)

@@ -21,7 +21,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).parent.parent.parent.parent  # Go up to project root
 DATA_DIR = BASE_DIR / "data" / "csv_outputs"
 RESULTS_DIR = BASE_DIR / "results"
-FRACTAL_FLOW_DIR = Path("/Users/shankaraadhithyaa/Desktop/Python/ISYE6202_CW3/results/Task3/Fractal/Fractal_Flowmatrix")
+FRACTAL_FLOW_DIR = RESULTS_DIR / "Task3" / "Fractal" / "Fractal_Flowmatrix"
 
 PROCESSES = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M']
 

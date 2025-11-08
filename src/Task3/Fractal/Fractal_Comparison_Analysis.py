@@ -26,7 +26,7 @@ import matplotlib.pyplot as plt
 # Configuration
 BASE_DIR = Path(__file__).parent.parent.parent.parent  # Go up to project root
 INPUT_DIR = BASE_DIR / "results" / "Task3" / "Fractal" / "Fractal_Design"
-OUTPUT_DIR = Path("/Users/shankaraadhithyaa/Desktop/Python/ISYE6202_CW3/results/Task3/Fractal")
+OUTPUT_DIR = BASE_DIR / "results" / "Task3" / "Fractal"
 
 PROCESSES = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M']
 

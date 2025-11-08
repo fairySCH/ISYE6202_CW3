@@ -163,6 +163,18 @@ The **Fractal organization** demonstrated decisive advantages across the board. 
 
 The `Flow_Matrix_Summary.csv` for the Functional layout confirms its high degree of inter-departmental flow (1,250,000 km/yr), a key weakness that the Fractal design's co-located processes directly resolves.
 
+**Functional Layout - Material Flow Heatmap:**
+*This heatmap visually represents the high-volume, complex "spaghetti" of material flow between different process departments in the Functional layout. The bright spots indicate intense, costly traffic between centers.*
+![Functional Flow Matrix Heatmap](../results/Task3/Functional/Visuals/Functional_Flow_Matrix_Heatmap.png)
+
+**Proposed Fractal Layout (f=2 Example):**
+*In contrast, the Fractal layout co-locates all necessary processes into self-contained cells. This drastically simplifies material flow, as shown by the clean layout below.*
+![Fractal Layout f=2](../results/Task3/Fractal/Fractal_Visuals/Fractal_Layout_f2.png)
+
+**Fractal Design Scenario Comparison:**
+*This chart underscores the benefits of the Fractal design across multiple scenarios, highlighting its superior flexibility and redundancy scores even with minimal increases in capital investment.*
+![Fractal Scenario Comparison](../results/Task3/Fractal/Fractal_Visuals/Fractal_Layout_Scenario_Comparison.png)
+
 ---
 
 ## 6. Task 4: Facility Evolution Plan (Years +2 to +5)
@@ -180,6 +192,14 @@ We analyzed how each layout paradigm would accommodate the growth:
 * **Functional:** Scaling requires haphazardly adding machines to existing departments. This approach amplifies the inherent inefficiencies of the layout, worsening material flow spaghetti, increasing coordination overhead, and offering a poor return on investment.
 * **Fractal:** Scaling is elegant and efficient. Growth is achieved by deploying new, identical fractal cells—effectively a "copy-paste" approach. This modularity preserves the simple material flow and allows for predictable, linear scaling of capacity with minimal disruption to ongoing operations.
 * **Free-Style:** The hybrid model scales through a combination of adding fractal cells and expanding its part-based lines. While more adaptable than a purely functional layout, it lacks the simplicity and pure scalability of the true Fractal model.
+
+**Layout Scaling Comparison:**
+*The chart below illustrates the strategic advantage of the Fractal model's scalability. Growth is linear and predictable, whereas the Functional layout's expansion path is inefficient and complex.*
+![Fractal Scaling Comparison](../results/task4/Fractal/Fractal_Visuals/Fractal_Scaling_Comparison.png)
+
+**Long-Term Capital Investment:**
+*Over the 5-year horizon, the Fractal design proves to be the most capital-efficient solution, accommodating significant growth with lower overall investment compared to alternatives.*
+![Fractal Capital Investment Comparison](../results/task4/Fractal/Fractal_Visuals/Fractal_Capital_Investment_Comparison.png)
 
 ### 6.3. Final State (End of Year +5)
 

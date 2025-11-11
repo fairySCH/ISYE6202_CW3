@@ -183,7 +183,22 @@ This task stress-tests the leading layouts against a significant future demand i
 
 ### 6.1. Demand Growth Scenario
 
-The forecast for Years +2 to +5 includes three new products (A4, B3, B4) and a general increase in demand, leading to a substantial rise in the required production and storage capacity.
+Approach (same as Task 1 & 2). We mirror the Task-1/Task-2 workflow: product-level forecast (including new A4, B3, B4 from Year+1 to Year+5) are translated to part demand via the BOM, weekly viariability is carried through to part-level standard deviations, and we size capacity minutes using each part's total process time adjusted by the same 88.2% effective availability (90% efficiency x 98% reliability). Safety stocj is computed at a 99.5% service level (Z=2.576) with one week of lead time, identical assumptions to earlier tasks.
+
+* **Weekly demand** rises from 197,500 units (Year 1) to 394,200 units (Year 5), so 2x.
+* **Required capacity** incresases from 1.92M to 3.62M min/week, so +88%. 
+* **Total safety stock** grows from 62.4k to 105.8k units, so 70%.
+
+**Year-5 drivers (parts)**.
+* **Highest weekly demand**: P19  (31.5k/wk), P1 (29.8k), P12 (29.8k), P11 (27.8k), P3 (26.9k)
+* **Largest capacity minutes**: P1 (430.8k), P19 (375.0k), P3 (289.7k), P20 (233.1k), P12 (202.7k)
+* **Largest safety stock**: P11 (9.3k), P12 (8.3k), P19 (7.5k), P1 (7.4k), P16 (6.8k)
+
+Fastest-growing parts (weekly demand, Y5 vs Y1)
+* P8 (4.33x), P15 (4.29x), P3 (3.37x), P17 (2.72x), P11 (2.44x) lead the acceleration.
+
+
+Demand roughly doubles over five years, and capacity minutes scale slightly less than linearly beacause the mix shifts toward parts with different process-time profiles. 
 
 ### 6.2. Layout Evolution & Scalability
 

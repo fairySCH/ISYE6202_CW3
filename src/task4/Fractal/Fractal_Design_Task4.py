@@ -97,7 +97,7 @@ def load_yearly_product_demand(year):
     
     demand_dict = dict(zip(products, weekly_demand_values))
     
-    print(f"✓ Year +{year}: Loaded weekly product demand = {sum(weekly_demand_values):.1f} total units/week")
+    print(f"[OK] Year +{year}: Loaded weekly product demand = {sum(weekly_demand_values):.1f} total units/week")
     return demand_dict
 
 
@@ -118,7 +118,7 @@ def verify_fractal_integrity(df, num_fractals):
     """
     violations = []
     
-    for _, row in df.iterrows():
+    for _, row in df[df['Process'] != 'TOTAL'].iterrows():
         expected_total = row['Equipment_per_Center'] * num_fractals
         actual_total = row['Total_Equipment']
         
@@ -131,7 +131,7 @@ def verify_fractal_integrity(df, num_fractals):
         error_msg = "Fractal integrity violations detected:\n" + "\n".join(violations)
         raise ValueError(error_msg)
     
-    print(f"✓ Fractal integrity verified: All {num_fractals} centers are identical")
+    print(f"[OK] Fractal integrity verified: All {num_fractals} centers are identical")
     return True
 
 
@@ -181,7 +181,7 @@ def load_bom():
     if missing_parts:
         warnings.warn(f"Missing parts in BOM: {missing_parts}")
 
-    print(f"✓ Loaded BOM for {len(bom)} parts")
+    print(f"[OK] Loaded BOM for {len(bom)} parts")
     return bom
 
 
@@ -204,7 +204,7 @@ def calculate_weekly_part_demand(weekly_product_demand, bom):
         raise ValueError("No parts have demand - check BOM and product demand alignment")
     
     total_part_demand = sum(weekly_part_demand.values())
-    print(f"✓ Calculated weekly part demand: {total_part_demand:,.0f} total parts/week")
+    print(f"[OK] Calculated weekly part demand: {total_part_demand:,.0f} total parts/week")
     print(f"  ({parts_with_demand}/{len(EXPECTED_PARTS)} parts have non-zero demand)")
 
     return weekly_part_demand
@@ -290,7 +290,7 @@ def load_process_data():
     if missing_times:
         raise ValueError(f"Missing process times for parts: {missing_times}")
     
-    print(f"✓ Loaded process sequences and times for {len(process_times)} parts")
+    print(f"[OK] Loaded process sequences and times for {len(process_times)} parts")
     return process_sequences, process_times
 
 
@@ -325,7 +325,7 @@ def calculate_total_process_workload(weekly_part_demand, process_sequences, proc
     total_workload = sum(process_workload.values())
     active_processes = sum(1 for w in process_workload.values() if w > 0)
     
-    print(f"✓ Calculated process workload: {total_workload:,.0f} total minutes/week")
+    print(f"[OK] Calculated process workload: {total_workload:,.0f} total minutes/week")
     print(f"  ({active_processes}/{len(PROCESSES)} processes are active)")
 
     return process_workload
@@ -413,15 +413,41 @@ def calculate_fractal_requirements_yearly(year, num_fractals, process_workload,
     
     df = pd.DataFrame(results)
     
+    # Add total row for workload per center
+    total_workload = df['Total_Workload_Min'].sum()
+    total_workload_per_center = df['Workload_per_Center_Min'].sum()
+    total_equipment_per_center = df['Equipment_per_Center'].sum()
+    total_equipment = df['Total_Equipment'].sum()
+    total_capacity_per_center = total_equipment_per_center * base_capacity
+    
+    if total_capacity_per_center > 0:
+        total_utilization = total_workload_per_center / total_capacity_per_center
+    else:
+        total_utilization = 0.0
+    
+    total_row = {
+        'Year': year,
+        'Process': 'TOTAL',
+        'Total_Workload_Min': round(total_workload, 2),
+        'Workload_per_Center_Min': round(total_workload_per_center, 2),
+        'Equipment_per_Center': total_equipment_per_center,
+        'Total_Equipment': total_equipment,
+        'Utilization_per_Center': round(total_utilization, 4),
+        'Base_Capacity_per_Equipment': base_capacity
+    }
+    
+    df = pd.concat([df, pd.DataFrame([total_row])], ignore_index=True)
+    
     # Validate fractal integrity across all processes
     verify_fractal_integrity(df, num_fractals)
     
     return df
 def generate_fractal_summary_yearly(year, num_fractals, requirements_df):
     """Generate summary report for fractal organization for a specific year"""
-    total_equipment = requirements_df['Total_Equipment'].sum()
-    avg_utilization = requirements_df['Utilization_per_Center'].mean()
-    base_capacity = requirements_df['Base_Capacity_per_Equipment'].iloc[0]
+    requirements_no_total = requirements_df[requirements_df['Process'] != 'TOTAL']
+    total_equipment = requirements_no_total['Total_Equipment'].sum()
+    avg_utilization = requirements_no_total['Utilization_per_Center'].mean()
+    base_capacity = requirements_no_total['Base_Capacity_per_Equipment'].iloc[0]
 
     summary = f"""
 {'='*80}
@@ -446,7 +472,7 @@ CRITICAL: All fractal centers are IDENTICAL in equipment composition
 Equipment Distribution by Process:
 """
 
-    for _, row in requirements_df.iterrows():
+    for _, row in requirements_no_total.iterrows():
         summary += f"\n{row['Process']:>3}: {int(row['Equipment_per_Center']):>3} units/center × {num_fractals} centers = {int(row['Total_Equipment']):>3} total ({row['Utilization_per_Center']*100:>5.1f}% utilization)"
 
     summary += f"\n\n{'='*80}\n"
@@ -490,8 +516,9 @@ def analyze_fractal_scaling():
                                                              weekly_part_demand, process_sequences, 
                                                              process_times, num_shifts=2)
 
-            total_equipment = requirements['Total_Equipment'].sum()
-            avg_utilization = requirements['Utilization_per_Center'].mean()
+            requirements_no_total = requirements[requirements['Process'] != 'TOTAL']
+            total_equipment = requirements_no_total['Total_Equipment'].sum()
+            avg_utilization = requirements_no_total['Utilization_per_Center'].mean()
 
             year_results[f] = {
                 'requirements': requirements,

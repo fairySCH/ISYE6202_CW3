@@ -91,7 +91,7 @@ def load_weekly_product_demand():
     
     demand_dict = dict(zip(EXPECTED_PRODUCTS, weekly_demand_values))
     
-    print(f"✓ Loaded weekly product demand: {sum(weekly_demand_values):.1f} total units/week")
+    print(f"[OK] Loaded weekly product demand: {sum(weekly_demand_values):.1f} total units/week")
     return demand_dict
 
 
@@ -150,7 +150,7 @@ def load_bom():
     if missing_parts:
         warnings.warn(f"Missing parts in BOM: {missing_parts}")
     
-    print(f"✓ Loaded BOM for {len(bom)} parts")
+    print(f"[OK] Loaded BOM for {len(bom)} parts")
     return bom
 
 
@@ -182,7 +182,7 @@ def calculate_weekly_part_demand(weekly_product_demand, bom):
         raise ValueError("No parts have demand - check BOM and product demand alignment")
     
     total_part_demand = sum(weekly_part_demand.values())
-    print(f"✓ Calculated weekly part demand: {total_part_demand:,.0f} total parts/week")
+    print(f"[OK] Calculated weekly part demand: {total_part_demand:,.0f} total parts/week")
     print(f"  ({parts_with_demand}/{len(EXPECTED_PARTS)} parts have non-zero demand)")
     
     return weekly_part_demand
@@ -275,7 +275,7 @@ def load_process_data():
             if seq_len != non_zero_times:
                 warnings.warn(f"Part {part}: {seq_len} process steps but {non_zero_times} non-zero times")
     
-    print(f"✓ Loaded process data for {len(process_sequences)} parts")
+    print(f"[OK] Loaded process data for {len(process_sequences)} parts")
     
     return process_sequences, process_times
 
@@ -334,7 +334,7 @@ def calculate_total_process_workload(weekly_part_demand, process_sequences, proc
     total_workload = sum(process_workload.values())
     active_processes = sum(1 for w in process_workload.values() if w > 0)
     
-    print(f"✓ Calculated process workload: {total_workload:,.0f} total minutes/week")
+    print(f"[OK] Calculated process workload: {total_workload:,.0f} total minutes/week")
     print(f"  ({active_processes}/{len(PROCESSES)} processes are active)")
     
     return process_workload
@@ -416,6 +416,30 @@ def calculate_fractal_requirements(num_fractals, process_workload, num_shifts=2)
     
     df = pd.DataFrame(results)
     
+    # Add total row for workload per center
+    total_workload = df['Total_Workload_Min'].sum()
+    total_workload_per_center = df['Workload_per_Center_Min'].sum()
+    total_equipment_per_center = df['Equipment_per_Center'].sum()
+    total_equipment = df['Total_Equipment'].sum()
+    total_capacity_per_center = total_equipment_per_center * base_capacity
+    
+    if total_capacity_per_center > 0:
+        total_utilization = total_workload_per_center / total_capacity_per_center
+    else:
+        total_utilization = 0.0
+    
+    total_row = {
+        'Process': 'TOTAL',
+        'Total_Workload_Min': round(total_workload, 2),
+        'Workload_per_Center_Min': round(total_workload_per_center, 2),
+        'Equipment_per_Center': total_equipment_per_center,
+        'Total_Equipment': total_equipment,
+        'Utilization_per_Center': round(total_utilization, 4),
+        'Base_Capacity_per_Equipment': base_capacity
+    }
+    
+    df = pd.concat([df, pd.DataFrame([total_row])], ignore_index=True)
+    
     # Validate fractal integrity across all processes
     verify_fractal_integrity(df, num_fractals)
     
@@ -435,7 +459,7 @@ def verify_fractal_integrity(requirements_df, num_fractals):
     """
     violations = []
     
-    for _, row in requirements_df.iterrows():
+    for _, row in requirements_df[requirements_df['Process'] != 'TOTAL'].iterrows():
         expected_total = row['Equipment_per_Center'] * num_fractals
         actual_total = row['Total_Equipment']
         
@@ -448,16 +472,17 @@ def verify_fractal_integrity(requirements_df, num_fractals):
         raise ValueError(error_msg)
     
     # Additional check: verify all centers would have same equipment list
-    equipment_per_center = requirements_df['Equipment_per_Center'].tolist()
+    equipment_per_center = requirements_df[requirements_df['Process'] != 'TOTAL']['Equipment_per_Center'].tolist()
     
-    print(f"  ✓ Fractal integrity verified: All {num_fractals} centers are identical")
+    print(f"  [OK] Fractal integrity verified: All {num_fractals} centers are identical")
     print(f"    Each center has {sum(equipment_per_center)} equipment units")
 
 
 def generate_fractal_summary(num_fractals, requirements_df):
     """Generate summary report for fractal organization"""
-    total_equipment = requirements_df['Total_Equipment'].sum()
-    avg_utilization = requirements_df['Utilization_per_Center'].mean()
+    requirements_no_total = requirements_df[requirements_df['Process'] != 'TOTAL']
+    total_equipment = requirements_no_total['Total_Equipment'].sum()
+    avg_utilization = requirements_no_total['Utilization_per_Center'].mean()
     
     summary = f"""
 {'='*80}
@@ -478,7 +503,7 @@ Summary Statistics:
 Equipment Distribution by Process:
 """
     
-    for _, row in requirements_df.iterrows():
+    for _, row in requirements_no_total.iterrows():
         summary += f"\n{row['Process']:>3}: {int(row['Equipment_per_Center']):>3} units/center × {num_fractals} centers = {int(row['Total_Equipment']):>3} total ({row['Utilization_per_Center']*100:>5.1f}% utilization)"
     
     summary += f"\n\n{'='*80}\n"
@@ -507,7 +532,7 @@ def compare_fractal_scenarios():
                                                              process_sequences, 
                                                              process_times)
     except Exception as e:
-        print(f"\n❌ ERROR during data loading: {e}")
+        print(f"\n[ERROR] ERROR during data loading: {e}")
         raise
     
     print("\n" + "="*80)
@@ -525,8 +550,9 @@ def compare_fractal_scenarios():
             # CORRECTED: Only pass required parameters
             requirements = calculate_fractal_requirements(f, process_workload, num_shifts=2)
             
-            total_equipment = requirements['Total_Equipment'].sum()
-            avg_utilization = requirements['Utilization_per_Center'].mean()
+            requirements_no_total = requirements[requirements['Process'] != 'TOTAL']
+            total_equipment = requirements_no_total['Total_Equipment'].sum()
+            avg_utilization = requirements_no_total['Utilization_per_Center'].mean()
             
             comparison_results.append({
                 'Num_Fractals': f,
@@ -539,17 +565,17 @@ def compare_fractal_scenarios():
             # Save detailed requirements
             output_file = RESULTS_DIR / f'Fractal_f{f}_Equipment_Requirements.csv'
             requirements.to_csv(output_file, index=False)
-            print(f"  ✓ Saved: {output_file.name}")
+            print(f"  [OK] Saved: {output_file.name}")
             
             # Save summary report
             summary = generate_fractal_summary(f, requirements)
             summary_file = RESULTS_DIR / f'Fractal_f{f}_Summary_Report.txt'
             with open(summary_file, 'w', encoding='utf-8') as file:
                 file.write(summary)
-            print(f"  ✓ Saved: {summary_file.name}")
+            print(f"  [OK] Saved: {summary_file.name}")
             
         except Exception as e:
-            print(f"\n❌ ERROR analyzing f={f}: {e}")
+            print(f"\n[ERROR] ERROR analyzing f={f}: {e}")
             raise
     
     # Create comparison table
@@ -572,15 +598,14 @@ def compare_fractal_scenarios():
                             f"({equipment_counts[i-1]})")
     
     if violations:
-        print("\n⚠️  WARNING: Non-monotonic equipment counts detected:")
+        print("\n[WARNING] Non-monotonic equipment counts detected:")
         for v in violations:
             print(f"    {v}")
         print("    This may indicate rounding effects or calculation issues.")
     else:
-        print("\n✓ Equipment counts increase monotonically (as expected)")
+        print("\n[OK] Equipment counts increase monotonically (as expected)")
     
-    print(f"\n✓ Comparison saved: {comparison_file.name}")
-    
+        print(f"\n[OK] Comparison saved: {comparison_file.name}")
     return comparison_df
 
 
@@ -600,7 +625,7 @@ def main():
         comparison_df = compare_fractal_scenarios()
         
         print("\n" + "="*80)
-        print("✓ ANALYSIS COMPLETE!")
+        print("[OK] ANALYSIS COMPLETE!")
         print("="*80 + "\n")
         print("Generated files:")
         print("  - Fractal_f2_Equipment_Requirements.csv")
@@ -616,12 +641,12 @@ def main():
         print("\n" + "="*80)
         print("KEY IMPROVEMENTS IN VERSION 2.0:")
         print("="*80)
-        print("✓ Uniform equipment capacity (no artificial variations)")
-        print("✓ Fractal integrity validation (all centers identical)")
-        print("✓ Comprehensive data validation and error handling")
-        print("✓ Monotonic equipment count verification")
-        print("✓ Robust CSV parsing with validation")
-        print("✓ Detailed logging and diagnostics")
+        print("[OK] Uniform equipment capacity (no artificial variations)")
+        print("[OK] Fractal integrity validation (all centers identical)")
+        print("[OK] Comprehensive data validation and error handling")
+        print("[OK] Monotonic equipment count verification")
+        print("[OK] Robust CSV parsing with validation")
+        print("[OK] Detailed logging and diagnostics")
         
         print("\n" + "="*80)
         print("Next steps:")
@@ -631,17 +656,17 @@ def main():
         print("="*80 + "\n")
         
     except FileNotFoundError as e:
-        print(f"\n❌ FILE NOT FOUND ERROR: {e}")
+        print(f"\n[ERROR] FILE NOT FOUND ERROR: {e}")
         print("Please ensure all required data files exist in the data/csv_outputs directory.")
         sys.exit(1)
         
     except ValueError as e:
-        print(f"\n❌ VALIDATION ERROR: {e}")
+        print(f"\n[ERROR] VALIDATION ERROR: {e}")
         print("Please check your input data for consistency and correctness.")
         sys.exit(1)
         
     except Exception as e:
-        print(f"\n❌ UNEXPECTED ERROR: {e}")
+        print(f"\n[ERROR] UNEXPECTED ERROR: {e}")
         import traceback
         traceback.print_exc()
         sys.exit(1)

@@ -94,7 +94,7 @@ def draw_individual_process_block(process, config, output_dir):
     if group == 'ABCD':
         overlap_x, overlap_y = 2, 2
     elif group == 'KLM':
-        overlap_x, overlap_y = 0, 1  # Share along the longer 14ft dimension (y-direction)
+        overlap_x, overlap_y = 0, 1  # Share 1ft along the depth (y-direction) for 14×7 ft machines
     else:
         overlap_x, overlap_y = 0, 0
     
@@ -273,7 +273,7 @@ def draw_individual_process_block(process, config, output_dir):
     # Save figure
     plt.tight_layout()
     output_file = output_dir / f"Process_{process}_Block.png"
-    plt.savefig(output_file, dpi=300, bbox_inches='tight', facecolor='white')
+    plt.savefig(str(output_file), dpi=300, bbox_inches='tight', facecolor='white')
     plt.close()
     
     return output_file

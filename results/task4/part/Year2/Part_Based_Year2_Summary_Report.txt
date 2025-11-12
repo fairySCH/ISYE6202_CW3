@@ -1,0 +1,265 @@
+================================================================================
+TASK 4: PART-BASED LAYOUT ANALYSIS - YEAR 2 SUMMARY
+================================================================================
+
+COMPARISON: YEAR 1 vs YEAR 2
+DATE: November 12, 2025
+
+--------------------------------------------------------------------------------
+KEY RESULTS COMPARISON
+--------------------------------------------------------------------------------
+
+METRIC                          YEAR 1          YEAR 2          CHANGE
+--------------------------------------------------------------------------------
+Total Machines                  432             705             +273 (+63%)
+Total Area (sq ft)              265,097         378,363         +113,266 (+43%)
+Avg Distance/Unit (ft)          100.25          125.52          +25.27 (+25%)
+Total Weekly Flow (M unit-ft)   22.65           41.29           +18.64 (+82%)
+
+--------------------------------------------------------------------------------
+YEAR 2 DETAILED RESULTS
+--------------------------------------------------------------------------------
+
+Total Machines Required: 705
+Total Manufacturing Area: 378,363 sq ft (8.69 acres)
+Total Parts Processed: 20 (P1-P20)
+
+--------------------------------------------------------------------------------
+LAYOUT AREA ANALYSIS (YEAR 2)
+--------------------------------------------------------------------------------
+
+LARGEST FOOTPRINTS:
+- P1:  56,160 sq ft (260×216 ft) - 7 steps, 113 machines (+16% area vs Y1)
+- P9:  41,760 sq ft (232×180 ft) - 6 steps, 30 machines (NEW: 2× larger)
+- P7:  28,224 sq ft (196×144 ft) - 6 steps, 40 machines (same as Y1)
+- P16: 30,672 sq ft (142×216 ft) - 4 steps, 32 machines (same as Y1)
+- P12: 29,880 sq ft (166×180 ft) - 5 steps, 29 machines (+92% vs Y1)
+- P13: 28,224 sq ft (196×144 ft) - 7 steps, 25 machines (+89% vs Y1)
+
+SMALLEST FOOTPRINTS (KLM equipment):
+- P17: 338 sq ft (13×26 ft) - 3 steps, 19 machines (+24% vs Y1)
+- P20: 527 sq ft (17×31 ft) - 3 steps, 29 machines (+35% vs Y1)
+- P18: 682 sq ft (22×31 ft) - 4 steps, 34 machines (+46% vs Y1)
+- P19: 1,840 sq ft (40×46 ft) - 4 steps, 130 machines (+128% vs Y1)
+
+KEY INSIGHT: P19 (KLM) grew from 51 to 130 machines but still only 1,840 sq ft
+- Shows scalability advantage of small KLM equipment (3×6 ft)
+
+--------------------------------------------------------------------------------
+FLOW DISTANCE ANALYSIS (YEAR 2)
+--------------------------------------------------------------------------------
+
+LONGEST FLOW DISTANCES:
+- P1:  273.33 ft/unit → 7,133,913 unit-ft/week (26,100 units, +19% vs Y1)
+- P13: 232.49 ft/unit → 2,115,659 unit-ft/week (9,100 units, +41% vs Y1)
+- P9:  226.08 ft/unit → 2,577,312 unit-ft/week (11,400 units, +50% vs Y1)
+- P16: 193.34 ft/unit → 2,474,752 unit-ft/week (12,800 units, same as Y1)
+- P7:  183.38 ft/unit → 3,099,122 unit-ft/week (16,900 units, -1% vs Y1)
+
+SHORTEST FLOW DISTANCES (KLM parts):
+- P17: 11.99 ft/unit → 129,492 unit-ft/week (10,800 units, same as Y1)
+- P20: 16.68 ft/unit → 351,948 unit-ft/week (21,100 units, +41% vs Y1)
+- P18: 17.81 ft/unit → 315,237 unit-ft/week (17,700 units, +0.4% vs Y1)
+- P19: 30.92 ft/unit → 797,736 unit-ft/week (25,800 units, +59% vs Y1)
+
+KEY INSIGHT: Despite 130 machines, P19 flow is still 30.92 ft vs P1's 273.33 ft
+- KLM maintains ~9× shorter flow distances even at higher volumes
+
+--------------------------------------------------------------------------------
+DEMAND GROWTH (YEAR 1 → YEAR 2)
+--------------------------------------------------------------------------------
+
+HIGHEST GROWTH PARTS:
+- P3:  6,154 → 12,600 (+105%) - Doubled
+- P11: 8,077 → 15,200 (+88%)
+- P12: 10,000 → 18,200 (+82%)
+- P13: 5,000 → 9,100 (+82%)
+- P14: 18,077 → 24,600 (+36%)
+
+MODERATE GROWTH:
+- P1: 20,962 → 26,100 (+24.5%)
+- P2: 11,154 → 15,400 (+38%)
+- P19: 20,000 → 25,800 (+29%)
+
+HIGHEST DEMAND PARTS (YEAR 2):
+1. P1: 26,100 units/week
+2. P19: 25,800 units/week (KLM - high volume, small footprint)
+3. P14: 24,600 units/week
+4. P20: 21,100 units/week (KLM)
+5. P12: 18,200 units/week
+
+--------------------------------------------------------------------------------
+MACHINE COUNT CHANGES (YEAR 1 → YEAR 2)
+--------------------------------------------------------------------------------
+
+BIGGEST INCREASES:
+- P19: 51 → 130 (+79 machines, +155%) - KLM part, highest volume
+- P3:  17 → 31 (+14 machines, +82%)
+- P1:  68 → 113 (+45 machines, +66%)
+- P11: 10 → 27 (+17 machines, +170%)
+- P12: 17 → 29 (+12 machines, +71%)
+
+PARTS UNCHANGED OR MINIMAL GROWTH:
+- P4:  19 → 21 (+2, +11%)
+- P16: 31 → 32 (+1, +3%)
+- P15: 7 → 13 (+6, +86%)
+- P10: 9 → 13 (+4, +44%)
+
+--------------------------------------------------------------------------------
+SPACE EFFICIENCY COMPARISON (YEAR 2)
+--------------------------------------------------------------------------------
+
+Area per Machine:
+- P1:  56,160 ÷ 113 = 497.0 sq ft/machine (was 711.5 in Y1, -30% improvement)
+- P9:  41,760 ÷ 30 = 1,392 sq ft/machine (much larger due to EFG/HIJ mix)
+- P16: 30,672 ÷ 32 = 958.5 sq ft/machine (was 989.4 in Y1)
+- P17: 338 ÷ 19 = 17.8 sq ft/machine (KLM, was 27.3 in Y1)
+- P19: 1,840 ÷ 130 = 14.2 sq ft/machine (KLM, was 15.8 in Y1)
+- P20: 527 ÷ 29 = 18.2 sq ft/machine (KLM, was 14.5 in Y1)
+
+KEY INSIGHT: KLM parts maintain 30-80× better space efficiency than HIJ parts
+
+--------------------------------------------------------------------------------
+TOTAL WEEKLY FLOW (YEAR 2)
+--------------------------------------------------------------------------------
+
+TOP 5 FLOW-INTENSIVE PARTS:
+1. P1:  7,133,913 unit-ft/week (17.3% of total flow)
+2. P14: 3,827,268 unit-ft/week (9.3%)
+3. P7:  3,099,122 unit-ft/week (7.5%)
+4. P12: 2,844,478 unit-ft/week (6.9%)
+5. P9:  2,577,312 unit-ft/week (6.2%)
+
+Total Flow All Parts: 41,290,786 unit-ft/week
+Average Flow per Part: 2,064,539 unit-ft/week
+
+--------------------------------------------------------------------------------
+OUTPUT FILES GENERATED (YEAR 2)
+--------------------------------------------------------------------------------
+
+CAPACITY ANALYSIS (results/task4/part/capacity/):
+✓ Part_Based_Year2_All_Parts_Layout_Summary.csv
+  - Layout dimensions and areas for all 20 parts
+  - Columns: Part, Process_Sequence, Total_Machines, Layout_Width_ft,
+    Layout_Height_ft, Total_Area_sqft, Number_of_Steps
+
+✓ Part_Based_Year2_All_Parts_Flow_Analysis.csv
+  - Flow distances and total weekly flow calculations
+  - Columns: Part, Weekly_Demand, Distance_Per_Unit_ft,
+    Total_Weekly_Flow_unit_ft, Formula
+
+✓ Part_Based_Year2_All_Parts_Machine_Usage.csv
+  - Process counts A-M per part (with duplicate tracking)
+  - Columns: Part, A-M (13 process columns), Total_Process_Areas
+
+✓ Part_Based_Year2_All_Parts_Detailed_Report.txt
+  - Comprehensive 1,536+ line report with all calculations
+  - Layout area breakdown with grid configurations
+  - Flow distance details with center coordinates
+  - Machine usage by process
+
+✓ Part_Based_Year2_All_Parts_Flow_Distance_Breakdown.csv
+  - Step-by-step flow distances for all parts
+  - Columns: Part, Step, From_Process_Area, From_Center_X_ft, From_Center_Y_ft,
+    To_Process_Area, To_Center_X_ft, To_Center_Y_ft, Distance_ft
+  - 97 rows (77 steps + 20 totals)
+
+--------------------------------------------------------------------------------
+KEY INSIGHTS: YEAR 1 vs YEAR 2
+--------------------------------------------------------------------------------
+
+1. CAPACITY SCALING:
+   - 63% increase in machines (432 → 705)
+   - 43% increase in area (265K → 378K sq ft)
+   - Better space efficiency due to economies of scale in grid layouts
+
+2. DEMAND PATTERNS:
+   - Some parts doubled (P3, P11, P12, P13)
+   - KLM parts (P17-P20) show strong growth, especially P19 (+155% machines)
+   - High-volume parts P1, P14, P19 dominate production
+
+3. FLOW EFFICIENCY:
+   - Average flow distance increased 25% (100 → 126 ft/unit)
+   - Total flow increased 82% due to both distance and demand growth
+   - KLM parts maintain short flow despite scaling (17-31 ft vs 120-273 ft for others)
+
+4. SPACE UTILIZATION:
+   - P1 improved space efficiency by 30% (711 → 497 sq ft/machine)
+   - Larger grids for high-volume parts allow better packing
+   - KLM equipment remains 30-80× more space-efficient
+
+5. MATERIAL HANDLING PRIORITY:
+   Year 2 Top 5 Flow Parts (P1, P14, P7, P12, P9) = 47% of total flow
+   - These parts should be prioritized for automated material handling
+   - Potential for significant labor/time savings
+
+6. BOTTLENECK WATCH:
+   - P19 with 130 machines (all KLM) is largest single-part machine count
+   - Need to monitor KLM process capacity (K, L, M utilization)
+   - P1 with 113 machines spans both ABCD and HIJ groups
+
+--------------------------------------------------------------------------------
+STRATEGIC RECOMMENDATIONS
+--------------------------------------------------------------------------------
+
+1. AUTOMATED MATERIAL HANDLING (YEAR 2 PRIORITY)
+   - Focus on P1 (7.1M unit-ft/week), P14 (3.8M), P7 (3.1M)
+   - ROI calculations should target these high-flow parts
+   - Consider AGVs or conveyors for parts with 150+ ft flow distances
+
+2. KLM CAPACITY EXPANSION
+   - P19 alone requires 130 machines (all KLM processes)
+   - Total KLM demand growing faster than other equipment groups
+   - Consider dedicated KLM manufacturing cells or zone
+
+3. LAYOUT OPTIMIZATION OPPORTUNITIES
+   - P9 has very long flow (226 ft) - review process sequence optimization
+   - P13 has 232 ft flow - second-longest, opportunity for improvement
+   - Parts with 7 steps (P1, P6, P13) may benefit from process consolidation
+
+4. PHASED CAPACITY INVESTMENT
+   Year 2 Priority Parts (by investment need):
+   - Tier 1: P1 (113 machines), P19 (130 machines) - highest counts
+   - Tier 2: P7 (40), P16 (32), P2 (31), P3 (31), P9 (30), P12 (29), P14 (29)
+   - Tier 3: All others (<30 machines each)
+
+5. SPACE PLANNING
+   - Year 2 requires 113K more sq ft than Year 1
+   - KLM zone: Only 3.4K sq ft for 4 parts (P17-P20)
+   - ABCD/HIJ zone: 375K sq ft for 16 parts (P1-P16)
+   - Consider separate facilities or clear zone demarcation
+
+--------------------------------------------------------------------------------
+VALIDATION CHECKLIST
+--------------------------------------------------------------------------------
+
+✅ Total machine count: 705 (calculated from all part steps)
+✅ Equipment specs: Verified against Block_Specs.csv
+✅ Process sequences: Match Parts_Step_Time.csv
+✅ Demand data: Filtered for Year 2 from Weekly_Part_Demand.csv
+✅ Overlap rules: Correctly applied per equipment group
+✅ Flow calculations: Center-to-center Euclidean distances
+✅ Duplicate counting: Process repetitions tracked properly
+✅ File naming: Uniform Part_Based_Year2_* convention
+
+--------------------------------------------------------------------------------
+NEXT STEPS (OPTIONAL)
+--------------------------------------------------------------------------------
+
+1. Repeat analysis for Year 3, Year 4, Year 5 using same methodology
+2. Create year-over-year comparison charts/visualizations
+3. Perform cost analysis for Year 2 (equipment investment, labor)
+4. Compare Part-Based vs Functional vs Fractal layouts for Year 2
+5. Develop material handling automation ROI analysis
+
+--------------------------------------------------------------------------------
+
+For detailed calculations, see:
+- Part_Based_Year2_All_Parts_Detailed_Report.txt
+- Part_Based_Year2_All_Parts_Flow_Distance_Breakdown.csv
+
+================================================================================
+Generated: November 12, 2025
+Tool: Part_Based_Year2_All_Parts_Metrics.py
+Data Source: Task 4 Part capacity files (corrected with 88.2% reliability)
+================================================================================

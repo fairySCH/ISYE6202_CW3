@@ -14,18 +14,19 @@ from matplotlib.patches import Rectangle
 import csv
 
 # Optimal grid configurations - COMPACT (vertical stacking)
+# Year 1: 68 machines total (with 88.2% effective availability)
 AREAS = {
-    "B1": {"group": "ABCD", "count": 12, "rows": 6, "cols": 2, "eff_w":  26, "eff_h": 74},
-    "A":  {"group": "ABCD", "count":  5, "rows": 5, "cols": 1, "eff_w":  14, "eff_h": 62},
-    "B2": {"group": "ABCD", "count": 12, "rows": 6, "cols": 2, "eff_w":  26, "eff_h": 74},
+    "B1": {"group": "ABCD", "count": 13, "rows": 7, "cols": 2, "eff_w":  26, "eff_h": 86},
+    "A":  {"group": "ABCD", "count":  6, "rows": 6, "cols": 1, "eff_w":  14, "eff_h": 74},
+    "B2": {"group": "ABCD", "count": 13, "rows": 7, "cols": 2, "eff_w":  26, "eff_h": 86},
     "C":  {"group": "ABCD", "count":  3, "rows": 3, "cols": 1, "eff_w":  14, "eff_h": 38},
-    "D":  {"group": "ABCD", "count": 12, "rows": 6, "cols": 2, "eff_w":  26, "eff_h": 74},
-    "I":  {"group": "HIJ",  "count":  6, "rows": 6, "cols": 1, "eff_w":  36, "eff_h": 84},
-    "J":  {"group": "HIJ",  "count": 12, "rows": 6, "cols": 2, "eff_w":  72, "eff_h": 84},
+    "D":  {"group": "ABCD", "count": 13, "rows": 7, "cols": 2, "eff_w":  26, "eff_h": 86},
+    "I":  {"group": "HIJ",  "count":  7, "rows": 7, "cols": 1, "eff_w":  36, "eff_h": 98},
+    "J":  {"group": "HIJ",  "count": 13, "rows": 7, "cols": 2, "eff_w":  72, "eff_h": 98},
 }
 
 PROCESS_ORDER = ["B1", "A", "B2", "C", "D", "I", "J"]
-GAP = 5  # ft between areas
+GAP = 0  # No gap between areas - blocks stick together
 
 AREA_COLORS = {
     "B1": '#4c9aff',  # Blue
@@ -141,9 +142,23 @@ def generate_layout():
     ax.set_xlim(-10, total_w + 10)
     ax.set_ylim(-10, total_h + 10)
     ax.set_aspect('equal')
-    ax.set_title(f'Year1 Layout - {sum([AREAS[p]["count"] for p in PROCESS_ORDER])} Machines Total',
+    ax.set_title(f'Year1 Layout - {sum([AREAS[p]["count"] for p in PROCESS_ORDER])} Machines Total (88.2% Effective Availability)',
                 fontsize=14, fontweight='bold')
     ax.grid(True, alpha=0.3)
+    
+    # Add legend
+    from matplotlib.patches import Patch
+    legend_elements = [
+        Patch(facecolor=AREA_COLORS['B1'], edgecolor='#333', label=f'B1: {AREAS["B1"]["count"]} machines'),
+        Patch(facecolor=AREA_COLORS['A'], edgecolor='#333', label=f'A: {AREAS["A"]["count"]} machines'),
+        Patch(facecolor=AREA_COLORS['B2'], edgecolor='#333', label=f'B2: {AREAS["B2"]["count"]} machines'),
+        Patch(facecolor=AREA_COLORS['C'], edgecolor='#333', label=f'C: {AREAS["C"]["count"]} machines'),
+        Patch(facecolor=AREA_COLORS['D'], edgecolor='#333', label=f'D: {AREAS["D"]["count"]} machines'),
+        Patch(facecolor=AREA_COLORS['I'], edgecolor='#333', label=f'I: {AREAS["I"]["count"]} machines'),
+        Patch(facecolor=AREA_COLORS['J'], edgecolor='#333', label=f'J: {AREAS["J"]["count"]} machines'),
+        Patch(facecolor='#ff6b6b', alpha=0.3, label='Overlap zones (2ft)'),
+    ]
+    ax.legend(handles=legend_elements, loc='upper right', fontsize=10, framealpha=0.9)
     
     output_dir = Path(__file__).parent
     png_file = output_dir / "Optimized_Compact_Layout.png"

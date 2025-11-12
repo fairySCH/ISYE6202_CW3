@@ -21,6 +21,9 @@ P1_SEQUENCE = [
 # Constants
 DEMAND_P1 = 28500  # units per week
 MINUTES_PER_MACHINE_2SHIFT = 4800  # 2 shifts × 8 hours × 5 days × 60 min
+EFFICIENCY = 0.90  # 90% efficiency
+RELIABILITY = 0.98  # 98% reliability
+EFFECTIVE_AVAILABILITY = EFFICIENCY * RELIABILITY  # 88.2%
 TARGET_UTILIZATION = 0.99  # 99% target utilization
 
 def calculate_machines():
@@ -28,16 +31,18 @@ def calculate_machines():
     print("=" * 70)
     print(f"Part 1 (P1) Weekly Demand: {DEMAND_P1:,} units")
     print(f"Machine Capacity (2-shift): {MINUTES_PER_MACHINE_2SHIFT:,} minutes/week")
+    print(f"Efficiency: {EFFICIENCY:.0%}, Reliability: {RELIABILITY:.0%}")
+    print(f"Effective Availability: {EFFECTIVE_AVAILABILITY:.1%} ({EFFICIENCY:.0%} × {RELIABILITY:.0%})")
     print(f"Target Utilization: {TARGET_UTILIZATION:.0%}")
-    print(f"Effective Capacity per Machine: {MINUTES_PER_MACHINE_2SHIFT * TARGET_UTILIZATION:,.1f} minutes/week")
+    print(f"Effective Capacity per Machine: {MINUTES_PER_MACHINE_2SHIFT * EFFECTIVE_AVAILABILITY * TARGET_UTILIZATION:,.1f} minutes/week")
     print()
     
     results = {}
     total_minutes = 0
     total_machines = 0
-    effective_capacity = MINUTES_PER_MACHINE_2SHIFT * TARGET_UTILIZATION
+    effective_capacity = MINUTES_PER_MACHINE_2SHIFT * EFFECTIVE_AVAILABILITY * TARGET_UTILIZATION
     
-    print("Process-by-Process Breakdown (Process-Based - 99% Utilization):")
+    print("Process-by-Process Breakdown (with 88.2% Availability & 99% Target Utilization):")
     print("-" * 70)
     print(f"{'Step':<6} {'Process':<10} {'Weekly Min':>12} {'Machines':>10} {'Util %':>10}")
     print("-" * 70)
@@ -47,7 +52,7 @@ def calculate_machines():
         weekly_minutes = DEMAND_P1 * step_data['time_per_unit']
         total_minutes += weekly_minutes
         
-        # Calculate machines needed using 99% target utilization
+        # Calculate machines needed (accounting for 88.2% availability and 99% target utilization)
         machines_needed = weekly_minutes / effective_capacity
         machines_rounded = math.ceil(machines_needed)
         

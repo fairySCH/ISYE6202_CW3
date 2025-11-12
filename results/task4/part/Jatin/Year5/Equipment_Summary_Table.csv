@@ -1,0 +1,9 @@
+Process,Equipment_per_Center,Total_Equipment,Utilization_per_Center,Group,Area_per_eqp_ft2,Total_area_of_each_eqp_centre_ft2,L,W,Configuration
+B1,14,36,1,ABCD,196,7056,50,110,9x4 vertical
+A,14,8,1,ABCD,196,1568,14,110,8x1 vertical
+B2,14,36,1,ABCD,196,7056,50,110,9x4 vertical
+C,14,4,1,ABCD,196,784,14,50,4x1 vertical
+D,14,18,1,ABCD,196,3528,26,110,9x2 vertical
+I,9,9,1,HIJ,504,4536,42,108,3x3
+J,8,18,1,HIJ,504,9072,84,108,3x6
+Total Machines,,129,,,,33600,,,

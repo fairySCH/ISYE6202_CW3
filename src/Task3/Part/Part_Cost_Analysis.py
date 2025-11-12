@@ -54,7 +54,7 @@ def load_equipment_requirements():
     """
     Load equipment requirements from part-based layout analysis
     """
-    equipment_df = pd.read_csv(COST_DIR.parent / "Capacity" / "Task3_Parts_Based_Equipment_Requirements.csv")
+    equipment_df = pd.read_csv(COST_DIR.parent / "Capacity" / "Part_Based_Equipment_Requirements.csv")
 
     # Calculate efficiency metrics from equipment requirements
     total_weekly_hours = equipment_df['Weekly_Hours'].sum()

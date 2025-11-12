@@ -1,0 +1,1536 @@
+====================================================================================================
+COMPREHENSIVE METRICS REPORT - ALL 20 PARTS (YEAR 1)
+====================================================================================================
+
+
+====================================================================================================
+P1 - DETAILED METRICS
+====================================================================================================
+
+Weekly Demand: 20,961.54 units
+Total Machines Required: 68
+
+Process Sequence: B → A → B → C → D → I → J
+
+----------------------------------------------------------------------------------------------------
+LAYOUT AREA CALCULATION:
+----------------------------------------------------------------------------------------------------
+
+Area: B (Process B, Occurrence 1)
+  - Machines: 13
+  - Grid: 6 rows × 3 cols
+  - Unit Size: 14 ft × 14 ft
+  - Overlap: 2 ft
+  - Effective Size: 38 ft × 74 ft
+  - Group: ABCD
+
+Area: A (Process A, Occurrence 1)
+  - Machines: 6
+  - Grid: 4 rows × 2 cols
+  - Unit Size: 14 ft × 14 ft
+  - Overlap: 2 ft
+  - Effective Size: 26 ft × 50 ft
+  - Group: ABCD
+
+Area: B2 (Process B, Occurrence 2)
+  - Machines: 13
+  - Grid: 6 rows × 3 cols
+  - Unit Size: 14 ft × 14 ft
+  - Overlap: 2 ft
+  - Effective Size: 38 ft × 74 ft
+  - Group: ABCD
+
+Area: C (Process C, Occurrence 1)
+  - Machines: 3
+  - Grid: 3 rows × 1 cols
+  - Unit Size: 14 ft × 14 ft
+  - Overlap: 2 ft
+  - Effective Size: 14 ft × 38 ft
+  - Group: ABCD
+
+Area: D (Process D, Occurrence 1)
+  - Machines: 13
+  - Grid: 6 rows × 3 cols
+  - Unit Size: 14 ft × 14 ft
+  - Overlap: 2 ft
+  - Effective Size: 38 ft × 74 ft
+  - Group: ABCD
+
+Area: I (Process I, Occurrence 1)
+  - Machines: 7
+  - Grid: 4 rows × 2 cols
+  - Unit Size: 14 ft × 36 ft
+  - Overlap: 0 ft
+  - Effective Size: 28 ft × 144 ft
+  - Group: HIJ
+
+Area: J (Process J, Occurrence 1)
+  - Machines: 13
+  - Grid: 6 rows × 3 cols
+  - Unit Size: 14 ft × 36 ft
+  - Overlap: 0 ft
+  - Effective Size: 42 ft × 216 ft
+  - Group: HIJ
+
+Total Layout Dimensions: 224 ft (W) × 216 ft (H)
+Total Area: 48,384 sq ft
+
+----------------------------------------------------------------------------------------------------
+FLOW DISTANCE CALCULATION:
+----------------------------------------------------------------------------------------------------
+  B center (19.0, 37.0) → A center (51.0, 25.0) = 34.18 ft
+  A center (51.0, 25.0) → B2 center (83.0, 37.0) = 34.18 ft
+  B2 center (83.0, 37.0) → C center (109.0, 19.0) = 31.62 ft
+  C center (109.0, 19.0) → D center (135.0, 37.0) = 31.62 ft
+  D center (135.0, 37.0) → I center (168.0, 72.0) = 48.1 ft
+  I center (168.0, 72.0) → J center (203.0, 108.0) = 50.21 ft
+
+Total Distance per Unit: 229.91 ft
+Total Weekly Flow: 20,961.54 units × 229.91 ft = 4,819,267.31 unit-ft/week
+
+----------------------------------------------------------------------------------------------------
+MACHINE USAGE BY PROCESS:
+----------------------------------------------------------------------------------------------------
+  Process A: 1 area(s)
+  Process B: 2 area(s)
+  Process C: 1 area(s)
+  Process D: 1 area(s)
+  Process I: 1 area(s)
+  Process J: 1 area(s)
+
+Total Process Areas: 7
+
+====================================================================================================
+P2 - DETAILED METRICS
+====================================================================================================
+
+Weekly Demand: 11,153.85 units
+Total Machines Required: 23
+
+Process Sequence: A → C → D → H → J
+
+----------------------------------------------------------------------------------------------------
+LAYOUT AREA CALCULATION:
+----------------------------------------------------------------------------------------------------
+
+Area: A (Process A, Occurrence 1)
+  - Machines: 4
+  - Grid: 3 rows × 2 cols
+  - Unit Size: 14 ft × 14 ft
+  - Overlap: 2 ft
+  - Effective Size: 26 ft × 38 ft
+  - Group: ABCD
+
+Area: C (Process C, Occurrence 1)
+  - Machines: 2
+  - Grid: 2 rows × 1 cols
+  - Unit Size: 14 ft × 14 ft
+  - Overlap: 2 ft
+  - Effective Size: 14 ft × 26 ft
+  - Group: ABCD
+
+Area: D (Process D, Occurrence 1)
+  - Machines: 7
+  - Grid: 4 rows × 2 cols
+  - Unit Size: 14 ft × 14 ft
+  - Overlap: 2 ft
+  - Effective Size: 26 ft × 50 ft
+  - Group: ABCD
+
+Area: H (Process H, Occurrence 1)
+  - Machines: 3
+  - Grid: 3 rows × 1 cols
+  - Unit Size: 14 ft × 36 ft
+  - Overlap: 0 ft
+  - Effective Size: 14 ft × 108 ft
+  - Group: HIJ
+
+Area: J (Process J, Occurrence 1)
+  - Machines: 7
+  - Grid: 4 rows × 2 cols
+  - Unit Size: 14 ft × 36 ft
+  - Overlap: 0 ft
+  - Effective Size: 28 ft × 144 ft
+  - Group: HIJ
+
+Total Layout Dimensions: 108 ft (W) × 144 ft (H)
+Total Area: 15,552 sq ft
+
+----------------------------------------------------------------------------------------------------
+FLOW DISTANCE CALCULATION:
+----------------------------------------------------------------------------------------------------
+  A center (13.0, 19.0) → C center (33.0, 13.0) = 20.88 ft
+  C center (33.0, 13.0) → D center (53.0, 25.0) = 23.32 ft
+  D center (53.0, 25.0) → H center (73.0, 54.0) = 35.23 ft
+  H center (73.0, 54.0) → J center (94.0, 72.0) = 27.66 ft
+
+Total Distance per Unit: 107.09 ft
+Total Weekly Flow: 11,153.85 units × 107.09 ft = 1,194,465.38 unit-ft/week
+
+----------------------------------------------------------------------------------------------------
+MACHINE USAGE BY PROCESS:
+----------------------------------------------------------------------------------------------------
+  Process A: 1 area(s)
+  Process C: 1 area(s)
+  Process D: 1 area(s)
+  Process H: 1 area(s)
+  Process J: 1 area(s)
+
+Total Process Areas: 5
+
+====================================================================================================
+P3 - DETAILED METRICS
+====================================================================================================
+
+Weekly Demand: 6,153.85 units
+Total Machines Required: 17
+
+Process Sequence: B → D → C → I → J
+
+----------------------------------------------------------------------------------------------------
+LAYOUT AREA CALCULATION:
+----------------------------------------------------------------------------------------------------
+
+Area: B (Process B, Occurrence 1)
+  - Machines: 3
+  - Grid: 3 rows × 1 cols
+  - Unit Size: 14 ft × 14 ft
+  - Overlap: 2 ft
+  - Effective Size: 14 ft × 38 ft
+  - Group: ABCD
+
+Area: D (Process D, Occurrence 1)
+  - Machines: 5
+  - Grid: 4 rows × 2 cols
+  - Unit Size: 14 ft × 14 ft
+  - Overlap: 2 ft
+  - Effective Size: 26 ft × 50 ft
+  - Group: ABCD
+
+Area: C (Process C, Occurrence 1)
+  - Machines: 2
+  - Grid: 2 rows × 1 cols
+  - Unit Size: 14 ft × 14 ft
+  - Overlap: 2 ft
+  - Effective Size: 14 ft × 26 ft
+  - Group: ABCD
+
+Area: I (Process I, Occurrence 1)
+  - Machines: 3
+  - Grid: 3 rows × 1 cols
+  - Unit Size: 14 ft × 36 ft
+  - Overlap: 0 ft
+  - Effective Size: 14 ft × 108 ft
+  - Group: HIJ
+
+Area: J (Process J, Occurrence 1)
+  - Machines: 4
+  - Grid: 3 rows × 2 cols
+  - Unit Size: 14 ft × 36 ft
+  - Overlap: 0 ft
+  - Effective Size: 28 ft × 108 ft
+  - Group: HIJ
+
+Total Layout Dimensions: 96 ft (W) × 108 ft (H)
+Total Area: 10,368 sq ft
+
+----------------------------------------------------------------------------------------------------
+FLOW DISTANCE CALCULATION:
+----------------------------------------------------------------------------------------------------
+  B center (7.0, 19.0) → D center (27.0, 25.0) = 20.88 ft
+  D center (27.0, 25.0) → C center (47.0, 13.0) = 23.32 ft
+  C center (47.0, 13.0) → I center (61.0, 54.0) = 43.32 ft
+  I center (61.0, 54.0) → J center (82.0, 54.0) = 21.0 ft
+
+Total Distance per Unit: 108.53 ft
+Total Weekly Flow: 6,153.85 units × 108.53 ft = 667,876.92 unit-ft/week
+
+----------------------------------------------------------------------------------------------------
+MACHINE USAGE BY PROCESS:
+----------------------------------------------------------------------------------------------------
+  Process B: 1 area(s)
+  Process C: 1 area(s)
+  Process D: 1 area(s)
+  Process I: 1 area(s)
+  Process J: 1 area(s)
+
+Total Process Areas: 5
+
+====================================================================================================
+P4 - DETAILED METRICS
+====================================================================================================
+
+Weekly Demand: 9,230.77 units
+Total Machines Required: 19
+
+Process Sequence: A → B → D → G → H
+
+----------------------------------------------------------------------------------------------------
+LAYOUT AREA CALCULATION:
+----------------------------------------------------------------------------------------------------
+
+Area: A (Process A, Occurrence 1)
+  - Machines: 3
+  - Grid: 3 rows × 1 cols
+  - Unit Size: 14 ft × 14 ft
+  - Overlap: 2 ft
+  - Effective Size: 14 ft × 38 ft
+  - Group: ABCD
+
+Area: B (Process B, Occurrence 1)
+  - Machines: 5
+  - Grid: 4 rows × 2 cols
+  - Unit Size: 14 ft × 14 ft
+  - Overlap: 2 ft
+  - Effective Size: 26 ft × 50 ft
+  - Group: ABCD
+
+Area: D (Process D, Occurrence 1)
+  - Machines: 7
+  - Grid: 4 rows × 2 cols
+  - Unit Size: 14 ft × 14 ft
+  - Overlap: 2 ft
+  - Effective Size: 26 ft × 50 ft
+  - Group: ABCD
+
+Area: G (Process G, Occurrence 1)
+  - Machines: 1
+  - Grid: 2 rows × 1 cols
+  - Unit Size: 22 ft × 15 ft
+  - Overlap: 0 ft
+  - Effective Size: 22 ft × 15 ft
+  - Group: EFG
+
+Area: H (Process H, Occurrence 1)
+  - Machines: 3
+  - Grid: 3 rows × 1 cols
+  - Unit Size: 14 ft × 36 ft
+  - Overlap: 0 ft
+  - Effective Size: 14 ft × 108 ft
+  - Group: HIJ
+
+Total Layout Dimensions: 102 ft (W) × 108 ft (H)
+Total Area: 11,016 sq ft
+
+----------------------------------------------------------------------------------------------------
+FLOW DISTANCE CALCULATION:
+----------------------------------------------------------------------------------------------------
+  A center (7.0, 19.0) → B center (27.0, 25.0) = 20.88 ft
+  B center (27.0, 25.0) → D center (53.0, 25.0) = 26.0 ft
+  D center (53.0, 25.0) → G center (77.0, 7.5) = 29.7 ft
+  G center (77.0, 7.5) → H center (95.0, 54.0) = 49.86 ft
+
+Total Distance per Unit: 126.45 ft
+Total Weekly Flow: 9,230.77 units × 126.45 ft = 1,167,230.77 unit-ft/week
+
+----------------------------------------------------------------------------------------------------
+MACHINE USAGE BY PROCESS:
+----------------------------------------------------------------------------------------------------
+  Process A: 1 area(s)
+  Process B: 1 area(s)
+  Process D: 1 area(s)
+  Process G: 1 area(s)
+  Process H: 1 area(s)
+
+Total Process Areas: 5
+
+====================================================================================================
+P5 - DETAILED METRICS
+====================================================================================================
+
+Weekly Demand: 6,923.08 units
+Total Machines Required: 14
+
+Process Sequence: B → C → D → I
+
+----------------------------------------------------------------------------------------------------
+LAYOUT AREA CALCULATION:
+----------------------------------------------------------------------------------------------------
+
+Area: B (Process B, Occurrence 1)
+  - Machines: 3
+  - Grid: 3 rows × 1 cols
+  - Unit Size: 14 ft × 14 ft
+  - Overlap: 2 ft
+  - Effective Size: 14 ft × 38 ft
+  - Group: ABCD
+
+Area: C (Process C, Occurrence 1)
+  - Machines: 2
+  - Grid: 2 rows × 1 cols
+  - Unit Size: 14 ft × 14 ft
+  - Overlap: 2 ft
+  - Effective Size: 14 ft × 26 ft
+  - Group: ABCD
+
+Area: D (Process D, Occurrence 1)
+  - Machines: 6
+  - Grid: 4 rows × 2 cols
+  - Unit Size: 14 ft × 14 ft
+  - Overlap: 2 ft
+  - Effective Size: 26 ft × 50 ft
+  - Group: ABCD
+
+Area: I (Process I, Occurrence 1)
+  - Machines: 3
+  - Grid: 3 rows × 1 cols
+  - Unit Size: 14 ft × 36 ft
+  - Overlap: 0 ft
+  - Effective Size: 14 ft × 108 ft
+  - Group: HIJ
+
+Total Layout Dimensions: 68 ft (W) × 108 ft (H)
+Total Area: 7,344 sq ft
+
+----------------------------------------------------------------------------------------------------
+FLOW DISTANCE CALCULATION:
+----------------------------------------------------------------------------------------------------
+  B center (7.0, 19.0) → C center (21.0, 13.0) = 15.23 ft
+  C center (21.0, 13.0) → D center (41.0, 25.0) = 23.32 ft
+  D center (41.0, 25.0) → I center (61.0, 54.0) = 35.23 ft
+
+Total Distance per Unit: 73.78 ft
+Total Weekly Flow: 6,923.08 units × 73.78 ft = 510,784.62 unit-ft/week
+
+----------------------------------------------------------------------------------------------------
+MACHINE USAGE BY PROCESS:
+----------------------------------------------------------------------------------------------------
+  Process B: 1 area(s)
+  Process C: 1 area(s)
+  Process D: 1 area(s)
+  Process I: 1 area(s)
+
+Total Process Areas: 4
+
+====================================================================================================
+P6 - DETAILED METRICS
+====================================================================================================
+
+Weekly Demand: 4,038.46 units
+Total Machines Required: 13
+
+Process Sequence: A → B → C → D → H → I → J
+
+----------------------------------------------------------------------------------------------------
+LAYOUT AREA CALCULATION:
+----------------------------------------------------------------------------------------------------
+
+Area: A (Process A, Occurrence 1)
+  - Machines: 1
+  - Grid: 2 rows × 1 cols
+  - Unit Size: 14 ft × 14 ft
+  - Overlap: 2 ft
+  - Effective Size: 14 ft × 14 ft
+  - Group: ABCD
+
+Area: B (Process B, Occurrence 1)
+  - Machines: 2
+  - Grid: 2 rows × 1 cols
+  - Unit Size: 14 ft × 14 ft
+  - Overlap: 2 ft
+  - Effective Size: 14 ft × 26 ft
+  - Group: ABCD
+
+Area: C (Process C, Occurrence 1)
+  - Machines: 1
+  - Grid: 2 rows × 1 cols
+  - Unit Size: 14 ft × 14 ft
+  - Overlap: 2 ft
+  - Effective Size: 14 ft × 14 ft
+  - Group: ABCD
+
+Area: D (Process D, Occurrence 1)
+  - Machines: 3
+  - Grid: 3 rows × 1 cols
+  - Unit Size: 14 ft × 14 ft
+  - Overlap: 2 ft
+  - Effective Size: 14 ft × 38 ft
+  - Group: ABCD
+
+Area: H (Process H, Occurrence 1)
+  - Machines: 1
+  - Grid: 2 rows × 1 cols
+  - Unit Size: 14 ft × 36 ft
+  - Overlap: 0 ft
+  - Effective Size: 14 ft × 36 ft
+  - Group: HIJ
+
+Area: I (Process I, Occurrence 1)
+  - Machines: 2
+  - Grid: 2 rows × 1 cols
+  - Unit Size: 14 ft × 36 ft
+  - Overlap: 0 ft
+  - Effective Size: 14 ft × 72 ft
+  - Group: HIJ
+
+Area: J (Process J, Occurrence 1)
+  - Machines: 3
+  - Grid: 3 rows × 1 cols
+  - Unit Size: 14 ft × 36 ft
+  - Overlap: 0 ft
+  - Effective Size: 14 ft × 108 ft
+  - Group: HIJ
+
+Total Layout Dimensions: 98 ft (W) × 108 ft (H)
+Total Area: 10,584 sq ft
+
+----------------------------------------------------------------------------------------------------
+FLOW DISTANCE CALCULATION:
+----------------------------------------------------------------------------------------------------
+  A center (7.0, 7.0) → B center (21.0, 13.0) = 15.23 ft
+  B center (21.0, 13.0) → C center (35.0, 7.0) = 15.23 ft
+  C center (35.0, 7.0) → D center (49.0, 19.0) = 18.44 ft
+  D center (49.0, 19.0) → H center (63.0, 18.0) = 14.04 ft
+  H center (63.0, 18.0) → I center (77.0, 36.0) = 22.8 ft
+  I center (77.0, 36.0) → J center (91.0, 54.0) = 22.8 ft
+
+Total Distance per Unit: 108.54 ft
+Total Weekly Flow: 4,038.46 units × 108.54 ft = 438,334.62 unit-ft/week
+
+----------------------------------------------------------------------------------------------------
+MACHINE USAGE BY PROCESS:
+----------------------------------------------------------------------------------------------------
+  Process A: 1 area(s)
+  Process B: 1 area(s)
+  Process C: 1 area(s)
+  Process D: 1 area(s)
+  Process H: 1 area(s)
+  Process I: 1 area(s)
+  Process J: 1 area(s)
+
+Total Process Areas: 7
+
+====================================================================================================
+P7 - DETAILED METRICS
+====================================================================================================
+
+Weekly Demand: 13,846.15 units
+Total Machines Required: 36
+
+Process Sequence: E → F → C → D → I → J
+
+----------------------------------------------------------------------------------------------------
+LAYOUT AREA CALCULATION:
+----------------------------------------------------------------------------------------------------
+
+Area: E (Process E, Occurrence 1)
+  - Machines: 4
+  - Grid: 3 rows × 2 cols
+  - Unit Size: 22 ft × 15 ft
+  - Overlap: 0 ft
+  - Effective Size: 44 ft × 45 ft
+  - Group: EFG
+
+Area: F (Process F, Occurrence 1)
+  - Machines: 5
+  - Grid: 4 rows × 2 cols
+  - Unit Size: 22 ft × 15 ft
+  - Overlap: 0 ft
+  - Effective Size: 44 ft × 60 ft
+  - Group: EFG
+
+Area: C (Process C, Occurrence 1)
+  - Machines: 3
+  - Grid: 3 rows × 1 cols
+  - Unit Size: 14 ft × 14 ft
+  - Overlap: 2 ft
+  - Effective Size: 14 ft × 38 ft
+  - Group: ABCD
+
+Area: D (Process D, Occurrence 1)
+  - Machines: 12
+  - Grid: 5 rows × 3 cols
+  - Unit Size: 14 ft × 14 ft
+  - Overlap: 2 ft
+  - Effective Size: 38 ft × 62 ft
+  - Group: ABCD
+
+Area: I (Process I, Occurrence 1)
+  - Machines: 5
+  - Grid: 4 rows × 2 cols
+  - Unit Size: 14 ft × 36 ft
+  - Overlap: 0 ft
+  - Effective Size: 28 ft × 144 ft
+  - Group: HIJ
+
+Area: J (Process J, Occurrence 1)
+  - Machines: 7
+  - Grid: 4 rows × 2 cols
+  - Unit Size: 14 ft × 36 ft
+  - Overlap: 0 ft
+  - Effective Size: 28 ft × 144 ft
+  - Group: HIJ
+
+Total Layout Dimensions: 196 ft (W) × 144 ft (H)
+Total Area: 28,224 sq ft
+
+----------------------------------------------------------------------------------------------------
+FLOW DISTANCE CALCULATION:
+----------------------------------------------------------------------------------------------------
+  E center (22.0, 22.5) → F center (66.0, 30.0) = 44.63 ft
+  F center (66.0, 30.0) → C center (95.0, 19.0) = 31.02 ft
+  C center (95.0, 19.0) → D center (121.0, 31.0) = 28.64 ft
+  D center (121.0, 31.0) → I center (154.0, 72.0) = 52.63 ft
+  I center (154.0, 72.0) → J center (182.0, 72.0) = 28.0 ft
+
+Total Distance per Unit: 184.92 ft
+Total Weekly Flow: 13,846.15 units × 184.92 ft = 2,560,430.77 unit-ft/week
+
+----------------------------------------------------------------------------------------------------
+MACHINE USAGE BY PROCESS:
+----------------------------------------------------------------------------------------------------
+  Process C: 1 area(s)
+  Process D: 1 area(s)
+  Process E: 1 area(s)
+  Process F: 1 area(s)
+  Process I: 1 area(s)
+  Process J: 1 area(s)
+
+Total Process Areas: 6
+
+====================================================================================================
+P8 - DETAILED METRICS
+====================================================================================================
+
+Weekly Demand: 4,615.38 units
+Total Machines Required: 8
+
+Process Sequence: E → H → J → I
+
+----------------------------------------------------------------------------------------------------
+LAYOUT AREA CALCULATION:
+----------------------------------------------------------------------------------------------------
+
+Area: E (Process E, Occurrence 1)
+  - Machines: 2
+  - Grid: 2 rows × 1 cols
+  - Unit Size: 22 ft × 15 ft
+  - Overlap: 0 ft
+  - Effective Size: 22 ft × 30 ft
+  - Group: EFG
+
+Area: H (Process H, Occurrence 1)
+  - Machines: 3
+  - Grid: 3 rows × 1 cols
+  - Unit Size: 14 ft × 36 ft
+  - Overlap: 0 ft
+  - Effective Size: 14 ft × 108 ft
+  - Group: HIJ
+
+Area: J (Process J, Occurrence 1)
+  - Machines: 1
+  - Grid: 2 rows × 1 cols
+  - Unit Size: 14 ft × 36 ft
+  - Overlap: 0 ft
+  - Effective Size: 14 ft × 36 ft
+  - Group: HIJ
+
+Area: I (Process I, Occurrence 1)
+  - Machines: 2
+  - Grid: 2 rows × 1 cols
+  - Unit Size: 14 ft × 36 ft
+  - Overlap: 0 ft
+  - Effective Size: 14 ft × 72 ft
+  - Group: HIJ
+
+Total Layout Dimensions: 64 ft (W) × 108 ft (H)
+Total Area: 6,912 sq ft
+
+----------------------------------------------------------------------------------------------------
+FLOW DISTANCE CALCULATION:
+----------------------------------------------------------------------------------------------------
+  E center (11.0, 15.0) → H center (29.0, 54.0) = 42.95 ft
+  H center (29.0, 54.0) → J center (43.0, 18.0) = 38.63 ft
+  J center (43.0, 18.0) → I center (57.0, 36.0) = 22.8 ft
+
+Total Distance per Unit: 104.38 ft
+Total Weekly Flow: 4,615.38 units × 104.38 ft = 481,753.85 unit-ft/week
+
+----------------------------------------------------------------------------------------------------
+MACHINE USAGE BY PROCESS:
+----------------------------------------------------------------------------------------------------
+  Process E: 1 area(s)
+  Process H: 1 area(s)
+  Process I: 1 area(s)
+  Process J: 1 area(s)
+
+Total Process Areas: 4
+
+====================================================================================================
+P9 - DETAILED METRICS
+====================================================================================================
+
+Weekly Demand: 8,846.15 units
+Total Machines Required: 21
+
+Process Sequence: F → G → E → G → I → J
+
+----------------------------------------------------------------------------------------------------
+LAYOUT AREA CALCULATION:
+----------------------------------------------------------------------------------------------------
+
+Area: F (Process F, Occurrence 1)
+  - Machines: 4
+  - Grid: 3 rows × 2 cols
+  - Unit Size: 22 ft × 15 ft
+  - Overlap: 0 ft
+  - Effective Size: 44 ft × 45 ft
+  - Group: EFG
+
+Area: G (Process G, Occurrence 1)
+  - Machines: 2
+  - Grid: 2 rows × 1 cols
+  - Unit Size: 22 ft × 15 ft
+  - Overlap: 0 ft
+  - Effective Size: 22 ft × 30 ft
+  - Group: EFG
+
+Area: E (Process E, Occurrence 1)
+  - Machines: 3
+  - Grid: 3 rows × 1 cols
+  - Unit Size: 22 ft × 15 ft
+  - Overlap: 0 ft
+  - Effective Size: 22 ft × 45 ft
+  - Group: EFG
+
+Area: G2 (Process G, Occurrence 2)
+  - Machines: 2
+  - Grid: 2 rows × 1 cols
+  - Unit Size: 22 ft × 15 ft
+  - Overlap: 0 ft
+  - Effective Size: 22 ft × 30 ft
+  - Group: EFG
+
+Area: I (Process I, Occurrence 1)
+  - Machines: 3
+  - Grid: 3 rows × 1 cols
+  - Unit Size: 14 ft × 36 ft
+  - Overlap: 0 ft
+  - Effective Size: 14 ft × 108 ft
+  - Group: HIJ
+
+Area: J (Process J, Occurrence 1)
+  - Machines: 7
+  - Grid: 4 rows × 2 cols
+  - Unit Size: 14 ft × 36 ft
+  - Overlap: 0 ft
+  - Effective Size: 28 ft × 144 ft
+  - Group: HIJ
+
+Total Layout Dimensions: 152 ft (W) × 144 ft (H)
+Total Area: 21,888 sq ft
+
+----------------------------------------------------------------------------------------------------
+FLOW DISTANCE CALCULATION:
+----------------------------------------------------------------------------------------------------
+  F center (22.0, 22.5) → G center (55.0, 15.0) = 33.84 ft
+  G center (55.0, 15.0) → E center (77.0, 22.5) = 23.24 ft
+  E center (77.0, 22.5) → G2 center (99.0, 15.0) = 23.24 ft
+  G2 center (99.0, 15.0) → I center (117.0, 54.0) = 42.95 ft
+  I center (117.0, 54.0) → J center (138.0, 72.0) = 27.66 ft
+
+Total Distance per Unit: 150.94 ft
+Total Weekly Flow: 8,846.15 units × 150.94 ft = 1,335,238.46 unit-ft/week
+
+----------------------------------------------------------------------------------------------------
+MACHINE USAGE BY PROCESS:
+----------------------------------------------------------------------------------------------------
+  Process E: 1 area(s)
+  Process F: 1 area(s)
+  Process G: 2 area(s)
+  Process I: 1 area(s)
+  Process J: 1 area(s)
+
+Total Process Areas: 6
+
+====================================================================================================
+P10 - DETAILED METRICS
+====================================================================================================
+
+Weekly Demand: 4,615.38 units
+Total Machines Required: 9
+
+Process Sequence: E → F → I → J
+
+----------------------------------------------------------------------------------------------------
+LAYOUT AREA CALCULATION:
+----------------------------------------------------------------------------------------------------
+
+Area: E (Process E, Occurrence 1)
+  - Machines: 2
+  - Grid: 2 rows × 1 cols
+  - Unit Size: 22 ft × 15 ft
+  - Overlap: 0 ft
+  - Effective Size: 22 ft × 30 ft
+  - Group: EFG
+
+Area: F (Process F, Occurrence 1)
+  - Machines: 2
+  - Grid: 2 rows × 1 cols
+  - Unit Size: 22 ft × 15 ft
+  - Overlap: 0 ft
+  - Effective Size: 22 ft × 30 ft
+  - Group: EFG
+
+Area: I (Process I, Occurrence 1)
+  - Machines: 2
+  - Grid: 2 rows × 1 cols
+  - Unit Size: 14 ft × 36 ft
+  - Overlap: 0 ft
+  - Effective Size: 14 ft × 72 ft
+  - Group: HIJ
+
+Area: J (Process J, Occurrence 1)
+  - Machines: 3
+  - Grid: 3 rows × 1 cols
+  - Unit Size: 14 ft × 36 ft
+  - Overlap: 0 ft
+  - Effective Size: 14 ft × 108 ft
+  - Group: HIJ
+
+Total Layout Dimensions: 72 ft (W) × 108 ft (H)
+Total Area: 7,776 sq ft
+
+----------------------------------------------------------------------------------------------------
+FLOW DISTANCE CALCULATION:
+----------------------------------------------------------------------------------------------------
+  E center (11.0, 15.0) → F center (33.0, 15.0) = 22.0 ft
+  F center (33.0, 15.0) → I center (51.0, 36.0) = 27.66 ft
+  I center (51.0, 36.0) → J center (65.0, 54.0) = 22.8 ft
+
+Total Distance per Unit: 72.46 ft
+Total Weekly Flow: 4,615.38 units × 72.46 ft = 334,430.77 unit-ft/week
+
+----------------------------------------------------------------------------------------------------
+MACHINE USAGE BY PROCESS:
+----------------------------------------------------------------------------------------------------
+  Process E: 1 area(s)
+  Process F: 1 area(s)
+  Process I: 1 area(s)
+  Process J: 1 area(s)
+
+Total Process Areas: 4
+
+====================================================================================================
+P11 - DETAILED METRICS
+====================================================================================================
+
+Weekly Demand: 8,076.92 units
+Total Machines Required: 10
+
+Process Sequence: E → G → E → G → I
+
+----------------------------------------------------------------------------------------------------
+LAYOUT AREA CALCULATION:
+----------------------------------------------------------------------------------------------------
+
+Area: E (Process E, Occurrence 1)
+  - Machines: 3
+  - Grid: 3 rows × 1 cols
+  - Unit Size: 22 ft × 15 ft
+  - Overlap: 0 ft
+  - Effective Size: 22 ft × 45 ft
+  - Group: EFG
+
+Area: G (Process G, Occurrence 1)
+  - Machines: 1
+  - Grid: 2 rows × 1 cols
+  - Unit Size: 22 ft × 15 ft
+  - Overlap: 0 ft
+  - Effective Size: 22 ft × 15 ft
+  - Group: EFG
+
+Area: E2 (Process E, Occurrence 2)
+  - Machines: 3
+  - Grid: 3 rows × 1 cols
+  - Unit Size: 22 ft × 15 ft
+  - Overlap: 0 ft
+  - Effective Size: 22 ft × 45 ft
+  - Group: EFG
+
+Area: G2 (Process G, Occurrence 2)
+  - Machines: 1
+  - Grid: 2 rows × 1 cols
+  - Unit Size: 22 ft × 15 ft
+  - Overlap: 0 ft
+  - Effective Size: 22 ft × 15 ft
+  - Group: EFG
+
+Area: I (Process I, Occurrence 1)
+  - Machines: 2
+  - Grid: 2 rows × 1 cols
+  - Unit Size: 14 ft × 36 ft
+  - Overlap: 0 ft
+  - Effective Size: 14 ft × 72 ft
+  - Group: HIJ
+
+Total Layout Dimensions: 102 ft (W) × 72 ft (H)
+Total Area: 7,344 sq ft
+
+----------------------------------------------------------------------------------------------------
+FLOW DISTANCE CALCULATION:
+----------------------------------------------------------------------------------------------------
+  E center (11.0, 22.5) → G center (33.0, 7.5) = 26.63 ft
+  G center (33.0, 7.5) → E2 center (55.0, 22.5) = 26.63 ft
+  E2 center (55.0, 22.5) → G2 center (77.0, 7.5) = 26.63 ft
+  G2 center (77.0, 7.5) → I center (95.0, 36.0) = 33.71 ft
+
+Total Distance per Unit: 113.59 ft
+Total Weekly Flow: 8,076.92 units × 113.59 ft = 917,457.69 unit-ft/week
+
+----------------------------------------------------------------------------------------------------
+MACHINE USAGE BY PROCESS:
+----------------------------------------------------------------------------------------------------
+  Process E: 2 area(s)
+  Process G: 2 area(s)
+  Process I: 1 area(s)
+
+Total Process Areas: 5
+
+====================================================================================================
+P12 - DETAILED METRICS
+====================================================================================================
+
+Weekly Demand: 10,000.00 units
+Total Machines Required: 17
+
+Process Sequence: E → G → F → I → J
+
+----------------------------------------------------------------------------------------------------
+LAYOUT AREA CALCULATION:
+----------------------------------------------------------------------------------------------------
+
+Area: E (Process E, Occurrence 1)
+  - Machines: 3
+  - Grid: 3 rows × 1 cols
+  - Unit Size: 22 ft × 15 ft
+  - Overlap: 0 ft
+  - Effective Size: 22 ft × 45 ft
+  - Group: EFG
+
+Area: G (Process G, Occurrence 1)
+  - Machines: 2
+  - Grid: 2 rows × 1 cols
+  - Unit Size: 22 ft × 15 ft
+  - Overlap: 0 ft
+  - Effective Size: 22 ft × 30 ft
+  - Group: EFG
+
+Area: F (Process F, Occurrence 1)
+  - Machines: 3
+  - Grid: 3 rows × 1 cols
+  - Unit Size: 22 ft × 15 ft
+  - Overlap: 0 ft
+  - Effective Size: 22 ft × 45 ft
+  - Group: EFG
+
+Area: I (Process I, Occurrence 1)
+  - Machines: 3
+  - Grid: 3 rows × 1 cols
+  - Unit Size: 14 ft × 36 ft
+  - Overlap: 0 ft
+  - Effective Size: 14 ft × 108 ft
+  - Group: HIJ
+
+Area: J (Process J, Occurrence 1)
+  - Machines: 6
+  - Grid: 4 rows × 2 cols
+  - Unit Size: 14 ft × 36 ft
+  - Overlap: 0 ft
+  - Effective Size: 28 ft × 144 ft
+  - Group: HIJ
+
+Total Layout Dimensions: 108 ft (W) × 144 ft (H)
+Total Area: 15,552 sq ft
+
+----------------------------------------------------------------------------------------------------
+FLOW DISTANCE CALCULATION:
+----------------------------------------------------------------------------------------------------
+  E center (11.0, 22.5) → G center (33.0, 15.0) = 23.24 ft
+  G center (33.0, 15.0) → F center (55.0, 22.5) = 23.24 ft
+  F center (55.0, 22.5) → I center (73.0, 54.0) = 36.28 ft
+  I center (73.0, 54.0) → J center (94.0, 72.0) = 27.66 ft
+
+Total Distance per Unit: 110.43 ft
+Total Weekly Flow: 10,000.00 units × 110.43 ft = 1,104,300.00 unit-ft/week
+
+----------------------------------------------------------------------------------------------------
+MACHINE USAGE BY PROCESS:
+----------------------------------------------------------------------------------------------------
+  Process E: 1 area(s)
+  Process F: 1 area(s)
+  Process G: 1 area(s)
+  Process I: 1 area(s)
+  Process J: 1 area(s)
+
+Total Process Areas: 5
+
+====================================================================================================
+P13 - DETAILED METRICS
+====================================================================================================
+
+Weekly Demand: 5,000.00 units
+Total Machines Required: 13
+
+Process Sequence: E → F → G → F → G → H → I
+
+----------------------------------------------------------------------------------------------------
+LAYOUT AREA CALCULATION:
+----------------------------------------------------------------------------------------------------
+
+Area: E (Process E, Occurrence 1)
+  - Machines: 2
+  - Grid: 2 rows × 1 cols
+  - Unit Size: 22 ft × 15 ft
+  - Overlap: 0 ft
+  - Effective Size: 22 ft × 30 ft
+  - Group: EFG
+
+Area: F (Process F, Occurrence 1)
+  - Machines: 2
+  - Grid: 2 rows × 1 cols
+  - Unit Size: 22 ft × 15 ft
+  - Overlap: 0 ft
+  - Effective Size: 22 ft × 30 ft
+  - Group: EFG
+
+Area: G (Process G, Occurrence 1)
+  - Machines: 1
+  - Grid: 2 rows × 1 cols
+  - Unit Size: 22 ft × 15 ft
+  - Overlap: 0 ft
+  - Effective Size: 22 ft × 15 ft
+  - Group: EFG
+
+Area: F2 (Process F, Occurrence 2)
+  - Machines: 2
+  - Grid: 2 rows × 1 cols
+  - Unit Size: 22 ft × 15 ft
+  - Overlap: 0 ft
+  - Effective Size: 22 ft × 30 ft
+  - Group: EFG
+
+Area: G2 (Process G, Occurrence 2)
+  - Machines: 1
+  - Grid: 2 rows × 1 cols
+  - Unit Size: 22 ft × 15 ft
+  - Overlap: 0 ft
+  - Effective Size: 22 ft × 15 ft
+  - Group: EFG
+
+Area: H (Process H, Occurrence 1)
+  - Machines: 3
+  - Grid: 3 rows × 1 cols
+  - Unit Size: 14 ft × 36 ft
+  - Overlap: 0 ft
+  - Effective Size: 14 ft × 108 ft
+  - Group: HIJ
+
+Area: I (Process I, Occurrence 1)
+  - Machines: 2
+  - Grid: 2 rows × 1 cols
+  - Unit Size: 14 ft × 36 ft
+  - Overlap: 0 ft
+  - Effective Size: 14 ft × 72 ft
+  - Group: HIJ
+
+Total Layout Dimensions: 138 ft (W) × 108 ft (H)
+Total Area: 14,904 sq ft
+
+----------------------------------------------------------------------------------------------------
+FLOW DISTANCE CALCULATION:
+----------------------------------------------------------------------------------------------------
+  E center (11.0, 15.0) → F center (33.0, 15.0) = 22.0 ft
+  F center (33.0, 15.0) → G center (55.0, 7.5) = 23.24 ft
+  G center (55.0, 7.5) → F2 center (77.0, 15.0) = 23.24 ft
+  F2 center (77.0, 15.0) → G2 center (99.0, 7.5) = 23.24 ft
+  G2 center (99.0, 7.5) → H center (117.0, 54.0) = 49.86 ft
+  H center (117.0, 54.0) → I center (131.0, 36.0) = 22.8 ft
+
+Total Distance per Unit: 164.4 ft
+Total Weekly Flow: 5,000.00 units × 164.4 ft = 822,000.00 unit-ft/week
+
+----------------------------------------------------------------------------------------------------
+MACHINE USAGE BY PROCESS:
+----------------------------------------------------------------------------------------------------
+  Process E: 1 area(s)
+  Process F: 2 area(s)
+  Process G: 2 area(s)
+  Process H: 1 area(s)
+  Process I: 1 area(s)
+
+Total Process Areas: 7
+
+====================================================================================================
+P14 - DETAILED METRICS
+====================================================================================================
+
+Weekly Demand: 18,076.92 units
+Total Machines Required: 23
+
+Process Sequence: E → F → G → H
+
+----------------------------------------------------------------------------------------------------
+LAYOUT AREA CALCULATION:
+----------------------------------------------------------------------------------------------------
+
+Area: E (Process E, Occurrence 1)
+  - Machines: 5
+  - Grid: 4 rows × 2 cols
+  - Unit Size: 22 ft × 15 ft
+  - Overlap: 0 ft
+  - Effective Size: 44 ft × 60 ft
+  - Group: EFG
+
+Area: F (Process F, Occurrence 1)
+  - Machines: 7
+  - Grid: 4 rows × 2 cols
+  - Unit Size: 22 ft × 15 ft
+  - Overlap: 0 ft
+  - Effective Size: 44 ft × 60 ft
+  - Group: EFG
+
+Area: G (Process G, Occurrence 1)
+  - Machines: 3
+  - Grid: 3 rows × 1 cols
+  - Unit Size: 22 ft × 15 ft
+  - Overlap: 0 ft
+  - Effective Size: 22 ft × 45 ft
+  - Group: EFG
+
+Area: H (Process H, Occurrence 1)
+  - Machines: 8
+  - Grid: 4 rows × 2 cols
+  - Unit Size: 14 ft × 36 ft
+  - Overlap: 0 ft
+  - Effective Size: 28 ft × 144 ft
+  - Group: HIJ
+
+Total Layout Dimensions: 138 ft (W) × 144 ft (H)
+Total Area: 19,872 sq ft
+
+----------------------------------------------------------------------------------------------------
+FLOW DISTANCE CALCULATION:
+----------------------------------------------------------------------------------------------------
+  E center (22.0, 30.0) → F center (66.0, 30.0) = 44.0 ft
+  F center (66.0, 30.0) → G center (99.0, 22.5) = 33.84 ft
+  G center (99.0, 22.5) → H center (124.0, 72.0) = 55.45 ft
+
+Total Distance per Unit: 133.3 ft
+Total Weekly Flow: 18,076.92 units × 133.3 ft = 2,409,653.85 unit-ft/week
+
+----------------------------------------------------------------------------------------------------
+MACHINE USAGE BY PROCESS:
+----------------------------------------------------------------------------------------------------
+  Process E: 1 area(s)
+  Process F: 1 area(s)
+  Process G: 1 area(s)
+  Process H: 1 area(s)
+
+Total Process Areas: 4
+
+====================================================================================================
+P15 - DETAILED METRICS
+====================================================================================================
+
+Weekly Demand: 2,307.69 units
+Total Machines Required: 7
+
+Process Sequence: E → G → F → H → J
+
+----------------------------------------------------------------------------------------------------
+LAYOUT AREA CALCULATION:
+----------------------------------------------------------------------------------------------------
+
+Area: E (Process E, Occurrence 1)
+  - Machines: 1
+  - Grid: 2 rows × 1 cols
+  - Unit Size: 22 ft × 15 ft
+  - Overlap: 0 ft
+  - Effective Size: 22 ft × 15 ft
+  - Group: EFG
+
+Area: G (Process G, Occurrence 1)
+  - Machines: 1
+  - Grid: 2 rows × 1 cols
+  - Unit Size: 22 ft × 15 ft
+  - Overlap: 0 ft
+  - Effective Size: 22 ft × 15 ft
+  - Group: EFG
+
+Area: F (Process F, Occurrence 1)
+  - Machines: 1
+  - Grid: 2 rows × 1 cols
+  - Unit Size: 22 ft × 15 ft
+  - Overlap: 0 ft
+  - Effective Size: 22 ft × 15 ft
+  - Group: EFG
+
+Area: H (Process H, Occurrence 1)
+  - Machines: 2
+  - Grid: 2 rows × 1 cols
+  - Unit Size: 14 ft × 36 ft
+  - Overlap: 0 ft
+  - Effective Size: 14 ft × 72 ft
+  - Group: HIJ
+
+Area: J (Process J, Occurrence 1)
+  - Machines: 2
+  - Grid: 2 rows × 1 cols
+  - Unit Size: 14 ft × 36 ft
+  - Overlap: 0 ft
+  - Effective Size: 14 ft × 72 ft
+  - Group: HIJ
+
+Total Layout Dimensions: 94 ft (W) × 72 ft (H)
+Total Area: 6,768 sq ft
+
+----------------------------------------------------------------------------------------------------
+FLOW DISTANCE CALCULATION:
+----------------------------------------------------------------------------------------------------
+  E center (11.0, 7.5) → G center (33.0, 7.5) = 22.0 ft
+  G center (33.0, 7.5) → F center (55.0, 7.5) = 22.0 ft
+  F center (55.0, 7.5) → H center (73.0, 36.0) = 33.71 ft
+  H center (73.0, 36.0) → J center (87.0, 36.0) = 14.0 ft
+
+Total Distance per Unit: 91.71 ft
+Total Weekly Flow: 2,307.69 units × 91.71 ft = 211,638.46 unit-ft/week
+
+----------------------------------------------------------------------------------------------------
+MACHINE USAGE BY PROCESS:
+----------------------------------------------------------------------------------------------------
+  Process E: 1 area(s)
+  Process F: 1 area(s)
+  Process G: 1 area(s)
+  Process H: 1 area(s)
+  Process J: 1 area(s)
+
+Total Process Areas: 5
+
+====================================================================================================
+P16 - DETAILED METRICS
+====================================================================================================
+
+Weekly Demand: 11,923.08 units
+Total Machines Required: 31
+
+Process Sequence: F → H → I → J
+
+----------------------------------------------------------------------------------------------------
+LAYOUT AREA CALCULATION:
+----------------------------------------------------------------------------------------------------
+
+Area: F (Process F, Occurrence 1)
+  - Machines: 4
+  - Grid: 3 rows × 2 cols
+  - Unit Size: 22 ft × 15 ft
+  - Overlap: 0 ft
+  - Effective Size: 44 ft × 45 ft
+  - Group: EFG
+
+Area: H (Process H, Occurrence 1)
+  - Machines: 15
+  - Grid: 6 rows × 3 cols
+  - Unit Size: 14 ft × 36 ft
+  - Overlap: 0 ft
+  - Effective Size: 42 ft × 216 ft
+  - Group: HIJ
+
+Area: I (Process I, Occurrence 1)
+  - Machines: 4
+  - Grid: 3 rows × 2 cols
+  - Unit Size: 14 ft × 36 ft
+  - Overlap: 0 ft
+  - Effective Size: 28 ft × 108 ft
+  - Group: HIJ
+
+Area: J (Process J, Occurrence 1)
+  - Machines: 8
+  - Grid: 4 rows × 2 cols
+  - Unit Size: 14 ft × 36 ft
+  - Overlap: 0 ft
+  - Effective Size: 28 ft × 144 ft
+  - Group: HIJ
+
+Total Layout Dimensions: 142 ft (W) × 216 ft (H)
+Total Area: 30,672 sq ft
+
+----------------------------------------------------------------------------------------------------
+FLOW DISTANCE CALCULATION:
+----------------------------------------------------------------------------------------------------
+  F center (22.0, 22.5) → H center (65.0, 108.0) = 95.7 ft
+  H center (65.0, 108.0) → I center (100.0, 54.0) = 64.35 ft
+  I center (100.0, 54.0) → J center (128.0, 72.0) = 33.29 ft
+
+Total Distance per Unit: 193.34 ft
+Total Weekly Flow: 11,923.08 units × 193.34 ft = 2,305,207.69 unit-ft/week
+
+----------------------------------------------------------------------------------------------------
+MACHINE USAGE BY PROCESS:
+----------------------------------------------------------------------------------------------------
+  Process F: 1 area(s)
+  Process H: 1 area(s)
+  Process I: 1 area(s)
+  Process J: 1 area(s)
+
+Total Process Areas: 4
+
+====================================================================================================
+P17 - DETAILED METRICS
+====================================================================================================
+
+Weekly Demand: 5,000.00 units
+Total Machines Required: 10
+
+Process Sequence: K → L → M
+
+----------------------------------------------------------------------------------------------------
+LAYOUT AREA CALCULATION:
+----------------------------------------------------------------------------------------------------
+
+Area: K (Process K, Occurrence 1)
+  - Machines: 1
+  - Grid: 2 rows × 1 cols
+  - Unit Size: 3 ft × 6 ft
+  - Overlap: 1 ft
+  - Effective Size: 3 ft × 6 ft
+  - Group: KLM
+
+Area: L (Process L, Occurrence 1)
+  - Machines: 4
+  - Grid: 3 rows × 2 cols
+  - Unit Size: 3 ft × 6 ft
+  - Overlap: 1 ft
+  - Effective Size: 5 ft × 16 ft
+  - Group: KLM
+
+Area: M (Process M, Occurrence 1)
+  - Machines: 5
+  - Grid: 4 rows × 2 cols
+  - Unit Size: 3 ft × 6 ft
+  - Overlap: 1 ft
+  - Effective Size: 5 ft × 21 ft
+  - Group: KLM
+
+Total Layout Dimensions: 13 ft (W) × 21 ft (H)
+Total Area: 273 sq ft
+
+----------------------------------------------------------------------------------------------------
+FLOW DISTANCE CALCULATION:
+----------------------------------------------------------------------------------------------------
+  K center (1.5, 3.0) → L center (5.5, 8.0) = 6.4 ft
+  L center (5.5, 8.0) → M center (10.5, 10.5) = 5.59 ft
+
+Total Distance per Unit: 11.99 ft
+Total Weekly Flow: 5,000.00 units × 11.99 ft = 59,950.00 unit-ft/week
+
+----------------------------------------------------------------------------------------------------
+MACHINE USAGE BY PROCESS:
+----------------------------------------------------------------------------------------------------
+  Process K: 1 area(s)
+  Process L: 1 area(s)
+  Process M: 1 area(s)
+
+Total Process Areas: 3
+
+====================================================================================================
+P18 - DETAILED METRICS
+====================================================================================================
+
+Weekly Demand: 11,923.08 units
+Total Machines Required: 20
+
+Process Sequence: K → L → K → M
+
+----------------------------------------------------------------------------------------------------
+LAYOUT AREA CALCULATION:
+----------------------------------------------------------------------------------------------------
+
+Area: K (Process K, Occurrence 1)
+  - Machines: 3
+  - Grid: 3 rows × 1 cols
+  - Unit Size: 3 ft × 6 ft
+  - Overlap: 1 ft
+  - Effective Size: 3 ft × 16 ft
+  - Group: KLM
+
+Area: L (Process L, Occurrence 1)
+  - Machines: 4
+  - Grid: 3 rows × 2 cols
+  - Unit Size: 3 ft × 6 ft
+  - Overlap: 1 ft
+  - Effective Size: 5 ft × 16 ft
+  - Group: KLM
+
+Area: K2 (Process K, Occurrence 2)
+  - Machines: 2
+  - Grid: 2 rows × 1 cols
+  - Unit Size: 3 ft × 6 ft
+  - Overlap: 1 ft
+  - Effective Size: 3 ft × 11 ft
+  - Group: KLM
+
+Area: M (Process M, Occurrence 1)
+  - Machines: 11
+  - Grid: 5 rows × 3 cols
+  - Unit Size: 3 ft × 6 ft
+  - Overlap: 1 ft
+  - Effective Size: 7 ft × 26 ft
+  - Group: KLM
+
+Total Layout Dimensions: 18 ft (W) × 26 ft (H)
+Total Area: 468 sq ft
+
+----------------------------------------------------------------------------------------------------
+FLOW DISTANCE CALCULATION:
+----------------------------------------------------------------------------------------------------
+  K center (1.5, 8.0) → L center (5.5, 8.0) = 4.0 ft
+  L center (5.5, 8.0) → K2 center (9.5, 5.5) = 4.72 ft
+  K2 center (9.5, 5.5) → M center (14.5, 13.0) = 9.01 ft
+
+Total Distance per Unit: 17.73 ft
+Total Weekly Flow: 11,923.08 units × 17.73 ft = 211,396.15 unit-ft/week
+
+----------------------------------------------------------------------------------------------------
+MACHINE USAGE BY PROCESS:
+----------------------------------------------------------------------------------------------------
+  Process K: 2 area(s)
+  Process L: 1 area(s)
+  Process M: 1 area(s)
+
+Total Process Areas: 4
+
+====================================================================================================
+P19 - DETAILED METRICS
+====================================================================================================
+
+Weekly Demand: 20,000.00 units
+Total Machines Required: 51
+
+Process Sequence: L → M → L → M
+
+----------------------------------------------------------------------------------------------------
+LAYOUT AREA CALCULATION:
+----------------------------------------------------------------------------------------------------
+
+Area: L (Process L, Occurrence 1)
+  - Machines: 11
+  - Grid: 5 rows × 3 cols
+  - Unit Size: 3 ft × 6 ft
+  - Overlap: 1 ft
+  - Effective Size: 7 ft × 26 ft
+  - Group: KLM
+
+Area: M (Process M, Occurrence 1)
+  - Machines: 12
+  - Grid: 5 rows × 3 cols
+  - Unit Size: 3 ft × 6 ft
+  - Overlap: 1 ft
+  - Effective Size: 7 ft × 26 ft
+  - Group: KLM
+
+Area: L2 (Process L, Occurrence 2)
+  - Machines: 10
+  - Grid: 5 rows × 2 cols
+  - Unit Size: 3 ft × 6 ft
+  - Overlap: 1 ft
+  - Effective Size: 5 ft × 26 ft
+  - Group: KLM
+
+Area: M2 (Process M, Occurrence 2)
+  - Machines: 18
+  - Grid: 6 rows × 3 cols
+  - Unit Size: 3 ft × 6 ft
+  - Overlap: 1 ft
+  - Effective Size: 7 ft × 31 ft
+  - Group: KLM
+
+Total Layout Dimensions: 26 ft (W) × 31 ft (H)
+Total Area: 806 sq ft
+
+----------------------------------------------------------------------------------------------------
+FLOW DISTANCE CALCULATION:
+----------------------------------------------------------------------------------------------------
+  L center (3.5, 13.0) → M center (10.5, 13.0) = 7.0 ft
+  M center (10.5, 13.0) → L2 center (16.5, 13.0) = 6.0 ft
+  L2 center (16.5, 13.0) → M2 center (22.5, 15.5) = 6.5 ft
+
+Total Distance per Unit: 19.5 ft
+Total Weekly Flow: 20,000.00 units × 19.5 ft = 390,000.00 unit-ft/week
+
+----------------------------------------------------------------------------------------------------
+MACHINE USAGE BY PROCESS:
+----------------------------------------------------------------------------------------------------
+  Process L: 2 area(s)
+  Process M: 2 area(s)
+
+Total Process Areas: 4
+
+====================================================================================================
+P20 - DETAILED METRICS
+====================================================================================================
+
+Weekly Demand: 14,807.69 units
+Total Machines Required: 22
+
+Process Sequence: L → K → M
+
+----------------------------------------------------------------------------------------------------
+LAYOUT AREA CALCULATION:
+----------------------------------------------------------------------------------------------------
+
+Area: L (Process L, Occurrence 1)
+  - Machines: 8
+  - Grid: 4 rows × 2 cols
+  - Unit Size: 3 ft × 6 ft
+  - Overlap: 1 ft
+  - Effective Size: 5 ft × 21 ft
+  - Group: KLM
+
+Area: K (Process K, Occurrence 1)
+  - Machines: 3
+  - Grid: 3 rows × 1 cols
+  - Unit Size: 3 ft × 6 ft
+  - Overlap: 1 ft
+  - Effective Size: 3 ft × 16 ft
+  - Group: KLM
+
+Area: M (Process M, Occurrence 1)
+  - Machines: 11
+  - Grid: 5 rows × 3 cols
+  - Unit Size: 3 ft × 6 ft
+  - Overlap: 1 ft
+  - Effective Size: 7 ft × 26 ft
+  - Group: KLM
+
+Total Layout Dimensions: 15 ft (W) × 26 ft (H)
+Total Area: 390 sq ft
+
+----------------------------------------------------------------------------------------------------
+FLOW DISTANCE CALCULATION:
+----------------------------------------------------------------------------------------------------
+  L center (2.5, 10.5) → K center (6.5, 8.0) = 4.72 ft
+  K center (6.5, 8.0) → M center (11.5, 13.0) = 7.07 ft
+
+Total Distance per Unit: 11.79 ft
+Total Weekly Flow: 14,807.69 units × 11.79 ft = 174,582.69 unit-ft/week
+
+----------------------------------------------------------------------------------------------------
+MACHINE USAGE BY PROCESS:
+----------------------------------------------------------------------------------------------------
+  Process K: 1 area(s)
+  Process L: 1 area(s)
+  Process M: 1 area(s)
+
+Total Process Areas: 3
+
+
+====================================================================================================
+SUMMARY - ALL 20 PARTS
+====================================================================================================
+
+Total Machines Across All Parts: 432
+Total Area Across All Parts: 265,097 sq ft
+
+Note: Each part has a dedicated manufacturing area (separate factory floors)
+Machine counts include duplicates (e.g., if process B appears twice, counted twice)

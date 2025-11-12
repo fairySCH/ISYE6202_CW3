@@ -10,68 +10,68 @@ including capital investment, operating costs, depreciation, and key performance
 CAPITAL INVESTMENT ANALYSIS
 ------------------------------
 
-Total Capital Investment Required: $150,666,000
+Total Capital Investment Required: $171,766,000
 Breakdown by major cost components:
 
 High-cost processes (>$10M each):
-  Process D: $15,500,000 (50 units)
-  Process E: $10,350,000 (23 units)
-  Process F: $12,150,000 (27 units)
-  Process H: $37,400,000 (34 units)
-  Process I: $18,600,000 (31 units)
-  Process J: $33,000,000 (55 units)
+  Process D: $16,430,000 (53 units)
+  Process E: $12,600,000 (28 units)
+  Process F: $13,500,000 (30 units)
+  Process H: $41,800,000 (38 units)
+  Process I: $22,800,000 (38 units)
+  Process J: $36,600,000 (61 units)
 
 OPERATING COST ANALYSIS
 -------------------------
 
-Annual Operating Cost: $46,092,800
-Total Operators Required: 484.0 FTEs
-Average Cost per Operator: $95,233/year
+Annual Operating Cost: $52,291,200
+Total Operators Required: 547.2 FTEs
+Average Cost per Operator: $95,553/year
 
 Labor cost breakdown by process:
-  Process J: $9,152,000/year (110.0 operators)
-  Process B: $7,488,000/year (45.0 operators)
-  Process H: $5,657,600/year (68.0 operators)
-  Process D: $5,200,000/year (62.5 operators)
-  Process I: $5,158,400/year (62.0 operators)
-  Process C: $3,120,000/year (12.5 operators)
-  Process M: $2,288,000/year (27.5 operators)
-  Process F: $2,246,400/year (27.0 operators)
-  Process E: $1,913,600/year (23.0 operators)
-  Process L: $1,456,000/year (17.5 operators)
-  Process A: $1,248,000/year (15.0 operators)
-  Process G: $832,000/year (10.0 operators)
-  Process K: $332,800/year (4.0 operators)
+  Process J: $10,150,400/year (122.0 operators)
+  Process B: $8,112,000/year (48.8 operators)
+  Process I: $6,323,200/year (76.0 operators)
+  Process H: $6,323,200/year (76.0 operators)
+  Process D: $5,512,000/year (66.2 operators)
+  Process C: $4,056,000/year (16.2 operators)
+  Process F: $2,496,000/year (30.0 operators)
+  Process M: $2,371,200/year (28.5 operators)
+  Process E: $2,329,600/year (28.0 operators)
+  Process L: $1,539,200/year (18.5 operators)
+  Process A: $1,456,000/year (17.5 operators)
+  Process G: $1,248,000/year (15.0 operators)
+  Process K: $374,400/year (4.5 operators)
 
 
 DEPRECIATION ANALYSIS
 ----------------------
 
-Annual Depreciation: $11,044,583
+Annual Depreciation: $12,567,083
 Average equipment useful life: 10.7 years
 
 KEY PERFORMANCE INDICATORS
 ----------------------------
-• Total Equipment Units Required: 386
-• Total Annual Production Hours: 1,386,167
-• Average Equipment Utilization: 96.0%
-• Capital Cost per Equipment Unit: $390,326
-• Operating Cost per Hour: $33.25
-• Total Cost per Hour: $41.22
+• Total Equipment Units Required: 432
+• Total Annual Production Hours: 2,772,333
+• Average Equipment Utilization: 84.4%
+• Capital Cost per Equipment Unit: $397,606
+• Operating Cost per Hour: $18.86
+• Total Cost per Hour: $23.39
 
 COST EFFICIENCY ANALYSIS
 --------------------------
 
-• Cost Efficiency Ratio: $42.94 per hour per utilization percentage point
-• Labor Cost as % of Total Annual Cost: 80.7%
-• Depreciation as % of Total Annual Cost: 19.3%
+• Cost Efficiency Ratio: $27.72 per hour per utilization percentage point
+• Labor Cost as % of Total Annual Cost: 80.6%
+• Depreciation as % of Total Annual Cost: 19.4%
 
 BREAK-EVEN ANALYSIS
 --------------------
 Assuming 5-year payback period for capital investment:
-• Annual Capital Recovery: $30,133,200
-• Total Annual Cost (including capital recovery): $87,270,583
-• Break-even Hourly Rate Required: $62.96/hour
+• Annual Capital Recovery: $34,353,200
+• Total Annual Cost (including capital recovery): $99,211,483
+• Break-even Hourly Rate Required: $35.79/hour
 
 RECOMMENDATIONS
 ---------------
@@ -81,4 +81,4 @@ RECOMMENDATIONS
 4. Evaluate automation opportunities for high-volume processes to reduce labor costs
 5. Monitor cost per hour metrics regularly to identify efficiency improvements
 
-All cost analysis results and visualizations saved to: D:\Adarsh GATech Files\6335 Benoit SC1\CW3\ISYE6202_CW3\results\Task3\Part\Cost_Analysis
+All cost analysis results and visualizations saved to: C:\Users\jatin\OneDrive\Desktop\Georgia Tech\Coursework\6202 Benoit\Case Work\Case Study 3\ISYE6202_CW3\results\Task3\Part\Cost_Analysis

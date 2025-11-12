@@ -51,9 +51,9 @@ MACHINE_SPECS = {
     'H': (14, 36, 0, 0, 'HIJ'),   # No sharing
     'I': (14, 36, 0, 0, 'HIJ'),
     'J': (14, 36, 0, 0, 'HIJ'),
-    'K': (7, 14, 0, 1, 'KLM'),    # Can share 1ft on either side (y-direction, along the 14ft depth)
-    'L': (7, 14, 0, 1, 'KLM'),
-    'M': (7, 14, 0, 1, 'KLM'),
+    'K': (14, 7, 0, 1, 'KLM'),    # 14ft width, 7ft depth, share 1ft along depth (y-direction)
+    'L': (14, 7, 0, 1, 'KLM'),
+    'M': (14, 7, 0, 1, 'KLM'),
 }
 
 # ============================================================================
@@ -425,16 +425,44 @@ if __name__ == "__main__":
         year = int(sys.argv[1])
         num_fractals = int(sys.argv[2])
     else:
-        # Default to Year 5, F4
+        # Default to running all requested configurations: Year 2,3,4,5 with f=4
         print("Usage: python script.py <year> <num_fractals>")
         print("Example: python script.py 5 4")
-        print("\nUsing defaults: Year 5, F4")
-        year = 5
+        print("\nRunning for all requested configurations: Years 2,3,4,5 with f=4")
+        
+        # Run for all requested years with f=4
+        requested_years = [2, 3, 4, 5]
         num_fractals = 4
+        
+        for year in requested_years:
+            print(f"\n{'='*60}")
+            print(f"PROCESSING YEAR {year}, F{num_fractals}")
+            print(f"{'='*60}")
+            try:
+                df_results, output_dir = optimize_all_processes(year, num_fractals)
+                print(f"✓ Year {year} F{num_fractals} optimization completed successfully!")
+            except Exception as e:
+                print(f"✗ Error processing Year {year} F{num_fractals}: {e}")
+        
+        print(f"\n{'='*80}")
+        print("BATCH PROCESSING COMPLETE!")
+        print(f"{'='*80}")
+        print("\nGenerated files:")
+        for year in requested_years:
+            output_dir = BASE_DIR / "results" / "task4" / "Fractal" / "Fractal_Layout" / f"Year{year}_F{num_fractals}_Optimized"
+            csv_file = output_dir / f"Year{year}_F{num_fractals}_Optimal_Grid_Configurations.csv"
+            print(f"  ✓ {csv_file.relative_to(BASE_DIR)}")
+        
+        print(f"\nNext step: Run the block visualizer for each year:")
+        for year in requested_years:
+            print(f"  python Fractal_Individual_Block_Visualizer.py {year} {num_fractals}")
+        
+        sys.exit(0)
     
+    # Single run mode (original behavior)
     df_results, output_dir = optimize_all_processes(year, num_fractals)
     
     print("\n✓ Optimization complete!")
     print()
     print(f"Next step: Run the block visualizer to generate A-M images!")
-    print(f"  python Year5_F4_Individual_Block_Visualizer.py {year} {num_fractals}")
+    print(f"  python Fractal_Individual_Block_Visualizer.py {year} {num_fractals}")

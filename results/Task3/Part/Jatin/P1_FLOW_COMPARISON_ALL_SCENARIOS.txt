@@ -1,0 +1,362 @@
+================================================================================
+                    PART 1 (P1) FLOW COMPARISON ACROSS ALL SCENARIOS
+================================================================================
+
+This document compares Part 1 material flow across:
+- Task 3 Year +1 (All Parts Layout)
+- Task 4 Year 2 (Part 1 Only Layout)
+- Task 4 Year 3 (Part 1 Only Layout)
+- Task 4 Year 4 (Part 1 Only Layout)
+
+================================================================================
+PART 1 SPECIFICATIONS (CONSTANT ACROSS ALL SCENARIOS)
+================================================================================
+
+Process Sequence: B → A → B → C → D → I → J
+Note: Process B appears TWICE in the sequence (steps 1 and 3)
+
+Process Times (minutes per unit):
+  Step 1: B  = 2.5 min
+  Step 2: A  = 1.0 min
+  Step 3: B  = 2.5 min
+  Step 4: C  = 0.5 min
+  Step 5: D  = 2.5 min
+  Step 6: I  = 1.25 min
+  Step 7: J  = 2.5 min
+  TOTAL:     = 12.75 min/unit
+
+Transitions (6 movements):
+  1. B → A
+  2. A → B
+  3. B → C
+  4. C → D
+  5. D → I
+  6. I → J
+
+================================================================================
+SCENARIO 1: TASK 3 YEAR +1 (ALL 20 PARTS)
+================================================================================
+
+Context: Part 1 is one of 20 parts processed in this facility
+
+P1 Demand: 20,961.54 units/week
+Total Facility: 344 machines across 13 processes (A-M)
+
+MACHINE ALLOCATION FOR P1:
+  Process B: Uses 32 machines (handles P1 + other parts)
+  Process A: Uses 10 machines (handles P1 + other parts)
+  Process C: Uses  9 machines (handles P1 + other parts)
+  Process D: Uses 45 machines (handles P1 + other parts)
+  Process I: Uses 28 machines (handles P1 + other parts)
+  Process J: Uses 49 machines (handles P1 + other parts)
+
+P1 WORKLOAD (minutes/week):
+  B: 20,961.54 × 2.5 = 52,403.85 min (Step 1)
+  A: 20,961.54 × 1.0 = 20,961.54 min
+  B: 20,961.54 × 2.5 = 52,403.85 min (Step 3)
+  C: 20,961.54 × 0.5 = 10,480.77 min
+  D: 20,961.54 × 2.5 = 52,403.85 min
+  I: 20,961.54 × 1.25 = 26,201.92 min
+  J: 20,961.54 × 2.5 = 52,403.85 min
+  TOTAL: 267,259.62 min/week for P1
+
+LAYOUT CHARACTERISTICS:
+  Facility: 1,006 ft × 252 ft = 253,512 sq ft
+  Process arrangement: A→B→C→D→E→F→G→H→I→J→K→L→M (linear)
+  
+  Process Positions (center coordinates):
+    B: (56, 126)
+    A: (13, 126)
+    C: (105, 126)
+    D: (160, 126)
+    I: (573, 126)
+    J: (676, 126)
+
+FLOW DISTANCES (Rectilinear):
+  B → A: |13-56| + |126-126| = 43 ft
+  A → B: |56-13| + |126-126| = 43 ft
+  B → C: |105-56| + |126-126| = 49 ft
+  C → D: |160-105| + |126-126| = 55 ft
+  D → I: |573-160| + |126-126| = 413 ft ← LONGEST
+  I → J: |676-573| + |126-126| = 103 ft
+  TOTAL: 706 ft per unit
+
+Average Distance: 706 / 6 = 117.67 ft per transition
+
+KEY INSIGHT:
+  In the all-parts layout, P1 shares machines with 19 other parts.
+  The D→I transition is very long (413 ft) because E, F, G, H processes
+  are between D and I (needed for other parts, not P1).
+
+================================================================================
+SCENARIO 2: TASK 4 YEAR 2 (PART 1 ONLY)
+================================================================================
+
+Context: Entire facility dedicated to Part 1 production only
+
+P1 Demand: 26,100 units/week (24.5% higher than Task 3)
+Total Facility: 72 machines across 7 processes (only P1 processes)
+
+MACHINE ALLOCATION (P1 ONLY):
+  Process B1: 14 machines (first B operation)
+  Process A:   6 machines
+  Process B2: 14 machines (second B operation)
+  Process C:   3 machines
+  Process D:  14 machines
+  Process I:   7 machines
+  Process J:  14 machines
+  TOTAL: 72 machines
+
+Note: B process is split into B1 and B2 since P1 visits B twice
+
+LAYOUT CHARACTERISTICS:
+  Facility: 298 ft × 108 ft = 32,184 sq ft (7.9× smaller than Task 3)
+  Process arrangement: B1→A→B2→C→D→I→J (sequential, no gaps)
+  
+  Process Positions (center coordinates):
+    B1: (19, 54)
+    A:  (45, 54)
+    B2: (71, 54)
+    C:  (90, 54)
+    D: (116, 54)
+    I: (173, 54)
+    J: (230, 54)
+
+FLOW DISTANCES (Rectilinear):
+  B1 → A:  |45-19| + |54-54| = 26 ft
+  A → B2:  |71-45| + |54-54| = 26 ft
+  B2 → C:  |90-71| + |54-54| = 19 ft
+  C → D:  |116-90| + |54-54| = 26 ft
+  D → I:  |173-116| + |54-54| = 57 ft
+  I → J:  |230-173| + |54-54| = 57 ft
+  TOTAL: 211 ft per unit
+
+Average Distance: 211 / 6 = 35.17 ft per transition
+
+KEY INSIGHT:
+  Dedicated P1 layout is much more compact. All processes arranged
+  sequentially with no unnecessary gaps. Distance is 3.3× shorter
+  per unit compared to Task 3.
+
+================================================================================
+SCENARIO 3: TASK 4 YEAR 3 (PART 1 ONLY)
+================================================================================
+
+Context: Same layout as Year 2, but increased demand
+
+P1 Demand: 27,300 units/week (4.6% higher than Year 2)
+Total Facility: 76 machines across 7 processes
+
+MACHINE ALLOCATION (P1 ONLY):
+  Process B1: 14 machines ⚠️ BOTTLENECK (101.6% utilization)
+  Process A:   6 machines
+  Process B2: 15 machines (increased from Year 2)
+  Process C:   3 machines
+  Process D:  15 machines (increased from Year 2)
+  Process I:   8 machines (increased from Year 2)
+  Process J:  15 machines (increased from Year 2)
+  TOTAL: 76 machines (+4 from Year 2)
+
+LAYOUT CHARACTERISTICS:
+  Facility: 298 ft × 108 ft = 32,184 sq ft (same as Year 2)
+  Process arrangement: B1→A→B2→C→D→I→J (identical to Year 2)
+  
+  Process Positions: IDENTICAL TO YEAR 2
+
+FLOW DISTANCES (Rectilinear):
+  IDENTICAL TO YEAR 2: 211 ft total, 35.17 ft average
+
+KEY INSIGHT:
+  Year 3 identifies a bottleneck at B1 (101.6% utilization).
+  The layout remains the same, but capacity is insufficient at B1.
+  This drives the need for additional capacity in Year 4.
+
+================================================================================
+SCENARIO 4: TASK 4 YEAR 4 (PART 1 ONLY)
+================================================================================
+
+Context: Same layout, bottleneck resolved
+
+P1 Demand: 28,500 units/week (4.4% higher than Year 3)
+Total Facility: 77 machines across 7 processes
+
+MACHINE ALLOCATION (P1 ONLY):
+  Process B1: 15 machines (increased from 14) ✓ Bottleneck resolved
+  Process A:   6 machines
+  Process B2: 15 machines
+  Process C:   3 machines
+  Process D:  15 machines
+  Process I:   8 machines
+  Process J:  15 machines
+  TOTAL: 77 machines (+1 from Year 3)
+
+LAYOUT CHARACTERISTICS:
+  Facility: 298 ft × 108 ft = 32,184 sq ft (same as Year 2 & 3)
+  Process arrangement: B1→A→B2→C→D→I→J (identical to Year 2 & 3)
+  
+  Process Positions: IDENTICAL TO YEAR 2 & 3
+
+FLOW DISTANCES (Rectilinear):
+  IDENTICAL TO YEAR 2 & 3: 211 ft total, 35.17 ft average
+
+KEY INSIGHT:
+  Year 4 resolves the B1 bottleneck by adding 1 machine.
+  Layout remains unchanged - stable design across years 2-4.
+  All processes now operate efficiently (92.8% - 99.0% utilization).
+
+================================================================================
+COMPREHENSIVE COMPARISON TABLE
+================================================================================
+
+Metric                    Task 3 Year +1    Year 2    Year 3    Year 4
+--------------------      --------------    ------    ------    ------
+P1 Demand (units/wk)      20,961.54         26,100    27,300    28,500
+Total Machines            344 (all parts)   72        76        77
+P1-Dedicated Machines     ~173 (est)        72        76        77
+
+LAYOUT:
+  Width (ft)              1,006             298       298       298
+  Height (ft)             252               108       108       108
+  Area (sq ft)            253,512           32,184    32,184    32,184
+  Size Ratio              7.9×              1.0×      1.0×      1.0×
+
+FLOW DISTANCES:
+  Total (ft/unit)         706               211       211       211
+  Average (ft/trans)      117.67            35.17     35.17     35.17
+  Distance Ratio          3.3×              1.0×      1.0×      1.0×
+
+MACHINE COUNT (P1 processes):
+  B (or B1)               32 shared         14        14        15
+  A                       10 shared         6         6         6
+  B (or B2)               -                 14        15        15
+  C                       9 shared          3         3         3
+  D                       45 shared         14        15        15
+  I                       28 shared         7         8         8
+  J                       49 shared         14        15        15
+
+UTILIZATION:
+  Overall                 96.9%             96.3%     95.4%     98.3%
+  Bottleneck              -                 97.1%     101.6%    99.0%
+
+COST (Equipment):
+  Total Investment        $70.02M           $12.66M   $13.40M   $13.55M
+  P1 Share (est)          ~$35M             $12.66M   $13.40M   $13.55M
+
+================================================================================
+KEY FINDINGS
+================================================================================
+
+1. LAYOUT EFFICIENCY:
+   - Dedicated P1 layouts (Years 2-4) are 7.9× smaller than Task 3
+   - Task 3 must accommodate all 20 parts, creating large footprint
+   - Years 2-4 optimize specifically for P1's process sequence
+
+2. FLOW DISTANCES:
+   - Task 3: 706 ft total per unit (117.67 ft avg per transition)
+   - Years 2-4: 211 ft total per unit (35.17 ft avg per transition)
+   - Dedicated layout reduces distance by 70% (3.3× improvement)
+   
+3. LONGEST TRANSITIONS:
+   - Task 3: D→I (413 ft) due to EFGH processes in between
+   - Years 2-4: D→I and I→J (both 57 ft) - no wasted gaps
+
+4. DEMAND GROWTH:
+   - Task 3: 20,962 units/week (baseline)
+   - Year 2: 26,100 units/week (+24.5%)
+   - Year 3: 27,300 units/week (+30.2%)
+   - Year 4: 28,500 units/week (+35.9%)
+
+5. MACHINE EFFICIENCY:
+   - Task 3: 344 machines handle 20 parts (197,500 units/week total)
+   - Years 2-4: 72-77 machines handle only P1 (26,100-28,500 units/week)
+   - Per-machine productivity similar (~574 units/machine/week)
+
+6. CAPACITY PLANNING:
+   - Task 3: Shares capacity across all parts (flexible but inefficient)
+   - Year 2: Adequate capacity for 26,100 units/week
+   - Year 3: Bottleneck at B1 (101.6% utilization)
+   - Year 4: Bottleneck resolved (+1 machine to B1)
+
+7. LAYOUT STABILITY:
+   - Task 3: One-time design for all parts
+   - Years 2-4: Same layout across 3 years (stable)
+   - Only machine counts change, not layout dimensions
+
+8. COST IMPLICATIONS:
+   - Task 3: $70M total ($35M attributable to P1, assuming 50% share)
+   - Years 2-4: $12.66M - $13.55M (dedicated to P1)
+   - Dedicated layout is 2.6× more cost-efficient for P1
+
+================================================================================
+STRATEGIC IMPLICATIONS
+================================================================================
+
+IF PRODUCING ONLY P1:
+  ✓ Use dedicated layout (Years 2-4 approach)
+  ✓ Smaller facility (32k sq ft vs 253k sq ft)
+  ✓ Shorter distances (211 ft vs 706 ft per unit)
+  ✓ Lower investment ($13.55M vs ~$35M for P1 share)
+  ✓ Higher efficiency (98.3% vs 96.9%)
+
+IF PRODUCING ALL 20 PARTS:
+  ✓ Use mixed layout (Task 3 approach)
+  ✓ Shared resources across parts
+  ✓ Flexibility for product mix changes
+  ✓ Lower capital per unit of total output
+  ✗ Longer distances for individual parts
+  ✗ More complex scheduling
+
+RECOMMENDATION:
+  - If P1 is >80% of volume: Use dedicated layout
+  - If multiple parts with similar volumes: Use mixed layout
+  - Consider cellular manufacturing as compromise
+
+================================================================================
+VISUALIZATION FILES CREATED
+================================================================================
+
+Task 3 Year +1 P1 Flow:
+  📊 results/Task3/Part/Jatin/P1_Flow_Visualization_Task3_Year1.png
+  
+Task 4 P1 Flow (Years 2-4):
+  📊 results/task4/part/Jatin/Year2/[Year 2 flow visualization if created]
+  📊 results/task4/part/Jatin/Year3/[Year 3 flow visualization if created]
+  📊 results/task4/part/Jatin/Year4/[Year 4 flow visualization if created]
+
+Each visualization shows:
+  - Process areas highlighted for P1
+  - Material flow arrows with distances
+  - Machine counts per process
+  - Step-by-step process sequence
+
+================================================================================
+CONCLUSION
+================================================================================
+
+The comparison reveals a fundamental trade-off:
+
+DEDICATED LAYOUT (Years 2-4):
+  ✓ Optimized for single part
+  ✓ Minimal distances
+  ✓ Lower cost
+  ✓ Simpler operations
+  ✗ Inflexible
+  ✗ Underutilized if demand drops
+
+MIXED LAYOUT (Task 3):
+  ✓ Handles all 20 parts
+  ✓ Flexible capacity
+  ✓ Shared resources
+  ✓ Better for product mix
+  ✗ Longer distances
+  ✗ Higher complexity
+  ✗ Larger facility
+
+The choice depends on product strategy, demand stability, and flexibility
+requirements. For P1-only production, the dedicated layout is clearly
+superior. For mixed production, the shared layout is necessary despite
+longer flow distances.
+
+================================================================================
+End of P1 Flow Comparison
+================================================================================

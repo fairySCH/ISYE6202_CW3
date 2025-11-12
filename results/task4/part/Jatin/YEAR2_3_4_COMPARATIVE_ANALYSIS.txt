@@ -1,0 +1,136 @@
+YEAR 2, 3, 4 PART 1 - COMPARATIVE ANALYSIS
+====================================================================================
+
+MACHINE COUNTS BY YEAR
+====================================================================================
+Year 2: 72 machines (B1=14, A=6, B2=14, C=3, D=14, I=7, J=14)
+Year 3: 76 machines (B1=14, A=6, B2=15, C=3, D=15, I=8, J=15)
+Year 4: 77 machines (B1=15, A=6, B2=15, C=3, D=15, I=8, J=15)
+
+Weekly Demand for Part 1 (P1):
+Year 2: 26,100 units/week
+Year 3: 27,300 units/week
+Year 4: 28,500 units/week
+
+====================================================================================
+KEY METRICS COMPARISON
+====================================================================================
+
+1. TOTAL AREA
+─────────────────────────────────────────────────────────────────────────────────
+                    Year 2          Year 3          Year 4
+─────────────────────────────────────────────────────────────────────────────────
+Total Footprint     32,184 ft²      32,184 ft²      32,184 ft²
+Machine Area Used   20,580 ft²      21,980 ft²      22,176 ft²
+Footprint Util.     63.9%           68.3%           68.9%
+─────────────────────────────────────────────────────────────────────────────────
+
+
+2. NET UTILIZATION (MACHINE UTILIZATION)
+─────────────────────────────────────────────────────────────────────────────────
+                    Year 2          Year 3          Year 4
+─────────────────────────────────────────────────────────────────────────────────
+Average Util.       95.2%           94.9%           98.1%
+Range               90.6% - 97.1%   88.9% - 101.6%  92.8% - 99.0%
+─────────────────────────────────────────────────────────────────────────────────
+
+Detailed by Area:
+                    Year 2          Year 3          Year 4
+─────────────────────────────────────────────────────────────────────────────────
+B1 (14→14→15)       97.1%           101.6%*         99.0%
+A  (6→6→6)          90.6%           94.8%           99.0%
+B2 (14→15→15)       97.1%           94.8%           99.0%
+C  (3→3→3)          90.6%           94.8%           99.0%
+D  (14→15→15)       97.1%           94.8%           99.0%
+I  (7→8→8)          97.1%           88.9%           92.8%
+J  (14→15→15)       97.1%           94.8%           99.0%
+─────────────────────────────────────────────────────────────────────────────────
+* Year 3 B1 shows 101.6% utilization - indicates B1 is a bottleneck in Year 3
+
+
+3. COST OF EQUIPMENT
+─────────────────────────────────────────────────────────────────────────────────
+                    Year 2          Year 3          Year 4
+─────────────────────────────────────────────────────────────────────────────────
+B1 (14-15 units)    $2,100,000      $2,100,000      $2,250,000
+A  (6 units)        $1,200,000      $1,200,000      $1,200,000
+B2 (14-15 units)    $2,100,000      $2,250,000      $2,250,000
+C  (3 units)        $540,000        $540,000        $540,000
+D  (14-15 units)    $2,450,000      $2,625,000      $2,625,000
+I  (7-8 units)      $1,540,000      $1,760,000      $1,760,000
+J  (14-15 units)    $2,730,000      $2,925,000      $2,925,000
+─────────────────────────────────────────────────────────────────────────────────
+TOTAL COST          $12,660,000     $13,400,000     $13,550,000
+
+Cost per Machine    $175,833        $176,316        $175,974
+
+
+4. DISTANCE PER TRIP
+─────────────────────────────────────────────────────────────────────────────────
+                    Year 2          Year 3          Year 4
+─────────────────────────────────────────────────────────────────────────────────
+B1 → A              31.0 ft         31.0 ft         31.0 ft
+A → B2              31.0 ft         31.0 ft         31.0 ft
+B2 → C              31.0 ft         31.0 ft         31.0 ft
+C → D               31.0 ft         31.0 ft         31.0 ft
+D → I               52.0 ft         52.0 ft         52.0 ft
+I → J               68.0 ft         68.0 ft         68.0 ft
+─────────────────────────────────────────────────────────────────────────────────
+Total per Trip      244.0 ft        244.0 ft        244.0 ft
+Avg per Transfer    40.7 ft         40.7 ft         40.7 ft
+
+
+5. WEEKLY MATERIAL MOVEMENT
+─────────────────────────────────────────────────────────────────────────────────
+                    Year 2          Year 3          Year 4
+─────────────────────────────────────────────────────────────────────────────────
+Trips/Week          26,100          27,300          28,500
+Distance/Week       6,368,400 ft    6,661,200 ft    6,954,000 ft
+Distance/Week       1,206.1 mi      1,261.6 mi      1,317.0 mi
+─────────────────────────────────────────────────────────────────────────────────
+
+
+====================================================================================
+SUMMARY & INSIGHTS
+====================================================================================
+
+LAYOUT CONSISTENCY:
+• All three years use the same facility footprint: 298 ft × 108 ft = 32,184 ft²
+• Same process flow: B1 → A → B2 → C → D → I → J
+• Same gap spacing and block configurations
+• Allows for smooth scaling without major facility redesigns
+
+MACHINE GROWTH:
+• Year 2 → Year 3: +4 machines (+5.6%)
+  - Machines added: B2(+1), D(+1), I(+1), J(+1)
+• Year 3 → Year 4: +1 machine (+1.3%)
+  - Machines added: B1(+1)
+• Total growth Year 2 → Year 4: +5 machines (+6.9%)
+
+UTILIZATION TRENDS:
+• Year 2: Most balanced utilization (95.2% average, 90.6-97.1% range)
+• Year 3: B1 becomes bottleneck at 101.6% utilization - indicates over-capacity
+• Year 4: High utilization across board (98.1% average)
+  - All areas except I operate near capacity (99%)
+  - I area has slack (92.8%)
+
+CAPACITY PLANNING OPPORTUNITY:
+• Year 3 B1 bottleneck suggests potential for process improvement or additional 
+  equipment in that area
+• Year 4 shows efficient utilization for P1, indicating good capacity planning
+
+COST EFFICIENCY:
+• Equipment cost increases proportionally with machine counts
+• Year 2: $12,660,000 ($175,833/machine)
+• Year 3: $13,400,000 ($176,316/machine) - incremental cost per machine
+• Year 4: $13,550,000 ($175,974/machine)
+
+MATERIAL HANDLING:
+• Same layout configuration results in identical trip distances (244 ft)
+• Weekly movement scales linearly with demand:
+  - Year 2: 1,206 miles/week
+  - Year 3: 1,262 miles/week (+4.6%)
+  - Year 4: 1,317 miles/week (+4.3%)
+• Consistent 31 ft transfers within ABCD areas, 52 ft D→I, 68 ft I→J
+
+====================================================================================

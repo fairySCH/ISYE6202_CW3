@@ -1,0 +1,315 @@
+JATIN FOLDER - COMPLETE INDEX
+Year 1-5 Part 1 Facility Analysis for Product P1
+====================================================================================
+
+PROJECT OVERVIEW
+====================================================================================
+This folder contains comprehensive facility layout analysis and capacity planning
+metrics for Part 1 (P1) manufacturing operations across Years 1-5.
+
+Analysis Includes:
+• Machine requirement calculations
+• Facility layout designs
+• Equipment cost analysis
+• Material handling distance calculations
+• Machine utilization metrics
+• Comparative year-over-year analysis
+
+====================================================================================
+DOCUMENTATION FILES (ROOT LEVEL)
+====================================================================================
+
+1. QUICK_REFERENCE_METRICS.txt ⭐ START HERE
+   - Summary table of all key metrics
+   - Year 2, 3, 4 side-by-side comparison
+   - Year-over-year growth analysis
+   - Capacity planning insights
+
+2. YEAR2_3_4_COMPARATIVE_ANALYSIS.txt
+   - Detailed comparative analysis of Years 2, 3, 4
+   - Machine count evolution
+   - Utilization trends and bottleneck identification
+   - Cost efficiency analysis
+   - Material handling efficiency
+
+3. COMPLETION_SUMMARY.txt
+   - Overview of all completed tasks
+   - Distance calculation methodology
+   - Folder structure
+   - Key findings and next steps
+
+4. Block_Specs.csv
+   - Equipment specifications
+   - Block dimensions (14×14 ft for ABCD, 14×36 ft for HIJ)
+   - Shared areas (2 ft overlap)
+
+5. README.md
+   - Project introduction
+   - Year comparison guide
+
+6. ORGANIZATION_SUMMARY.txt
+   - Original reorganization documentation
+
+====================================================================================
+YEAR 2 FOLDER - /Year2/
+====================================================================================
+Weekly Demand: 26,100 units
+Total Machines: 72 machines
+Equipment Cost: $12,660,000
+
+Files:
+├── calculate_PART1_ONLY.py
+│   Purpose: Calculate machine requirements for Part 1
+│   Output: 72 machines (B1=14, A=6, B2=14, C=3, D=14, I=7, J=14)
+│
+├── optimized_layout_generator.py
+│   Purpose: Generate facility layout visualization
+│   Output: Optimized_Layout_with_Overlaps.png, Optimized_Layout_Summary.csv
+│   Layout: 298 ft × 108 ft
+│
+├── calculate_metrics.py
+│   Purpose: Calculate 4 key metrics
+│   Distance: 244 ft per trip (rectilinear)
+│   Utilization: 95.2% average
+│   Cost: $12,660,000
+│   Area: 32,184 ft² (63.9% utilized)
+│
+├── Optimized_Layout_with_Overlaps.png
+│   Visual: 298×108 ft facility layout diagram (300 DPI)
+│
+└── Optimized_Layout_Summary.csv
+    Data: Area positions, dimensions, machine counts
+
+====================================================================================
+YEAR 3 FOLDER - /Year3/
+====================================================================================
+Weekly Demand: 27,300 units
+Total Machines: 76 machines
+Equipment Cost: $13,400,000
+
+Files:
+├── calculate_PART1_ONLY.py
+│   Output: 76 machines (B1=14, A=6, B2=15, C=3, D=15, I=8, J=15)
+│
+├── optimized_layout_generator.py
+│   Layout: 298 ft × 108 ft (same as Year 2)
+│
+├── calculate_metrics.py
+│   Distance: 244 ft per trip (rectilinear)
+│   Utilization: 94.9% average (B1 bottleneck at 101.6%)
+│   Cost: $13,400,000
+│   Area: 32,184 ft² (68.3% utilized)
+│
+├── Optimized_Layout_with_Overlaps.png
+│   Visual: 298×108 ft facility layout diagram
+│
+└── Optimized_Layout_Summary.csv
+    Data: Area positions, dimensions, machine counts
+
+⚠️ NOTE: Year 3 shows B1 bottleneck (101.6% utilization)
+   Solution: Add machine to B1 in Year 4
+
+====================================================================================
+YEAR 4 FOLDER - /Year4/
+====================================================================================
+Weekly Demand: 28,500 units
+Total Machines: 77 machines
+Equipment Cost: $13,550,000
+
+Files:
+├── calculate_PART1_ONLY.py
+│   Output: 77 machines (B1=15, A=6, B2=15, C=3, D=15, I=8, J=15)
+│
+├── optimized_layout_generator.py
+│   Layout: 298 ft × 108 ft
+│
+├── calculate_metrics.py
+│   Distance: 244 ft per trip (rectilinear)
+│   Utilization: 98.1% average (all areas 92.8-99.0%)
+│   Cost: $13,550,000
+│   Area: 32,184 ft² (68.9% utilized)
+│
+├── Optimized_Layout_with_Overlaps.png
+│   Visual: 298×108 ft facility layout diagram
+│
+└── Optimized_Layout_Summary.csv
+    Data: Area positions, dimensions, machine counts
+
+✓ Year 4 shows optimized configuration with B1 bottleneck resolved
+
+====================================================================================
+YEAR 5 FOLDER - /Year5/
+====================================================================================
+Weekly Demand: 29,800 units
+Total Machines: 129 machines
+Equipment Cost: ~$22,695,000
+
+Status: Original Year 5 analysis (reference for future work)
+
+====================================================================================
+KEY METRICS REFERENCE
+====================================================================================
+
+DISTANCE CALCULATION (Rectilinear/Manhattan Distance)
+• Method: |x2-x1| + |y2-y1| (horizontal + vertical distance)
+• Rationale: Manufacturing facilities use grid-based layouts
+• Per Trip: 244 ft (B1→A→B2→C→D→I→J)
+• Average Transfer: 40.7 ft
+• Weekly (Year 2): 1,206 miles @ 26,100 trips
+• Weekly (Year 3): 1,262 miles @ 27,300 trips
+• Weekly (Year 4): 1,317 miles @ 28,500 trips
+
+FACILITY DIMENSIONS
+• All years: 298 ft width × 108 ft height = 32,184 ft²
+• Process flow: B1 → A → B2 → C → D → I → J
+• Gap between areas: 5 ft
+• No facility expansion needed Year 2-4
+
+MACHINE COST ESTIMATES
+• B1/B2: $150,000 each
+• A: $200,000
+• C: $180,000
+• D: $175,000
+• I: $220,000
+• J: $195,000
+• Average cost per machine: $175,833-$176,316
+
+====================================================================================
+HOW TO USE THIS FOLDER
+====================================================================================
+
+Quick Analysis:
+1. Read QUICK_REFERENCE_METRICS.txt for summary
+2. Review Year-by-year folders for detailed layouts
+3. Compare Optimized_Layout_Summary.csv files
+
+Detailed Analysis:
+1. Read YEAR2_3_4_COMPARATIVE_ANALYSIS.txt
+2. Review calculate_metrics.py output for each year
+3. Examine PNG layout diagrams
+4. Compare CSV data files
+
+For Modifications:
+1. Update AREAS dictionary in optimized_layout_generator.py
+2. Update machine counts in calculate_PART1_ONLY.py
+3. Update demand in calculate_metrics.py
+4. Run scripts in order: calculate → layout → metrics
+
+====================================================================================
+PROCESS FLOW (ALL YEARS)
+====================================================================================
+
+Input: Raw Materials
+  ↓
+B1: Drill/Bore (14-15 machines)
+  ↓ [31 ft]
+A: Advanced Processing (6 machines)
+  ↓ [31 ft]
+B2: Drill/Bore #2 (14-15 machines)
+  ↓ [31 ft]
+C: Precision (3 machines)
+  ↓ [31 ft]
+D: Assembly (14-15 machines)
+  ↓ [52 ft]
+I: Inspection (7-8 machines)
+  ↓ [68 ft]
+J: Final Processing (14-15 machines)
+  ↓
+Output: Finished Product (P1)
+
+Process Flow Duration: 244 ft total per unit
+
+====================================================================================
+EQUIPMENT UTILIZATION SUMMARY
+====================================================================================
+
+Year 2:
+• Balanced: 95.2% average (90.6%-97.1% range)
+• No bottlenecks
+• Adequate capacity for demand
+
+Year 3:
+• Slightly lower: 94.9% average (88.9%-101.6% range)
+• B1 BOTTLENECK: 101.6% utilization
+• Year 3 demand exceeds B1 capacity with 14 machines
+• Recommendation: Add machine to B1
+
+Year 4:
+• Optimized: 98.1% average (92.8%-99.0% range)
+• All areas efficiently utilized
+• No bottlenecks
+• B1 increased to 15 machines (resolves Year 3 issue)
+
+====================================================================================
+CAPACITY PLANNING INSIGHTS
+====================================================================================
+
+Growth Trajectory:
+Year 2: 72 machines (baseline, 26,100 units/week)
+Year 3: 76 machines (+5.6%, 27,300 units/week)
+Year 4: 77 machines (+1.3%, 28,500 units/week)
+
+Cost Growth:
+Year 2: $12,660,000 (baseline)
+Year 3: $13,400,000 (+5.8%)
+Year 4: $13,550,000 (+1.1%)
+Total Growth Y2→Y4: +7.0%
+
+Bottleneck Resolution:
+Year 3 → Year 4: B1 increased 14→15 machines
+Cost Impact: +$150,000 (+1.1%)
+Utilization Impact: 101.6% → 99.0% (resolved)
+
+Layout Efficiency:
+All years use same facility (298×108 ft)
+Eliminates need for facility expansion
+Supports modular growth (add machines, not buildings)
+
+====================================================================================
+NEXT STEPS (FUTURE WORK)
+====================================================================================
+
+1. Year 1 Analysis
+   - Calculate machine requirements for 20,962 units/week
+   - Generate layout and metrics
+   - Compare with Year 2 as baseline
+
+2. Year 5 Analysis (if not complete)
+   - Validate 129 machines requirement
+   - Review capacity expansion implications
+   - Compare cost per unit with Years 2-4
+
+3. Animation/Visualization
+   - Create year-by-year facility evolution video
+   - Show machine additions over time
+   - Demonstrate bottleneck emergence and resolution
+
+4. Sensitivity Analysis
+   - Impact of demand variations (±10%, ±20%)
+   - Effect of demand spikes
+   - Equipment failure impact
+
+5. Cost-Benefit Analysis
+   - ROI for Year 3→4 B1 expansion
+   - Equipment life cycle costs
+   - Operational efficiency gains
+
+====================================================================================
+FILE STATISTICS
+====================================================================================
+
+Documentation Files: 6
+Python Scripts: 9 (3 per year: calculate, layout, metrics)
+PNG Diagrams: 3 (one per year, 300 DPI)
+CSV Data Files: 3 (layout summaries)
+Text Reports: 4 (analysis, summaries)
+
+Total Files: 25+
+
+Total Analysis Coverage:
+- 3 years (Year 2, 3, 4)
+- 7 process areas (B1, A, B2, C, D, I, J)
+- 4 key metrics (distance, utilization, cost, area)
+- Complete facility layout designs
+
+====================================================================================

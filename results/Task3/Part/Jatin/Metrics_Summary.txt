@@ -1,0 +1,28 @@
+================================================================================
+TASK 3 - PARTS-BASED DESIGN: METRICS SUMMARY
+================================================================================
+
+1. Distance per trip:     123.35 ft
+2. Net utilization:       96.9%
+3. Cost of equipment:     $70,015,000.00
+4. Total area:            253,512.00 sq ft
+
+================================================================================
+DETAILED BREAKDOWN
+================================================================================
+
+Total Machines: 344
+Machine Distribution:
+  A:  10 machines
+  B:  32 machines
+  C:   9 machines
+  D:  45 machines
+  E:  20 machines
+  F:  24 machines
+  G:   9 machines
+  H:  31 machines
+  I:  28 machines
+  J:  49 machines
+  K:   7 machines
+  L:  31 machines
+  M:  49 machines

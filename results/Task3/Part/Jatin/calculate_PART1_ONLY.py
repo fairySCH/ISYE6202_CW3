@@ -1,6 +1,6 @@
 """
-Year3 PART 1 ONLY - Machine Requirements (2 Shifts)
-This calculates ONLY for P1 (27,300 units/week), not all parts!
+Year1 PART 1 ONLY - Machine Requirements (2 Shifts)
+This calculates ONLY for P1 (20,961 units/week), not all parts!
 Uses Process-Based approach (Approach 1) with 99% target utilization.
 """
 
@@ -19,12 +19,12 @@ P1_SEQUENCE = [
 ]
 
 # Constants
-DEMAND_P1 = 27300  # units per week
+DEMAND_P1 = 20961  # units per week
 MINUTES_PER_MACHINE_2SHIFT = 4800  # 2 shifts × 8 hours × 5 days × 60 min
 TARGET_UTILIZATION = 0.99  # 99% target utilization
 
 def calculate_machines():
-    print("YEAR3 PART 1 ONLY - MACHINE REQUIREMENTS (2 SHIFTS)")
+    print("YEAR1 PART 1 ONLY - MACHINE REQUIREMENTS (2 SHIFTS)")
     print("=" * 70)
     print(f"Part 1 (P1) Weekly Demand: {DEMAND_P1:,} units")
     print(f"Machine Capacity (2-shift): {MINUTES_PER_MACHINE_2SHIFT:,} minutes/week")

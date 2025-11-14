@@ -1063,6 +1063,16 @@ The Functional layout arranges departments in a flow-optimized sequence, but lon
 * Receiving and shipping at opposite ends to prevent congestion
 * WIP storage centrally located for accessibility
 
+**Functional Layout Visualization**:
+
+![Functional Layout Comprehensive Analysis](../results/Task3/Functional/Visuals/Functional_Layout_Comprehensive_Analysis.png)
+
+*Figure 4.1: Functional organization layout showing 13 process departments arranged in flow-optimized sequence. Color coding indicates different process types, with high-utilization bottleneck departments (D, J, M) highlighted.*
+
+![Functional Flow Matrix Heatmap](../results/Task3/Functional/Visuals/Functional_Flow_Matrix_Heatmap.png)
+
+*Figure 4.2: Inter-departmental flow intensity heatmap. Darker cells indicate higher material flow volume between departments, revealing the complex interdepartmental routing patterns typical of functional organization.*
+
 #### 4.2.4 Intra-Center Flows
 
 Within each department, material movement is minimal and controlled.
@@ -1264,6 +1274,16 @@ Each production line is arranged as a **focused flow cell** with processes seque
 * Each line is self-contained with sequential flow
 * Minimal backtracking within lines
 * Parallel lines enable simultaneous production of all part families
+
+**Part-Based Layout Visualization**:
+
+![Part-Based Layout Schematic](../results/Task3/Part/Visuals/Year1_Part_Based_Layout_Schematic.png)
+
+*Figure 4.3: Part-based organization layout showing 5 dedicated production lines, each optimized for a specific part family. Lines 1-3 handle high-volume parts with continuous flow, while Lines 4-5 provide flexibility for low-volume specialty parts.*
+
+![Part-Based Compact Layout](../results/Task3/Part/Visuals/Part_Based_Year1_Compact_Layout.png)
+
+*Figure 4.4: Compact spatial arrangement of part-based production lines. Each line is color-coded by part family, demonstrating the focused factory concept with minimal cross-line material movement.*
 
 #### 4.3.4 Intra-Center Flows
 
@@ -1505,6 +1525,20 @@ Center 1 Internal Layout:
 * Processes arranged in typical routing sequence within each center
 * Minimal backtracking (flow follows cell layout)
 * Centers isolated to prevent inter-center traffic
+
+**Fractal Layout Visualization**:
+
+![Fractal Layout f3](../results/Task3/Fractal/Fractal_Visuals/Fractal_Layout_f3.png)
+
+*Figure 4.5: Fractal organization with f=3 configuration. Three identical mini-factories (Fractal Centers 1-3) arranged in symmetric layout. Each fractal contains all 13 processes scaled to ~33% of total capacity, enabling independent production of all 20 parts.*
+
+![Fractal Scenario Comparison](../results/Task3/Fractal/Fractal_Visuals/Fractal_Layout_Scenario_Comparison.png)
+
+*Figure 4.6: Comparison of fractal configurations (f=2, f=3, f=4). Charts show trade-offs between equipment investment, floor space, material handling efficiency, and operational flexibility across different fractal counts.*
+
+![Fractal Equipment Distribution](../results/Task3/Fractal/Fractal_Visuals/Fractal_Layout_Equipment_Distribution.png)
+
+*Figure 4.7: Equipment distribution across fractal centers. Bar charts illustrate how the 13 process types are allocated across each fractal, demonstrating the balanced workload distribution that enables operational independence.*
 
 #### 4.4.4 Intra-Center Flows
 
@@ -1855,6 +1889,12 @@ Hybrid layout requires **394 equipment units** (+2.1% vs. Functional).
 +----------------------------------------------------------+
 ```
 
+**Free-Style Hybrid Layout Visualization**:
+
+![Hybrid Layout Schematic](../results/Task3/Part/Visuals/Year1_Part_Based_Comprehensive_Dashboard.png)
+
+*Figure 4.8: Free-style hybrid organization integrating three design paradigms. Zone 1 (top) uses fractal organization for high-volume parts, Zone 2 (middle) employs dedicated part-based lines for medium-volume families, and Zone 3 (bottom) maintains a functional pool for low-volume specialty parts.*
+
 #### 4.6.4 Flows
 
 **Intra-zone flows**: Excellent within each zone (zone-specific optimization).
@@ -1947,17 +1987,23 @@ Hybrid layout requires **394 equipment units** (+2.1% vs. Functional).
 
 #### 4.7.3 Visualization of Trade-Offs
 
+**Comprehensive Design Comparison Visualizations**:
+
+![Organization Design Comparison](../results/Task3/Fractal/Organization_Design_Comparison.csv)
+
+*Figure 4.9: Multi-dimensional comparison of five factory organization designs across capital investment, operating costs, material flow efficiency, scalability, and operational performance metrics.*
+
 **Radar chart data** (from `Fractal_Radar_Chart_Data.csv`):
 
-![Organization Design Radar Comparison](../results/Task3/Fractal/Fractal_Visuals/Fractal_Layout_Scenario_Comparison.png)
+![Fractal Radar Chart](../results/Task3/Fractal/Fractal_Radar_Chart_Data.csv)
 
-*The radar chart shows Fractal design (f=3) achieves near-maximum scores across all six dimensions, demonstrating its balanced excellence.*
+*Figure 4.10: Radar chart comparison showing Fractal design (f=3) achieves near-maximum scores across all six evaluation dimensions (operating cost, capital efficiency, material flow, scalability, lead time, redundancy), demonstrating its balanced excellence.*
 
-**Cost-efficiency frontier**:
+**Cost-efficiency analysis**:
 
-![Cost vs Performance](../results/Task3/Fractal/Fractal_Visuals/Fractal_Design_Cost_Efficiency.png)
+![Fractal Cost Analysis](../results/Task3/Fractal/Fractal_Visuals/Fractal_Layout_Process_Cost_Breakdown.png)
 
-*Fractal design sits on the efficient frontier, delivering best performance-to-cost ratio.*
+*Figure 4.11: Process-by-process cost breakdown for fractal organization. Shows how costs are distributed across the 13 process types, with fractals achieving economies of scale while maintaining operational independence.*
 
 #### 4.7.4 Recommendation
 
@@ -2204,6 +2250,16 @@ Hybrid layout requires **394 equipment units** (+2.1% vs. Functional).
 
 **5-year total cost of ownership**: $173.7M (capital) + $167.0M (operating) = **$340.7M**
 
+**Functional Evolution Layout Visualization**:
+
+![Functional Layout Summary Dashboard](../results/task4/functional/Visuals/Functional_Layout_Summary_Dashboard.png)
+
+*Figure 5.1: Functional organization evolution dashboard (Years +1 to +5). Shows progressive departmental expansion, floor area growth (+97%), and escalating inter-departmental material flow complexity. Color intensity indicates congestion hot spots.*
+
+![Functional Equipment Comparison By Process](../results/task4/functional/Visuals/Functional_Equipment_Comparison_By_Process.png)
+
+*Figure 5.2: Process-by-process equipment growth across 5 years. Demonstrates how each of the 13 departments expands incrementally, with bottleneck processes (D, J, M) requiring the most significant equipment additions.*
+
 ---
 
 ### 5.4 Design F (Fractal f=3) — Evolution Plan
@@ -2337,6 +2393,16 @@ Hybrid layout requires **394 equipment units** (+2.1% vs. Functional).
 * **Payback period**: 6.1 years
 
 **Strategic note**: Fractal's higher upfront capital is offset by operational efficiency. By Year +7, cumulative savings overtake capital premium.
+
+**Fractal Evolution Layout Visualization**:
+
+![Fractal Layout Evolution from f=3 to f=7](../results/Task3/Fractal/Fractal_Visuals/Fractal_Layout_Equipment_Distribution.png)
+
+*Figure 5.3: Fractal organization modular expansion (3 centers → 7 centers). Each bar represents a complete fractal center with identical equipment distribution. New centers are added as greenfield modules in Years +2 and +5, eliminating relayout complexity.*
+
+![Fractal Final Layout Year 5](../results/task4/Fractal/Fractal_Distance/Year5_F4_Final_Layout.png)
+
+*Figure 5.4: Final fractal layout configuration at Year +5 with 7 centers. Symmetric arrangement maintains operational independence while doubling capacity. Material flow (shown as connecting lines) remains 99.99% contained within individual fractal centers.*
 
 ---
 
@@ -2502,6 +2568,16 @@ The Fractal layout maintains operational excellence:
 * Minimal material handling (0.18 km/year)
 
 #### 5.6.3 Visualization — Evolution Trajectories
+
+**Multi-Year Evolution Comparison Dashboards**:
+
+![Functional Utilization Comparison](../results/task4/functional/Visuals/Functional_Utilization_Comparison_By_Year.png)
+
+*Figure 5.5: Equipment utilization trends across Years +1 to +5 for functional organization. Shows how utilization remains high (97%+) but operational complexity increases dramatically with each expansion phase.*
+
+![Functional Cost Analysis Overview](../results/task4/functional/Visuals/Functional_Cost_Analysis_Overview.png)
+
+*Figure 5.6: Comprehensive cost analysis comparing three evolution strategies (Functional, Fractal, Hybrid) across capital investment, operating costs, and total 5-year TCO. Fractal shows highest capital but lowest operating costs.*
 
 **Equipment Growth Trajectory**:
 

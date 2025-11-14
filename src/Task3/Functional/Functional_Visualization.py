@@ -1,17 +1,17 @@
 """
-Task 3: Functional Layout - Enhanced Analysis with Visualizations
+task 3: functional layout - enhanced analysis with visualizations
 
-Creates comprehensive visualizations for functional layout analysis.
-Functional layout groups similar processes together for operational efficiency.
+creates comprehensive visualizations for functional layout analysis.
+functional layout groups similar processes together for operational efficiency.
 
-This script generates:
-1. Equipment requirements comparison charts
-2. Process workload distribution
-3. Material flow analysis
-4. Capacity utilization visualizations
+this script generates:
+1. equipment requirements comparison charts
+2. process workload distribution
+3. material flow analysis
+4. capacity utilization visualizations
 
-Author: Analysis Team
-Date: November 2025
+author: machas^2 team
+date: november 2025
 """
 
 import pandas as pd
@@ -24,12 +24,12 @@ import matplotlib.colors as mcolors
 import seaborn as sns
 from pathlib import Path
 
-# Configuration
+# configuration
 BASE_DIR = Path(__file__).parent.parent.parent.parent  # Go up to ISYE6202_CW3 directory
 RESULTS_DIR = BASE_DIR / "results" / "Task3" / "Functional"
 VISUALS_DIR = RESULTS_DIR / "Visuals"
 
-# Set style for better-looking plots
+# set style for better-looking plots
 sns.set_style("whitegrid")
 plt.rcParams['figure.figsize'] = (14, 8)
 

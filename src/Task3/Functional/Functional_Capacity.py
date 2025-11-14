@@ -1,29 +1,29 @@
 """
-Task 3: Functional Layout - Capacity Requirements Analysis
+task 3: functional layout - capacity requirements analysis
 
-Calculates equipment requirements for functional layout organization.
-Functional layout groups similar processes together for efficiency.
+calculates equipment requirements for functional layout organization.
+functional layout groups similar processes together for efficiency.
 
-This script:
-1. Loads functional flow matrix data
-2. Calculates process workloads from part-level data
-3. Determines equipment requirements for functional organization
-4. Generates capacity analysis reports
+this script:
+1. loads functional flow matrix data
+2. calculates process workloads from part-level data
+3. determines equipment requirements for functional organization
+4. generates capacity analysis reports
 
-Author: Analysis Team
-Date: November 2025
+author: machas^2 team
+date: november 2025
 """
 
 import pandas as pd
 import numpy as np
 from pathlib import Path
 
-# Configuration
+# configuration
 BASE_DIR = Path(__file__).parent.parent.parent.parent  # Go up to ISYE6202_CW3 directory
 DATA_DIR = BASE_DIR / "data" / "csv_outputs"
 RESULTS_DIR = BASE_DIR / "results" / "Task3" / "Functional"
 
-# Operating parameters (same as Part and Fractal approaches)
+# operating parameters (same as part and fractal approaches)
 DAYS_PER_WEEK = 5
 HOURS_PER_SHIFT = 8
 MINUTES_PER_SHIFT = HOURS_PER_SHIFT * 60  # 480 minutes
@@ -37,8 +37,8 @@ def load_weekly_product_demand():
     """
     df = pd.read_csv(DATA_DIR / '+1 Year Product Demand.csv', header=None)
 
-    # Row 12, columns 2-6: Weekly demand
-    products = ['A1', 'A2', 'A3', 'B1', 'B2']
+    # row 12, columns 2-6: weekly demand
+    products = ['A1', 'A2', 'A3', 'B1', 'B1', 'B2']
     weekly_demand_values = df.iloc[12, 2:7].astype(float).tolist()
 
     weekly_demand = dict(zip(products, weekly_demand_values))
@@ -53,17 +53,17 @@ def load_bom():
     """
     Load Bill of Materials (BOM) - parts per product
     """
-    # Read BOM file
+    # read bom file
     bom_lines = []
     with open(DATA_DIR / '+1 Year Parts per Product.csv', 'r', encoding='utf-8') as f:
         for line in f:
             bom_lines.append(line.strip().split(','))
 
-    # Create BOM dictionary
+    # create bom dictionary
     bom = {}
     products = ['A1', 'A2', 'A3', 'B1', 'B2']
 
-    # Starting from row 2 (index 2), parts P1-P20
+    # starting from row 2 (index 2), parts p1-p20
     for i in range(2, 22):
         part_name = bom_lines[i][1].strip()
         bom[part_name] = {}
@@ -87,13 +87,13 @@ def load_process_sequences():
 
     process_sequences = {}
 
-    # Rows 11-30 contain process sequences for P1-P20
+    # rows 11-30 contain process sequences for p1-p20
     for i in range(11, 31):
         part_name = df.iloc[i, 1]
         if pd.notna(part_name):
             part_name = str(part_name).strip()
             sequence = []
-            # Columns 2-8 contain Steps 1-7
+            # columns 2-8 contain steps 1-7
             for j in range(2, 9):
                 process = df.iloc[i, j]
                 if pd.notna(process) and str(process).strip():
@@ -139,12 +139,12 @@ def calculate_weekly_part_demand(weekly_product_demand, bom):
     """
     weekly_part_demand = {}
 
-    # Initialize all parts P1-P20
+    # initialize all parts p1-p20
     for i in range(1, 21):
         part = f'P{i}'
         weekly_part_demand[part] = 0.0
 
-    # Calculate demand for each part
+    # calculate demand for each part
     for part in weekly_part_demand.keys():
         total_demand = 0.0
         if part in bom:
@@ -169,15 +169,15 @@ def calculate_process_workload(weekly_part_demand, process_sequences, process_ti
     """
     process_workload = {}
 
-    # Initialize all processes A-M
+    # initialize all processes a-m
     all_processes = list('ABCDEFGHIJKLM')
     for proc in all_processes:
         process_workload[proc] = 0.0
 
-    # Detailed breakdown for verification
+    # detailed breakdown for verification
     process_breakdown = {proc: [] for proc in all_processes}
 
-    # For each part
+    # for each part
     for part in weekly_part_demand.keys():
         demand = weekly_part_demand[part]
         if demand == 0:
@@ -189,7 +189,7 @@ def calculate_process_workload(weekly_part_demand, process_sequences, process_ti
         sequence = process_sequences[part]
         times = process_times[part]
 
-        # For each step in the part's process sequence
+        # for each step in the part's process sequence
         for step_idx, process in enumerate(sequence):
             if step_idx < len(times) and times[step_idx] > 0:
                 time_per_unit = times[step_idx]
@@ -241,11 +241,11 @@ def calculate_equipment_requirements(process_workload):
             })
             continue
 
-        # Calculate equipment needed
+        # calculate equipment needed
         equip_1_shift = np.ceil(workload / capacity_1_shift)
         equip_2_shifts = np.ceil(workload / capacity_2_shifts)
 
-        # Calculate utilization
+        # calculate utilization
         util_1_shift = (workload / (equip_1_shift * capacity_1_shift)) * 100 if equip_1_shift > 0 else 0
         util_2_shifts = (workload / (equip_2_shifts * capacity_2_shifts)) * 100 if equip_2_shifts > 0 else 0
 
@@ -275,7 +275,7 @@ def analyze_functional_layout_efficiency(equipment_df, process_workload):
     print("FUNCTIONAL LAYOUT EFFICIENCY ANALYSIS")
     print("="*80)
 
-    # Calculate total equipment and utilization metrics
+    # calculate total equipment and utilization metrics
     total_equip_1shift = equipment_df['Equipment_1_Shift'].sum()
     total_equip_2shifts = equipment_df['Equipment_2_Shifts'].sum()
 
@@ -287,11 +287,11 @@ def analyze_functional_layout_efficiency(equipment_df, process_workload):
     print(f"Total equipment (2 shifts): {total_equip_2shifts}")
     print(f"Total weekly workload: {total_workload:,.1f} minutes ({total_workload/60:,.1f} hours)")
 
-    # Calculate average utilization for 2-shift scenario
+    # calculate average utilization for 2-shift scenario
     avg_utilization = equipment_df[equipment_df['Equipment_2_Shifts'] > 0]['Utilization_2_Shifts'].mean()
     print(f"Average equipment utilization (2 shifts): {avg_utilization:.1f}%")
 
-    # Process grouping analysis (functional layout benefit)
+    # process grouping analysis (functional layout benefit)
     high_workload_processes = equipment_df[equipment_df['Weekly_Hours'] > 100]['Process'].tolist()
     print(f"High-workload processes (>100 hours/week): {high_workload_processes}")
 
@@ -312,35 +312,35 @@ def main():
     print("TASK 3: FUNCTIONAL LAYOUT - CAPACITY REQUIREMENTS ANALYSIS")
     print("="*80)
 
-    # Ensure output directory exists
+    # ensure output directory exists
     capacity_dir = RESULTS_DIR / "Capacity"
     capacity_dir.mkdir(parents=True, exist_ok=True)
 
-    # Step 1: Load data
+    # step 1: load data
     print("\n1. Loading Data...")
     weekly_product_demand = load_weekly_product_demand()
     bom = load_bom()
     process_sequences = load_process_sequences()
     process_times = load_process_times()
 
-    # Step 2: Calculate weekly part demand
+    # step 2: calculate weekly part demand
     print("\n2. Calculating Weekly Part Demand...")
     weekly_part_demand = calculate_weekly_part_demand(weekly_product_demand, bom)
 
-    # Step 3: Calculate process workload
+    # step 3: calculate process workload
     print("\n3. Calculating Process Workload...")
     process_workload, process_breakdown = calculate_process_workload(
         weekly_part_demand, process_sequences, process_times
     )
 
-    # Step 4: Calculate equipment requirements
+    # step 4: calculate equipment requirements
     print("\n4. Calculating Equipment Requirements...")
     equipment_df = calculate_equipment_requirements(process_workload)
 
-    # Step 5: Analyze functional layout efficiency
+    # step 5: analyze functional layout efficiency
     efficiency_metrics = analyze_functional_layout_efficiency(equipment_df, process_workload)
 
-    # Step 6: Save all results
+    # step 6: save all results
     print("\n5. Saving Results...")
 
     # Save equipment requirements

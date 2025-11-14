@@ -1,39 +1,41 @@
 # -*- coding: utf-8 -*-
 """
-Aggregate functional flow matrices PER YEAR.
+aggregate functional flow matrices per year.
 
-Inputs (it will try in this order):
+inputs (it will try in this order):
   1) ../results/task4/part/flow_matrix/Flow_Matrix_Wide_All_Years.csv
      (wide table with columns Year, Part, A_A..M_M)
   2) ../results/task4/part/flow_matrix/per_year/<Year_>/P*_Flow_Matrix.csv
 
-Outputs:
+outputs:
   ../results/task4/functional/per_year/<Year_>_Functional_Flow_Matrix.csv
   ../results/task4/functional/per_year/<Year_>_Flow_Matrix_Summary.csv
   ../results/task4/functional/AllYears_Flow_Matrix_Summary.csv   (stack of all per-year summaries)
+
+author: machas^2 team
 """
 
 import os
 import pandas as pd
 from pathlib import Path
 
-# ---------------- Config ----------------
+# ---------------- config ----------------
 script_dir = Path(__file__).parent
 project_root = script_dir.parent.parent.parent  # adjust if your repo depth differs
 
 PROCESSES = list("ABCDEFGHIJKLM")
 TRANSITION_COLS = [f"{a}_{b}" for a in PROCESSES for b in PROCESSES]
 
-# Input candidates
+# input candidates
 FLOW_WIDE = project_root / 'results' / 'task4' / 'part' / 'flow_matrix' / 'Flow_Matrix_Wide_All_Years.csv'
 PER_YEAR_DIR = project_root / 'results' / 'task4' / 'part' / 'flow_matrix' / 'per_year'
 
-# Outputs
+# outputs
 OUT_BASE = project_root / 'results' / 'task4' / 'functional'
 OUT_PER_YEAR = OUT_BASE / 'per_year'
 OUT_PER_YEAR.mkdir(parents=True, exist_ok=True)
 
-# ---------------- Helpers ----------------
+# ---------------- helpers ----------------
 def year_sort_key(y):
     y = str(y)
     num = ''.join(ch for ch in y if ch.isdigit())
@@ -45,11 +47,11 @@ def empty_matrix():
 def save_year_outputs(year_label: str, flow_mat: pd.DataFrame):
     """Save per-year functional matrix and per-year summary."""
     ytag = str(year_label).replace(' ', '_')
-    # Matrix
+    # matrix
     mat_path = OUT_PER_YEAR / f"{ytag}_Functional_Flow_Matrix.csv"
     flow_mat.to_csv(mat_path)
 
-    # Summary (total in/out per process)
+    # summary (total in/out per process)
     total_in = flow_mat.sum(axis=0)   # incoming to each process
     total_out = flow_mat.sum(axis=1)  # outgoing from each process
     summary_df = pd.DataFrame({
@@ -64,7 +66,7 @@ def save_year_outputs(year_label: str, flow_mat: pd.DataFrame):
     print(f"[{year_label}] Saved summary → {sum_path}")
     return summary_df
 
-# ---------------- Strategy A: Wide all-years file ----------------
+# ---------------- strategy a: wide all-years file ----------------
 if FLOW_WIDE.exists():
     df = pd.read_csv(FLOW_WIDE)
     # Keep only transition columns that actually exist
@@ -96,7 +98,7 @@ if FLOW_WIDE.exists():
         )
         print("Saved all-years stacked summary →", (OUT_BASE / 'AllYears_Flow_Matrix_Summary.csv').resolve())
 
-# ---------------- Strategy B: Per-year folders of part matrices ----------------
+# ---------------- strategy b: per-year folders of part matrices ----------------
 elif PER_YEAR_DIR.exists():
     years_dirs = sorted([p for p in PER_YEAR_DIR.iterdir() if p.is_dir()], key=lambda p: year_sort_key(p.name.replace('_', ' ')))
     if not years_dirs:
@@ -129,7 +131,7 @@ elif PER_YEAR_DIR.exists():
         )
         print("Saved all-years stacked summary →", (OUT_BASE / 'AllYears_Flow_Matrix_Summary.csv').resolve())
 
-# ---------------- Fallback: old single-folder Task3 layout (not per-year) ----------------
+# ---------------- fallback: old single-folder task3 layout (not per-year) ----------------
 else:
     raise FileNotFoundError(
         "No per-year flow data found.\n"

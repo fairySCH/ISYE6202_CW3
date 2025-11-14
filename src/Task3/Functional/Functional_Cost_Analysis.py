@@ -1,15 +1,15 @@
 """
-Task 3: Functional Layout - Cost Analysis
+task 3: functional layout - cost analysis
 
-Comprehensive cost analysis for functional layout including:
-1. Capital investment costs (equipment installation)
-2. Operating costs (labor)
-3. Depreciation analysis
-4. Cost KPIs and efficiency metrics
-5. Cost visualizations and comparisons
+comprehensive cost analysis for functional layout including:
+1. capital investment costs (equipment installation)
+2. operating costs (labor)
+3. depreciation analysis
+4. cost kpis and efficiency metrics
+5. cost visualizations and comparisons
 
-Author: Analysis Team
-Date: November 2025
+author: machas^2 team
+date: november 2025
 """
 
 import pandas as pd
@@ -18,14 +18,14 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from pathlib import Path
 
-# Configuration
+# configuration
 BASE_DIR = Path(__file__).parent.parent.parent.parent  # Go up to ISYE6202_CW3 directory
 DATA_DIR = BASE_DIR / "data" / "csv_outputs"
 RESULTS_DIR = BASE_DIR / "results" / "Task3" / "Functional"
 COST_DIR = RESULTS_DIR / "Cost_Analysis"
 VISUALS_DIR = RESULTS_DIR / "Visuals"
 
-# Operating parameters
+# operating parameters
 DAYS_PER_WEEK = 5
 HOURS_PER_SHIFT = 8
 SHIFTS_PER_DAY = 2
@@ -38,7 +38,7 @@ def load_equipment_costs():
     """
     df = pd.read_csv(DATA_DIR / 'Equip+Operator Specs.csv')
 
-    # Clean up the data
+    # clean up the data
     df['Installed price'] = pd.to_numeric(df['Installed price'], errors='coerce')
     df['Relocation cost'] = pd.to_numeric(df['Relocation cost'], errors='coerce')
     df['Useful life (years)'] = pd.to_numeric(df['Useful life (years)'], errors='coerce')
@@ -67,12 +67,12 @@ def calculate_capital_costs(equipment_df, cost_df):
 
     for _, row in equipment_df.iterrows():
         process = row['Process']
-        units_needed = int(row['Equipment_2_Shifts'])  # Using 2-shift requirements
+        units_needed = int(row['Equipment_2_Shifts'])  # using 2-shift requirements
 
         if units_needed == 0:
             continue
 
-        # Find equipment cost data for this process
+        # find equipment cost data for this process
         cost_row = cost_df[cost_df['Equipment'] == process]
 
         if cost_row.empty:
@@ -110,20 +110,20 @@ def calculate_operating_costs(equipment_df, cost_df):
         if units_needed == 0:
             continue
 
-        # Find equipment cost data for this process
+        # find equipment cost data for this process
         cost_row = cost_df[cost_df['Equipment'] == process]
 
         if cost_row.empty:
             continue
 
-        # Parse operator requirements
+        # parse operator requirements
         operator_info = cost_row['Number of operators'].iloc[0] if pd.notna(cost_row['Number of operators'].iloc[0]) else '1 C1'
         hourly_cost = cost_row['Hourly Cost'].iloc[0] if pd.notna(cost_row['Hourly Cost'].iloc[0]) else 20
 
-        # Calculate operators per unit
+        # calculate operators per unit
         operators_per_unit = 1.0  # Default
         if pd.notna(operator_info):
-            # Parse operator requirements (e.g., "1 C1+1/4 C2", "2 C3", "1/2 C2")
+            # parse operator requirements (e.g., "1 c1+1/4 c2", "2 c3", "1/2 c2")
             operator_str = str(operator_info).strip()
             if 'C1' in operator_str and 'C2' in operator_str:
                 operators_per_unit = 1 + 0.25  # 1 C1 + 1/4 C2
@@ -163,7 +163,7 @@ def calculate_depreciation(capital_costs_df, cost_df):
     for _, row in capital_costs_df.iterrows():
         process = row['Process']
 
-        # Find useful life for this equipment
+        # find useful life for this equipment
         cost_row = cost_df[cost_df['Equipment'] == process]
         if cost_row.empty:
             continue
@@ -186,25 +186,25 @@ def calculate_cost_kpis(capital_costs_df, operating_costs_df, depreciation_df, e
     """
     Calculate key cost performance indicators
     """
-    # Total costs
+    # total costs
     total_capital_investment = capital_costs_df['Total_Process_Cost'].sum()
     total_annual_operating_cost = operating_costs_df['Annual_Labor_Cost'].sum()
     total_annual_depreciation = depreciation_df['Annual_Depreciation'].sum()
 
-    # Equipment and labor totals
+    # equipment and labor totals
     total_equipment_units = capital_costs_df['Units_Required'].sum()
     total_operators = operating_costs_df['Total_Operators'].sum()
 
-    # Production metrics
+    # production metrics
     total_weekly_hours = efficiency_metrics.get('total_workload_hours', 0)
     total_annual_hours = total_weekly_hours * WEEKS_PER_YEAR
 
-    # Cost per unit calculations
+    # cost per unit calculations
     capital_cost_per_equipment_unit = total_capital_investment / total_equipment_units if total_equipment_units > 0 else 0
     operating_cost_per_hour = total_annual_operating_cost / total_annual_hours if total_annual_hours > 0 else 0
     total_cost_per_hour = (total_annual_operating_cost + total_annual_depreciation) / total_annual_hours if total_annual_hours > 0 else 0
 
-    # Efficiency metrics
+    # efficiency metrics
     average_utilization = efficiency_metrics.get('average_utilization', 0)
     cost_per_utilization_point = total_annual_operating_cost / (average_utilization * total_equipment_units) if average_utilization > 0 and total_equipment_units > 0 else 0
 
@@ -232,14 +232,14 @@ def create_cost_visualizations(capital_costs_df, operating_costs_df, depreciatio
     """
     COST_DIR.mkdir(parents=True, exist_ok=True)
 
-    # Set style
+    # set style
     sns.set_style("whitegrid")
     plt.rcParams['figure.figsize'] = (15, 10)
 
-    # 1. Cost Breakdown by Process
+    # 1. cost breakdown by process
     fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(20, 16))
 
-    # Capital costs by process
+    # capital costs by process
     capital_sorted = capital_costs_df.sort_values('Total_Process_Cost', ascending=True)
     bars1 = ax1.barh(capital_sorted['Process'], capital_sorted['Total_Process_Cost'] / 1000000)  # Convert to millions
     ax1.set_xlabel('Capital Cost (Millions $)', fontweight='bold')
@@ -247,11 +247,11 @@ def create_cost_visualizations(capital_costs_df, operating_costs_df, depreciatio
     ax1.set_title('Capital Investment by Process', fontweight='bold', fontsize=14)
     ax1.grid(axis='x', alpha=0.3)
 
-    # Add value labels
+    # add value labels
     for i, (proc, cost) in enumerate(zip(capital_sorted['Process'], capital_sorted['Total_Process_Cost'])):
         ax1.text(cost/1000000, i, f' ${cost/1000000:.1f}M', va='center', fontsize=9)
 
-    # Operating costs by process
+    # operating costs by process
     operating_sorted = operating_costs_df.sort_values('Annual_Labor_Cost', ascending=True)
     bars2 = ax2.barh(operating_sorted['Process'], operating_costs_df['Annual_Labor_Cost'] / 1000)  # Convert to thousands
     ax2.set_xlabel('Annual Labor Cost (Thousands $)', fontweight='bold')
@@ -259,11 +259,11 @@ def create_cost_visualizations(capital_costs_df, operating_costs_df, depreciatio
     ax2.set_title('Operating Costs by Process', fontweight='bold', fontsize=14)
     ax2.grid(axis='x', alpha=0.3)
 
-    # Add value labels
+    # add value labels
     for i, (proc, cost) in enumerate(zip(operating_sorted['Process'], operating_sorted['Annual_Labor_Cost'])):
         ax2.text(cost/1000, i, f' ${cost/1000:.0f}K', va='center', fontsize=9)
 
-    # Cost vs Utilization scatter plot
+    # cost vs utilization scatter plot
     combined_df = pd.merge(capital_costs_df[['Process', 'Total_Process_Cost', 'Utilization_2_Shifts']],
                           operating_costs_df[['Process', 'Annual_Labor_Cost']],
                           on='Process', how='outer').fillna(0)
@@ -273,7 +273,7 @@ def create_cost_visualizations(capital_costs_df, operating_costs_df, depreciatio
                          s=combined_df['Annual_Labor_Cost'] / 10000,  # Size by operating cost
                          alpha=0.7, c=combined_df['Utilization_2_Shifts'], cmap='RdYlGn')
 
-    # Add process labels
+    # add process labels
     for _, row in combined_df.iterrows():
         ax3.annotate(row['Process'],
                     (row['Utilization_2_Shifts'], row['Total_Process_Cost'] / 1000000),
@@ -284,14 +284,14 @@ def create_cost_visualizations(capital_costs_df, operating_costs_df, depreciatio
     ax3.set_title('Cost vs Utilization Analysis\n(Bubble size = Annual Operating Cost)', fontweight='bold', fontsize=14)
     ax3.grid(True, alpha=0.3)
 
-    # Cost structure pie chart
+    # cost structure pie chart
     cost_components = [
         'Annual Labor Cost',
         'Annual Depreciation',
         'Capital Investment (Annualized)'
     ]
 
-    # Annualize capital investment (simple payback period assumption of 5 years)
+    # annualize capital investment (simple payback period assumption of 5 years)
     annualized_capital = kpis['total_capital_investment'] / 5
 
     cost_values = [
@@ -305,7 +305,7 @@ def create_cost_visualizations(capital_costs_df, operating_costs_df, depreciatio
                                       colors=colors, startangle=90)
     ax4.set_title('Annual Cost Structure Breakdown', fontweight='bold', fontsize=14)
 
-    # Add dollar values to pie chart
+    # add dollar values to pie chart
     for i, (wedge, value) in enumerate(zip(wedges, cost_values)):
         angle = (wedge.theta2 + wedge.theta1) / 2
         x = 0.7 * np.cos(np.radians(angle))
@@ -317,10 +317,10 @@ def create_cost_visualizations(capital_costs_df, operating_costs_df, depreciatio
     plt.savefig(output_file, dpi=300, bbox_inches='tight', bbox_extra_artists=[])
     print(f"Cost analysis visualization saved: {output_file}")
 
-    # 2. Cost Efficiency Dashboard
+    # 2. cost efficiency dashboard
     plt.figure(figsize=(16, 12))
 
-    # Create KPI dashboard
+    # create kpi dashboard
     kpi_labels = [
         'Total Capital\nInvestment',
         'Annual Operating\nCost',
@@ -332,16 +332,16 @@ def create_cost_visualizations(capital_costs_df, operating_costs_df, depreciatio
     ]
 
     kpi_values = [
-        kpis['total_capital_investment'] / 1000000,  # Millions
-        kpis['total_annual_operating_cost'] / 1000,  # Thousands
-        kpis['total_annual_depreciation'] / 1000,    # Thousands
-        kpis['total_annual_cost'] / 1000,            # Thousands
-        kpis['capital_cost_per_equipment_unit'] / 1000,  # Thousands
-        kpis['operating_cost_per_hour'],             # Per hour
-        kpis['average_utilization']                   # Percentage
+        kpis['total_capital_investment'] / 1000000,  # millions
+        kpis['total_annual_operating_cost'] / 1000,  # thousands
+        kpis['total_annual_depreciation'] / 1000,    # thousands
+        kpis['total_annual_cost'] / 1000,            # thousands
+        kpis['capital_cost_per_equipment_unit'] / 1000,  # thousands
+        kpis['operating_cost_per_hour'],             # per hour
+        kpis['average_utilization']                   # percentage
     ]
 
-    # Create 2x4 grid for KPIs
+    # create 2x4 grid for kpis
     for i, (label, value) in enumerate(zip(kpi_labels, kpi_values)):
         plt.subplot(2, 4, i+1)
 
@@ -384,14 +384,14 @@ CAPITAL INVESTMENT ANALYSIS
 {'-'*30}
 """
 
-    # Capital costs summary
+    # capital costs summary
     total_capital = capital_costs_df['Total_Process_Cost'].sum()
     report += f"""
 Total Capital Investment Required: ${total_capital:,.0f}
 Breakdown by major cost components:
 """
 
-    # Group by cost ranges for summary
+    # group by cost ranges for summary
     high_cost_processes = capital_costs_df[capital_costs_df['Total_Process_Cost'] > 10000000]  # > $10M
     if not high_cost_processes.empty:
         report += f"\nHigh-cost processes (>$10M each):"
@@ -444,7 +444,7 @@ COST EFFICIENCY ANALYSIS
 {'-'*26}
 """
 
-    # Calculate efficiency metrics
+    # calculate efficiency metrics
     cost_per_hour_per_utilization = kpis['total_cost_per_hour'] / kpis['average_utilization'] * 100 if kpis['average_utilization'] > 0 else 0
 
     report += f"""
@@ -480,11 +480,11 @@ def main():
     print("TASK 3: FUNCTIONAL LAYOUT - COST ANALYSIS")
     print("="*80)
 
-    # Ensure output directory exists
+    # ensure output directory exists
     COST_DIR.mkdir(parents=True, exist_ok=True)
 
     try:
-        # Step 1: Load data
+        # step 1: load data
         print("\n1. Loading cost and equipment data...")
         cost_df = load_equipment_costs()
         equipment_df, efficiency_metrics = load_equipment_requirements()

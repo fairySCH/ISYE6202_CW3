@@ -1,15 +1,14 @@
 """
-Task 4: Functional Layout - Cost Analysis (Years 2-5)
+task 4: functional layout - cost analysis (years 2-5)
 
-Comprehensive cost analysis for functional layout across years 2-5 including:
-1. Capital investment costs (equipment installation)
-2. Operating costs (labor)
-3. Depreciation analysis
-4. Cost KPIs and efficiency metrics
-5. Cost visualizations and comparisons
+comprehensive cost analysis for functional layout across years 2-5 including:
+1. capital investment costs (equipment installation)
+2. operating costs (labor)
+3. depreciation analysis
+4. cost kpis and efficiency metrics
+5. cost visualizations and comparisons
 
-Author: Analysis Team
-Date: November 2025
+author: machas^2 team
 """
 
 import pandas as pd
@@ -75,7 +74,7 @@ def calculate_capital_costs(equipment_df, cost_df):
         if units_needed == 0:
             continue
 
-        # Find equipment cost data for this process
+        # find equipment cost data for this process
         cost_row = cost_df[cost_df['Equipment'] == process]
 
         if cost_row.empty:
@@ -115,7 +114,7 @@ def calculate_operating_costs(equipment_df, cost_df):
         if units_2shift == 0:
             continue
 
-        # Find hourly labor cost for this process
+        # find hourly labor cost for this process
         cost_row = cost_df[cost_df['Equipment'] == process]
 
         if cost_row.empty:
@@ -126,7 +125,7 @@ def calculate_operating_costs(equipment_df, cost_df):
         if pd.isna(hourly_cost):
             continue
 
-        # Calculate annual operating cost
+        # calculate annual operating cost
         # 2 shifts per day, each requiring one operator per machine
         annual_operating_cost = units_2shift * hourly_cost * HOURS_PER_YEAR
 
@@ -156,7 +155,7 @@ def calculate_depreciation(cost_df, useful_life_years=10):
         if total_installed_cost == 0:
             continue
 
-        # Straight-line depreciation
+        # straight-line depreciation
         annual_depreciation = total_installed_cost / useful_life_years
 
         depreciation_costs.append({
@@ -182,16 +181,16 @@ def calculate_cost_efficiency_metrics(capital_df, operating_df, depreciation_df,
         year_operating = operating_df[operating_df['Year'] == year]
         year_depreciation = depreciation_df[depreciation_df['Year'] == year]
 
-        # Total costs
+        # total costs
         total_capital = year_capital['Total_Process_Cost'].sum()
         total_operating = year_operating['Annual_Operating_Cost'].sum()
         total_depreciation = year_depreciation['Annual_Depreciation'].sum()
 
-        # Equipment efficiency
+        # equipment efficiency
         total_equipment = year_equipment['Equipment_2_Shifts'].sum()
         avg_utilization = year_equipment['Utilization_2_Shifts'].mean()
 
-        # Cost per unit of capacity
+        # cost per unit of capacity
         total_weekly_hours = year_equipment['Weekly_Hours'].sum()
         if total_weekly_hours > 0:
             capital_cost_per_hour = (total_capital / 10) / (total_weekly_hours * WEEKS_PER_YEAR)  # Annualized
@@ -221,14 +220,14 @@ def create_cost_visualizations(capital_df, operating_df, metrics_df):
     """
     VISUALS_DIR.mkdir(parents=True, exist_ok=True)
 
-    # Set style
+    # set style
     sns.set_style("whitegrid")
     plt.rcParams['figure.figsize'] = (16, 10)
 
-    # 1. Capital Cost Breakdown by Year and Process
+    # 1. capital cost breakdown by year and process
     fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(20, 16))
 
-    # Capital costs by year
+    # capital costs by year
     yearly_capital = capital_df.groupby('Year')['Total_Process_Cost'].sum().reset_index()
     bars1 = ax1.bar(yearly_capital['Year'], yearly_capital['Total_Process_Cost']/1e6, color='steelblue', alpha=0.8)
     ax1.set_title('Functional Layout: Total Capital Investment by Year', fontweight='bold', fontsize=14)
@@ -236,12 +235,12 @@ def create_cost_visualizations(capital_df, operating_df, metrics_df):
     ax1.set_xlabel('Year', fontweight='bold', fontsize=12)
     ax1.grid(axis='y', alpha=0.3)
 
-    # Add value labels
+    # add value labels
     for bar in bars1:
         height = bar.get_height()
         ax1.text(bar.get_x() + bar.get_width()/2., height, f'${height:.1f}M', ha='center', va='bottom', fontsize=10)
 
-    # Operating costs by year
+    # operating costs by year
     yearly_operating = operating_df.groupby('Year')['Annual_Operating_Cost'].sum().reset_index()
     bars2 = ax2.bar(yearly_operating['Year'], yearly_operating['Annual_Operating_Cost']/1e6, color='coral', alpha=0.8)
     ax2.set_title('Functional Layout: Annual Operating Costs by Year', fontweight='bold', fontsize=14)
@@ -249,12 +248,12 @@ def create_cost_visualizations(capital_df, operating_df, metrics_df):
     ax2.set_xlabel('Year', fontweight='bold', fontsize=12)
     ax2.grid(axis='y', alpha=0.3)
 
-    # Add value labels
+    # add value labels
     for bar in bars2:
         height = bar.get_height()
         ax2.text(bar.get_x() + bar.get_width()/2., height, f'${height:.1f}M', ha='center', va='bottom', fontsize=10)
 
-    # Cost per hour comparison
+    # cost per hour comparison
     years = metrics_df['Year']
     capital_per_hour = metrics_df['Capital_Cost_Per_Hour']
     operating_per_hour = metrics_df['Operating_Cost_Per_Hour']
@@ -273,11 +272,11 @@ def create_cost_visualizations(capital_df, operating_df, metrics_df):
     ax3.legend()
     ax3.grid(axis='y', alpha=0.3)
 
-    # Equipment utilization vs cost efficiency
+    # equipment utilization vs cost efficiency
     utilization = metrics_df['Average_Utilization']
     total_cost_per_hour = metrics_df['Total_Cost_Per_Hour']
 
-    # Use numerical year values for coloring
+    # use numerical year values for coloring
     year_nums = [int(str(y).replace('+', '')) for y in metrics_df['Year']]
     scatter = ax4.scatter(utilization, total_cost_per_hour, s=100, c=year_nums, cmap='viridis', alpha=0.8)
     ax4.set_title('Functional Layout: Utilization vs Cost Efficiency', fontweight='bold', fontsize=14)
@@ -285,7 +284,7 @@ def create_cost_visualizations(capital_df, operating_df, metrics_df):
     ax4.set_ylabel('Total Cost per Production Hour ($)', fontweight='bold', fontsize=12)
     ax4.grid(alpha=0.3)
 
-    # Add year labels to points
+    # add year labels to points
     for i, year in enumerate(metrics_df['Year']):
         ax4.annotate(f'Year {year}', (utilization.iloc[i], total_cost_per_hour.iloc[i]),
                     xytext=(5, 5), textcoords='offset points', fontsize=10)
@@ -294,21 +293,21 @@ def create_cost_visualizations(capital_df, operating_df, metrics_df):
     plt.savefig(VISUALS_DIR / 'Functional_Cost_Analysis_Overview.png', dpi=300, bbox_inches='tight')
     plt.close()
 
-    # 2. Process-wise cost distribution (Year +5 as example)
+    # 2. process-wise cost distribution (year +5 as example)
     year5_capital = capital_df[capital_df['Year'] == '+5']
     year5_operating = operating_df[operating_df['Year'] == '+5']
 
     if not year5_capital.empty and not year5_operating.empty:
         fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 8))
 
-        # Capital cost by process
+        # capital cost by process
         capital_by_process = year5_capital.set_index('Process')['Total_Process_Cost']/1e3
         capital_by_process.plot(kind='barh', ax=ax1, color='steelblue', alpha=0.8)
         ax1.set_title('Year +5: Capital Cost by Process', fontweight='bold', fontsize=14)
         ax1.set_xlabel('Capital Cost (Thousands $)', fontweight='bold', fontsize=12)
         ax1.grid(axis='x', alpha=0.3)
 
-        # Operating cost by process
+        # operating cost by process
         operating_by_process = year5_operating.set_index('Process')['Annual_Operating_Cost']/1e3
         operating_by_process.plot(kind='barh', ax=ax2, color='coral', alpha=0.8)
         ax2.set_title('Year +5: Annual Operating Cost by Process', fontweight='bold', fontsize=14)
@@ -329,39 +328,39 @@ def main():
     print("TASK 4: FUNCTIONAL LAYOUT - COST ANALYSIS (YEARS 2-5)")
     print("="*80)
 
-    # Ensure output directories exist
+    # ensure output directories exist
     COST_DIR.mkdir(parents=True, exist_ok=True)
     VISUALS_DIR.mkdir(parents=True, exist_ok=True)
 
-    # Step 1: Load data
+    # step 1: load data
     print("\n1. Loading Data...")
     cost_df = load_equipment_costs()
     equipment_df, efficiency_df = load_equipment_requirements()
 
-    # Step 2: Calculate capital costs
+    # step 2: calculate capital costs
     print("\n2. Calculating Capital Costs...")
     capital_df = calculate_capital_costs(equipment_df, cost_df)
 
-    # Step 3: Calculate operating costs
+    # step 3: calculate operating costs
     print("\n3. Calculating Operating Costs...")
     operating_df = calculate_operating_costs(equipment_df, cost_df)
 
-    # Step 4: Calculate depreciation
+    # step 4: calculate depreciation
     print("\n4. Calculating Depreciation...")
     depreciation_df = calculate_depreciation(capital_df)
 
-    # Step 5: Calculate cost efficiency metrics
+    # step 5: calculate cost efficiency metrics
     print("\n5. Calculating Cost Efficiency Metrics...")
     metrics_df = calculate_cost_efficiency_metrics(capital_df, operating_df, depreciation_df, equipment_df)
 
-    # Step 6: Create visualizations
+    # step 6: create visualizations
     print("\n6. Creating Visualizations...")
     create_cost_visualizations(capital_df, operating_df, metrics_df)
 
-    # Step 7: Save all results
+    # step 7: save all results
     print("\n7. Saving Results...")
 
-    # Save detailed cost breakdowns
+    # save detailed cost breakdowns
     capital_df.to_csv(COST_DIR / "Functional_Capital_Costs_All_Years.csv", index=False)
     print(f"  Saved: {COST_DIR / 'Functional_Capital_Costs_All_Years.csv'}")
 
@@ -374,7 +373,7 @@ def main():
     metrics_df.to_csv(COST_DIR / "Functional_Cost_Efficiency_Metrics_All_Years.csv", index=False)
     print(f"  Saved: {COST_DIR / 'Functional_Cost_Efficiency_Metrics_All_Years.csv'}")
 
-    # Generate summary report
+    # generate summary report
     print("\n8. Generating Summary Report...")
     summary_report = f"""
 FUNCTIONAL LAYOUT COST ANALYSIS SUMMARY (YEARS 2-5)
@@ -401,7 +400,7 @@ Year {row['Year']}:
 - Total Cost/Hour: ${row['Total_Cost_Per_Hour']:.2f}
 """
 
-    # Cost trends analysis
+    # cost trends analysis
     capital_trend = metrics_df['Total_Capital_Cost'].pct_change().mean() * 100
     operating_trend = metrics_df['Total_Annual_Operating_Cost'].pct_change().mean() * 100
 
@@ -423,7 +422,7 @@ RECOMMENDATIONS:
 - Plan for technology upgrades to improve cost efficiency
 """
 
-    # Save summary report
+    # save summary report
     with open(COST_DIR / "Functional_Cost_Analysis_Summary_All_Years.txt", 'w') as f:
         f.write(summary_report)
     print(f"  Saved: {COST_DIR / 'Functional_Cost_Analysis_Summary_All_Years.txt'}")

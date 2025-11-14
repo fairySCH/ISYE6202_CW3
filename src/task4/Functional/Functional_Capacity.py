@@ -1,17 +1,16 @@
 """
-Task 4: Functional Layout - Capacity Requirements Analysis (Years 2-5)
+task 4: functional layout - capacity requirements analysis (years 2-5)
 
-Calculates equipment requirements for functional layout organization across years 2-5.
-Functional layout groups similar processes together for efficiency.
+calculates equipment requirements for functional layout organization across years 2-5.
+functional layout groups similar processes together for efficiency.
 
-This script:
-1. Loads demand data for each year (2-5)
-2. Calculates process workloads from part-level data per year
-3. Determines equipment requirements for functional organization per year
-4. Generates capacity analysis reports per year
+this script:
+1. loads demand data for each year (2-5)
+2. calculates process workloads from part-level data per year
+3. determines equipment requirements for functional organization per year
+4. generates capacity analysis reports per year
 
-Author: Analysis Team
-Date: November 2025
+author: machas^2 team
 """
 
 import pandas as pd
@@ -49,7 +48,7 @@ def load_weekly_product_demand(year):
 
     year_label = f'+{year}'
 
-    # Find the row for the specific year
+    # find the row for the specific year
     data_row = None
     for i in range(header_row, len(df)):
         if str(df.iloc[i, 1]).strip() == year_label:
@@ -59,7 +58,7 @@ def load_weekly_product_demand(year):
     if data_row is None:
         raise ValueError(f"Could not find weekly demand data for year {year_label}")
 
-    # Products: A1,A2,A3,B1,B2,A4,B3,B4 (columns 2-9, since column 0 is nan, 1 is Year)
+    # products: a1,a2,a3,b1,b2,a4,b3,b4 (columns 2-9, since column 0 is nan, 1 is year)
     products = ['A1', 'A2', 'A3', 'B1', 'B2', 'A4', 'B3', 'B4']
     weekly_demand_values = []
     for j in range(2, 10):  # Columns 2-9
@@ -110,13 +109,13 @@ def load_process_sequences():
 
     process_sequences = {}
 
-    # Rows 11-30 contain process sequences for P1-P20
+    # rows 11-30 contain process sequences for p1-p20
     for i in range(11, 31):
         part_name = df.iloc[i, 1]
         if pd.notna(part_name):
             part_name = str(part_name).strip()
             sequence = []
-            # Columns 2-8 contain Steps 1-7
+            # columns 2-8 contain steps 1-7
             for j in range(2, 9):
                 process = df.iloc[i, j]
                 if pd.notna(process) and str(process).strip():
@@ -162,12 +161,12 @@ def calculate_weekly_part_demand(weekly_product_demand, bom):
     """
     weekly_part_demand = {}
 
-    # Initialize all parts P1-P20
+    # initialize all parts p1-p20
     for i in range(1, 21):
         part = f'P{i}'
         weekly_part_demand[part] = 0.0
 
-    # Calculate demand for each part
+    # calculate demand for each part
     for part in weekly_part_demand.keys():
         total_demand = 0.0
         if part in bom:
@@ -192,15 +191,15 @@ def calculate_process_workload(weekly_part_demand, process_sequences, process_ti
     """
     process_workload = {}
 
-    # Initialize all processes A-M
+    # initialize all processes a-m
     all_processes = list('ABCDEFGHIJKLM')
     for proc in all_processes:
         process_workload[proc] = 0.0
 
-    # Detailed breakdown for verification
+    # detailed breakdown for verification
     process_breakdown = {proc: [] for proc in all_processes}
 
-    # For each part
+    # for each part
     for part in weekly_part_demand.keys():
         demand = weekly_part_demand[part]
         if demand == 0:
@@ -212,7 +211,7 @@ def calculate_process_workload(weekly_part_demand, process_sequences, process_ti
         sequence = process_sequences[part]
         times = process_times[part]
 
-        # For each step in the part's process sequence
+        # for each step in the part's process sequence
         for step_idx, process in enumerate(sequence):
             if step_idx < len(times) and times[step_idx] > 0:
                 time_per_unit = times[step_idx]
@@ -261,11 +260,11 @@ def calculate_equipment_requirements(process_workload, year_label):
             })
             continue
 
-        # Calculate equipment needed
+        # calculate equipment needed
         equip_1_shift = np.ceil(workload / capacity_1_shift)
         equip_2_shifts = np.ceil(workload / capacity_2_shifts)
 
-        # Calculate utilization
+        # calculate utilization
         util_1_shift = (workload / (equip_1_shift * capacity_1_shift)) * 100 if equip_1_shift > 0 else 0
         util_2_shifts = (workload / (equip_2_shifts * capacity_2_shifts)) * 100 if equip_2_shifts > 0 else 0
 
@@ -296,7 +295,7 @@ def analyze_functional_layout_efficiency(equipment_df, process_workload, year_la
     print(f"FUNCTIONAL LAYOUT EFFICIENCY ANALYSIS (Year {year_label})")
     print(f"{'='*80}")
 
-    # Calculate total equipment and utilization metrics
+    # calculate total equipment and utilization metrics
     total_equip_1shift = equipment_df['Equipment_1_Shift'].sum()
     total_equip_2shifts = equipment_df['Equipment_2_Shifts'].sum()
 
@@ -308,11 +307,11 @@ def analyze_functional_layout_efficiency(equipment_df, process_workload, year_la
     print(f"Total equipment (2 shifts): {total_equip_2shifts}")
     print(f"Total weekly workload: {total_workload:,.1f} minutes ({total_workload/60:,.1f} hours)")
 
-    # Calculate average utilization for 2-shift scenario
+    # calculate average utilization for 2-shift scenario
     avg_utilization = equipment_df[equipment_df['Equipment_2_Shifts'] > 0]['Utilization_2_Shifts'].mean()
     print(f"Average equipment utilization (2 shifts): {avg_utilization:.1f}%")
 
-    # Process grouping analysis (functional layout benefit)
+    # process grouping analysis (functional layout benefit)
     high_workload_processes = equipment_df[equipment_df['Weekly_Hours'] > 100]['Process'].tolist()
     print(f"High-workload processes (>100 hours/week): {high_workload_processes}")
 
@@ -334,7 +333,7 @@ def main():
     print("TASK 4: FUNCTIONAL LAYOUT - CAPACITY REQUIREMENTS ANALYSIS (YEARS 2-5)")
     print("="*80)
 
-    # Ensure output directory exists
+    # ensure output directory exists
     capacity_dir = RESULTS_DIR / "Capacity"
     capacity_dir.mkdir(parents=True, exist_ok=True)
 
@@ -344,45 +343,45 @@ def main():
     process_sequences = load_process_sequences()
     process_times = load_process_times()
 
-    # Initialize dataframes for aggregation
+    # initialize dataframes for aggregation
     all_equipment_reqs = []
     all_efficiency_metrics = []
     all_part_demands = []
     all_workload_breakdowns = []
 
-    # Process each year
+    # process each year
     for year in [2, 3, 4, 5]:
         year_label = f"+{year}"
         print(f"\n{'='*60}")
         print(f"PROCESSING YEAR {year_label}")
         print(f"{'='*60}")
 
-        # Step 1: Load year-specific demand
+        # step 1: load year-specific demand
         print(f"\n1. Loading Demand Data for Year {year_label}...")
         weekly_product_demand = load_weekly_product_demand(year)
 
-        # Step 2: Calculate weekly part demand
+        # step 2: calculate weekly part demand
         print(f"\n2. Calculating Weekly Part Demand for Year {year_label}...")
         weekly_part_demand = calculate_weekly_part_demand(weekly_product_demand, bom)
 
-        # Step 3: Calculate process workload
+        # step 3: calculate process workload
         print(f"\n3. Calculating Process Workload for Year {year_label}...")
         process_workload, process_breakdown = calculate_process_workload(
             weekly_part_demand, process_sequences, process_times
         )
 
-        # Step 4: Calculate equipment requirements
+        # step 4: calculate equipment requirements
         print(f"\n4. Calculating Equipment Requirements for Year {year_label}...")
         equipment_df = calculate_equipment_requirements(process_workload, year_label)
 
-        # Step 5: Analyze functional layout efficiency
+        # step 5: analyze functional layout efficiency
         efficiency_metrics = analyze_functional_layout_efficiency(equipment_df, process_workload, year_label)
 
-        # Collect data for aggregation
+        # collect data for aggregation
         all_equipment_reqs.append(equipment_df)
         all_efficiency_metrics.append(efficiency_metrics)
 
-        # Add year to part demand and workload breakdown
+        # add year to part demand and workload breakdown
         part_demand_df = pd.DataFrame([
             {'Year': year_label, 'Part': part, 'Weekly_Demand': demand}
             for part, demand in weekly_part_demand.items()
@@ -402,28 +401,28 @@ def main():
                 })
         all_workload_breakdowns.extend(breakdown_records)
 
-    # Step 6: Save all results
+    # step 6: save all results
     print("\n5. Saving Results...")
 
-    # Save equipment requirements (all years)
+    # save equipment requirements (all years)
     equipment_combined_df = pd.concat(all_equipment_reqs, ignore_index=True)
     output_file = capacity_dir / "Functional_Equipment_Requirements_All_Years.csv"
     equipment_combined_df.to_csv(output_file, index=False)
     print(f"  Saved: {output_file}")
 
-    # Save efficiency metrics (all years)
+    # save efficiency metrics (all years)
     efficiency_df = pd.DataFrame(all_efficiency_metrics)
     output_file = capacity_dir / "Functional_Layout_Efficiency_Metrics_All_Years.csv"
     efficiency_df.to_csv(output_file, index=False)
     print(f"  Saved: {output_file}")
 
-    # Save weekly part demand (all years)
+    # save weekly part demand (all years)
     part_demand_combined_df = pd.concat(all_part_demands, ignore_index=True)
     output_file = capacity_dir / "Functional_Weekly_Part_Demand_All_Years.csv"
     part_demand_combined_df.to_csv(output_file, index=False)
     print(f"  Saved: {output_file}")
 
-    # Save process workload breakdown (all years)
+    # save process workload breakdown (all years)
     breakdown_df = pd.DataFrame(all_workload_breakdowns)
     if not breakdown_df.empty:
         breakdown_df = breakdown_df.sort_values(['Year', 'Process', 'Part'])
@@ -431,7 +430,7 @@ def main():
         breakdown_df.to_csv(output_file, index=False)
         print(f"  Saved: {output_file}")
 
-    # Generate summary report
+    # generate summary report
     print("\n6. Generating Summary Report...")
     summary_report = f"""
 FUNCTIONAL LAYOUT CAPACITY ANALYSIS SUMMARY (YEARS 2-5)
@@ -457,7 +456,7 @@ Year {row['Year']}:
 - High-workload processes (>100 hours/week): {row['high_workload_processes']}
 """
 
-    # Save summary report
+    # save summary report
     output_file = capacity_dir / "Functional_Capacity_Summary_Report_All_Years.txt"
     with open(output_file, 'w') as f:
         f.write(summary_report)

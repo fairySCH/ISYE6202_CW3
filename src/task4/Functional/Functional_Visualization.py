@@ -1,18 +1,17 @@
 """
-Task 4: Functional Layout - Enhanced Analysis with Visualizations (Years 2-5)
+task 4: functional layout - enhanced analysis with visualizations (years 2-5)
 
-Creates comprehensive visualizations for functional layout analysis across years 2-5.
-Functional layout groups similar processes together for operational efficiency.
+creates comprehensive visualizations for functional layout analysis across years 2-5.
+functional layout groups similar processes together for operational efficiency.
 
-This script generates:
-1. Equipment requirements comparison charts by year
-2. Process workload distribution by year
-3. Material flow analysis by year
-4. Capacity utilization visualizations by year
-5. Year-over-year trend analysis
+this script generates:
+1. equipment requirements comparison charts by year
+2. process workload distribution by year
+3. material flow analysis by year
+4. capacity utilization visualizations by year
+5. year-over-year trend analysis
 
-Author: Analysis Team
-Date: November 2025
+author: machas^2 team
 """
 
 import pandas as pd
@@ -48,7 +47,7 @@ def create_functional_visualizations():
     # Load functional flow matrix data
     flow_summary_df = pd.read_csv(RESULTS_DIR / "AllYears_Flow_Matrix_Summary.csv")
 
-    # Load cost data if available
+    # load cost data if available
     try:
         capital_df = pd.read_csv(cost_dir / "Functional_Capital_Costs_All_Years.csv")
         operating_df = pd.read_csv(cost_dir / "Functional_Operating_Costs_All_Years.csv")
@@ -57,10 +56,10 @@ def create_functional_visualizations():
         cost_data_available = False
         print("Cost data not found - some visualizations will be skipped")
 
-    # Ensure visuals directory exists
+    # ensure visuals directory exists
     VISUALS_DIR.mkdir(parents=True, exist_ok=True)
 
-    # Create a comprehensive multi-panel figure for Year +5 (most recent)
+    # create a comprehensive multi-panel figure for year +5 (most recent)
     year5_equipment = equipment_df[equipment_df['Year'] == '+5']
     year5_part_demand = part_demand_df[part_demand_df['Year'] == '+5']
     year5_workload = workload_df[workload_df['Year'] == '+5']
@@ -68,7 +67,7 @@ def create_functional_visualizations():
     if not year5_equipment.empty:
         fig = plt.figure(figsize=(20, 12))
 
-        # 1. Equipment Requirements Comparison (1 shift vs 2 shifts) - Year +5
+        # 1. equipment requirements comparison (1 shift vs 2 shifts) - year +5
         ax1 = plt.subplot(2, 3, 1)
         processes = year5_equipment['Process']
         x = np.arange(len(processes))
@@ -88,7 +87,7 @@ def create_functional_visualizations():
         ax1.legend()
         ax1.grid(axis='y', alpha=0.3)
 
-        # Add value labels on bars
+        # add value labels on bars
         for bars in [bars1, bars2]:
             for bar in bars:
                 height = bar.get_height()
@@ -97,9 +96,9 @@ def create_functional_visualizations():
                             f'{int(height)}',
                             ha='center', va='bottom', fontsize=8)
 
-        # 2. Weekly Process Workload (Hours) - Year +5
+        # 2. weekly process workload (hours) - year +5
         ax2 = plt.subplot(2, 3, 2)
-        # Filter out processes with zero workload
+        # filter out processes with zero workload
         active_equipment = year5_equipment[year5_equipment['Weekly_Hours'] > 0]
         colors = plt.cm.viridis(np.linspace(0, 1, len(active_equipment)))
         bars = ax2.barh(active_equipment['Process'], active_equipment['Weekly_Hours'],
@@ -109,11 +108,11 @@ def create_functional_visualizations():
         ax2.set_title('Year +5: Weekly Workload by Process', fontweight='bold', fontsize=12)
         ax2.grid(axis='x', alpha=0.3)
 
-        # Add value labels
+        # add value labels
         for i, (proc, hours) in enumerate(zip(active_equipment['Process'], active_equipment['Weekly_Hours'])):
             ax2.text(hours, i, f' {hours:.0f}h', va='center', fontsize=9)
 
-        # 3. Year-over-Year Equipment Requirements Trend
+        # 3. year-over-year equipment requirements trend
         ax3 = plt.subplot(2, 3, 3)
         yearly_equipment = equipment_df.groupby('Year')['Equipment_2_Shifts'].sum().reset_index()
         yearly_equipment['Year_Num'] = yearly_equipment['Year'].str.replace('+', '').astype(int)
@@ -126,11 +125,11 @@ def create_functional_visualizations():
         ax3.set_xticks(yearly_equipment['Year_Num'])
         ax3.grid(alpha=0.3)
 
-        # Add value labels
+        # add value labels
         for x, y in zip(yearly_equipment['Year_Num'], yearly_equipment['Equipment_2_Shifts']):
             ax3.text(x, y, f'{int(y)}', ha='center', va='bottom', fontsize=10)
 
-        # 4. Process-wise Capacity Utilization - Year +5
+        # 4. process-wise capacity utilization - year +5
         ax4 = plt.subplot(2, 3, 4)
         utilization_data = active_equipment[['Process', 'Utilization_2_Shifts']].copy()
         utilization_data = utilization_data.sort_values('Utilization_2_Shifts', ascending=True)

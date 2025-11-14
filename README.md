@@ -250,6 +250,17 @@ ISYE6202_CW3/
 - `Functional_Flow_Matrix.csv`: Detailed flow matrix
 - `Visuals/Functional_Flow_Matrix_Heatmap.png`: Visual "spaghetti diagram"
 
+**Visualizations** (`Visuals/` folder):
+- `Functional_Flow_Matrix_Heatmap.png`: Heat map showing complex inter-departmental material flow
+- `Functional_Equipment_Summary.png`: Bar chart of equipment distribution across processes
+- `Functional_Layout_Comprehensive_Analysis.png`: Multi-panel dashboard with KPIs
+- `Functional_Layout_Cost_Analysis.png`: Cost breakdown by process and category
+- `Functional_Layout_Cost_KPI_Dashboard.png`: Summary of key cost metrics
+- `Functional_Layout_Cost_Efficiency_Matrix.png`: Cost-efficiency comparison matrix
+- `Functional_Layout_Process_Cost_Comparison.png`: Process-level cost comparison
+- `Functional_Layout_ROI_Analysis.png`: Return on investment analysis
+- `Functional_Layout_Investment_Timeline_Analysis.png`: Investment timeline projection
+
 **Characteristics**:
 - ✅ Low initial investment (baseline)
 - ✅ High equipment utilization
@@ -284,6 +295,15 @@ ISYE6202_CW3/
 - `Cost_Analysis/Fractal_All_Scenarios_Cost_KPIs.csv`: Cost metrics
 - `fractal_distance/`: Material travel distance analysis
 - `Fractal_Visuals/Fractal_Layout_Scenario_Comparison.png`
+
+**Visualizations** (`Fractal_Visuals/` folder):
+- `Fractal_Layout_f2.png`, `f3.png`, `f4.png`: Physical layout diagrams for each fractal scenario
+- `Fractal_Flow_Matrix_f2.png`, `f3.png`, `f4.png`: Flow matrices showing material movement patterns
+- `Fractal_Layout_Scenario_Comparison.png`: Multi-criteria comparison across all scenarios
+- `Fractal_Equipment_Comparison.png`: Equipment requirements comparison (f=2 to f=5)
+- `Fractal_Layout_Equipment_Distribution.png`: Equipment allocation across fractal centers
+- `Fractal_Layout_Efficiency_Frontier.png`: Efficiency frontier analysis
+- `Fractal_Layout_Process_Cost_Breakdown.png`: Detailed cost breakdown by process
 
 **Strategic Advantages**:
 - ✅ **90% reduction** in material travel distance vs. Functional
@@ -322,6 +342,15 @@ ISYE6202_CW3/
 - `Visuals/`: Layout diagrams per part family
 - `Documentation/README.md`: Design rationale
 
+**Visualizations** (`Visuals/` folder):
+- `Part_Based_Year1_Compact_Layout.png`: Optimized compact layout for Year 1
+- `Year1_Part_Based_Layout_Schematic.png`: Detailed schematic with equipment placement
+- `Year1_Part_Based_Comprehensive_Dashboard.png`: Multi-panel dashboard with metrics
+- `Year1_Part_Based_Top10_Analysis.png`: Analysis of top 10 parts by volume
+- `Part_Based_Analysis_Dashboard.png`: Overall analysis dashboard
+- `Part_Based_Layout_Cost_Analysis.png`: Cost breakdown by part family
+- `Part_Based_Layout_Cost_KPI_Dashboard.png`: Cost KPI summary
+
 **Characteristics**:
 - ✅ Reduced equipment duplication vs. pure part-based
 - ✅ Simplified scheduling within groups
@@ -356,6 +385,12 @@ ISYE6202_CW3/
 - `AllYears_Flow_Matrix_Summary.csv`: Flow complexity over time
 - `Visuals/Functional_Utilization_Comparison_By_Year.png`
 
+**Visualizations** (`functional/Visuals/` folder):
+- `Functional_Utilization_Comparison_By_Year.png`: Equipment utilization trends Year 1-5
+- `Functional_Equipment_Comparison_By_Process.png`: Process-level equipment growth
+- `Functional_Layout_Summary_Dashboard.png`: Overall summary dashboard
+- `Functional_Cost_Analysis_Overview.png`: 5-year cost projection
+
 **Finding**: Material flow complexity increases dramatically with scale (❌ Poor scalability)
 
 ---
@@ -375,6 +410,17 @@ ISYE6202_CW3/
 - `Fractal_Visuals/Fractal_Scaling_Comparison.png`: Clear scaling advantage
 - `Fractal_Visuals/Fractal_Capital_Investment_Comparison.png`: Cost efficiency
 - `Cost_Analysis/`: Long-term ROI analysis
+
+**Visualizations** (`Fractal/Fractal_Visuals/` folder):
+- `Fractal_Scaling_Comparison.png`: **KEY CHART** - Shows how Fractal scales linearly vs. Functional
+- `Fractal_Capital_Investment_Comparison.png`: Capital investment trends Years 1-5
+- `Fractal_Operating_Cost_Comparison.png`: Operating cost comparison across scenarios
+- `Fractal_Cost_Efficiency_Analysis.png`: Cost-efficiency metrics over time
+- `Fractal_Yearly_Equipment_Comparison.png`: Year-over-year equipment growth
+- `Year2_Fractal_f2/f3/f4/f5_Layout.png`: Layout diagrams for Year 2 (all scenarios)
+- `Year3_Fractal_f2/f3/f4/f5_Layout.png`: Layout diagrams for Year 3
+- `Year4_Fractal_f2/f3/f4/f5_Layout.png`: Layout diagrams for Year 4
+- `Year5_Fractal_f2/f3/f4/f5_Layout.png`: Layout diagrams for Year 5
 
 **Finding**: Linear, predictable scaling with minimal disruption (✅ Excellent scalability)
 

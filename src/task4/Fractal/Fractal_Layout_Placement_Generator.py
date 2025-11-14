@@ -1,17 +1,17 @@
 ﻿"""
-Fractal Layout Placement Generator
+fractal layout placement generator
 
-This script generates the overall facility layout by placing parent blocks (A-M)
-on a Cartesian plane based on flow relationships and adjacency requirements.
+this script generates the overall facility layout by placing parent blocks (a-m)
+on a cartesian plane based on flow relationships and adjacency requirements.
 
-CRITICAL ANALYSIS & LOGIC:
-1. Flow Analysis: Highest to lowest flows determine relative placement priority
-2. Adjacency: No space between blocks - they must be adjacent for optimal flow
-3. Centroids: Calculated for each block and output to CSV
-4. Pragmatic Spacing: Margins added for inbound/outbound but layout is space-efficient
+critical analysis & logic:
+1. flow analysis: highest to lowest flows determine relative placement priority
+2. adjacency: no space between blocks - they must be adjacent for optimal flow
+3. centroids: calculated for each block and output to csv
+4. pragmatic spacing: margins added for inbound/outbound but layout is space-efficient
 
-Author: Fractal Layout Placement Team
-Date: November 2025
+team: machas^2
+date: november 2025
 """
 
 import sys
@@ -24,12 +24,12 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 
 # ============================================================================
-# CONFIGURATION
+# configuration
 # ============================================================================
 
 BASE_DIR = Path(__file__).parent.parent.parent.parent
 
-# Layout margins (feet) - pragmatic spacing for inbound/outbound
+# layout margins (feet) - pragmatic spacing for inbound/outbound
 MARGIN_LEFT = 20
 MARGIN_RIGHT = 20
 MARGIN_TOP = 20

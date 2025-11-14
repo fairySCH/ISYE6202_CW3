@@ -1,30 +1,30 @@
 """
-Fractal Optimal Grid Configuration Generator (REUSABLE)
+fractal optimal grid configuration generator (reusable)
 ========================================================
 
-This script generates the optimal grid layout for each process (A-M) in a single fractal center,
+this script generates the optimal grid layout for each process (a-m) in a single fractal center,
 considering the shareability of machine spaces.
 
-SHAREABILITY RULES:
-- A, B, C, D: Same machine type, 14×14 ft, can share 2ft on THREE sides
-- K, L, M: 14×7 ft, can share 1ft on EITHER side of the 7ft dimension
-- E, F, G: 22×15 ft, no sharing
-- H, I, J: 14×36 ft, no sharing
+shareability rules:
+- a, b, c, d: same machine type, 14×14 ft, can share 2ft on three sides
+- k, l, m: 14×7 ft, can share 1ft on either side of the 7ft dimension
+- e, f, g: 22×15 ft, no sharing
+- h, i, j: 14×36 ft, no sharing
 
-OPTIMIZATION GOALS:
-1. Minimize wasted spaces (unused grid slots)
-2. Minimize total block area (considering overlap)
-3. Optimize aspect ratio (prefer square-like blocks)
-4. Maximize utilization efficiency
-5. Minimize perimeter (reduces material handling distance)
+optimization goals:
+1. minimize wasted spaces (unused grid slots)
+2. minimize total block area (considering overlap)
+3. optimize aspect ratio (prefer square-like blocks)
+4. maximize utilization efficiency
+5. minimize perimeter (reduces material handling distance)
 
-USAGE:
+usage:
     python script.py <year> <num_fractals>
-    Example: python script.py 5 4
+    example: python script.py 5 4
              python script.py 1 4
 
-Author: Fractal Layout Optimization Team
-Date: November 2025
+team: machas^2
+date: november 2025
 """
 
 import math
@@ -33,12 +33,12 @@ from pathlib import Path
 import pandas as pd
 
 # ============================================================================
-# CONFIGURATION
+# configuration
 # ============================================================================
 
 BASE_DIR = Path(__file__).parent.parent.parent.parent
 
-# Machine specifications
+# machine specifications
 MACHINE_SPECS = {
     # Process: (width_ft, depth_ft, overlap_x_ft, overlap_y_ft, group)
     'A': (14, 14, 2, 2, 'ABCD'),  # Can share 2ft on 3 sides

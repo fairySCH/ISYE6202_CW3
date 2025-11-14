@@ -1,24 +1,24 @@
 """
-Fractal Individual Parent Block Visualizer (REUSABLE)
+fractal individual parent block visualizer (reusable)
 ======================================================
 
-This script creates individual visualization images for each process (A-M),
+this script creates individual visualization images for each process (a-m),
 showing the parent block with child equipment blocks inside.
 
-Features:
-- One image per process (A.png through M.png)
-- Shows individual child equipment blocks with shareability zones
-- Professional annotations and dimensions
-- Color-coded by process group
-- Reusable for any year/fractal combination
+features:
+- one image per process (a.png through m.png)
+- shows individual child equipment blocks with shareability zones
+- professional annotations and dimensions
+- color-coded by process group
+- reusable for any year/fractal combination
 
-USAGE:
+usage:
     python script.py <year> <num_fractals>
-    Example: python script.py 5 4
+    example: python script.py 5 4
              python script.py 1 4
 
-Author: Fractal Block Visualization Team
-Date: November 2025
+team: machas^2
+date: november 2025
 """
 
 import sys
@@ -28,12 +28,12 @@ from matplotlib.patches import Rectangle
 from pathlib import Path
 
 # ============================================================================
-# CONFIGURATION
+# configuration
 # ============================================================================
 
 BASE_DIR = Path(__file__).parent.parent.parent.parent
 
-# Process colors - professional palette
+# process colors - professional palette
 PROCESS_COLORS = {
     'A': '#FF6B6B',  # Coral Red
     'B': '#4ECDC4',  # Turquoise

@@ -1,27 +1,28 @@
 """
-Fractal Organization Design - Task 4 (Years 2-5) - CORRECTED VERSION
-Main Analysis Script for Multi-Year Fractal Factory Design
+fractal organization design - task 4 (years 2-5) - corrected version
 
-Designs fractal factory for year 4 (peak demand), then scales down
+main analysis script for multi-year fractal factory design
+
+this script designs the fractal factory for year 4 (peak demand), then scales down
 equipment for years 2 and 3 to reduce space requirements.
 
-CRITICAL FIXES IMPLEMENTED:
-1. Uniform equipment capacity (no artificial capacity factors)
-2. Proper fractal integrity validation
-3. Comprehensive data validation and error handling
-4. Mathematically consistent equipment calculations
-5. Proper handling of demand divisibility issues
-6. Robust CSV parsing with validation
+critical fixes implemented:
+1. uniform equipment capacity (no artificial capacity factors)
+2. proper fractal integrity validation
+3. comprehensive data validation and error handling
+4. mathematically consistent equipment calculations
+5. proper handling of demand divisibility issues
+6. robust csv parsing with validation
 
-Key Features:
-1. Equipment requirements per fractal center for each year
-2. Equipment requirements for entire factory per year
-3. Scaling analysis from year 4 design
-4. Operating parameters and capacity utilization
+key features:
+1. equipment requirements per fractal center for each year
+2. equipment requirements for entire factory per year
+3. scaling analysis from year 4 design
+4. operating parameters and capacity utilization
 
-Author: FeMoaSa Design Team
-Date: November 2025
-Version: 2.0 (Corrected)
+team: machas^2
+date: november 2025
+version: 2.0 (corrected)
 """
 
 import pandas as pd
@@ -30,12 +31,12 @@ from pathlib import Path
 import sys
 import warnings
 
-# Configuration
-BASE_DIR = Path(__file__).parent.parent.parent.parent  # Go up to project root
+# configuration
+BASE_DIR = Path(__file__).parent.parent.parent.parent  # go up to project root
 DATA_DIR = BASE_DIR / "data" / "csv_outputs"
 RESULTS_DIR = BASE_DIR / "results" / "Task4" / "Fractal" / "Fractal_Design"
 
-# Operating parameters
+# operating parameters
 DAYS_PER_WEEK = 5
 HOURS_PER_SHIFT = 8
 MINUTES_PER_SHIFT = HOURS_PER_SHIFT * 60  # 480 minutes
@@ -46,16 +47,16 @@ EFFECTIVE_AVAILABILITY = EFFICIENCY * RELIABILITY  # 0.882 or 88.2%
 # Processes
 PROCESSES = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M']
 
-# Years to analyze
+# years to analyze
 YEARS = [2, 3, 4, 5]
 
-# Expected parts and products (for validation)
+# expected parts and products (for validation)
 EXPECTED_PARTS = [f'P{i}' for i in range(1, 21)]
 EXPECTED_PRODUCTS = ['A1', 'A2', 'A3', 'B1', 'B2', 'A4', 'B3', 'B4']
 
 
 def load_yearly_product_demand(year):
-    """Load yearly product demand for specified year with validation"""
+    """load yearly product demand for specified year with validation"""
     demand_file = DATA_DIR / '+2 to +5 Year Product Demand.csv'
     
     if not demand_file.exists():
@@ -72,7 +73,7 @@ def load_yearly_product_demand(year):
     if df.shape[1] < 10:
         raise ValueError(f"Product demand CSV has insufficient columns: {df.shape[1]} < 10")
 
-    # Find the row for the specified year
+    # find the row for the specified year
     year_row_idx = None
     for i, row in df.iterrows():
         if str(row[1]).strip() == f'+{year}':
@@ -82,8 +83,8 @@ def load_yearly_product_demand(year):
     if year_row_idx is None:
         raise ValueError(f"Year +{year} not found in demand data")
 
-    # Extract weekly demand values (row 18-22 for years 2-5)
-    weekly_row_idx = 17 + (year - 1)  # Year 2 = row 18, Year 3 = row 19, etc.
+    # extract weekly demand values (row 18-22 for years 2-5)
+    weekly_row_idx = 17 + (year - 1)  # year 2 = row 18, year 3 = row 19, etc.
     products = EXPECTED_PRODUCTS
     
     try:
@@ -91,7 +92,7 @@ def load_yearly_product_demand(year):
     except (ValueError, IndexError) as e:
         raise ValueError(f"Failed to extract weekly demand values for year {year}: {e}")
     
-    # Validate all demands are non-negative
+    # validate all demands are non-negative
     if any(val < 0 for val in weekly_demand_values):
         raise ValueError(f"All product demands must be non-negative. Got: {weekly_demand_values}")
     

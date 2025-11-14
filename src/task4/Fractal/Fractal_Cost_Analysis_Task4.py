@@ -1,15 +1,20 @@
 """
-Task 4: Fractal Layout - Comprehensive Cost Analysis
+task 4: fractal layout - comprehensive cost analysis
 
-Analyzes cost implications for fractal configurations across years 2-5:
-- Capital investment costs (equipment installation)
-- Operating costs (labor) across multiple centers
-- Depreciation analysis
-- Comparative cost efficiency analysis
-- Multi-year scenario optimization recommendations
+this script analyzes the cost implications for fractal configurations across years 2-5:
 
-Author: Analysis Team
-Date: November 2025
+- capital investment costs (equipment installation)
+
+- operating costs (labor) across multiple centers
+
+- depreciation analysis
+
+- comparative cost efficiency analysis
+
+- multi-year scenario optimization recommendations
+
+team: machas^2
+date: november 2025
 """
 
 import pandas as pd
@@ -18,11 +23,11 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from pathlib import Path
 
-# Set matplotlib backend to non-interactive
+# set matplotlib backend to non-interactive
 plt.switch_backend('Agg')
 
-# Configuration
-BASE_DIR = Path(__file__).parent.parent.parent.parent  # Go up to ISYE6202_CW3 directory
+# configuration
+BASE_DIR = Path(__file__).parent.parent.parent.parent  # go up to isye6202_cw3 directory
 DATA_DIR = BASE_DIR / "data" / "csv_outputs"
 RESULTS_DIR = BASE_DIR / "results" / "task4" / "Fractal"
 COST_DIR = RESULTS_DIR / "Cost_Analysis"

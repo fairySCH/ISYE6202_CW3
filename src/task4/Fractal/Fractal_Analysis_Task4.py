@@ -1,29 +1,29 @@
 """
-Fractal Organization Analysis - Task 4 Main Script
+fractal organization analysis - task 4 main script
 
-Orchestrates the complete fractal factory design analysis for years 2-5.
-Designs for year 4 (peak demand), then scales down for earlier years.
+this script orchestrates the complete fractal factory design analysis for years 2-5.
+it designs for year 4 (peak demand), then scales down for earlier years.
 
-Execution Flow:
-1. Run Fractal_Design_Task4.py - Equipment requirements analysis
-2. Run Fractal_Flow_Matrix_Task4.py - Flow matrix generation
-3. Run Fractal_Layout_Generator_Task4.py - Layout optimization
-4. Generate summary reports and comparisons
+execution flow:
+1. run fractal_design_task4.py - equipment requirements analysis
+2. run fractal_flow_matrix_task4.py - flow matrix generation
+3. run fractal_layout_generator_task4.py - layout optimization
+4. generate summary reports and comparisons
 
-Author: FeMoaSa Design Team
-Date: November 2025
+team: machas^2
+date: november 2025
 """
 
 import subprocess
 import sys
 from pathlib import Path
 
-# Configuration
+# configuration
 BASE_DIR = Path(__file__).parent
 SCRIPTS_DIR = BASE_DIR
 
 def run_script(script_name, description):
-    """Run a Python script and check for errors"""
+    """run a python script and check for errors"""
     script_path = SCRIPTS_DIR / script_name
 
     print(f"\n{'='*60}")
@@ -36,7 +36,7 @@ def run_script(script_name, description):
 
         if result.returncode == 0:
             print(f"✓ {description} completed successfully")
-            # Print last few lines of output for confirmation
+            # print last few lines of output for confirmation
             lines = result.stdout.strip().split('\n')
             if lines:
                 print("Last output lines:")
@@ -69,7 +69,7 @@ def main():
     print("  4. Compare scaling efficiency across configurations")
     print()
 
-    # Step 1: Equipment Requirements Analysis
+    # step 1: equipment requirements analysis
     success = run_script("Fractal_Design_Task4.py",
                         "Equipment Requirements Analysis")
 
@@ -77,7 +77,7 @@ def main():
         print("\n❌ Equipment analysis failed. Stopping execution.")
         return
 
-    # Step 2: Flow Matrix Generation
+    # step 2: flow matrix generation
     success = run_script("Fractal_Flow_Matrix_Task4.py",
                         "Flow Matrix Generation")
 
@@ -85,7 +85,7 @@ def main():
         print("\n❌ Flow matrix generation failed. Stopping execution.")
         return
 
-    # Step 3: Layout Generation
+    # step 3: layout generation
     success = run_script("Fractal_Layout_Generator_Task4.py",
                         "Layout Optimization")
 
@@ -93,7 +93,7 @@ def main():
         print("\n❌ Layout generation failed. Stopping execution.")
         return
 
-    # Step 4: Visualization Generation
+    # step 4: visualization generation
     success = run_script("Fractal_Visualization_Task4.py",
                         "Layout Visualization")
 
@@ -101,7 +101,7 @@ def main():
         print("\n❌ Visualization generation failed. Stopping execution.")
         return
 
-    # Step 5: Cost Analysis
+    # step 5: cost analysis
     success = run_script("Fractal_Cost_Analysis_Task4.py",
                         "Cost Analysis")
 
@@ -109,7 +109,7 @@ def main():
         print("\n❌ Cost analysis failed. Stopping execution.")
         return
 
-    # Success summary
+    # success summary
     print("\n" + "="*80)
     print("🎉 ALL FRACTAL ANALYSES COMPLETED SUCCESSFULLY!")
     print("="*80 + "\n")

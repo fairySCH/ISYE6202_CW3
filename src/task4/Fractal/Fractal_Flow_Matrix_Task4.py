@@ -1,24 +1,24 @@
 """
-Fractal Organization - Flow Matrix Generator - Task 4
+fractal organization - flow matrix generator - task 4
 
-Creates flow matrices for fractal organization across years 2-5:
-1. Flow matrix for each individual fractal center per year
-2. Aggregate flow matrix for entire factory per year
-3. Inter-center flow analysis per year
+this script creates flow matrices for the fractal organization setup across years 2 through 5. it generates:
 
-Each fractal center handles 1/f total demand and has complete
-process capability (A through M).
+1. flow matrix for each individual fractal center per year
+2. aggregate flow matrix for the entire factory per year
+3. inter-center flow analysis per year
 
-Author: FeMoaSa Design Team
-Date: November 2025
+each fractal center handles 1/f of the total demand and has complete process capability from a through m.
+
+team: machas^2
+date: november 2025
 """
 
 import pandas as pd
 import numpy as np
 from pathlib import Path
 
-# Configuration
-BASE_DIR = Path(__file__).parent.parent.parent.parent  # Go up to project root
+# configuration
+BASE_DIR = Path(__file__).parent.parent.parent.parent  # go up to project root
 DATA_DIR = BASE_DIR / "data" / "csv_outputs"
 RESULTS_DIR = BASE_DIR / "results"
 FRACTAL_FLOW_DIR = RESULTS_DIR / "Task4" / "Fractal" / "Fractal_Flowmatrix"
@@ -28,10 +28,10 @@ YEARS = [2, 3, 4, 5]
 
 
 def load_yearly_product_demand(year):
-    """Load yearly product demand for specified year"""
+    """load yearly product demand for specified year"""
     df = pd.read_csv(DATA_DIR / '+2 to +5 Year Product Demand.csv', header=None)
 
-    # Find the row for the specified year
+    # find the row for the specified year
     year_row_idx = None
     for i, row in df.iterrows():
         if str(row[1]).strip() == f'+{year}':
@@ -41,8 +41,8 @@ def load_yearly_product_demand(year):
     if year_row_idx is None:
         raise ValueError(f"Year +{year} not found in demand data")
 
-    # Extract weekly demand values (row 18-22 for years 2-5)
-    weekly_row_idx = 17 + (year - 1)  # Year 2 = row 18, Year 3 = row 19, etc.
+    # extract weekly demand values (row 18-22 for years 2-5)
+    weekly_row_idx = 17 + (year - 1)  # year 2 = row 18, year 3 = row 19, etc.
     products = ['A1', 'A2', 'A3', 'B1', 'B2', 'A4', 'B3', 'B4']
     weekly_demand_values = df.iloc[weekly_row_idx, 2:10].astype(float).tolist()
 
@@ -50,7 +50,7 @@ def load_yearly_product_demand(year):
 
 
 def load_bom():
-    """Load Bill of Materials for years 2-5"""
+    """load bill of materials for years 2-5"""
     bom_lines = []
     with open(DATA_DIR / '+2 to +5 Year Parts per Product.csv', 'r', encoding='utf-8') as f:
         for line in f:
@@ -59,7 +59,7 @@ def load_bom():
     bom = {}
     products = ['A1', 'A2', 'A3', 'B1', 'B2', 'A4', 'B3', 'B4']
 
-    for i in range(2, 22):  # Parts P1 to P20, starting from row 2
+    for i in range(2, 22):  # parts p1 to p20, starting from row 2
         part_name = bom_lines[i][1].strip()
         bom[part_name] = {}
         for j, product in enumerate(products):
@@ -76,7 +76,7 @@ def load_bom():
 
 
 def calculate_weekly_part_demand(weekly_product_demand, bom):
-    """Calculate weekly demand for each part"""
+    """calculate weekly demand for each part"""
     weekly_part_demand = {}
 
     for i in range(1, 21):
@@ -92,7 +92,7 @@ def calculate_weekly_part_demand(weekly_product_demand, bom):
 
 
 def load_process_sequences():
-    """Load process sequences for each part"""
+    """load process sequences for each part"""
     process_sequences = {
         'P1': ['B', 'A', 'B', 'C', 'D', 'I', 'J'],
         'P2': ['A', 'C', 'D', 'H', 'J'],
@@ -120,8 +120,8 @@ def load_process_sequences():
 
 def create_flow_matrix_for_center(part_demand_per_center, process_sequences):
     """
-    Create flow matrix for a single fractal center
-    Shows part movements between processes within the center
+    create flow matrix for a single fractal center
+    shows part movements between processes within the center
     """
     flow_matrix = pd.DataFrame(0.0, index=PROCESSES, columns=PROCESSES, dtype=float)
 
@@ -131,7 +131,7 @@ def create_flow_matrix_for_center(part_demand_per_center, process_sequences):
 
         operations = process_sequences[part]
 
-        # Create transitions between consecutive operations
+        # create transitions between consecutive operations
         for i in range(len(operations) - 1):
             from_process = operations[i]
             to_process = operations[i + 1]
@@ -142,50 +142,50 @@ def create_flow_matrix_for_center(part_demand_per_center, process_sequences):
 
 def generate_fractal_flow_matrices_yearly(year, num_fractals):
     """
-    Generate flow matrices for fractal organization for a specific year
+    generate flow matrices for fractal organization for a specific year
 
-    Parameters:
-    - year: Year number (2, 3, 4, 5)
-    - num_fractals: Number of fractal centers (f)
+    parameters:
+    - year: year number (2, 3, 4, 5)
+    - num_fractals: number of fractal centers (f)
 
-    Returns:
-    - Dictionary with flow matrices for each center and aggregate
+    returns:
+    - dictionary with flow matrices for each center and aggregate
     """
     print(f"\nGenerating flow matrices for Year {year}, f={num_fractals} fractal centers...")
 
-    # Load data
+    # load data
     weekly_product_demand = load_yearly_product_demand(year)
     bom = load_bom()
     weekly_part_demand = calculate_weekly_part_demand(weekly_product_demand, bom)
     process_sequences = load_process_sequences()
 
-    # Calculate demand per fractal center (each center handles 1/f of total)
+    # calculate demand per fractal center (each center handles 1/f of total)
     part_demand_per_center = {part: demand / num_fractals
                               for part, demand in weekly_part_demand.items()}
 
-    # Create flow matrix for a single fractal center
+    # create flow matrix for a single fractal center
     center_flow_matrix = create_flow_matrix_for_center(part_demand_per_center,
                                                         process_sequences)
 
-    # Aggregate flow matrix (sum across all centers)
+    # aggregate flow matrix (sum across all centers)
     aggregate_flow_matrix = center_flow_matrix * num_fractals
 
-    # Create output directory
+    # create output directory
     year_dir = FRACTAL_FLOW_DIR / f"year{year}"
     center_dir = year_dir / f"f{num_fractals}_centers"
     center_dir.mkdir(parents=True, exist_ok=True)
 
-    # Save flow matrix for single center
+    # save flow matrix for single center
     center_file = center_dir / f"Single_Center_Flow_Matrix.csv"
     center_flow_matrix.to_csv(center_file)
     print(f"  Saved: {center_file.relative_to(RESULTS_DIR)}")
 
-    # Save aggregate flow matrix
+    # save aggregate flow matrix
     aggregate_file = center_dir / f"Aggregate_Factory_Flow_Matrix.csv"
     aggregate_flow_matrix.to_csv(aggregate_file)
     print(f"  Saved: {aggregate_file.relative_to(RESULTS_DIR)}")
 
-    # Create flow summary
+    # create flow summary
     total_in_flow = center_flow_matrix.sum(axis=0)
     total_out_flow = center_flow_matrix.sum(axis=1)
 
@@ -201,7 +201,7 @@ def generate_fractal_flow_matrices_yearly(year, num_fractals):
     flow_summary.to_csv(summary_file, index=False)
     print(f"  Saved: {summary_file.relative_to(RESULTS_DIR)}")
 
-    # Generate individual center flow matrices (for layout purposes)
+    # generate individual center flow matrices (for layout purposes)
     for center_num in range(1, num_fractals + 1):
         individual_file = center_dir / f"Center_{center_num}_Flow_Matrix.csv"
         center_flow_matrix.to_csv(individual_file)
@@ -217,8 +217,8 @@ def generate_fractal_flow_matrices_yearly(year, num_fractals):
 
 def create_process_adjacency_matrix(flow_matrix):
     """
-    Create adjacency matrix for layout optimization
-    Higher values indicate processes that should be located closer together
+    create adjacency matrix for layout optimization
+    higher values indicate processes that should be located closer together
     """
     # Bidirectional flow (sum of flow in both directions)
     adjacency = flow_matrix + flow_matrix.T
@@ -228,8 +228,8 @@ def create_process_adjacency_matrix(flow_matrix):
 
 def generate_layout_data_for_center(flow_matrix, center_id=1, year=None):
     """
-    Generate layout data for a single fractal center
-    Includes process coordinates and connection strengths
+    generate layout data for a single fractal center
+    includes process coordinates and connection strengths
     """
     adjacency = create_process_adjacency_matrix(flow_matrix)
 
@@ -251,15 +251,15 @@ def generate_layout_data_for_center(flow_matrix, center_id=1, year=None):
 
 
 def main():
-    """Main execution function"""
+    """main execution function"""
     print("\n" + "="*80)
     print("FRACTAL ORGANIZATION - FLOW MATRIX GENERATION - TASK 4")
     print("="*80 + "\n")
 
-    # Create output directory
+    # create output directory
     FRACTAL_FLOW_DIR.mkdir(parents=True, exist_ok=True)
 
-    # Generate flow matrices for different years and fractal configurations
+    # generate flow matrices for different years and fractal configurations
     all_results = {}
 
     for year in YEARS:
@@ -273,7 +273,7 @@ def main():
             results = generate_fractal_flow_matrices_yearly(year, f)
             year_results[f] = results
 
-            # Generate layout data for first center of each configuration
+            # generate layout data for first center of each configuration
             year_dir = FRACTAL_FLOW_DIR / f"year{year}"
             center_dir = year_dir / f"f{f}_centers"
             layout_edges = generate_layout_data_for_center(results['center_flow'], center_id=1, year=year)
@@ -300,7 +300,7 @@ def main():
     print("  - Center_X_Flow_Matrix.csv (individual center matrices)")
     print("  - Layout_Edges.csv (for visualization)")
 
-    # Print sample from year 4, f=3 configuration
+    # print sample from year 4, f=3 configuration
     if 4 in all_results and 3 in all_results[4]:
         print("\n" + "="*80)
         print("SAMPLE: Year 4, f=3 Configuration Flow Summary")

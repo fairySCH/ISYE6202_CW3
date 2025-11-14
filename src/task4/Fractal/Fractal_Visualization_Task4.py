@@ -22,15 +22,6 @@ YEARS = [2, 3, 4, 5]
 
 
 def create_layout_visualization_yearly(year, num_fractals=3, show_flows=True, flow_threshold=1000):
-    """
-    Create publication-quality visualization of fractal layout for a specific year
-
-    Parameters:
-    - year: Year number (2, 3, 4, 5)
-    - num_fractals: Number of fractal centers to visualize
-    - show_flows: Whether to show material flow arrows
-    - flow_threshold: Minimum flow to display (filters out small flows)
-    """
     # Load data
     year_dir = LAYOUT_DIR / f"year{year}"
     layout_path = year_dir / f"f{num_fractals}_layout"

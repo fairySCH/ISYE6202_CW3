@@ -1,10 +1,10 @@
 """
-Fractal Distance Metrics - Consolidated Pipeline
+fractal distance metrics - consolidated pipeline
 
-Computes pairwise Euclidean distances between centroids, weighted flow distances,
+computes pairwise Euclidean distances between centroids, weighted flow distances,
 and generates flow line visualizations for fractal layouts.
 
-Supports both Y1F4 and Y5F4 layouts with appropriate output directories.
+supports both Y1F4 and Y5F4 layouts with appropriate output directories.
 
 author: machas^2 team
 """

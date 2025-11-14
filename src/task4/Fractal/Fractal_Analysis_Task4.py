@@ -7,8 +7,7 @@ it designs for year 4 (peak demand), then scales down for earlier years.
 execution flow:
 1. run fractal_design_task4.py - equipment requirements analysis
 2. run fractal_flow_matrix_task4.py - flow matrix generation
-3. run fractal_layout_generator_task4.py - layout optimization
-4. generate summary reports and comparisons
+3. generate summary reports and comparisons
 
 team: machas^2
 date: november 2025

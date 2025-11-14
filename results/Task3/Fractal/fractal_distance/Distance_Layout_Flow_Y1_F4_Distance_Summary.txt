@@ -1,4 +1,3 @@
 Total flow: 188,750.00
-Total distance travelled (ft): 10,141,287.95
-Total distance travelled (km): 3,091,064.47
-Average distance per unit flow (ft): 53.7287
+Total weighted distance (flow x ft): 10,141,287.96
+Average distance per unit flow (ft per flow unit): 53.7287

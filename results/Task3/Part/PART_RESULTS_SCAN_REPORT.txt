@@ -9,6 +9,14 @@ File: results\Task3\Part\Part_Based_Process_Part_Matrix.csv
   Duplicate rows: 0
   % missing cells: 0.0%
 
+File: results\Task3\Part\PART_RESULTS_SCAN_SUMMARY.csv
+  Status: OK
+  Rows: 30, Cols: 9
+  % rows all-zero-or-NaN (numeric cols): 0.0%
+  Constant columns: 2 (all-zero columns: 2)
+  Duplicate rows: 0
+  % missing cells: 0.0%
+
 File: results\Task3\Part\Capacity\Capacity_Comparison_Operations.csv
   Status: OK
   Rows: 13, Cols: 3
@@ -55,7 +63,7 @@ File: results\Task3\Part\Capacity\Part_Based_All_Parts_Flow_Distance_Breakdown.c
   % rows all-zero-or-NaN (numeric cols): 0.0%
   Constant columns: 0 (all-zero columns: 0)
   Duplicate rows: 0
-  % missing cells: 13.75%
+  % missing cells: 4.58%
 
 File: results\Task3\Part\Capacity\Part_Based_All_Parts_Layout_Summary.csv
   Status: OK
@@ -91,11 +99,11 @@ File: results\Task3\Part\Capacity\Part_Based_Process_Frequency.csv
 
 File: results\Task3\Part\Capacity\Part_Based_Process_Workload_Breakdown.csv
   Status: OK
-  Rows: 136, Cols: 5
+  Rows: 121, Cols: 5
   % rows all-zero-or-NaN (numeric cols): 0.0%
   Constant columns: 0 (all-zero columns: 0)
-  Duplicate rows: 14
-  % missing cells: 5.74%
+  Duplicate rows: 0
+  % missing cells: 4.3%
 
 File: results\Task3\Part\Capacity\Part_Based_Weekly_Part_Demand.csv
   Status: OK
@@ -169,19 +177,43 @@ File: results\Task3\Part\Capacity\Part_Step_Process_Capacity_Requirements_2_shif
   Duplicate rows: 0
   % missing cells: 0.0%
 
+File: results\Task3\Part\cleaned\Part_Based_All_Parts_Flow_Distance_Breakdown_CLEANED.csv
+  Status: OK
+  Rows: 97, Cols: 9
+  % rows all-zero-or-NaN (numeric cols): 0.0%
+  Constant columns: 0 (all-zero columns: 0)
+  Duplicate rows: 0
+  % missing cells: 4.58%
+
+File: results\Task3\Part\cleaned\Part_Based_Process_Workload_Breakdown_CLEANED.csv
+  Status: OK
+  Rows: 122, Cols: 5
+  % rows all-zero-or-NaN (numeric cols): 0.0%
+  Constant columns: 0 (all-zero columns: 0)
+  Duplicate rows: 0
+  % missing cells: 4.43%
+
+File: results\Task3\Part\cleaned\Part_Step_Machines_Summary_1_shifts_CLEANED.csv
+  Status: OK
+  Rows: 20, Cols: 9
+  % rows all-zero-or-NaN (numeric cols): 0.0%
+  Constant columns: 0 (all-zero columns: 0)
+  Duplicate rows: 0
+  % missing cells: 23.89%
+
+File: results\Task3\Part\cleaned\Part_Step_Machines_Summary_2_shifts_CLEANED.csv
+  Status: OK
+  Rows: 20, Cols: 9
+  % rows all-zero-or-NaN (numeric cols): 0.0%
+  Constant columns: 0 (all-zero columns: 0)
+  Duplicate rows: 0
+  % missing cells: 23.89%
+
 File: results\Task3\Part\Cost_Analysis\Part_Based_Capital_Costs_Detailed.csv
   Status: OK
   Rows: 13, Cols: 8
   % rows all-zero-or-NaN (numeric cols): 0.0%
   Constant columns: 0 (all-zero columns: 0)
-  Duplicate rows: 0
-  % missing cells: 0.0%
-
-File: results\Task3\Part\Cost_Analysis\Part_Based_Cost_KPIs.csv
-  Status: OK
-  Rows: 1, Cols: 13
-  % rows all-zero-or-NaN (numeric cols): 0.0%
-  Constant columns: 13 (all-zero columns: 0)
   Duplicate rows: 0
   % missing cells: 0.0%
 
@@ -198,6 +230,46 @@ File: results\Task3\Part\Cost_Analysis\Part_Based_Operating_Costs_Detailed.csv
   Rows: 13, Cols: 8
   % rows all-zero-or-NaN (numeric cols): 0.0%
   Constant columns: 0 (all-zero columns: 0)
+  Duplicate rows: 0
+  % missing cells: 0.0%
+
+File: results\Task3\Part\originals_backup_20251114_1200\Part_Based_All_Parts_Flow_Distance_Breakdown.csv
+  Status: OK
+  Rows: 97, Cols: 9
+  % rows all-zero-or-NaN (numeric cols): 0.0%
+  Constant columns: 0 (all-zero columns: 0)
+  Duplicate rows: 0
+  % missing cells: 13.75%
+
+File: results\Task3\Part\originals_backup_20251114_1200\Part_Based_Process_Workload_Breakdown.csv
+  Status: OK
+  Rows: 136, Cols: 5
+  % rows all-zero-or-NaN (numeric cols): 0.0%
+  Constant columns: 0 (all-zero columns: 0)
+  Duplicate rows: 14
+  % missing cells: 5.74%
+
+File: results\Task3\Part\originals_backup_20251114_1200\Part_Step_Machines_Summary_1_shifts.csv
+  Status: OK
+  Rows: 20, Cols: 9
+  % rows all-zero-or-NaN (numeric cols): 0.0%
+  Constant columns: 0 (all-zero columns: 0)
+  Duplicate rows: 0
+  % missing cells: 23.89%
+
+File: results\Task3\Part\originals_backup_20251114_1200\Part_Step_Machines_Summary_2_shifts.csv
+  Status: OK
+  Rows: 20, Cols: 9
+  % rows all-zero-or-NaN (numeric cols): 0.0%
+  Constant columns: 0 (all-zero columns: 0)
+  Duplicate rows: 0
+  % missing cells: 23.89%
+
+File: results\Task3\Part\summary_archive\Part_Based_Cost_KPIs.csv
+  Status: OK
+  Rows: 1, Cols: 13
+  % rows all-zero-or-NaN (numeric cols): 0.0%
+  Constant columns: 13 (all-zero columns: 0)
   Duplicate rows: 0
   % missing cells: 0.0%
 

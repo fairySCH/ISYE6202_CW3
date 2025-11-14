@@ -970,6 +970,61 @@ This three-tier strategy is the **economically optimal solution** that balances 
 * (g) **Holographic** — distributed process network (variant of Fractal)
 * (h) **Free-Style (Hybrid)** — optimized mixed-mode design
 
+**Justification for design selection**:
+
+**Why these five designs?**
+
+The selection of these five designs satisfies the Casework requirements while providing maximum analytical insight:
+
+**1. (a) Functional Organization** — *Mandatory baseline*
+
+* **Required**: Explicitly mandated by Casework as the baseline design
+* **Rationale**: Represents FeMoaSa's current paradigm (job-shop tradition)
+* **Value**: Provides benchmark for evaluating alternative designs
+* **Strategic importance**: Must understand current-state performance to justify change
+
+**2. (c) Part-Based Organization** — *Product-focused alternative*
+
+* **Selected for**: High-volume manufacturing efficiency
+* **Rationale**: With 20 parts and clear demand patterns (P1, P14, P19 are high-volume), dedicated lines can exploit economies of scale
+* **Strategic fit**: Aligns with lean manufacturing principles (flow, minimal WIP)
+* **Hypothesis**: Should outperform Functional on lead time and material handling
+
+**3. (f) Fractal Organization** — *Required modular design*
+
+* **Required**: Casework mandates either Fractal or Holographic
+* **Rationale**: Self-contained mini-factories offer operational independence and scalability
+* **Strategic advantage**: Each fractal can produce all 20 parts → maximum flexibility and redundancy
+* **Innovation potential**: Tests whether modular architecture can compete with specialized designs
+* **Key question**: Does redundancy justify capital investment?
+
+**4. (g) Holographic Organization** — *Distributed network alternative*
+
+* **Selected for**: Exploring distributed process replication
+* **Rationale**: Small, focused process centers distributed throughout factory floor
+* **Differentiation from Fractal**: While Fractal groups all processes into centers, Holographic distributes individual process types
+* **Strategic value**: Tests whether process-level distribution (vs. center-level) improves flow
+* **Hypothesis**: May reduce average travel distance below both Functional and Fractal
+
+**5. (h) Free-Style Hybrid Organization** — *Mandatory optimized design*
+
+* **Required**: Explicitly mandated as top-3 or best-performing design
+* **Rationale**: Combines strengths of multiple paradigms to create optimal hybrid
+* **Design philosophy**: 
+  - High-volume parts (65% demand) → Fractal (f=2) for flexibility + efficiency
+  - Medium-volume parts (25% demand) → Part-Based lines for flow optimization
+  - Low-volume parts (10% demand) → Functional pool for equipment sharing
+* **Strategic value**: Demonstrates that hybrid designs can outperform pure paradigms
+* **Innovation**: Tests FeMoaSa's willingness to move beyond single-paradigm thinking
+
+**Design exclusions and rationale**:
+
+* **(b) Process Organization**: Not selected — would be similar to Functional but with composite equipment (AB, CD, EFG); adds complexity without strategic differentiation
+* **(d) Group Organization**: Not selected — part families already captured by Part-Based design; grouping would be intermediate between Part-Based and Functional
+* **(e) Product Organization**: Not selected — with only 5 products but 20 parts, product-dedicated centers would have low utilization and high equipment duplication
+
+**Summary**: The selected five designs span the design space from pure paradigms (Functional, Part-Based, Fractal) to hybrid innovation (Free-Style), while testing the frontier hypothesis (Holographic) that distributed replication may outperform both centralization and modularization.
+
 **Evaluation framework**: Each design is assessed across seven dimensions:
 
 1. Network organization structure
@@ -985,6 +1040,34 @@ This three-tier strategy is the **economically optimal solution** that balances 
 #### 4.2.1 Network Organization Structure
 
 The Functional organization follows the classic **job-shop paradigm**, grouping equipment by process type into 13 specialized departments (A through M).
+
+**Network diagram**:
+
+```plaintext
+                         Factory Network
+                                |
+         +---------------------+----------------------+
+         |                     |                      |
+   [Receiving] → [Inbound  → [Production      → [Outbound  → [Shipping]
+                  Storage]     Departments]      Storage]
+                                    |
+                    +---------------+---------------+
+                    |               |               |
+              [Dept A-D]      [Dept E-H]      [Dept I-M]
+              (Forming/       (Heat/Surface    (Threading/
+               Cutting)        Treatment)       Assembly)
+```
+
+**Center missions**:
+
+| Center | Mission | Scope |
+|--------|---------|-------|
+| **Receiving** | Accept material kits from MSC, quality inspection, staging | All 20 parts |
+| **Inbound Storage** | 2-week raw material inventory (99.9% service level) | 100-unit kits |
+| **Process Dept A-M** | Execute specialized process operations (A through M) | Part-specific routing |
+| **Outbound Storage** | Safety stock + cycle stock for factory warehouse | All finished parts |
+| **Shipping** | Consolidate shipments to Client A/B warehouses | Daily deliveries |
+| **Near-Client Warehouses** | 4h/12h autonomy buffers at client sites | Client-specific parts |
 
 **Structure**:
 
@@ -1187,6 +1270,34 @@ Inter-departmental flows dominate material handling in the Functional layout, cr
 #### 4.3.1 Network Organization Structure
 
 The Part-Based organization creates **dedicated production lines** for each part or part family, grouping all necessary processes within each line.
+
+**Network diagram**:
+
+```plaintext
+                       Factory Network
+                              |
+         +--------------------+--------------------+
+         |                    |                    |
+   [Receiving] → [Part Family Lines (5)] → [Shipping]
+                         |
+        +----------------+----------------+
+        |        |       |       |        |
+    [Line 1] [Line 2] [Line 3] [Line 4] [Line 5]
+     3 parts  4 parts  3 parts  3 parts  7 parts
+    (All ops) (All ops) (All ops) (All ops) (All ops)
+```
+
+**Center missions**:
+
+| Center | Mission | Scope |
+|--------|---------|-------|
+| **Line 1** | High-volume stamped parts production (end-to-end) | P1, P14, P19 (30% demand) |
+| **Line 2** | Threaded components production (end-to-end) | P7, P12, P18, P20 (25% demand) |
+| **Line 3** | Assembled parts production (end-to-end) | P11, P9, P4 (18% demand) |
+| **Line 4** | Surface-finished parts production (end-to-end) | P2, P16, P6 (15% demand) |
+| **Line 5** | Low-volume specialty parts production (end-to-end) | P3, P5, P8, P10, P13, P15, P17 (12% demand) |
+| **Receiving** | Material kit reception and line-specific staging | All 20 parts by family |
+| **Shipping** | Consolidate finished parts to client warehouses | Daily deliveries |
 
 **Structure**:
 
@@ -1396,6 +1507,34 @@ Inter-line flows are minimal by design — parts rarely transfer between lines.
 #### 4.4.1 Network Organization Structure
 
 The Fractal organization creates **identical, self-sufficient mini-factories** (fractals), each capable of producing the full range of 20 parts.
+
+**Network diagram**:
+
+```plaintext
+                    Factory Network
+                          |
+         +----------------+----------------+
+         |                |                |
+    [Center 1]       [Center 2]       [Center 3]
+    33.3% load       33.3% load       33.3% load
+         |                |                |
+    [All A-M ops]    [All A-M ops]    [All A-M ops]
+    [All 20 parts]   [All 20 parts]   [All 20 parts]
+         |                |                |
+         +----------------+----------------+
+                          |
+                   [Shared Shipping]
+```
+
+**Center missions**:
+
+| Center | Mission | Scope | Load Share |
+|--------|---------|-------|-----------|
+| **Fractal Center 1** | Complete production of all 20 parts (processes A-M) | Full product range | 33.3% of total demand |
+| **Fractal Center 2** | Complete production of all 20 parts (processes A-M) | Full product range | 33.3% of total demand |
+| **Fractal Center 3** | Complete production of all 20 parts (processes A-M) | Full product range | 33.3% of total demand |
+| **Shared Receiving** | Distribute raw material kits equally to 3 centers | 20 parts, balanced allocation | 100% intake |
+| **Shared Shipping** | Consolidate output from 3 centers for client delivery | All finished parts | 100% output |
 
 **Structure** (f=3 configuration selected as optimal):
 
@@ -1683,6 +1822,37 @@ The defining advantage of Fractal: **inter-center flows are essentially zero**.
 
 The Holographic organization is a **variant of the Fractal design** with additional distribution and networking principles.
 
+**Network diagram**:
+
+```plaintext
+                  Factory Network
+                        |
+            Central Scheduler (Dynamic)
+                        |
+        +-------+-------+-------+-------+
+        |       |       |       |       |
+    [Node 1] [Node 2] [Node 3] [Node 4]
+    Primary:  Primary:  Primary:  Primary:
+    P1-P5    P6-P10    P11-P15   P16-P20
+        |       |       |       |
+    Secondary coverage: Can produce any part when needed
+        |       |       |       |
+        +-------+-------+-------+-------+
+                        |
+                 [Shared Shipping]
+```
+
+**Center missions**:
+
+| Center | Primary Mission | Secondary Mission | Load Pattern |
+|--------|----------------|------------------|--------------|
+| **Node 1** | Specialized production of P1-P5 | Cross-coverage for P6-P20 when overloaded | 25% base + overflow |
+| **Node 2** | Specialized production of P6-P10 | Cross-coverage for P1-P5, P11-P20 when overloaded | 25% base + overflow |
+| **Node 3** | Specialized production of P11-P15 | Cross-coverage for P1-P10, P16-P20 when overloaded | 25% base + overflow |
+| **Node 4** | Specialized production of P16-P20 | Cross-coverage for P1-P15 when overloaded | 25% base + overflow |
+| **Central Scheduler** | Dynamic workload allocation across 4 nodes | Real-time balancing based on demand spikes | 100% coordination |
+| **Shared Shipping** | Consolidate output from 4 nodes for client delivery | All finished parts | 100% output |
+
 **Structure** (h=4 configuration):
 
 * **4 holographic nodes**: Similar to fractal centers but with inter-node collaboration
@@ -1814,6 +1984,39 @@ Each node is designed with partial process coverage tailored to its specialty pa
 #### 4.6.1 Network Organization Structure
 
 The Free-Style design is a **pragmatic hybrid** combining best elements of Fractal and Part-Based approaches.
+
+**Network diagram**:
+
+```plaintext
+                  Factory Network
+                        |
+        +---------------+---------------+
+        |               |               |
+   [Zone 1:        [Zone 2:        [Zone 3:
+   Fractal f=2]    Part Lines]     Functional]
+   65% demand      25% demand      10% demand
+        |               |               |
+   [Center A]      [Line 1-3]     [Shared A-M]
+   [Center B]       Each line      All 13 ops
+   All A-M ops      dedicated       Low-volume
+        |               |               |
+        +---------------+---------------+
+                        |
+                 [Shared Shipping]
+```
+
+**Center missions**:
+
+| Center | Mission | Scope | Load Share |
+|--------|---------|-------|-----------|
+| **Zone 1: Fractal Center A** | Complete production of 7 high-volume parts | P1, P7, P12, P14, P18, P19, P20 | 32.5% of total demand |
+| **Zone 1: Fractal Center B** | Complete production of 7 high-volume parts | P1, P7, P12, P14, P18, P19, P20 | 32.5% of total demand |
+| **Zone 2: Line 1** | Dedicated line for medium-volume assembled parts | P11, P9 | 8.3% of total demand |
+| **Zone 2: Line 2** | Dedicated line for medium-volume surface parts | P2, P16 | 8.3% of total demand |
+| **Zone 2: Line 3** | Dedicated line for medium-volume mixed parts | P4, P6 | 8.4% of total demand |
+| **Zone 3: Functional Pool** | Shared equipment for low-volume specialty parts | P3, P5, P8, P10, P13, P15, P17 | 10% of total demand |
+| **Shared Receiving** | Allocate raw materials to appropriate zones | 20 parts, zone-based routing | 100% intake |
+| **Shared Shipping** | Consolidate output from 3 zones for client delivery | All finished parts | 100% output |
 
 **Structure**:
 

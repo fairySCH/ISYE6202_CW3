@@ -1,0 +1,3 @@
+Total flow: 188,750.00
+Total weighted distance (flow x ft): 14,914,951.24
+Average distance per unit flow (ft per flow unit): 79.0196

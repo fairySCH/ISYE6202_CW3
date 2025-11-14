@@ -1,0 +1,203 @@
+PART RESULTS SCAN REPORT
+============================================================
+
+File: results\Task3\Part\Part_Based_Process_Part_Matrix.csv
+  Status: OK
+  Rows: 21, Cols: 15
+  % rows all-zero-or-NaN (numeric cols): 0.0%
+  Constant columns: 0 (all-zero columns: 0)
+  Duplicate rows: 0
+  % missing cells: 0.0%
+
+File: results\Task3\Part\Capacity\Capacity_Comparison_Operations.csv
+  Status: OK
+  Rows: 13, Cols: 3
+  % rows all-zero-or-NaN (numeric cols): 0.0%
+  Constant columns: 0 (all-zero columns: 0)
+  Duplicate rows: 0
+  % missing cells: 0.0%
+
+File: results\Task3\Part\Capacity\Capacity_Comparison_Parts.csv
+  Status: OK
+  Rows: 20, Cols: 3
+  % rows all-zero-or-NaN (numeric cols): 0.0%
+  Constant columns: 0 (all-zero columns: 0)
+  Duplicate rows: 0
+  % missing cells: 0.0%
+
+File: results\Task3\Part\Capacity\OPTIMIZED_Equipment_Requirements.csv
+  Status: OK
+  Rows: 14, Cols: 8
+  % rows all-zero-or-NaN (numeric cols): 0.0%
+  Constant columns: 0 (all-zero columns: 0)
+  Duplicate rows: 0
+  % missing cells: 0.0%
+
+File: results\Task3\Part\Capacity\OPTIMIZED_Utilization_Matrix_2_shifts.csv
+  Status: OK
+  Rows: 20, Cols: 14
+  % rows all-zero-or-NaN (numeric cols): 0.0%
+  Constant columns: 0 (all-zero columns: 0)
+  Duplicate rows: 0
+  % missing cells: 0.0%
+
+File: results\Task3\Part\Capacity\Part_Based_All_Parts_Flow_Analysis.csv
+  Status: OK
+  Rows: 20, Cols: 5
+  % rows all-zero-or-NaN (numeric cols): 0.0%
+  Constant columns: 0 (all-zero columns: 0)
+  Duplicate rows: 0
+  % missing cells: 0.0%
+
+File: results\Task3\Part\Capacity\Part_Based_All_Parts_Flow_Distance_Breakdown.csv
+  Status: OK
+  Rows: 97, Cols: 9
+  % rows all-zero-or-NaN (numeric cols): 0.0%
+  Constant columns: 0 (all-zero columns: 0)
+  Duplicate rows: 0
+  % missing cells: 13.75%
+
+File: results\Task3\Part\Capacity\Part_Based_All_Parts_Layout_Summary.csv
+  Status: OK
+  Rows: 20, Cols: 7
+  % rows all-zero-or-NaN (numeric cols): 0.0%
+  Constant columns: 0 (all-zero columns: 0)
+  Duplicate rows: 0
+  % missing cells: 0.0%
+
+File: results\Task3\Part\Capacity\Part_Based_All_Parts_Machine_Usage.csv
+  Status: OK
+  Rows: 20, Cols: 15
+  % rows all-zero-or-NaN (numeric cols): 0.0%
+  Constant columns: 0 (all-zero columns: 0)
+  Duplicate rows: 0
+  % missing cells: 0.0%
+
+File: results\Task3\Part\Capacity\Part_Based_Equipment_Requirements.csv
+  Status: OK
+  Rows: 14, Cols: 7
+  % rows all-zero-or-NaN (numeric cols): 0.0%
+  Constant columns: 0 (all-zero columns: 0)
+  Duplicate rows: 0
+  % missing cells: 0.0%
+
+File: results\Task3\Part\Capacity\Part_Based_Process_Frequency.csv
+  Status: OK
+  Rows: 15, Cols: 2
+  % rows all-zero-or-NaN (numeric cols): 0.0%
+  Constant columns: 0 (all-zero columns: 0)
+  Duplicate rows: 0
+  % missing cells: 0.0%
+
+File: results\Task3\Part\Capacity\Part_Based_Process_Workload_Breakdown.csv
+  Status: OK
+  Rows: 136, Cols: 5
+  % rows all-zero-or-NaN (numeric cols): 0.0%
+  Constant columns: 0 (all-zero columns: 0)
+  Duplicate rows: 14
+  % missing cells: 5.74%
+
+File: results\Task3\Part\Capacity\Part_Based_Weekly_Part_Demand.csv
+  Status: OK
+  Rows: 20, Cols: 2
+  % rows all-zero-or-NaN (numeric cols): 0.0%
+  Constant columns: 0 (all-zero columns: 0)
+  Duplicate rows: 0
+  % missing cells: 0.0%
+
+File: results\Task3\Part\Capacity\Part_Based_Year1_Layout_Summary.csv
+  Status: OK
+  Rows: 7, Cols: 8
+  % rows all-zero-or-NaN (numeric cols): 0.0%
+  Constant columns: 0 (all-zero columns: 0)
+  Duplicate rows: 0
+  % missing cells: 0.0%
+
+File: results\Task3\Part\Capacity\Part_Operation_Machine_Requirements_1_shifts.csv
+  Status: OK
+  Rows: 23, Cols: 15
+  % rows all-zero-or-NaN (numeric cols): 0.0%
+  Constant columns: 0 (all-zero columns: 0)
+  Duplicate rows: 0
+  % missing cells: 0.0%
+
+File: results\Task3\Part\Capacity\Part_Operation_Machine_Requirements_2_shifts.csv
+  Status: OK
+  Rows: 23, Cols: 15
+  % rows all-zero-or-NaN (numeric cols): 0.0%
+  Constant columns: 0 (all-zero columns: 0)
+  Duplicate rows: 0
+  % missing cells: 0.0%
+
+File: results\Task3\Part\Capacity\Part_Operation_Utilization_Matrix_2_shifts.csv
+  Status: OK
+  Rows: 20, Cols: 14
+  % rows all-zero-or-NaN (numeric cols): 0.0%
+  Constant columns: 0 (all-zero columns: 0)
+  Duplicate rows: 0
+  % missing cells: 0.0%
+
+File: results\Task3\Part\Capacity\Part_Step_Machines_Summary_1_shifts.csv
+  Status: OK
+  Rows: 20, Cols: 9
+  % rows all-zero-or-NaN (numeric cols): 0.0%
+  Constant columns: 0 (all-zero columns: 0)
+  Duplicate rows: 0
+  % missing cells: 23.89%
+
+File: results\Task3\Part\Capacity\Part_Step_Machines_Summary_2_shifts.csv
+  Status: OK
+  Rows: 20, Cols: 9
+  % rows all-zero-or-NaN (numeric cols): 0.0%
+  Constant columns: 0 (all-zero columns: 0)
+  Duplicate rows: 0
+  % missing cells: 23.89%
+
+File: results\Task3\Part\Capacity\Part_Step_Process_Capacity_Requirements_1_shifts.csv
+  Status: OK
+  Rows: 157, Cols: 6
+  % rows all-zero-or-NaN (numeric cols): 0.0%
+  Constant columns: 0 (all-zero columns: 0)
+  Duplicate rows: 0
+  % missing cells: 0.0%
+
+File: results\Task3\Part\Capacity\Part_Step_Process_Capacity_Requirements_2_shifts.csv
+  Status: OK
+  Rows: 157, Cols: 6
+  % rows all-zero-or-NaN (numeric cols): 0.0%
+  Constant columns: 0 (all-zero columns: 0)
+  Duplicate rows: 0
+  % missing cells: 0.0%
+
+File: results\Task3\Part\Cost_Analysis\Part_Based_Capital_Costs_Detailed.csv
+  Status: OK
+  Rows: 13, Cols: 8
+  % rows all-zero-or-NaN (numeric cols): 0.0%
+  Constant columns: 0 (all-zero columns: 0)
+  Duplicate rows: 0
+  % missing cells: 0.0%
+
+File: results\Task3\Part\Cost_Analysis\Part_Based_Cost_KPIs.csv
+  Status: OK
+  Rows: 1, Cols: 13
+  % rows all-zero-or-NaN (numeric cols): 0.0%
+  Constant columns: 13 (all-zero columns: 0)
+  Duplicate rows: 0
+  % missing cells: 0.0%
+
+File: results\Task3\Part\Cost_Analysis\Part_Based_Depreciation_Analysis.csv
+  Status: OK
+  Rows: 13, Cols: 4
+  % rows all-zero-or-NaN (numeric cols): 0.0%
+  Constant columns: 0 (all-zero columns: 0)
+  Duplicate rows: 0
+  % missing cells: 0.0%
+
+File: results\Task3\Part\Cost_Analysis\Part_Based_Operating_Costs_Detailed.csv
+  Status: OK
+  Rows: 13, Cols: 8
+  % rows all-zero-or-NaN (numeric cols): 0.0%
+  Constant columns: 0 (all-zero columns: 0)
+  Duplicate rows: 0
+  % missing cells: 0.0%
+

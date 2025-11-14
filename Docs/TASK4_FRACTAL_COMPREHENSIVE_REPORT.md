@@ -887,3 +887,193 @@ Space Efficiency:        6.8 units/sq ft/week (more dispersed layout)
 
 
 
+---
+
+# Appendices — Comprehensive Overview from Scripts and Outputs
+
+## Appendix A — Task 3: Fractal Design (Year +1) Methodology and Outputs
+
+- Purpose: design and compare fractal factory organizations for f = 2, 3, 4, 5 using Year +1 weekly demand, then select a recommended configuration.
+- Core scripts and roles:
+    - `src/Task3/Fractal/Fractal_Design.py`: demand/BOM/process → weekly part demand → process workload → equipment sizing per process for each f; enforces identical centers and uniform capacity; outputs per-scenario CSVs and a comparison.
+    - `src/Task3/Fractal/Fractal_Flow_Matrix.py`: builds per-center and aggregate process-to-process flow matrices from part routes; exports matrices and edge lists for layout.
+- Method summary:
+    - Load and validate inputs from `data/csv_outputs/` (+1 Year Product Demand, +1 Year Parts per Product, Parts_Step_Time, Parts Specs).
+    - Compute weekly part demand via BOM; map parts to process routes A–M and sum minutes to get total weekly workload per process.
+    - Define uniform base capacity per equipment unit: 5 days/week × 2 shifts/day × 480 min/shift × 0.882 effective availability.
+    - For each f ∈ {2,3,4,5}: split workload 1/f across centers; compute `Equipment_per_Center = ceil(Workload_per_Center / Base_Capacity)`; total equipment = per_center × f; utilization per center from workload vs installed capacity.
+    - Integrity checks: identical centers; totals equal per_center × f for every process.
+- Key outputs (paths):
+    - `results/Task3/Fractal/Fractal_Design/Fractal_f{2|3|4|5}_Equipment_Requirements.csv`
+    - `results/Task3/Fractal/Fractal_Design/Fractal_Comparison_All_Scenarios.csv`
+    - `results/Task3/Fractal/Fractal_Flowmatrix/f4_centers/Single_Center_Flow_Matrix.csv`, `Layout_Edges.csv`
+- Decision rationale: Equipment totals rise with f due to rounding, but utilization decreases only modestly. We selected f = 4 for practical robustness (demand fluctuation buffering, maintenance flexibility) at acceptable equipment overhead, with clear, repeatable intra-center flows.
+
+## Appendix B — Task 4: Fractal Design (Years +2 to +5) Methodology, Flow, and Scaling
+
+- Goal: extend Task 3’s methodology to Years +2 to +5, compute per-year equipment and flows for f = 2, 3, 4, 5, and assess scaling using Year +4 as the design baseline.
+- Method summary:
+    - Load yearly product demand from `+2 to +5 Year Product Demand.csv` and multi-year BOM; reuse Parts_Step_Time and fixed process sequences (P1–P20 → A–M).
+    - Build per-year total weekly workload per process; size identical centers using the same base capacity and rounding logic as Task 3.
+    - Generate per-year comparisons (`Fractal_Comparison_All_Years.csv`) and Year +4–anchored scaling analysis (`Fractal_Scaling_Analysis.csv`).
+    - Construct per-year flow matrices via `src/task4/Fractal/Fractal_Flow_Matrix_Task4.py` (per-center and aggregate), plus adjacency/edges.
+- Outputs (paths):
+    - `results/Task4/Fractal/Fractal_Design/Year{y}_Fractal_f{f}_Equipment_Requirements.csv`
+    - `results/Task4/Fractal/Fractal_Design/Fractal_Comparison_All_Years.csv`, `Fractal_Scaling_Analysis.csv`
+    - `results/Task4/Fractal/Fractal_Flowmatrix/year{y}/f{f}_centers/Single_Center_Flow_Matrix.csv`, `Flow_Summary.csv`, `Layout_Edges.csv`
+- Interpretation:
+    - Year +4 typically peaks and is used for the floorplan baseline; Years +2/+3 scale down, Year +5 scales up ~10–11%.
+    - As f increases, rounding overhead adds units (especially in thin-load processes); average utilization softens slightly but remains competitive for f = 4.
+    - Flow cluster structure (E–F–G–H–I–J and K–L–M) remains stable across years; only weights scale with demand/BOM.
+
+## Appendix C — Task 4 Scripts and Their Outputs (What’s Produced Where)
+
+- `src/task4/Fractal/Fractal_Design_Task4.py`
+    - Equipment sizing per year and f; scaling tables.
+    - Outputs → `results/Task4/Fractal/Fractal_Design/`.
+- `src/task4/Fractal/Fractal_Flow_Matrix_Task4.py`
+    - Per-year, per-center flow matrices and aggregate matrices; edges for layout.
+    - Outputs → `results/Task4/Fractal/Fractal_Flowmatrix/year{y}/f{f}_centers/`.
+- `src/task4/Fractal/Fractal_Visualization_Task4.py`
+    - Layout images per year and f; scaling and equipment comparison visuals.
+    - Outputs → `results/Task4/Fractal/Fractal_Visuals/`.
+- `src/task4/Fractal/Fractal_Cost_Analysis_Task4.py`
+    - Capital/operating/depreciation tables and scenario KPIs across years.
+    - Outputs → `results/Task4/Fractal/Cost_Analysis/` and visuals in `Fractal_Visuals`.
+- `src/task4/Fractal/Fractal_Individual_Block_Visualizer.py`
+    - Per-process block PNGs using optimal grid specs; annotated with utilization and dimensions.
+    - Outputs alongside layout data under `results/Task4/Fractal/Fractal_Layout/`.
+- `src/task4/Fractal/Fractal_Distance_Metrics.py`
+    - Distance × flow metrics and flow line plots validating adjacency and spatial efficiency.
+    - Outputs → `results/Task4/Fractal/Fractal_Distance/` (year/config specific).
+
+## Appendix D — Deep Dive: Grid Optimization & Individual Block Visualizer
+
+### D.1 What the Grid Optimizer Solves
+- Finds rows × columns packings for each process’s equipment inside a center, minimizing wasted slots and parent block perimeter while honoring shareability rules and machine footprints.
+- Shareability rules:
+    - ABCD: 14×14 ft machines; up to 2 ft overlap on three sides when adjacent.
+    - EFG: 22×15 ft machines; no overlap.
+    - HIJ: 14×36 ft machines; no overlap.
+    - KLM: 14×7 ft machines; up to 1 ft overlap along the 7-ft side when adjacent.
+
+### D.2 Candidate Enumeration and Scoring
+- For each process and equipment_count: enumerate candidate (rows, cols) with `cols ∈ [1..equipment_count]`, `rows = ceil(equipment_count/cols)`.
+- Compute parent width/height with overlap adjustments and derive:
+    - `total_spaces`, `wasted_spaces`, `block_area_sqft`, `aspect_ratio`, `perimeter_ft`, `utilization = equipment_count / total_spaces`.
+- Rank by a composite score that rewards high utilization and good aspect ratio while penalizing wasted spaces and excessive perimeter; select the best configuration.
+
+### D.3 Visualizer Mechanics
+- Reads optimal grid rows/cols and draws parent block + child equipment rectangles in row-major order with overlap adjustments.
+- Annotates: process label, equipment count, grid pattern, utilization, area, and group/shareability note; shades overlap zones.
+- Outputs per-process PNGs under `results/Task4/Fractal/Fractal_Layout/.../individual_blocks/`.
+
+### D.4 Why This Matters
+- Converts equipment counts into concrete spatial requirements per process, feeding center footprint estimates and final placement.
+- Together with flow matrices and distance metrics, it supports adjacency decisions that lower distance×flow, and it makes capacity scaling tangible (add/remove rows/cols within parent blocks).
+
+### D.5 Practical Checks
+- Wasted slots near zero (accept small residue for prime counts).
+- Overlap never exceeds rule caps; effective dimensions stay positive.
+- Equipment counts in grids match `Year{y}_Fractal_f{f}_Equipment_Requirements.csv`.
+- Consider a derived metric for reporting: `effective_spatial_utilization = (equipment_count × unit_footprint) / block_area_after_overlap`.
+
+---
+
+## Appendix E — Recommendation Rationale (f = 4)
+
+- Small utilization delta vs f = 2–3, but markedly better resilience to demand fluctuations and maintenance windows.
+- Rounding overhead (extra units due to per-center ceiling) is acceptable given the operational benefits.
+- Flow structure remains stable across years; four identical centers simplify replication and governance.
+- Year +4 baseline floorplan scales down (Years +2/+3) or up (+5) with minimal redesign.
+
+---
+
+## Appendix F — Consolidated Repo Explanations (Task 3 & Task 4) with Critical Analysis
+
+This appendix consolidates what the repository’s Task 3 and Task 4 scripts do, how their outputs fit together, and where to find the artifacts, combining methodology with critical interpretation.
+
+### F.1 Task 3 — Fractal Design: Initial Methodology and Outputs
+
+- Objective and scope
+    - Goal: design, size, and compare fractal factory organizations with f = 2, 3, 4, 5 identical centers using Year+1 weekly demand; select a pragmatic configuration (chosen: f = 4).
+    - Inputs: Year+1 product demand, BOM (parts per product), part process routes (A–M), and process step times.
+    - Outputs: equipment sizing, per-center utilization, scenario comparison, and process-to-process flow matrices that feed layout, visualization, and costing.
+
+- Fractal Design methodology (`src/Task3/Fractal/Fractal_Design.py`)
+    - Data loading and validation: product demand (`+1 Year Product Demand.csv`), BOM (`+1 Year Parts per Product.csv`), routes and step times (`Parts Specs.csv`, `Parts_Step_Time.csv`); domain enforced for products {A1..B2}, parts P1–P20, processes A–M.
+    - Demand translation: product → parts via BOM; sanity checks for labels and nonzero volumes.
+    - Baseline process workload: sum minutes across part routes to get weekly minutes per process A–M.
+    - Uniform capacity and identical centers: base capacity = `5 days × shifts/day × 480 min × 0.882` effective availability; same for all processes.
+    - Sizing per scenario f ∈ {2,3,4,5}: split workload 1/f; `equipment_per_center = ceil(workload_per_center/base_capacity)`; utilization per center; total equipment = per_center × f.
+    - Integrity checks: verify total == per_center × f; identical center composition.
+
+- Outputs (`results/Task3/Fractal/Fractal_Design/`)
+    - `Fractal_f{f}_Equipment_Requirements.csv` (per-process workload, per-center workload, units, utilization, base capacity; includes TOTAL row).
+    - `Fractal_Comparison_All_Scenarios.csv` (cross-scenario totals/utilization).
+    - Optional: `Fractal_f{f}_Summary_Report.txt`.
+
+- Flow Matrix methodology (`src/Task3/Fractal/Fractal_Flow_Matrix.py`)
+    - Purpose: quantify intra-center process movements from part routes; aggregate to factory.
+    - Inputs: weekly part demand (from Task 1 plan or computed from +1 Year demand and BOM) and fixed process sequences per part.
+    - Per-center flows: each center handles 1/f of total; for each consecutive step pair, add demand_per_center to from→to; produce 13×13 flow matrix.
+    - Aggregate flows and adjacency: aggregate = per-center × f; adjacency = flow + flow.T; edges (From, To, Flow, Center_ID).
+    - Outputs: `results/Task3/Fractal/Fractal_Flowmatrix/f{f}_centers/` → `Single_Center_Flow_Matrix.csv`, `Aggregate_Factory_Flow_Matrix.csv`, `Flow_Summary.csv`, `Layout_Edges.csv`.
+
+- Interpretation and decision
+    - Rounding overhead increases total equipment with f; per-center utilization drops modestly.
+    - f = 4 chosen: utilization close to f = 2–3; better buffering and maintenance flexibility with acceptable overhead; symmetric flows simplify identical center replication.
+
+### F.2 Task 4 — Fractal Design (Years +2 to +5): Methodology, Flow, Scaling
+
+- Objective and scope
+    - Extend Task 3 to Years +2..+5; compute per-year equipment and flows for f ∈ {2,3,4,5}; assess scaling using Year +4 (peak) as baseline.
+
+- Methodology (`src/task4/Fractal/Fractal_Design_Task4.py` and `Fractal_Flow_Matrix_Task4.py`)
+    - Inputs: `+2 to +5 Year Product Demand.csv`, `+2 to +5 Year Parts per Product.csv`, `Parts_Step_Time.csv`.
+    - Yearly workloads: demand → parts → minutes per process; same base capacity and rounding as Task 3.
+    - Outputs: `Year{y}_Fractal_f{f}_Equipment_Requirements.csv`, `Fractal_Comparison_All_Years.csv`, `Fractal_Scaling_Analysis.csv`.
+    - Flow matrices per year: per-center `Single_Center_Flow_Matrix.csv`, aggregate factory, `Flow_Summary.csv`, `Layout_Edges.csv` under `results/Task4/Fractal/Fractal_Flowmatrix/year{y}/f{f}_centers/`.
+
+- How to read/interpolate
+    - Equipment tables: A–M plus TOTAL, per-center units and utilizations; check total = per_center × f.
+    - Comparison/scaling: Year +4 baseline with ±(7–16%) scaling to Years +2/+3 and +10–11% for Year +5, depending on f.
+    - Flows: route structure stable; only weights change with demand/BOM; E–F–G–H–I–J and K–L–M clusters persist.
+
+### F.3 Visualization & Cost (where applicable)
+
+- Visualization (`src/task4/Fractal/Fractal_Visualization_Task4.py`)
+    - Produces layout PNGs per year/f; equipment and scaling comparisons under `results/Task4/Fractal/Fractal_Visuals/`.
+
+- Cost (`src/task4/Fractal/Fractal_Cost_Analysis_Task4.py`)
+    - Capital/operating/depreciation summaries across years/f with KPI CSVs and visuals under `results/Task4/Fractal/Cost_Analysis/` and `Fractal_Visuals`.
+
+### F.4 Deep Explanation — Grid Optimization & Individual Block Visualizer
+
+- Grid Optimizer purpose
+    - Computes optimal rows×cols packing per process block given equipment counts and shareability rules; minimizes wasted slots and perimeter while maintaining practical aspect ratios.
+
+- Machine families & shareability rules
+    - ABCD: 14×14 ft, share up to 2 ft on three sides; EFG: 22×15 ft, no share; HIJ: 14×36 ft, no share; KLM: 14×7 ft, share up to 1 ft along 7‑ft side.
+
+- Algorithmic flow (expected pattern)
+    - Enumerate candidate (rows, cols); compute total spaces and waste; adjust parent width/height by overlap; derive area, aspect ratio, perimeter, utilization; score and select.
+
+- Visualizer mechanics
+    - Draw parent block and child rectangles with overlap adjustments; annotate process, equipment, grid, utilization, area, group; save per-process PNGs under `Fractal_Layout/.../individual_blocks/`.
+
+- Practical checks
+    - Wasted slots near zero; overlap within caps; positive effective dimensions; grid counts match `Year{y}_Fractal_f{f}_Equipment_Requirements.csv`.
+    - Consider reporting `effective_spatial_utilization = (equipment_count × unit_footprint) / block_area_after_overlap` in addition to logical grid utilization.
+
+### F.5 Critical Analysis — What To Watch and Why f = 4 Holds
+
+- Rounding vs utilization: As f rises, total units grow stepwise due to ceiling per center; utilization declines modestly. The knee is around f = 4 where overhead stays acceptable and resilience gains are material.
+- Thin-load processes: Penalties concentrate in low-volume processes (notably K, G). Monitor utilizations < 90% (e.g., K) and consider tactical sharing or rebalancing if policy allows.
+- Year +4 anomaly: It is possible for `Total_Equipment(f=4)` to be ≈ or even below `f=3` due to favorable divisibility; treat as validation that the rounding effect can cut both ways.
+- Flow stability: E–F–G–H–I–J and K–L–M clusters appear across years; stable adjacency supports a single replicated layout template per center.
+- Spatial density vs grid utilization: For shareable families, spatial efficiency can improve even when grid slot utilization < 100%; report both logical and spatial utilization to avoid false negatives.
+- Decision continuity: With stable route structure and predictable scaling, the f = 4 recommendation from Task 3 remains robust through Years +2..+5, balancing cost efficiency with operational flexibility.
+
+
+

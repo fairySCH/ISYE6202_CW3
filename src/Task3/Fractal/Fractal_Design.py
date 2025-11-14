@@ -1,26 +1,27 @@
 """
-Fractal Organization Design - Main Analysis Script (CORRECTED VERSION)
+fractal organization design - main analysis script (corrected version)
 
-A fractal organization consists of f identical centers, each capable of producing
+a fractal organization consists of f identical centers, each capable of producing
+
 all products with approximately 1/f of the total factory capacity.
 
-CRITICAL FIXES IMPLEMENTED:
-1. Uniform equipment capacity (no artificial capacity factors)
-2. Proper fractal integrity validation
-3. Comprehensive data validation and error handling
-4. Mathematically consistent equipment calculations
-5. Proper handling of demand divisibility issues
-6. Robust CSV parsing with validation
+critical fixes implemented:
+1. uniform equipment capacity (no artificial capacity factors)
+2. proper fractal integrity validation
+3. comprehensive data validation and error handling
+4. mathematically consistent equipment calculations
+5. proper handling of demand divisibility issues
+6. robust csv parsing with validation
 
-This script calculates:
-1. Equipment requirements per fractal center (ensuring identical centers)
-2. Equipment requirements for entire factory
-3. Comparison with other organization types
-4. Operating parameters and capacity utilization
+this script calculates:
+1. equipment requirements per fractal center (ensuring identical centers)
+2. equipment requirements for entire factory
+3. comparison with other organization types
+4. operating parameters and capacity utilization
 
-Author: FeMoaSa Design Team
-Date: November 2025
-Version: 2.0 (Corrected)
+team: machas^2
+date: november 2025
+version: 2.0 (corrected)
 """
 
 import pandas as pd
@@ -29,12 +30,12 @@ from pathlib import Path
 import sys
 import warnings
 
-# Configuration
-BASE_DIR = Path(__file__).parent.parent.parent.parent  # Go up to project root
+# configuration
+BASE_DIR = Path(__file__).parent.parent.parent.parent  # go up to project root
 DATA_DIR = BASE_DIR / "data" / "csv_outputs"
 RESULTS_DIR = BASE_DIR / "results" / "Task3" / "Fractal" / "Fractal_Design"
 
-# Operating parameters
+# operating parameters
 DAYS_PER_WEEK = 5
 HOURS_PER_SHIFT = 8
 MINUTES_PER_SHIFT = HOURS_PER_SHIFT * 60  # 480 minutes

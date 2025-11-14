@@ -1,15 +1,20 @@
 """
-Task 3: Fractal Layout - Comprehensive Cost Analysis
+task 3: fractal layout - comprehensive cost analysis
 
-Analyzes cost implications for all fractal configurations (f2, f3, f4, f5):
-- Capital investment costs (equipment installation)
-- Operating costs (labor) across multiple centers
-- Depreciation analysis
-- Comparative cost efficiency analysis
-- Scenario optimization recommendations
+analyzes cost implications for all fractal configurations (f2, f3, f4, f5):
 
-Author: Analysis Team
-Date: November 2025
+- capital investment costs (equipment installation)
+
+- operating costs (labor) across multiple centers
+
+- depreciation analysis
+
+- comparative cost efficiency analysis
+
+- scenario optimization recommendations
+
+team: machas^2
+date: november 2025
 """
 
 import pandas as pd
@@ -18,14 +23,14 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from pathlib import Path
 
-# Configuration
-BASE_DIR = Path(__file__).parent.parent.parent.parent  # Go up to ISYE6202_CW3 directory
+# configuration
+BASE_DIR = Path(__file__).parent.parent.parent.parent  # go up to isye6202_cw3 directory
 DATA_DIR = BASE_DIR / "data" / "csv_outputs"
 RESULTS_DIR = BASE_DIR / "results" / "Task3" / "Fractal"
 COST_DIR = RESULTS_DIR / "Cost_Analysis"
 VISUALS_DIR = RESULTS_DIR / "Fractal_Visuals"
 
-# Operating parameters
+# operating parameters
 DAYS_PER_WEEK = 5
 HOURS_PER_SHIFT = 8
 SHIFTS_PER_DAY = 2

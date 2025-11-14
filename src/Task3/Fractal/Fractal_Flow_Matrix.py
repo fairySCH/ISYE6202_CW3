@@ -1,24 +1,26 @@
 """
-Fractal Organization - Flow Matrix Generator
+fractal organization - flow matrix generator
 
-Creates flow matrices for fractal organization:
-1. Flow matrix for each individual fractal center
-2. Aggregate flow matrix for entire factory
-3. Inter-center flow analysis
+creates flow matrices for fractal organization:
 
-Each fractal center handles 1/f total demand and has complete
-process capability (A through M).
+1. flow matrix for each individual fractal center
+2. aggregate flow matrix for entire factory
+3. inter-center flow analysis
 
-Author: FeMoaSa Design Team
-Date: November 2025
+each fractal center handles 1/f total demand and has complete
+
+process capability (a through m).
+
+team: machas^2
+date: november 2025
 """
 
 import pandas as pd
 import numpy as np
 from pathlib import Path
 
-# Configuration
-BASE_DIR = Path(__file__).parent.parent.parent.parent  # Go up to project root
+# configuration
+BASE_DIR = Path(__file__).parent.parent.parent.parent  # go up to project root
 DATA_DIR = BASE_DIR / "data" / "csv_outputs"
 RESULTS_DIR = BASE_DIR / "results"
 FRACTAL_FLOW_DIR = RESULTS_DIR / "Task3" / "Fractal" / "Fractal_Flowmatrix"

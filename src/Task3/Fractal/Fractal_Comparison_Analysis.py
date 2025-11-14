@@ -1,21 +1,22 @@
 """
-Fractal Organization - Comprehensive Comparison Analysis
+fractal organization - comprehensive comparison analysis
 
-Compares fractal organization against other design approaches:
-1. Functional organization (process-based)
-2. Parts-based organization
-3. Different fractal configurations (f=2,3,4,5)
+compares fractal organization against other design approaches:
 
-Metrics analyzed:
-- Total equipment requirements
-- Space utilization
-- Material handling (total flow distance)
-- Flexibility and redundancy
-- Capital investment
-- Operating efficiency
+1. functional organization (process-based)
+2. parts-based organization
+3. different fractal configurations (f=2,3,4,5)
 
-Author: FeMoaSa Design Team
-Date: November 2025
+metrics analyzed:
+- total equipment requirements
+- space utilization
+- material handling (total flow distance)
+- flexibility and redundancy
+- capital investment
+- operating efficiency
+
+team: machas^2
+date: november 2025
 """
 
 import pandas as pd
@@ -23,8 +24,8 @@ import numpy as np
 from pathlib import Path
 import matplotlib.pyplot as plt
 
-# Configuration
-BASE_DIR = Path(__file__).parent.parent.parent.parent  # Go up to project root
+# configuration
+BASE_DIR = Path(__file__).parent.parent.parent.parent  # go up to project root
 INPUT_DIR = BASE_DIR / "results" / "Task3" / "Fractal" / "Fractal_Design"
 OUTPUT_DIR = BASE_DIR / "results" / "Task3" / "Fractal"
 

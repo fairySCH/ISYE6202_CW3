@@ -1,11 +1,12 @@
 """
-Fractal Organization - Layout Visualization
+fractal organization - layout visualization
 
-Creates publication-quality visualizations of fractal organization layouts.
-Generates PNG images for presentations and reports.
+creates publication-quality visualizations of fractal organization layouts.
 
-Author: FeMoaSa Design Team
-Date: November 2025
+generates png images for presentations and reports.
+
+team: machas^2
+date: november 2025
 """
 
 import pandas as pd
@@ -13,7 +14,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from pathlib import Path
 
-BASE_DIR = Path(__file__).parent.parent.parent.parent  # Go up to project root
+BASE_DIR = Path(__file__).parent.parent.parent.parent  # go up to project root
 RESULTS_DIR = BASE_DIR / "results"
 LAYOUT_DIR = RESULTS_DIR / "Task3" / "Fractal" / "Fractal_Layout"
 VIZ_DIR = RESULTS_DIR / "Task3" / "Fractal" / "Fractal_Visuals"

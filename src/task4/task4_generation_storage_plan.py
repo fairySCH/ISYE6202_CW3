@@ -9,6 +9,7 @@ Task 2: Finished Storage Capacity Plan for each part (Year +1)
 DATA SOURCE: All data loaded from CSV files in data/csv_outputs/
 """
 
+import csv
 import pandas as pd
 import numpy as np
 from scipy import stats
@@ -18,67 +19,83 @@ from scipy import stats
 # ============================================================================
 
 
-# Load Product Demand (+1 Year)
-product_demand_raw = pd.read_csv(r'data\csv_outputs\+2 to +5 Year Product Demand.csv', header=None)
+
+# Load multi-year product demand from structured sections
+
+def _read_section_table(csv_path, section_title):
+    """
+    Extract a table that starts with a title row followed by a header row.
+    Parsing stops at the first blank row.
+    """
+    with open(csv_path, newline='', encoding='utf-8-sig') as csvfile:
+        rows = list(csv.reader(csvfile))
+
+    start_idx = None
+    for idx, row in enumerate(rows):
+        if row and row[0].strip() == section_title:
+            start_idx = idx
+            break
+
+    if start_idx is None:
+        raise ValueError(f"Section '{section_title}' not found in {csv_path}")
+
+    header = rows[start_idx + 1]
+    data_rows = []
+    for row in rows[start_idx + 2:]:
+        if not any(cell.strip() for cell in row):
+            break
+        data_rows.append(row)
+
+    return pd.DataFrame(data_rows, columns=header)
+
+
+multi_year_demand_path = r'data\csv_outputs\+2 to +5 Year Product Demand.csv'
 product_demand_raw_yo1 = pd.read_csv(r'data\csv_outputs\+1 Year Product Demand.csv', header=None)
 
+products = ["A1","A2","A3","B1","B2","A4","B3","B4"]
 
-# # Row 2 (index 2) has annual demand: columns 2-6 are A1, A2, A3, B1, B2
-annual_demand = product_demand_raw.iloc[2:6, 2:10].astype(float)  # années 2→5, 8 colonnes
-cols = ["A1","A2","A3","B1","B2","A4","B3","B4"]
-years = [f"Year {i}" for i in range(1, 6)]
-annual_demand.columns = cols
+annual_section = "Yearly Demand Forecast for Each Product in the +2 to +5 Year Horizon"
+weekly_section = "Expected Average Weekly Demand for Each Product in the +2 to +5 Year Horizon"
+cv_section = "Expected Coefficient of Variation of Weekly Demand for Each Product in the +2 to +5 Year Horizon"
 
+annual_df = _read_section_table(multi_year_demand_path, annual_section)
+weekly_df = _read_section_table(multi_year_demand_path, weekly_section)
+cv_df = _read_section_table(multi_year_demand_path, cv_section)
 
-# We combined year 1 with year 2, 3, 4, 5
-y1_vals = product_demand_raw_yo1.iloc[2, 2:7].astype(float).values  # A1..B2
-y1_full = (
-    pd.Series(y1_vals, index=cols[:5])   # indexe A1..B2
-      .reindex(cols, fill_value=0)       # ajoute A4,B3,B4=0
-)
+def _clean_section(df, value_columns):
+    df = df[['Year'] + value_columns].copy()
+    df = df[df['Year'].astype(str).str.strip() != '']
+    df['Year'] = pd.to_numeric(df['Year'], errors='coerce').astype(int)
+    for col in value_columns:
+        df[col] = pd.to_numeric(df[col], errors='coerce').fillna(0.0)
+    return df.set_index('Year')
 
+annual_df = _clean_section(annual_df, products)
+weekly_df = _clean_section(weekly_df, products)
+cv_df = _clean_section(cv_df, products)
 
-annual_demand_values = pd.concat([y1_full.to_frame().T, annual_demand], ignore_index=True)
-annual_demand_values.index = [f"Year {i}" for i in range(1, 6)]
-#print(annual_demand_values)  
+years_index = [1, 2, 3, 4, 5]
 
-# # Row 12 (index 12) has weekly demand
-weekly_demand = product_demand_raw.iloc[18:22, 2:10].astype(float)
-weekly_demand.columns = cols
-
-# We combined year 1 with year 2, 3, 4, 5
-w1_vals = product_demand_raw_yo1.iloc[12, 2:7].astype(float).values  # A1..B2
-w1_full = (
-    pd.Series(w1_vals, index=cols[:5])   # indexe A1..B2
-      .reindex(cols, fill_value=0)       # ajoute A4,B3,B4=0
-)
-
-weekly_demand_values = pd.concat([w1_full.to_frame().T, weekly_demand], ignore_index=True)
-weekly_demand_values.index = [f"Year {i}" for i in range(1, 6)]
-#print(weekly_demand_values)
+def _combine_with_year_one(source_df, year_one_series):
+    combined = pd.DataFrame(0.0, index=years_index, columns=products)
+    combined.loc[1, :] = year_one_series.reindex(products, fill_value=0.0).values
+    overlapping = source_df.reindex(years_index[1:])
+    combined.loc[overlapping.index, overlapping.columns] = overlapping.values
+    combined.index = [f"Year {i}" for i in combined.index]
+    return combined
 
 
+y1_vals = pd.Series(product_demand_raw_yo1.iloc[2, 2:7].astype(float).values, index=products[:5])
+w1_vals = pd.Series(product_demand_raw_yo1.iloc[12, 2:7].astype(float).values, index=products[:5])
+cv1_vals = pd.Series(product_demand_raw_yo1.iloc[16, 2:7].astype(float).values, index=products[:5])
 
-# # Row 16 (index 16) has CV values
-cv = product_demand_raw.iloc[26:30, 2:10].astype(float)
-cv.columns = cols
-
-# We combined year 1 with year 2, 3, 4, 5
-cv1_vals = product_demand_raw_yo1.iloc[16, 2:7].astype(float).values  # A1..B2
-cv1_full = (
-    pd.Series(cv1_vals, index=cols[:5])   # indexe A1..B2
-      .reindex(cols, fill_value=0)       # ajoute A4,B3,B4=0
-)
-
-cv_values = pd.concat([cv1_full.to_frame().T, cv], ignore_index=True)
-cv_values.index = [f"Year {i}" for i in range(1, 6)]
-
-# print(cv_values['A1']['Year 1'])
+annual_demand_values = _combine_with_year_one(annual_df, y1_vals)
+weekly_demand_values = _combine_with_year_one(weekly_df, w1_vals)
+cv_values = _combine_with_year_one(cv_df, cv1_vals)
 
 weekly_std_dev = cv_values * weekly_demand_values
-# print(weekly_std_dev['A1']['Year 1'])
 
-print(f"[OK] Product demand loaded from CSV: {len(cols)} products")
+print(f"[OK] Product demand loaded from CSV: {len(products)} products")
 
 # Load Parts per Product (BOM) - using on_bad_lines='skip' to handle formatting issues
 # # First, let's read it line by line to handle the inconsistent column counts
@@ -90,37 +107,32 @@ bom_lines = pd.read_csv(r'data\csv_outputs\+2 to +5 Year Parts per Product.csv',
 print(f"[OK] BOM matrix loaded from CSV: {len(bom_lines)} parts")
 
 # # Load Parts Specs - Dimensions and Process Operations
-parts_specs_raw = pd.read_csv(r'data\csv_outputs\Parts Specs.csv', header=None)
+process_df = pd.read_csv(r'data\csv_outputs\Parts Specs.csv', nrows=21)
+process_df = process_df[process_df['Part'].astype(str).str.startswith('P')]
 
-# Dimensions start at row 35 (after "Identifier" header at row 34)
+process_operations = {}
+for _, row in process_df.iterrows():
+    part_name = row['Part']
+    ops = [str(op) for op in row[1:] if pd.notna(op)]
+    process_operations[part_name] = ops
+
+print(f"[OK] Process operations loaded from CSV: {len(process_operations)} parts")
+
+dimensions_df = pd.read_csv(r'data\csv_outputs\Parts Specs.csv', skiprows=24)
+dimensions_df = dimensions_df[dimensions_df['Identifier'].astype(str).str.startswith('P')]
+
 part_dimensions = {}
-for i in range(35, 55):  # Rows 35-54 contain P1-P20 dimensions
-    part_name = parts_specs_raw.iloc[i, 1]
+for _, row in dimensions_df.iterrows():
+    part_name = row['Identifier']
     part_dimensions[part_name] = {
-        'X': float(parts_specs_raw.iloc[i, 2]),
-        'Y': float(parts_specs_raw.iloc[i, 3]),
-        'Z': float(parts_specs_raw.iloc[i, 4]),
-        'Weight': float(parts_specs_raw.iloc[i, 5]),
-        'Price': float(parts_specs_raw.iloc[i, 6])
+        'X': float(row['X (in.)']),
+        'Y': float(row['Y (in.)']),
+        'Z': float(row['Z (in.)']),
+        'Weight': float(row['Weight (lbs)']),
+        'Price': float(row['Price/unit'])
     }
 
-# print(part_dimensions)
 print(f"[OK] Part dimensions loaded from CSV: {len(part_dimensions)} parts")
-
-# Process operations start at row 11 (after "Part" header at row 10)
-process_operations = {}
-for i in range(11, 31):  # Rows 11-30 contain P1-P20 process steps
-    part_name = parts_specs_raw.iloc[i, 1]
-    operations = []
-    for j in range(2, 9):  # Columns 2-8 contain process steps
-        op = parts_specs_raw.iloc[i, j]
-        if pd.notna(op):
-            operations.append(str(op))
-    process_operations[part_name] = operations
-
-
-# print(process_operations)
-print(f"[OK] Process operations loaded from CSV: {len(process_operations)} parts")
 
 # Process times (manually entered from PDF - not in CSV)
 process_times = {
@@ -234,7 +246,7 @@ for year in years:
         #print(f"Calculation {part}")
         # print("-" * 80)
         
-        for product in cols:
+        for product in products:
             
             qty = bom_lines.loc[part, product]
             if qty > 0:
@@ -328,21 +340,21 @@ process_requirements = defaultdict(lambda: defaultdict(float))
 for year in years:              # ex. "Year 1", ...
     for part in parts:          # ex. "P1"..."P20"
         demand = parts_demand.loc[(year, part), "parts_weekly_demand"]
-        # récupère les opérations et temps de ce part
+        # recupere les operations et temps de ce part
         operations = process_operations[part]
         times = process_times[part]
         for operation, time in zip(operations, times):
-            # charge en minutes sur ce poste/opération pour ce part
+            # charge en minutes sur ce poste/operation pour ce part
             total_time = demand * time
-            # ajuste par l’efficacité / fiabilité
+            # ajuste par l'efficacite / fiabilite
             effective_time = total_time / EFFECTIVE_AVAILABILITY
             process_requirements[year][operation] += effective_time
 
-# Affichage + calcul du nombre d’équipements par année
+# Affichage + calcul du nombre d'equipements par annee
 equipment_needed = defaultdict(dict)
 
 for year in years:
-    # print(f"\nProcess Requirements — {year}")
+    # print(f"\nProcess Requirements - {year}")
     # print(f"{'Process':<18} {'Req Min/Week':>16} {'Req Hours':>14} {'# Equip Needed':>16}")
     # print("-" * 70)
 
@@ -354,15 +366,15 @@ for year in years:
         #print(f"{operation:<18} {req_min:>16,.2f} {req_hours:>14,.2f} {num_equip:>16,.3f} -> {equipment_needed[year][operation]}")
 
 
-# DF: lignes = années, colonnes = opérations, valeurs = minutes requises / semaine
+# DF: lignes = annees, colonnes = operations, valeurs = minutes requises / semaine
 proc_req_df = pd.DataFrame.from_dict(process_requirements, orient="index").fillna(0.0)
-# DF équipements nécessaires (arrondi)
+# DF equipements necessaires (arrondi)
 equip_needed_df = np.ceil(proc_req_df / minutes_per_week).astype(int)
 
-print("\nRésumé minutes requises (min/sem) par process et par année :")
+print("\nResume minutes requises (min/sem) par process et par annee :")
 print(proc_req_df)
 
-print("\nRésumé équipements nécessaires par process et par année :")
+print("\nResume equipements necessaires par process et par annee :")
 print(equip_needed_df)
 
 
@@ -388,7 +400,7 @@ parts_demand["safety_stock_99_5"] = (
 
 
 for year in years:
-    # print(f"Safety Stock Requirements — {year}")
+    # print(f"Safety Stock Requirements - {year}")
     # print(f"{'Part':<6} {'Weekly Demand':>16}  {'Weekly Std Dev':>16}  {'Safety Stock':>16}")
     # print("-" * 70)
     df_y = parts_demand.loc[year, ["parts_weekly_demand", "parts_weekly_std_dev", "safety_stock_99_5"]]
@@ -418,7 +430,7 @@ task1_df = (
       })
 )
 
-# Ajouter le temps process total (min/unité) par pièce
+# Ajouter le temps process total (min/unite) par piece
 task1_df["Total_Process_Time_Min"] = task1_df["Part"].map(total_process_time)
 
 # Ordonner les colonnes
@@ -452,28 +464,28 @@ print("\n--- Step 1: Storage Requirements Analysis ---\n")
 
 CLIENT_A_BUFFER_HOURS = 4
 CLIENT_B_BUFFER_HOURS = 12
-OPERATING_HOURS_PER_WEEK = hours_per_week  # 2×8×5 = 80
+OPERATING_HOURS_PER_WEEK = hours_per_week  # 2x8x5 = 80
 
 client_a_products = ['A1', 'A2', 'A3', 'A4']
 client_b_products = ['B1', 'B2', 'B3', 'B4']
 
-# DataFrames vides (parts × years) en float
+# DataFrames vides (parts x years) en float
 parts_demand_CA_hourly = pd.DataFrame(0.0, index=parts, columns=years)
 parts_demand_CB_hourly = pd.DataFrame(0.0, index=parts, columns=years)
 
-# Calcul vectoriel par année
+# Calcul vectoriel par annee
 BOM_A = bom_lines[client_a_products].fillna(0)
 BOM_B = bom_lines[client_b_products].fillna(0)
 
 for year in years:
-    # Demande hebdo (parts) = (parts×products) @ (products)
+    # Demande hebdo (parts) = (partsxproducts) @ (products)
     a_weekly = BOM_A @ weekly_demand_values.loc[year, client_a_products].fillna(0)
     b_weekly = BOM_B @ weekly_demand_values.loc[year, client_b_products].fillna(0)
 
     parts_demand_CA_hourly.loc[:, year] = a_weekly / OPERATING_HOURS_PER_WEEK
     parts_demand_CB_hourly.loc[:, year] = b_weekly / OPERATING_HOURS_PER_WEEK
 
-# Buffer stock (unités finies à stocker) pour l’autonomie demandée
+# Buffer stock (unites finies a stocker) pour l'autonomie demandee
 buffer_A_units = parts_demand_CA_hourly * CLIENT_A_BUFFER_HOURS
 buffer_B_units = parts_demand_CB_hourly * CLIENT_B_BUFFER_HOURS
 buffer_total_units = buffer_A_units.add(buffer_B_units, fill_value=0)
@@ -509,7 +521,7 @@ parts_demand["factory_storage_units"] = (
 
 
 for target_year in years:
-    print(f"\nStorage Allocation — {target_year}\n")
+    print(f"\nStorage Allocation - {target_year}\n")
     print(f"{'Part':<6} {'Safety Stock':>14}  {'Cycle Stock':>14}  {'Factory Total':>16}  {'Warehouse A':>14}  {'Warehouse B':>14}")
     print("-" * 92)
     df_y = parts_demand.loc[target_year, ["safety_stock_99_5", "cycle_stock_units", "factory_storage_units"]].reindex(parts)
@@ -523,7 +535,7 @@ for target_year in years:
 
 
 # ============================================================================
-# Step 3: Physical Storage Space Requirements — by year
+# Step 3: Physical Storage Space Requirements - by year
 # ============================================================================
 
 print("\n--- Step 3: Physical Storage Space Requirements (by year) ---\n")
@@ -540,7 +552,7 @@ STORAGE_UTILIZATION = 0.70
 DENOM = WAREHOUSE_HEIGHT * STORAGE_UTILIZATION  
 
 
-buffer_A_df = buffer_A_units   # parts × years
+buffer_A_df = buffer_A_units   # parts x years
 buffer_B_df = buffer_B_units
 
 
@@ -562,11 +574,11 @@ for year in years:
     warehouse_b_floor_sqft = warehouse_b_volume_cuft / DENOM
 
 
-    print(f"Storage Volumes — {year}:")
+    print(f"Storage Volumes - {year}:")
     print(f"  Factory:     {factory_volume_cuft:>12,.2f} cubic feet")
     print(f"  Warehouse A: {warehouse_a_volume_cuft:>12,.2f} cubic feet")
     print(f"  Warehouse B: {warehouse_b_volume_cuft:>12,.2f} cubic feet")
-    print(f"\nFloor Space (20 ft height, 70% utilization) — {year}:")
+    print(f"\nFloor Space (20 ft height, 70% utilization) - {year}:")
     print(f"  Factory:     {factory_floor_sqft:>12,.2f} sq ft")
     print(f"  Warehouse A: {warehouse_a_floor_sqft:>12,.2f} sq ft")
     print(f"  Warehouse B: {warehouse_b_floor_sqft:>12,.2f} sq ft\n")
@@ -577,9 +589,9 @@ for year in years:
     warehouse_b_cost = warehouse_b_floor_sqft * WAREHOUSE_COST_PER_SQFT
     total_investment = warehouse_a_cost + warehouse_b_cost
 
-    print(f"Warehouse Building Costs — {year}:")
-    print(f"  Warehouse A: {warehouse_a_floor_sqft:>10,.2f} sq ft × ${WAREHOUSE_COST_PER_SQFT:.0f}/sq ft = ${warehouse_a_cost:>15,.2f}")
-    print(f"  Warehouse B: {warehouse_b_floor_sqft:>10,.2f} sq ft × ${WAREHOUSE_COST_PER_SQFT:.0f}/sq ft = ${warehouse_b_cost:>15,.2f}")
+    print(f"Warehouse Building Costs - {year}:")
+    print(f"  Warehouse A: {warehouse_a_floor_sqft:>10,.2f} sq ft x ${WAREHOUSE_COST_PER_SQFT:.0f}/sq ft = ${warehouse_a_cost:>15,.2f}")
+    print(f"  Warehouse B: {warehouse_b_floor_sqft:>10,.2f} sq ft x ${WAREHOUSE_COST_PER_SQFT:.0f}/sq ft = ${warehouse_b_cost:>15,.2f}")
     print(f"  Total Investment:                                            ${total_investment:>15,.2f}\n")
 
     summary_rows.append({

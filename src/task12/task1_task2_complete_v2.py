@@ -40,67 +40,55 @@ weekly_std_dev = {p: weekly_demand[p] * cv_weekly[p] for p in products}
 
 print(f"[OK] Product demand loaded from CSV: {len(products)} products")
 
-# Load Parts per Product (BOM) - using on_bad_lines='skip' to handle formatting issues
-# First, let's read it line by line to handle the inconsistent column counts
-bom_lines = []
-with open('data/csv_outputs/+1 Year Parts per Product.csv', 'r', encoding='utf-8') as f:
-    for line in f:
-        bom_lines.append(line.strip().split(','))
+# Load Parts per Product (BOM)
+bom_df = pd.read_csv(
+    'data/csv_outputs/+1 Year Parts per Product.csv',
+    skiprows=1  # first row is a title string, not headers
+)
+bom_df = bom_df[bom_df['Part'].astype(str).str.startswith('P')]
+bom_df = bom_df[['Part'] + products].fillna(0)
 
-# Data starts at row 2 (after header row 1), part names in column 1, product columns 2-6
-parts = []
+parts = bom_df['Part'].tolist()
 bom = {}
 
-for i in range(2, 22):  # Rows 2-21 contain P1-P20
-    if i < len(bom_lines):
-        row = bom_lines[i]
-        if len(row) > 1:
-            part_name = row[1]  # Column 1 has part name
-            if part_name and part_name.startswith('P'):
-                parts.append(part_name)
-                bom[part_name] = {}
-                
-                for j, product in enumerate(products):
-                    col_idx = 2 + j  # Columns 2-6 have quantities
-                    if col_idx < len(row) and row[col_idx]:
-                        try:
-                            bom[part_name][product] = int(float(row[col_idx]))
-                        except:
-                            bom[part_name][product] = 0
-                    else:
-                        bom[part_name][product] = 0
+for _, row in bom_df.iterrows():
+    part_name = row['Part']
+    bom[part_name] = {}
+    for product in products:
+        try:
+            bom[part_name][product] = int(float(row[product]))
+        except (ValueError, TypeError):
+            bom[part_name][product] = 0
 
 print(f"[OK] BOM matrix loaded from CSV: {len(parts)} parts")
 
 # Load Parts Specs - Dimensions and Process Operations
-parts_specs_raw = pd.read_csv('data/csv_outputs/Parts Specs.csv', header=None)
+process_df = pd.read_csv('data/csv_outputs/Parts Specs.csv', nrows=21)
+process_df = process_df[process_df['Part'].astype(str).str.startswith('P')]
 
-# Dimensions start at row 35 (after "Identifier" header at row 34)
+process_operations = {}
+for _, row in process_df.iterrows():
+    part_name = row['Part']
+    ops = [str(op) for op in row[1:] if pd.notna(op)]
+    process_operations[part_name] = ops
+
+print(f"[OK] Process operations loaded from CSV: {len(process_operations)} parts")
+
+dimensions_df = pd.read_csv('data/csv_outputs/Parts Specs.csv', skiprows=24)
+dimensions_df = dimensions_df[dimensions_df['Identifier'].astype(str).str.startswith('P')]
+
 part_dimensions = {}
-for i in range(35, 55):  # Rows 35-54 contain P1-P20 dimensions
-    part_name = parts_specs_raw.iloc[i, 1]
+for _, row in dimensions_df.iterrows():
+    part_name = row['Identifier']
     part_dimensions[part_name] = {
-        'X': float(parts_specs_raw.iloc[i, 2]),
-        'Y': float(parts_specs_raw.iloc[i, 3]),
-        'Z': float(parts_specs_raw.iloc[i, 4]),
-        'Weight': float(parts_specs_raw.iloc[i, 5]),
-        'Price': float(parts_specs_raw.iloc[i, 6])
+        'X': float(row['X (in.)']),
+        'Y': float(row['Y (in.)']),
+        'Z': float(row['Z (in.)']),
+        'Weight': float(row['Weight (lbs)']),
+        'Price': float(row['Price/unit'])
     }
 
 print(f"[OK] Part dimensions loaded from CSV: {len(part_dimensions)} parts")
-
-# Process operations start at row 11 (after "Part" header at row 10)
-process_operations = {}
-for i in range(11, 31):  # Rows 11-30 contain P1-P20 process steps
-    part_name = parts_specs_raw.iloc[i, 1]
-    operations = []
-    for j in range(2, 9):  # Columns 2-8 contain process steps
-        op = parts_specs_raw.iloc[i, j]
-        if pd.notna(op):
-            operations.append(str(op))
-    process_operations[part_name] = operations
-
-print(f"[OK] Process operations loaded from CSV: {len(process_operations)} parts")
 
 # Process times (manually entered from PDF - not in CSV)
 process_times = {

@@ -1,17 +1,17 @@
-﻿,Year +1 Demand Forecast for Each Product of Clients A and B,,,,,,,,,,,,,,
-,Year,A1,A2,A3,B1,B2,Total,,,,,,,,
-,+1,50000,100000,130000,60000,80000,420000,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,Standard Deviation on Year +1  Demand Forecast for Each Product of Clients A and B,,,,,,,,,,,,,,
-,Year,A1,A2,A3,B1,B2,Overall,,,,,,,,
-,+1,721.1102550927978,1442.2205101855957,2163.3307652783938,1442.2205101855957,721.1102550927978,447,,,,,,,,
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
-,Year +1  Weekly Demand Forecast for Each Product of Clients A and B,,,,,,,,,,,,,,
-,Year,A1,A2,A3,B1,B2,Total,,,,,,,,
-,+1,961.5384615384615,1923.076923076923,2500,1153.8461538461538,1538.4615384615386,8076.923076923078,,,,,,,,0.0
-,,,,,,,,,,,,,,,
-,Expected Coefficient of Variation of Weekly Year +1 Demand for Each Product of Clients A and B,,,,,,,,,,,,,,
-,Year,A1,A2,A3,B1,B2,Average,,,,,,,,
-,+1,0.15,0.2,0.2,0.12,0.18,0.17,,,,,,,,
+﻿Year +1 Demand Forecast for Each Product of Clients A and B,,,,,,
+Year,A1,A2,A3,B1,B2,Total
+1,50000,100000,130000,60000,80000,420000
+,,,,,,
+,,,,,,
+Standard Deviation on Year +1  Demand Forecast for Each Product of Clients A and B,,,,,,
+Year,A1,A2,A3,B1,B2,Overall
+1,721.1102551,1442.22051,2163.330765,1442.22051,721.1102551,447
+,,,,,,
+,,,,,,
+Year +1  Weekly Demand Forecast for Each Product of Clients A and B,,,,,,
+Year,A1,A2,A3,B1,B2,Total
+1,961.5384615,1923.076923,2500,1153.846154,1538.461538,8076.923077
+,,,,,,
+Expected Coefficient of Variation of Weekly Year +1 Demand for Each Product of Clients A and B,,,,,,
+Year,A1,A2,A3,B1,B2,Average
+1,0.15,0.2,0.2,0.12,0.18,0.17

@@ -3,7 +3,7 @@
 
 **Course**: ISyE 6202, Fall 2025  
 **Project**: Casework 3 - FeMoaSa Facility Organization Testbed  
-**Team**: Machas² (Changhui Song, Machas Maciejewski, Jatin Shah)  
+**Team**: Minjae Kim, Dominic Hose, Adarsh Uday, Jatin Patel, Benoit Morvan, Shankar Subramanian
 **Date**: November 14, 2025  
 
 ---

@@ -1,7 +1,7 @@
 ====================================================================================
 ISYE 6202 & 6335 - CASEWORK 3: FeMoaSa Facility Organization Design
 ====================================================================================
-Team Members: [Team Member Names]
+Team Members: Minjae Kim, Dominic Hose, Adarsh Uday, Jatin Patel, Benoit Morvan, Shankar Subramanian
 Submission Date: November 2025
 Course: ISYE 6202 Warehousing Systems & ISYE 6335 Supply Chain Engineering
 
@@ -970,5 +970,5 @@ NOTES:
 END OF README
 ====================================================================================
 Last Updated: November 2025
-Contact: [Team Contact Information]
+Contact: mjkim@gatech.edu
 ====================================================================================

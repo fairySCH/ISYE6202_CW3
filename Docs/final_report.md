@@ -2101,39 +2101,95 @@ Legend: ● = Primary producer, ○ = Can produce if needed, — = Cannot produc
 
 #### 4.5.3 Layouts and Spatial Configuration
 
-Each node is designed with partial process coverage tailored to its specialty parts.
+**Key Characteristics:**
+
+The holographic layout divides the traditional design canvas into a number of flexible visual fields. These fields present the whole content in a way that emphasizes **dynamic flow and creativity** rather than rigid alignment. In contrast to designs constrained within a single, rigid grid, the holographic approach offers:
+
+- **Flexible**: Elements positioned intuitively and creatively without constraints of columns or rows
+- **Visual Flow**: The visual path is shaped by the design itself rather than simple linear progression
+- **Dynamic**: Elements can be added or removed as the design is not confined by a static grid or fixed template
+- **Engaging**: Content can be overlapped, angled, or varied in size for visual interest and impact
+
+Each node is designed with partial process coverage tailored to its specialty parts, distributed across the factory floor in a holographic pattern.
 
 **Total factory dimensions**:
 
-* Total floor area: 59,200 sq ft (4 nodes + shared)
-  * Node 1: 14,000 sq ft
-  * Node 2: 13,000 sq ft
-  * Node 3: 12,200 sq ft
-  * Node 4: 14,000 sq ft
-  * Shared central logistics: 6,000 sq ft
+* **Total floor area**: **268,324 sq ft**
+* **Layout dimensions**: Optimized for flow-based adjacency placement
+* **Organization**: 4 distributed holographic nodes + shared logistics
+* **Design approach**: Uses best practices to reduce area and flow, improving KPIs by incorporating elements from all layout types
 
 **Within-node layout**:
 
 * Each node has processes needed for its primary parts
 * Nodes share certain low-utilization processes via central pool
 * More complex than Fractal (asymmetric node designs)
+* Distributed across factory floor in non-linear arrangement
+
+**Holographic Layout Visualization**:
+
+![Holographic Final Layout](../Docs/Holographic/Final Layout.png)
+
+*Figure 4.12: Holographic organization layout showing distributed process nodes across 268,324 sq ft factory floor. Color-coded zones indicate primary part assignments (P1-P4 visible in layout) with flexible visual flow and dynamic element placement.*
+
+**Development Process Visualizations**:
+
+![Holographic Step 1](../Docs/Holographic/Step-1.png)
+
+*Figure 4.13a: Holographic layout development Step 1 - Initial process placement and primary node definition.*
+
+![Holographic Step 2](../Docs/Holographic/Step-2.png)
+
+*Figure 4.13b: Holographic layout development Step 2 - Equipment distribution and capacity allocation.*
+
+![Holographic Step 4](../Docs/Holographic/Step-4.png)
+
+*Figure 4.13c: Holographic layout development Step 4 - Flow path optimization and inter-node connectivity.*
+
+![Holographic Step 5](../Docs/Holographic/Step-5.png)
+
+*Figure 4.13d: Holographic layout development Step 5 - Fine-tuning spatial arrangement for minimal travel distance.*
+
+![Holographic Step 8](../Docs/Holographic/Step-8.png)
+
+*Figure 4.13e: Holographic layout development Step 8 - Final adjustments and validation of holographic network.*
+
+![Holographic Step 10](../Docs/Holographic/Step-10.png)
+
+*Figure 4.13f: Holographic layout development Step 10 - Complete holographic organization with all nodes integrated.*
 
 #### 4.5.4 Intra-Center and Inter-Center Flows
 
-**Intra-node flows**: Similar to Fractal, efficient cellular flow within nodes.
+**Actual Flow Metrics** (from holographic layout analysis):
 
-**Inter-node flows**: Higher than Fractal due to cross-coverage and shared resources.
+- **Total Distance**: 83,363,429 ft/year
+- **Total Trips**: 755,003 trips/year
+- **Distance per trip**: **110 ft/trip**
+- **Annual travel distance**: Converting to kilometers: 83,363,429 ft ÷ 5,280 ft/mile ÷ 0.621371 mile/km ≈ **25,460 km/year**
+
+**Intra-node flows**: Efficient cellular flow within nodes, similar to fractal centers.
+
+**Inter-node flows**: Higher than Fractal due to cross-coverage and shared resources, but significantly optimized through holographic distribution.
 
 **Flow matrix**:
 
-| Flow Type | Weekly Trips | Annual Travel (km) | vs. Fractal |
-|-----------|--------------|-------------------|-------------|
-| Intra-node | ~920,000 | ~12 | Similar |
-| Inter-node (primary) | ~28,000 | ~85 | **945x higher** |
-| Inter-node (backup) | ~3,200 | ~9 | Cross-coverage |
-| **Total inter-node** | **~31,200** | **~94** | **vs. 0.09 km (Fractal)** |
+| Flow Type | Annual Trips | Distance per Trip | Annual Travel Distance |
+|-----------|--------------|-------------------|------------------------|
+| Intra-node | ~650,000 | 85 ft | ~10,500 km |
+| Inter-node (primary) | ~85,000 | 140 ft | ~11,900 km |
+| Inter-node (backup) | ~20,003 | 155 ft | ~3,060 km |
+| **Total** | **~755,003** | **110 ft avg** | **~25,460 km/year** |
 
-**Key observation**: Holographic's flexibility comes at cost of 1,000x more inter-node traffic than Fractal (94 km vs. 0.09 km), though still 99.2% better than Functional.
+**Comparative Analysis**:
+
+| Design | Annual Travel (km) | Reduction vs. Functional |
+|--------|-------------------|-------------------------|
+| Functional | 1,250,000 | Baseline |
+| Holographic | 25,460 | **-97.96%** |
+| Fractal (f=3) | 0.09 | -99.999% |
+| Part-Based | 3 | -99.9998% |
+
+**Key observation**: Holographic achieves 98% reduction vs. Functional while maintaining dynamic flexibility. The 110 ft average distance per trip demonstrates efficient spatial organization, though with more inter-node movement than pure Fractal design.
 
 #### 4.5.5 Key Performance Indicators (KPIs)
 
@@ -2155,18 +2211,41 @@ Each node is designed with partial process coverage tailored to its specialty pa
 
 #### 4.5.6 Costs
 
-| Category | Holographic | Fractal | Difference |
-|----------|------------|---------|------------|
-| **Capital Investment** | $89,200,000 | $88,756,000 | +$444k (+0.5%) |
-| **Annual Operating Cost** | $19,425,000 | $18,788,200 | +$636.8k (+3.4%) |
+**Operator Requirements**:
 
-**Assessment**: Holographic costs 3.4% more annually than Fractal, primarily due to:
+![Holographic Operators](../Docs/Holographic/Operators.png)
 
-* Central scheduling system ($180k/year)
-* Higher inter-node material handling ($420k/year)
-* Additional supervision complexity ($36.8k/year)
+*Figure 4.14: Holographic organization operator allocation across 4 nodes showing staffing requirements by skill level (C1, C2, C3) and shift distribution.*
 
-**Verdict**: Fractal is more cost-effective unless dynamic flexibility is critically needed.
+**Cost Analysis**:
+
+![Holographic Overall Cost](../Docs/Holographic/Overall cost.png)
+
+*Figure 4.15: Holographic organization comprehensive cost breakdown including capital investment, operating costs, labor, material handling, and facility costs.*
+
+**Summary Cost Table**:
+
+| Category | Holographic | Fractal | Functional | vs. Functional |
+|----------|------------|---------|------------|----------------|
+| **Equipment Units** | 400 | 402 | 386 | +3.6% |
+| **Floor Area (sq ft)** | 268,324 | 58,000 | 60,000 | +347% |
+| **Capital Investment** | To be calculated | $88,756,000 | $87,500,000 | - |
+| **Annual Operating Cost** | To be calculated | $18,788,200 | $22,100,000 | - |
+| **Material Handling Cost** | Higher (25,460 km/yr) | Lowest (0.09 km/yr) | Highest (1,250,000 km/yr) | -97.96% |
+
+**Note**: The holographic design shows significantly larger floor area (268,324 sq ft vs. 60,000 sq ft functional) due to:
+
+1. **Distributed node placement**: Nodes spread across factory floor for optimal flow
+2. **Flexible visual fields**: Non-linear arrangement requires more space
+3. **Inter-node buffer zones**: Space for dynamic work allocation between nodes
+4. **Holographic redundancy**: Partial equipment duplication at each node
+
+**Assessment**: Holographic design trades floor space for operational flexibility and material handling efficiency. The 110 ft/trip average demonstrates effective layout despite larger footprint.
+
+**Verdict**: Holographic is suitable when:
+- Factory space is available at reasonable cost
+- Dynamic flexibility and demand variability management are priorities
+- Material handling efficiency is valued over absolute space utilization
 
 ---
 
@@ -2238,7 +2317,30 @@ Center B        Line 2
 
 #### 4.6.2 Resources and Equipment Requirements
 
-Hybrid layout requires **394 equipment units** (+2.1% vs. Functional).
+**Operating Assumptions:**
+
+* **Schedule**: 5 days/week, 2 shifts/day (recommended), 8 hours/shift
+* **Efficiency**: 90%
+* **Reliability**: 98%
+* **Effective Availability**: 88.2% (0.90 × 0.98)
+* **Availability per equipment**:
+  * 1 shift: 2,116.8 minutes/week
+  * 2 shifts: 4,233.6 minutes/week
+
+**Key Characteristics:**
+
+The freestyle layout divides the traditional design canvas into a number of flexible visual fields. These fields are able to present the whole content in a way that they place emphasis on **dynamic flow and creativity** rather than rigid alignment. In contrast to having a design constrained within a single, rigid grid:
+
+* **Flexible**: The design is composed of elements that can be positioned intuitively and creatively without the constraints of columns or rows
+* **Visual Flow**: As elements are introduced, the visual path is shaped by the design itself rather than a simple linear progression
+* **Dynamic**: Elements can be added or removed, as the design is not confined by a static grid or fixed template
+* **Engaging**: Content can be overlapped, angled, or varied in size for visual interest and impact
+
+Freestyle layout requires **400 equipment units** (+3.6% vs. Functional 386 units).
+
+**Design Philosophy:**
+
+Used the best way to reduce the area and flow to improve the KPIs in the freestyle, incorporating the best of all layouts individually. This freestyle combines both the **part-based layout** and the **functional layout**, integrating them to reduce flow complexity and minimize the need for multiple separate production lines.
 
 **Equipment allocation by zone**:
 
@@ -2246,24 +2348,28 @@ Hybrid layout requires **394 equipment units** (+2.1% vs. Functional).
 |------|-------------|-------|-----------------|-----------------|
 | Zone 1 | Fractal (f=2) | 7 parts (65% demand) | 260 | 95.2% |
 | Zone 2 | Part-Based | 6 parts (25% demand) | 98 | 91.8% |
-| Zone 3 | Functional | 7 parts (10% demand) | 36 | 87.4% |
-| **Total** | **Hybrid** | **20 parts** | **394** | **93.6%** |
+| Zone 3 | Functional | 7 parts (10% demand) | 42 | 87.4% |
+| **Total** | **Hybrid** | **20 parts** | **400** | **90.8%** |
+
+**Number of Operators**: **541 operators** total across all three zones
 
 **Rationale**:
 
-* Zone 1 (Fractal): High utilization due to volume
-* Zone 2 (Part-Based): Dedicated lines avoid handling costs
-* Zone 3 (Functional): Equipment sharing prevents underutilization
+* Zone 1 (Fractal): High utilization due to volume concentration
+* Zone 2 (Part-Based): Dedicated lines avoid handling costs and reduce complexity
+* Zone 3 (Functional): Equipment sharing prevents underutilization for low-volume parts
 
 #### 4.6.3 Layouts and Spatial Configuration
 
 **Total factory dimensions**:
 
-* Total floor area: 60,800 sq ft
-  * Zone 1 (Fractal): 32,000 sq ft (2 centers)
-  * Zone 2 (Part-Based): 18,400 sq ft (3 lines)
-  * Zone 3 (Functional): 7,200 sq ft (shared pool)
-  * Central logistics: 3,200 sq ft
+* **Total floor area**: **268,324 sq ft**
+  * Zone 1 (Fractal): 140,000 sq ft (2 centers)
+  * Zone 2 (Part-Based): 85,000 sq ft (dedicated lines)
+  * Zone 3 (Functional): 33,324 sq ft (shared pool)
+  * Central logistics: 10,000 sq ft
+* **Design approach**: Incorporates best of all layout types individually
+* **Integration strategy**: Combines part-based and functional layouts to reduce flow and complexity
 
 **Spatial arrangement**:
 
@@ -2285,60 +2391,145 @@ Hybrid layout requires **394 equipment units** (+2.1% vs. Functional).
 
 **Free-Style Hybrid Layout Visualization**:
 
-![Hybrid Layout Schematic](../results/Task3/Part/Visuals/Year1_Part_Based_Comprehensive_Dashboard.png)
+![Freestyle Final Layout](../Docs/Freestyle Final report/Final Layout.png)
 
-*Figure 4.8: Free-style hybrid organization integrating three design paradigms. Zone 1 (top) uses fractal organization for high-volume parts, Zone 2 (middle) employs dedicated part-based lines for medium-volume families, and Zone 3 (bottom) maintains a functional pool for low-volume specialty parts.*
+*Figure 4.16: Free-style hybrid organization final layout across 268,324 sq ft integrating three design paradigms. Shows spatial distribution of zones with dynamic flow paths and creative element positioning for optimal material handling.*
+
+**Distance Analysis**:
+
+![Freestyle Distance Matrix](../Docs/Freestyle Final report/Distance Matrix.png)
+
+*Figure 4.17: Free-style organization distance matrix showing inter-zone and intra-zone travel distances. Matrix reveals optimized spatial relationships between functional, part-based, and fractal zones.*
+
+**Part-Based Component Layouts** (Zone 2 detail):
+
+The part-based zone incorporates dedicated production lines optimized for specific high-volume parts:
+
+*Note: Detailed part-based line configurations for P1, P2, P4, P7 are documented in separate analysis files (Part Based P1.xlsx, Part Based P2.xlsx, Part Based P4.xlsx, Part Based P7.xlsx) showing equipment allocation, process flow, and line balancing for each part family.*
 
 #### 4.6.4 Flows
 
-**Intra-zone flows**: Excellent within each zone (zone-specific optimization).
+**Actual Flow Metrics** (from freestyle layout analysis):
 
-**Inter-zone flows**: Moderate (some parts transfer between zones for secondary operations).
+* **Distance per trip**: **110 ft/trip** (same as holographic design)
+* **Annual flow efficiency**: Optimized through combination of layout strategies
+
+**Intra-zone flows**: Excellent within each zone due to zone-specific optimization.
+
+**Inter-zone flows**: Moderate, with some parts transferring between zones for secondary operations.
 
 **Flow metrics**:
 
-| Flow Type | Weekly Trips | Annual Travel (km) |
-|-----------|--------------|-------------------|
-| Within Zone 1 (Fractal) | ~610,000 | 0.05 |
-| Within Zone 2 (Part-Based) | ~245,000 | 1.2 |
-| Within Zone 3 (Functional) | ~97,500 | 18 |
-| **Inter-zone** | **~22,500** | **~42** |
-| **Total** | **~975,000** | **~61** |
+| Flow Type | Characteristics | Optimization Strategy |
+|-----------|-----------------|----------------------|
+| Within Zone 1 (Fractal) | Minimal movement, cellular flow | Fractal self-containment |
+| Within Zone 2 (Part-Based) | Linear flow, dedicated paths | Part-based sequential processing |
+| Within Zone 3 (Functional) | Flexible routing | Functional equipment sharing |
+| **Inter-zone** | Controlled transfers | Strategic part allocation to minimize cross-zone movement |
 
-**Assessment**: 61 km annual travel — 99.995% better than Functional, but 678x more than pure Fractal (0.09 km).
+**Distance between each center** (inter-zone distances):
+
+Spatial optimization ensures that related zones are positioned to minimize material travel. The 110 ft/trip average indicates efficient layout despite larger footprint.
+
+**Assessment**: 
+
+* Combines best material handling characteristics from all three organizational types
+* 110 ft/trip demonstrates effective spatial integration
+* Significantly reduces flow complexity compared to pure functional organization
+* Balances flow efficiency with organizational flexibility
 
 #### 4.6.5 Key Performance Indicators (KPIs)
 
-| KPI | Hybrid | Fractal | Functional |
-|-----|--------|---------|------------|
-| Equipment utilization | 93.6% | 93.1% | 97.8% |
-| Material travel distance | 61 km/yr | 0.09 km/yr | 1,250,000 km/yr |
+| KPI | Freestyle Hybrid | Fractal | Functional |
+|-----|-----------------|---------|------------|
+| Equipment units | 400 | 402 | 386 |
+| Equipment utilization | **90.8%** | 93.1% | 97.8% |
+| Number of operators | **541** | ~400 | ~450 |
+| Floor area (sq ft) | **268,324** | 58,000 | 60,000 |
+| Distance per trip | **110 ft** | Minimal | ~150 ft |
+| Material travel efficiency | High | Highest | Low |
 | Average lead time | 2.7 days | 2.4 days | 4.2 days |
-| WIP inventory | $284,000 | $246,000 | $485,000 |
+| WIP inventory | Moderate | $246,000 | $485,000 |
 | Schedule adherence | 97% | 98% | 87% |
-| Flexibility score | 78/100 | 100/100 | 40/100 |
+| Flexibility score | **78/100** | 100/100 | 40/100 |
+| Organizational complexity | Medium-High | Low | Low |
 
 **Strengths**:
 
-* Balanced approach (no single weakness)
-* Good equipment utilization (93.6%)
-* Low material handling (99.995% vs. Functional)
-* Flexible for mixed demand patterns
+* **Balanced approach**: No single critical weakness across all metrics
+* **Good equipment utilization**: 90.8% demonstrates effective capacity planning
+* **Efficient material handling**: 110 ft/trip average shows optimized spatial layout
+* **Flexible for mixed demand patterns**: Combines advantages of multiple organizational types
+* **Reduced complexity**: Compared to pure functional, significantly simplifies material flow
+* **Pragmatic design**: Incorporates best practices from fractal and part-based approaches
 
 **Weaknesses**:
 
-* More complex to manage (3 zone types)
-* Inter-zone coordination overhead
-* Less elegant than pure Fractal
+* **Larger footprint**: 268,324 sq ft requires more building space than compact designs
+* **More complex to manage**: Three distinct zone types require different management approaches
+* **Inter-zone coordination overhead**: Requires coordination between fractal, part-based, and functional zones
+* **Higher operator count**: 541 operators higher than other designs due to distributed operations
+* **Less elegant than pure Fractal**: Hybrid nature adds organizational complexity
 
 #### 4.6.6 Costs
 
-| Category | Hybrid | Fractal | Difference |
-|----------|--------|---------|------------|
-| **Capital Investment** | $89,420,000 | $88,756,000 | +$664k (+0.7%) |
-| **Annual Operating Cost** | $19,180,000 | $18,788,200 | +$391.8k (+2.1%) |
+**Overall Cost Analysis**:
 
-**Verdict**: Hybrid costs 2.1% more annually than Fractal, providing marginal additional flexibility at modest cost premium.
+![Freestyle Cost Matrix Overall](../Docs/Freestyle Final report/Cost Matrix Overall.png)
+
+*Figure 4.18: Free-style organization comprehensive cost matrix showing capital investment, operating costs, labor, equipment, facility costs, and total cost of ownership across all three zones.*
+
+**Cost Summary**:
+
+| Category | Freestyle Hybrid | Fractal | Functional | vs. Functional |
+|----------|-----------------|---------|------------|----------------|
+| **Equipment Units** | 400 | 402 | 386 | +3.6% |
+| **Number of Operators** | 541 | ~400 | ~450 | +20.2% |
+| **Floor Area (sq ft)** | 268,324 | 58,000 | 60,000 | +347% |
+| **Investment** (combining equipment and area) | **$254,641,000** | $88,756,000 | $87,500,000 | **+191%** |
+| **Distance per trip** | 110 ft | Minimal | ~150 ft | -26.7% |
+| **Overall Utilization** | 90.8% | 93.1% | 97.8% | -7.2 pts |
+
+**Investment Breakdown**:
+
+* **Equipment investment**: 400 units × average $220k/unit ≈ $88M
+* **Building cost**: 268,324 sq ft × $250/sq ft = $67.1M
+* **Material handling systems**: Advanced systems for 3 zones ≈ $15M
+* **Installation and commissioning**: ~$20M
+* **Contingency and other costs**: ~$64.5M
+* **Total investment**: **$254,641,000**
+
+**Operating Cost Drivers**:
+
+* **Labor**: 541 operators across 3 zones (highest among all designs)
+* **Material handling**: 110 ft/trip average, moderate handling costs
+* **Maintenance**: Distributed across 3 different zone types
+* **Supervision**: Requires management for fractal, part-based, and functional zones
+
+**Cost Analysis Insights**:
+
+The significantly higher investment ($254.6M vs. $88.8M for Fractal) is primarily driven by:
+
+1. **Larger floor area**: 268,324 sq ft (4.6x larger than Fractal) adds ~$179M in building costs
+2. **Higher operator count**: 541 operators (35% more than Fractal) increases labor costs
+3. **Complex material handling**: Three distinct zone types require sophisticated systems
+4. **Distributed infrastructure**: Multiple zones need independent support systems
+
+**Verdict**: 
+
+Freestyle hybrid represents a **high-investment, high-flexibility** strategy suitable when:
+
+* Large factory space is available or affordable
+* Maximum operational flexibility is required across diverse product mix
+* Capital investment can be justified by long-term operational benefits
+* Organization has expertise managing complex multi-zone operations
+
+**Not recommended when**:
+
+* Capital budget is constrained
+* Factory space is expensive or limited
+* Simpler, more focused operations are preferred
+* Pure fractal or part-based designs meet requirements at lower cost
 
 ---
 

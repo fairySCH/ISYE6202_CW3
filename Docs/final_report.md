@@ -1047,7 +1047,7 @@ The Functional organization follows the classic **job-shop paradigm**, grouping 
 
 **Visual representation**:
 
-![Functional Organization Network](../images/functional_organization_network.png)
+![Functional Organization Network](../media/functional_organization_network.png)
 
 The diagram illustrates the complete network structure from supplier through parts factory to client delivery:
 
@@ -2128,33 +2128,33 @@ Each node is designed with partial process coverage tailored to its specialty pa
 
 **Holographic Layout Visualization**:
 
-![Holographic Final Layout](../Docs/Holographic/Final Layout.png)
+![Holographic Final Layout](../media/Holographic/Final Layout.png)
 
 *Figure 4.12: Holographic organization layout showing distributed process nodes across 60,000 sq ft factory floor. Color-coded zones indicate primary part assignments (P1-P4 visible in layout) with flexible visual flow and dynamic element placement.*
 
 **Development Process Visualizations**:
 
-![Holographic Step 1](../Docs/Holographic/Step-1.png)
+![Holographic Step 1](../media/Holographic/Step-1.png)
 
 *Figure 4.13a: Holographic layout development Step 1 - Initial process placement and primary node definition.*
 
-![Holographic Step 2](../Docs/Holographic/Step-2.png)
+![Holographic Step 2](../media/Holographic/Step-2.png)
 
 *Figure 4.13b: Holographic layout development Step 2 - Equipment distribution and capacity allocation.*
 
-![Holographic Step 4](../Docs/Holographic/Step-4.png)
+![Holographic Step 4](../media/Holographic/Step-4.png)
 
 *Figure 4.13c: Holographic layout development Step 4 - Flow path optimization and inter-node connectivity.*
 
-![Holographic Step 5](../Docs/Holographic/Step-5.png)
+![Holographic Step 5](../media/Holographic/Step-5.png)
 
 *Figure 4.13d: Holographic layout development Step 5 - Fine-tuning spatial arrangement for minimal travel distance.*
 
-![Holographic Step 8](../Docs/Holographic/Step-8.png)
+![Holographic Step 8](../media/Holographic/Step-8.png)
 
 *Figure 4.13e: Holographic layout development Step 8 - Final adjustments and validation of holographic network.*
 
-![Holographic Step 10](../Docs/Holographic/Step-10.png)
+![Holographic Step 10](../media/Holographic/Step-10.png)
 
 *Figure 4.13f: Holographic layout development Step 10 - Complete holographic organization with all nodes integrated.*
 
@@ -2214,13 +2214,13 @@ Each node is designed with partial process coverage tailored to its specialty pa
 
 **Operator Requirements**:
 
-![Holographic Operators](../Docs/Holographic/Operators.png)
+![Holographic Operators](../media/Holographic/Operators.png)
 
 *Figure 4.14: Holographic organization operator allocation across 4 nodes showing staffing requirements by skill level (C1, C2, C3) and shift distribution.*
 
 **Cost Analysis**:
 
-![Holographic Overall Cost](../Docs/Holographic/Overall cost.png)
+![Holographic Overall Cost](../media/Holographic/Overall cost.png)
 
 *Figure 4.15: Holographic organization comprehensive cost breakdown including capital investment, operating costs, labor, material handling, and facility costs.*
 
@@ -2393,13 +2393,13 @@ Used the best way to reduce the area and flow to improve the KPIs in the freesty
 
 **Free-Style Hybrid Layout Visualization**:
 
-![Freestyle Final Layout](../Docs/Freestyle Final report/Final Layout.png)
+![Freestyle Final Layout](../media/Freestyle/Final Layout.png)
 
 *Figure 4.16: Free-style hybrid organization final layout across 60,000 sq ft integrating three design paradigms. Shows spatial distribution of zones with dynamic flow paths and creative element positioning for optimal material handling.*
 
 **Distance Analysis**:
 
-![Freestyle Distance Matrix](../Docs/Freestyle Final report/Distance Matrix.png)
+![Freestyle Distance Matrix](../media/Freestyle/Distance Matrix.png)
 
 *Figure 4.17: Free-style organization distance matrix showing inter-zone and intra-zone travel distances. Matrix reveals optimized spatial relationships between functional, part-based, and fractal zones.*
 
@@ -2481,7 +2481,7 @@ Spatial optimization ensures that related zones are positioned to minimize mater
 
 **Overall Cost Analysis**:
 
-![Freestyle Cost Matrix Overall](../Docs/Freestyle Final report/Cost Matrix Overall.png)
+![Freestyle Cost Matrix Overall](../media/Freestyle/Cost Matrix Overall.png)
 
 *Figure 4.18: Free-style organization comprehensive cost matrix showing capital investment, operating costs, labor, equipment, facility costs, and total cost of ownership across all three zones.*
 

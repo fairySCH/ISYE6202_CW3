@@ -2768,15 +2768,11 @@ Year +1:                    Year +2-5:
 
 ![Functional Equipment Comparison By Process](../results/task4/functional/Visuals/Functional_Equipment_Comparison_By_Process.png)
 
-*Figure 5.2a: Process-by-process equipment growth across 5 years. Demonstrates how each of the 13 departments expands incrementally, with bottleneck processes (D, J, M) requiring the most significant equipment additions.*
-
-![Functional Utilization Comparison By Year](../results/task4/functional/Visuals/Functional_Utilization_Comparison_By_Year.png)
-
-*Figure 5.2b: Equipment utilization comparison across Years 1-5 by process department. Shows stable high utilization (>95%) in bottleneck processes throughout the planning period.*
+*Figure 5.2a: Equipment utilization comparison across Years 1-5 by process department. Shows stable high utilization (>95%) in bottleneck processes throughout the planning period.*
 
 ![Functional Cost Analysis Overview](../results/task4/functional/Visuals/Functional_Cost_Analysis_Overview.png)
 
-*Figure 5.2c: Comprehensive cost analysis overview showing capital investment, operating costs, and total cost of ownership evolution from Year 1 to Year 5.*
+*Figure 5.2b: Comprehensive cost analysis overview showing capital investment, operating costs, and total cost of ownership evolution from Year 1 to Year 5.*
 
 ---
 
@@ -3041,19 +3037,11 @@ Year +1 (f=3):              Year +2 (f=5):              Year +5 (f=7):
 
 **Year 1 Layout (f=4, 68 machines)**:
 
-![Year 1 Fractal f4 Layout - Grid View](../results/task4/Fractal/Fractal_Visuals/Year1_Layout_68_Machines.png)
-
-*Figure 5.3a: Year 1 fractal layout with 68 machines across 4 centers. Color-coded by process type (A-M), showing compact cellular arrangement with 2ft overlap zones for space efficiency. Total area: 44,100 sq ft.*
-
 ![Year 1 Fractal f4 Layout - Distance Optimized](../results/Task3/Fractal/Fractal_Visuals/Fractal_Layout_f4.png)
 
 *Figure 5.3b: Year 1 fractal layout showing flow-based adjacency placement and inter-process connectivity.*
 
 **Year 2 Layout (f=4, 83 machines)**:
-
-![Year 2 Fractal f4 Layout](../results/task4/Fractal/Fractal_Visuals/Year2_Layout_83_Machines.png)
-
-*Figure 5.4a: Year 2 fractal layout expansion to 83 machines. Same 4-center structure with increased equipment density. Shows incremental machine additions within existing fractal footprint.*
 
 ![Year 2 Fractal f4 Layout - Flow Analysis](../results/task4/Fractal/Fractal_Visuals/Year2_Fractal_f4_Layout.png)
 
@@ -3061,29 +3049,17 @@ Year +1 (f=3):              Year +2 (f=5):              Year +5 (f=7):
 
 **Year 3 Layout (f=4, 88 machines)**:
 
-![Year 3 Fractal f4 Layout](../results/task4/Fractal/Fractal_Visuals/Year3_Layout_88_Machines.png)
-
-*Figure 5.5a: Year 3 fractal layout with 88 machines. Demonstrates stable configuration with minor capacity additions in high-demand processes (I, J).*
-
-![Year 3 Fractal f4 Layout - Flow Analysis](../results/task4/Fractal/Fractal_Visuals/Year3_Fractal_f4_Layout.png)
+![Year 3 Fractal f4 Layout](../results/task4/Fractal/Fractal_Visuals/Year3_Fractal_f4_Layout.png)
 
 *Figure 5.5b: Year 3 layout showing continued flow efficiency with minimal inter-center traffic.*
 
 **Year 4 Layout (f=4, 88 machines)**:
-
-![Year 4 Fractal f4 Layout](../results/task4/Fractal/Fractal_Visuals/Year4_Layout_88_Machines.png)
-
-*Figure 5.6a: Year 4 fractal layout maintains 88 machines. Configuration remains unchanged from Year 3, demonstrating layout stability.*
 
 ![Year 4 Fractal f4 Layout - Flow Analysis](../results/task4/Fractal/Fractal_Visuals/Year4_Fractal_f4_Layout.png)
 
 *Figure 5.6b: Year 4 layout with consistent flow patterns and high equipment utilization.*
 
 **Year 5 Layout (f=4, 93 machines)**:
-
-![Year 5 Fractal f4 Layout - Grid View](../results/task4/Fractal/Fractal_Visuals/Year5_Layout_93_Machines.png)
-
-*Figure 5.7a: Year 5 fractal layout expansion to 93 machines across 4 centers. Final configuration shows balanced growth with equipment additions in B1, B2, D, I, J processes.*
 
 ![Year 5 Fractal f4 Layout - Single Center Detail](../results/task4/Fractal/Fractal_Layout/Year5_F4_Optimized/Year5_F4_Layout_Visualization.png)
 

@@ -2825,7 +2825,11 @@ Year +1:                    Year +2-5:
 | +4 | 95,000 sq ft | Congestion mitigation | Add cross-aisles |
 | +5 | 118,000 sq ft | Major reorganization | +97% area vs. Year +1 |
 
-**[Detailed layout diagrams for each year would be inserted here]**
+**Visualizations**:
+
+![Functional Layout Summary Dashboard](../results/task4/functional/Visuals/Functional_Layout_Summary_Dashboard.png)
+
+![Functional Utilization Comparison By Year](../results/task4/functional/Visuals/Functional_Utilization_Comparison_By_Year.png)
 
 #### 5.3.4 Relayout Plan (Year-by-Year)
 
@@ -2863,8 +2867,6 @@ Year +1:                    Year +2-5:
 
 **Cumulative relayout cost (Years +2 to +5)**: $873,000
 
-**[Graphical representations of relayout activities for each year would be inserted here]**
-
 #### 5.3.5 Intra-Center Work and Flow Patterns (Year-by-Year)
 
 **Utilization profiles by year**:
@@ -2882,8 +2884,6 @@ Year +1:                    Year +2-5:
 * **Batch processing**: Continues throughout all years
 * **Queue times**: Increase from 2.4 hrs (Year +1) to 3.8 hrs (Year +5)
 * **Department-to-department transfers**: Escalate from 1.25M km/yr to 2.5M km/yr
-
-**[Tables and schematics overlaid on layouts for each year would be inserted here]**
 
 #### 5.3.6 Inter-Center Flow Evolution (Year-by-Year)
 
@@ -2903,8 +2903,6 @@ Year +1:                    Year +2-5:
 * Average department-to-department distance increases from 47 ft to 68 ft (+45%)
 * Congestion hot spots emerge at high-volume departments (D, J, M)
 * Material handling labor requirement increases +112% (15 → 32 staff)
-
-**[Flow diagrams, heatmaps, and tabular results for each year would be inserted here]**
 
 #### 5.3.7 Key Performance Indicators (Year-by-Year)
 
@@ -3072,7 +3070,7 @@ Year +1 (f=3):              Year +2 (f=5):              Year +5 (f=7):
 | +4 | 94,000 sq ft | 5 | No change | Minor equipment additions |
 | +5 | 130,000 sq ft | 7 | Add 2 centers | +2 greenfield centers |
 
-**[Detailed layout diagrams for each year would be inserted here]**
+*Note: Part-Based organization maintains modular center structure. Each center follows the Year +1 baseline layout pattern shown in Section 4.3.2.*
 
 #### 5.4.4 Relayout Plan (Year-by-Year)
 
@@ -3116,8 +3114,6 @@ Year +1 (f=3):              Year +2 (f=5):              Year +5 (f=7):
 
 **Key advantage**: 65% lower relayout costs vs. Functional ($308k vs. $873k)
 
-**[Graphical representations of relayout activities for each year would be inserted here]**
-
 #### 5.4.5 Intra-Center Work and Flow Patterns (Year-by-Year)
 
 **Utilization profiles by year**:
@@ -3137,8 +3133,6 @@ Year +1 (f=3):              Year +2 (f=5):              Year +5 (f=7):
 * **Within-center transfers**: Stable, minimal variation
 * **Production rhythm**: Consistent across all centers
 
-**[Tables and schematics overlaid on layouts for each year would be inserted here]**
-
 #### 5.4.6 Inter-Center Flow Evolution (Year-by-Year)tion (Year-by-Year)
 
 **Inter-center travel (remains near-zero)**:
@@ -3157,8 +3151,6 @@ Year +1 (f=3):              Year +2 (f=5):              Year +5 (f=7):
 * Even with 7 centers, material flow is 99.99999% contained within centers
 * Average inter-center trips: <40/week (vs. 1.9M/week for Functional)
 * No congestion, no cross-traffic, no material handling complexity
-
-**[Flow diagrams, heatmaps, and tabular results for each year would be inserted here]**
 
 #### 5.4.7 Key Performance Indicators (Year-by-Year)
 
@@ -3402,7 +3394,23 @@ Zone1 Zone2 Zone3       Zone1(f=2→3→4) Zone2(3→4→5) Zone3(expanded)
 | +4 | 93,200 sq ft | 3 centers | 4 lines | Expanded pool | Minor equipment additions |
 | +5 | 119,600 sq ft | 4 centers | 5 lines | Large pool | +1 fractal center, +1 line |
 
-**[Detailed layout diagrams for each year would be inserted here]**
+**Year-by-Year Layout Evolution (f=4 Fractal Configuration)**:
+
+![Year 2 Fractal f4 Layout](../results/task4/Fractal/Fractal_Visuals/Year2_Fractal_f4_Layout.png)
+
+![Year 3 Fractal f4 Layout](../results/task4/Fractal/Fractal_Visuals/Year3_Fractal_f4_Layout.png)
+
+![Year 4 Fractal f4 Layout](../results/task4/Fractal/Fractal_Visuals/Year4_Fractal_f4_Layout.png)
+
+![Year 5 Fractal f4 Layout](../results/task4/Fractal/Fractal_Visuals/Year5_Fractal_f4_Layout.png)
+
+**Comparative Analysis Visualizations**:
+
+![Fractal Yearly Equipment Comparison](../results/task4/Fractal/Fractal_Visuals/Fractal_Yearly_Equipment_Comparison.png)
+
+![Fractal Scaling Comparison](../results/task4/Fractal/Fractal_Visuals/Fractal_Scaling_Comparison.png)
+
+![Fractal Cost Efficiency Analysis](../results/task4/Fractal/Fractal_Visuals/Fractal_Cost_Efficiency_Analysis.png)
 
 #### 5.5.4 Relayout Plan (Year-by-Year)
 
@@ -3442,8 +3450,6 @@ Zone1 Zone2 Zone3       Zone1(f=2→3→4) Zone2(3→4→5) Zone3(expanded)
 
 **Cumulative relayout cost (Years +2 to +5)**: $524,000
 
-**[Graphical representations of relayout activities for each year would be inserted here]**
-
 #### 5.5.5 Intra-Center Work and Flow Patterns (Year-by-Year)
 
 **Utilization profiles by year**:
@@ -3463,8 +3469,6 @@ Zone1 Zone2 Zone3       Zone1(f=2→3→4) Zone2(3→4→5) Zone3(expanded)
 * **Zone 3**: Job shop flow, moderate queues (2.5-3.0 hrs)
 * **Overall**: Balanced performance across zones
 
-**[Tables and schematics overlaid on layouts for each year would be inserted here]**
-
 #### 5.5.6 Inter-Center Flow Evolution (Year-by-Year)tion (Year-by-Year)
 
 **Multi-zone flow complexity**:
@@ -3478,8 +3482,6 @@ Zone1 Zone2 Zone3       Zone1(f=2→3→4) Zone2(3→4→5) Zone3(expanded)
 | Year +5 | 17,800 | 850 | 18,650 | **+102.4%** |
 
 **Assessment**: Hybrid maintains excellent flow characteristics (99.26% better than Functional at Year +1), though slightly higher than pure Fractal. Material travel doubles by Year +5 but remains highly efficient.
-
-**[Flow diagrams, heatmaps, and tabular results for each year would be inserted here]**
 
 #### 5.5.7 Key Performance Indicators (Year-by-Year)
 

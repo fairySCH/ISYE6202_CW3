@@ -1170,9 +1170,13 @@ The Functional layout arranges departments in a flow-optimized sequence, but lon
 
 **Functional Layout Visualization**:
 
+![Final Functional Layout Year 1](../results/Task3/Functional/FINAL_FUNCTIONAL_LAYOUT_YEAR1.png)
+
+*Figure 4.1: Final functional organization layout for Year +1 based on peak demand. Shows 13 specialized departments (A through M) arranged in flow-optimized sequence. Total floor area: 60,000 sq ft with 30,880 sq ft production area. This layout is designed to accommodate Year +5 peak demand, with equipment added incrementally in Years 2-5 (1-5 machines per department annually).*
+
 ![Functional Layout Comprehensive Analysis](../results/Task3/Functional/Visuals/Functional_Layout_Comprehensive_Analysis.png)
 
-*Figure 4.1: Functional organization layout with 13 specialized departments (A through M). Color-coded by process type, showing typical job-shop arrangement. Total floor area: 60,000 sq ft with 30,880 sq ft production area.*
+*Figure 4.1b: Comprehensive functional layout analysis showing departmental organization, equipment distribution, and flow patterns.*
 
 ![Functional Flow Matrix Heatmap](../results/Task3/Functional/Visuals/Functional_Flow_Matrix_Heatmap.png)
 
@@ -1386,7 +1390,35 @@ The Part-Based organization creates **dedicated production lines** for each part
 
 Part-Based layout requires **430 equipment units** (+11.4% vs. Functional) due to dedicated equipment per part family.
 
-**Equipment requirements by part** (top 5 high-demand parts):\n\n| Part | Weekly Demand | Process Sequence | Equipment Units | Key Bottlenecks |\n|------|--------------|-----------------|----------------|----------------|\n| P1 | 20,962 | B→A→B→C→D→I→J (7 steps) | 67 | B:13, D:13, J:13 |\n| P19 | 20,000 | L→M→L→M (4 steps) | 51 | L:21, M:30 |\n| P14 | 18,077 | E→F→G→H (4 steps) | 23 | F:7, H:8 |\n| P7 | 13,269 | E→F→C→D→I→J (6 steps) | 40 | D:12, J:7 |\n| P12 | 12,885 | E→G→F→I→J (5 steps) | 23 | J:6, E:3 |\n\n**Overall equipment allocation by process family**:\n\n| Process Group | Total Equipment | Average Utilization (%) | Primary Parts |\n|--------------|----------------|----------------------|---------------|\n| A, B, C, D | 154 | 84.2% | P1, P7, P2, P3 |\n| E, F, G | 78 | 76.8% | P14, P12, P11 |\n| H, I, J | 132 | 88.5% | P1, P16, P9 |\n| K, L, M | 66 | 91.3% | P19, P18, P20 |\n| **Total** | **430** | **84.8%** | **All 20 parts** |\n\n**Personnel requirements**:\n\n| Role | FTE Count | Annual Cost ($M) | Notes |\n|------|-----------|-----------------|-------|\n| C1 Operators | 315 | $12.6M | Primary machine operators |\n| C2 Operators | 107 | $8.0M | Specialized operators |\n| C3 Operators | 47 | $4.7M | Advanced process control |\n| Handlers | 108 | $4.3M | Material movement |\n| **Total** | **577.5** | **$52.3M/year** | 80% labor utilization |
+**Equipment requirements by part** (top 5 high-demand parts):
+
+| Part | Weekly Demand | Process Sequence | Equipment Units | Key Bottlenecks |
+|------|--------------|-----------------|----------------|----------------|
+| P1 | 20,962 | B→A→B→C→D→I→J (7 steps) | 67 | B:13, D:13, J:13 |
+| P19 | 20,000 | L→M→L→M (4 steps) | 51 | L:21, M:30 |
+| P14 | 18,077 | E→F→G→H (4 steps) | 23 | F:7, H:8 |
+| P7 | 13,269 | E→F→C→D→I→J (6 steps) | 40 | D:12, J:7 |
+| P12 | 12,885 | E→G→F→I→J (5 steps) | 23 | J:6, E:3 |
+
+**Overall equipment allocation by process family**:
+
+| Process Group | Total Equipment | Average Utilization (%) | Primary Parts |
+|--------------|----------------|----------------------|---------------|
+| A, B, C, D | 154 | 84.2% | P1, P7, P2, P3 |
+| E, F, G | 78 | 76.8% | P14, P12, P11 |
+| H, I, J | 132 | 88.5% | P1, P16, P9 |
+| K, L, M | 66 | 91.3% | P19, P18, P20 |
+| **Total** | **430** | **84.8%** | **All 20 parts** |
+
+**Personnel requirements**:
+
+| Role | FTE Count | Annual Cost ($M) | Notes |
+|------|-----------|-----------------|-------|
+| C1 Operators | 315 | $12.6M | Primary machine operators |
+| C2 Operators | 107 | $8.0M | Specialized operators |
+| C3 Operators | 47 | $4.7M | Advanced process control |
+| Handlers | 108 | $4.3M | Material movement |
+| **Total** | **577.5** | **$52.3M/year** | 80% labor utilization |
 
 #### 4.3.3 Layouts and Spatial Configuration
 
@@ -2825,11 +2857,27 @@ Year +1:                    Year +2-5:
 | +4 | 95,000 sq ft | Congestion mitigation | Add cross-aisles |
 | +5 | 118,000 sq ft | Major reorganization | +97% area vs. Year +1 |
 
-**Visualizations**:
+**Year-by-Year Layout Evolution**:
 
-![Functional Layout Summary Dashboard](../results/task4/functional/Visuals/Functional_Layout_Summary_Dashboard.png)
+*Note: The factory layout is designed based on Year +5 peak demand. Years 2-5 involve incremental equipment additions (1-5 machines per department annually) without major layout changes.*
 
-![Functional Utilization Comparison By Year](../results/task4/functional/Visuals/Functional_Utilization_Comparison_By_Year.png)
+**Year 3 Layout (90,000 sq ft)**:
+
+![Final Functional Layout Year 3](../results/task4/functional/FINAL_FUNCTIONAL_LAYOUT_YEAR3.png)
+
+*Figure 5.3a: Functional layout Year +3 showing departmental expansion with minor equipment additions. Floor area increased to 90,000 sq ft to accommodate growing demand.*
+
+**Year 4 Layout (95,000 sq ft)**:
+
+![Final Functional Layout Year 4](../results/task4/functional/FINAL_FUNCTIONAL_LAYOUT_YEAR4.png)
+
+*Figure 5.3b: Functional layout Year +4 with congestion mitigation measures. Added cross-aisles and rebalanced department sizes. Floor area: 95,000 sq ft.*
+
+**Year 5 Layout (118,000 sq ft)**:
+
+![Final Functional Layout Year 5](../results/task4/functional/FINAL_FUNCTIONAL_LAYOUT_YEAR5.png)
+
+*Figure 5.3c: Final functional layout Year +5 at peak capacity. Major reorganization to handle doubled demand. Floor area: 118,000 sq ft (+97% vs. Year +1). All 13 departments expanded with full equipment complement.*
 
 #### 5.3.4 Relayout Plan (Year-by-Year)
 
@@ -3224,12 +3272,6 @@ Year +1 (f=3):              Year +2 (f=5):              Year +5 (f=7):
 
 **Fractal Evolution Layout Visualization**:
 
-**Year 1 Layout (f=4, 68 machines)**:
-
-![Year 1 Fractal f4 Layout - Distance Optimized](../results/Task3/Fractal/Fractal_Visuals/Fractal_Layout_f4.png)
-
-*Figure 5.3b: Year 1 fractal layout showing flow-based adjacency placement and inter-process connectivity.*
-
 **Year 2 Layout (f=4, 83 machines)**:
 
 ![Year 2 Fractal f4 Layout - Flow Analysis](../results/task4/Fractal/Fractal_Visuals/Year2_Fractal_f4_Layout.png)
@@ -3250,8 +3292,6 @@ Year +1 (f=3):              Year +2 (f=5):              Year +5 (f=7):
 
 **Year 5 Layout (f=4, 93 machines)**:
 
-![Year 5 Fractal f4 Layout - Single Center Detail](../results/task4/Fractal/Fractal_Layout/Year5_F4_Optimized/Year5_F4_Layout_Visualization.png)
-
 *Figure 5.7b: Year 5 single fractal center detailed layout (184 machines total across 4 centers = 46 machines per center). Shows optimized block placement with shareability zones indicated.*
 
 ![Year 5 Fractal f4 Layout - Flow-Based Adjacency](../results/task4/Fractal/Fractal_Layout/Year5_F4_Optimized/Year5_F4_Fractal_Layout_Detailed.png)
@@ -3268,29 +3308,25 @@ Year +1 (f=3):              Year +2 (f=5):              Year +5 (f=7):
 
 **Comparative Analysis Across Years**:
 
-![Fractal Layout Evolution from f=3 to f=7](../results/Task3/Fractal/Fractal_Visuals/Fractal_Layout_Equipment_Distribution.png)
-
-*Figure 5.8: Fractal organization modular expansion (3 centers → 7 centers). Each bar represents a complete fractal center with identical equipment distribution. New centers are added as greenfield modules in Years +2 and +5, eliminating relayout complexity.*
-
 ![Fractal Equipment Comparison By Year](../results/task4/Fractal/Fractal_Visuals/Fractal_Yearly_Equipment_Comparison.png)
 
-*Figure 5.9: Year-by-year equipment comparison showing equipment count growth trajectory across all process types (A-M) for Years 1-5.*
+*Figure 5.8: Year-by-year equipment comparison showing equipment count growth trajectory across all process types (A-M) for Years 1-5, demonstrating fractal organization modular expansion (3 centers → 7 centers).*
 
 ![Fractal Scaling Comparison](../results/task4/Fractal/Fractal_Visuals/Fractal_Scaling_Comparison.png)
 
-*Figure 5.10: Fractal scaling efficiency analysis comparing f=2, f=3, f=4, f=5 configurations across multiple years, demonstrating optimal fractal count selection.*
+*Figure 5.9: Fractal scaling efficiency analysis comparing f=2, f=3, f=4, f=5 configurations across multiple years, demonstrating optimal fractal count selection.*
 
 ![Fractal Operating Cost Comparison](../results/task4/Fractal/Fractal_Visuals/Fractal_Operating_Cost_Comparison.png)
 
-*Figure 5.11: Operating cost evolution across Years 1-5 for different fractal configurations, showing cost-efficiency trade-offs.*
+*Figure 5.10: Operating cost evolution across Years 1-5 for different fractal configurations, showing cost-efficiency trade-offs.*
 
 ![Fractal Capital Investment Comparison](../results/task4/Fractal/Fractal_Visuals/Fractal_Capital_Investment_Comparison.png)
 
-*Figure 5.12: Capital investment requirements across Years 1-5 comparing fractal configuration options (f=2, f=3, f=4, f=5).*
+*Figure 5.11: Capital investment requirements across Years 1-5 comparing fractal configuration options (f=2, f=3, f=4, f=5).*
 
 ![Fractal Cost Efficiency Analysis](../results/task4/Fractal/Fractal_Visuals/Fractal_Cost_Efficiency_Analysis.png)
 
-*Figure 5.13: Comprehensive cost efficiency analysis combining capital investment, operating costs, and performance metrics to identify optimal fractal strategy.*
+*Figure 5.12: Comprehensive cost efficiency analysis combining capital investment, operating costs, and performance metrics to identify optimal fractal strategy.*
 
 ---
 
@@ -4102,5 +4138,3 @@ By adopting the Fractal organization, FeMoaSa will establish a new benchmark for
 * `task4/Task4_Demand_Fulfillment_Capacity_Plan_by_year.csv`
 * `task4/Task4_Storage_Allocation_by_year_and_part.csv`
 * `task4/Task4_storage_summary_by_year.csv`
-
-

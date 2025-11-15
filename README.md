@@ -5,7 +5,7 @@
 This repository contains a comprehensive analysis of manufacturing facility design alternatives for **FeMoaSa's new client-dedicated production facility**. The project analyzes multiple factory organization strategies (Functional, Part-Based, Fractal) across a 5-year timeline, evaluating capacity planning, storage requirements, material flow, and cost optimization.
 
 **Course**: ISyE 6202, Fall 2025  
-**Team**: Minjae Kim, Dominic Hose, Adarsh Uday, Jatin Patel, Benoit Morvan, Shankar Subramanian
+**Team**: Minjae Kim, Dominic Hose, Adarsh Uday, Jatin Patel, Benoit Morvan, Shankar Subramanian  
 **Instructor**: Georgia Institute of Technology
 
 ---

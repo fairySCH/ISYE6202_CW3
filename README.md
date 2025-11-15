@@ -748,19 +748,6 @@ The Fractal design provides the optimal balance of:
 
 ---
 
-## 📞 Contact & Team
-
-**Team Machas²**:
-- Changhui Song
-- Machas Maciejewski  
-- Jatin Shah
-
-**Course**: ISyE 6202 - Warehouse and Manufacturing Systems  
-**Institution**: Georgia Institute of Technology  
-**Semester**: Fall 2025
-
----
-
 ## 📜 License & Usage
 
 This repository contains academic work for ISyE 6202. All analysis, code, and documentation are the intellectual property of the team members and Georgia Institute of Technology.

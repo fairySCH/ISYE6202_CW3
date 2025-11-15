@@ -2344,7 +2344,38 @@ Hybrid layout requires **394 equipment units** (+2.1% vs. Functional).
 
 ### 5.3 Design A (Functional) — Evolution Plan
 
-#### 5.3.1 Year-by-Year Expansion Strategy
+#### 5.3.1 Network Organization Evolution
+
+**Network diagram evolution** (Years +1 to +5):
+
+```plaintext
+Year +1:                    Year +2-5:
+    Factory                     Factory (Expanded)
+        |                            |
+  [13 Depts A-M]      [13 Depts A-M] (Each grows)
+  386 units total     560→583→619→767 units
+        |                            |
+   [Shipping]                  [Shipping]
+```
+
+**Center missions by year**:
+
+| Center | Year +1 Mission | Year +2-5 Evolution |
+|--------|----------------|---------------------|
+| **Dept A-M** | Execute specialized processes | Same mission, increased capacity (+99% by Year +5) |
+| **Receiving** | MSC material intake | Same mission, higher throughput (+143% by Year +5) |
+| **Inbound Storage** | 2-week raw material buffer | Same capacity methodology, expanded storage (+143%) |
+| **Outbound Storage** | Safety stock for warehouses | Expanded for 3 new products (A4, B3, B4) |
+| **Shipping** | Daily deliveries to clients | Same mission, increased frequency |
+| **Near-Client Warehouses** | 4h/12h autonomy buffers | Same service levels, expanded SKU coverage |
+
+**Network evolution notes**:
+
+* **Organization type preserved**: Function-based departmentalization maintained throughout
+* **No structural changes**: Same 13 departments, only capacity scaling
+* **Incremental expansion**: Each year adds equipment to existing departments
+
+#### 5.3.2 Resource Requirements Plan (Year-by-Year)
 
 **Functional approach**: Add equipment to existing departments as needed.
 
@@ -2384,40 +2415,125 @@ Hybrid layout requires **394 equipment units** (+2.1% vs. Functional).
 * Department expansions: 13 × 4 years = 52 expansion events
 * Aisle reconfigurations: 18 major changes
 
-#### 5.3.2 Material Flow Evolution
+**Equipment and personnel by year**:
+
+| Year | Total Equipment | C1 Operators | C2 Operators | C3 Operators | Handlers | Total Personnel |
+|------|----------------|--------------|--------------|--------------|----------|-----------------|
+| +1 | 386 | 284 | 96 | 42 | 15 | 437 |
+| +2 | 560 | 412 | 139 | 61 | 24 | 636 |
+| +3 | 583 | 429 | 145 | 63 | 25 | 662 |
+| +4 | 619 | 455 | 154 | 67 | 27 | 703 |
+| +5 | 767 | 564 | 191 | 83 | 32 | 870 |
+
+#### 5.3.3 Layouts (Year-by-Year)
+
+**Layout evolution summary**:
+
+| Year | Floor Area | Layout Approach | Major Changes |
+|------|-----------|----------------|---------------|
+| +1 | 60,000 sq ft | 13 departments in grid | Baseline configuration |
+| +2 | 87,000 sq ft | Expand all departments | +45% area, extend footprints |
+| +3 | 90,000 sq ft | Minor adjustments | Rebalance dept sizes |
+| +4 | 95,000 sq ft | Congestion mitigation | Add cross-aisles |
+| +5 | 118,000 sq ft | Major reorganization | +97% area vs. Year +1 |
+
+**[Detailed layout diagrams for each year would be inserted here]**
+
+#### 5.3.4 Relayout Plan (Year-by-Year)
+
+**Year +2 relayout activities**:
+
+* **New equipment installations**: 174 units across all 13 departments
+* **Equipment relocations**: 0 moves (greenfield expansion)
+* **Building modifications**: Add 27,000 sq ft extension
+* **Downtime estimate**: 2 weeks (construction during off-shift hours)
+* **Relayout cost**: $240,000 (construction + equipment installation)
+
+**Year +3 relayout activities**:
+
+* **New installations**: 23 units
+* **Equipment relocations**: 38 moves (department rebalancing to reduce congestion)
+* **Building modifications**: Add 3,000 sq ft
+* **Downtime**: 1 week
+* **Relayout cost**: $85,000
+
+**Year +4 relayout activities**:
+
+* **New installations**: 36 units
+* **Relocations**: 52 moves (add cross-aisles for material flow)
+* **Building modifications**: Add 5,000 sq ft
+* **Downtime**: 1.5 weeks
+* **Relayout cost**: $128,000
+
+**Year +5 relayout activities**:
+
+* **New installations**: 148 units (largest expansion)
+* **Relocations**: 89 moves (major reorganization)
+* **Building modifications**: Add 23,000 sq ft
+* **Downtime**: 3 weeks
+* **Relayout cost**: $420,000
+
+**Cumulative relayout cost (Years +2 to +5)**: $873,000
+
+**[Graphical representations of relayout activities for each year would be inserted here]**
+
+#### 5.3.5 Intra-Center Work and Flow Patterns (Year-by-Year)
+
+**Utilization profiles by year**:
+
+| Year | Avg Dept Utilization | High-Utilization Depts (>95%) | Low-Utilization Depts (<90%) |
+|------|---------------------|-------------------------------|------------------------------|
+| +1 | 97.8% | A, D, J, M (97-99%) | None |
+| +2 | 97.5% | D, J, M (96-98%) | None |
+| +3 | 97.3% | D, M (96-97%) | A, K (89%) |
+| +4 | 97.1% | D, M (95-96%) | A, K (88-89%) |
+| +5 | 97.3% | D, J, M (96-98%) | None |
+
+**Work patterns**:
+
+* **Batch processing**: Continues throughout all years
+* **Queue times**: Increase from 2.4 hrs (Year +1) to 3.8 hrs (Year +5)
+* **Department-to-department transfers**: Escalate from 1.25M km/yr to 2.5M km/yr
+
+**[Tables and schematics overlaid on layouts for each year would be inserted here]**
+
+#### 5.3.6 Inter-Center Flow Evolution (Year-by-Year)
 
 **Inter-departmental travel escalation**:
 
-| Year | Annual Material Travel (km) | vs. Year +1 | Weekly Trips |
-|------|---------------------------|-------------|--------------|
-| Year +1 | 1,250,000 | Baseline | 952,500 |
-| Year +2 | 1,817,500 | +45.4% | 1,386,000 |
-| Year +3 | 1,895,000 | +51.6% | 1,445,000 |
-| Year +4 | 2,012,500 | +61.0% | 1,534,000 |
-| Year +5 | 2,497,500 | **+99.8%** | 1,903,000 |
+| Year | Annual Travel Distance | Avg Dept-to-Dept Distance | Hot Spot Departments | Traffic Intensity |
+|------|----------------------|--------------------------|---------------------|------------------|
+| +1 | 1,250,000 km/yr | 47 ft | D, J, M | Baseline |
+| +2 | 1,815,000 km/yr | 54 ft | D, J, M, A | +45% |
+| +3 | 1,890,000 km/yr | 56 ft | D, J, M | +51% |
+| +4 | 2,010,000 km/yr | 60 ft | D, J, M, K | +61% |
+| +5 | 2,500,000 km/yr | 68 ft | D, J, M, A, K | +100% |
 
-**Key deterioration metrics**:
+**Key observations**:
 
-* Material handling distance nearly doubles (2.5M km/year by Year +5)
-* Average department-to-department distance increases from 47 ft to 68 ft
+* Material handling distance nearly doubles by Year +5
+* Average department-to-department distance increases from 47 ft to 68 ft (+45%)
 * Congestion hot spots emerge at high-volume departments (D, J, M)
-* Material handling labor requirement: +112% (15 → 32 staff)
+* Material handling labor requirement increases +112% (15 → 32 staff)
 
-#### 5.3.3 Performance Evolution
+**[Flow diagrams, heatmaps, and tabular results for each year would be inserted here]**
 
-**KPI trends**:
+#### 5.3.7 Key Performance Indicators (Year-by-Year)
 
-| KPI | Year +1 | Year +5 | Trend |
-|-----|---------|---------|-------|
-| Equipment utilization | 97.8% | 97.3% | Stable |
-| Average lead time | 4.2 days | 5.8 days | **+38% deterioration** |
-| WIP inventory | $485k | $1,124k | **+132%** |
-| Schedule adherence | 87% | 78% | **-9 pts deterioration** |
-| Material handling cost | $2.5M/yr | $5.3M/yr | **+112%** |
+**Performance evolution**:
+
+| KPI | Year +1 | Year +2 | Year +3 | Year +4 | Year +5 | Trend |
+|-----|---------|---------|---------|---------|---------|-------|
+| Equipment utilization | 97.8% | 97.5% | 97.3% | 97.1% | 97.3% | Stable |
+| Average lead time | 4.2 days | 5.0 days | 5.2 days | 5.5 days | 5.8 days | **+38% deterioration** |
+| WIP inventory | $485k | $712k | $742k | $889k | $1,124k | **+132%** |
+| Schedule adherence | 87% | 84% | 82% | 80% | 78% | **-9 pts deterioration** |
+| Material handling cost | $2.5M/yr | $3.6M/yr | $3.8M/yr | $4.2M/yr | $5.3M/yr | **+112%** |
+| Annual travel distance | 1.25M km | 1.82M km | 1.90M km | 2.01M km | 2.50M km | **+100%** |
 
 **Qualitative assessment**:
 
-* **Strengths**: Equipment utilization remains high
+* **Strengths**: Equipment utilization remains high throughout 5 years
 * **Weaknesses**:
   * Escalating material handling costs (+112%)
   * Deteriorating lead times (+38%)
@@ -2425,7 +2541,7 @@ Hybrid layout requires **394 equipment units** (+2.1% vs. Functional).
   * Increasing WIP inventory (+132%)
   * Growing shop floor complexity
 
-#### 5.3.4 Cumulative Investment
+#### 5.3.8 Investment and Operating Costs (Year-by-Year)
 
 **Capital investment by year**:
 
@@ -2467,7 +2583,39 @@ Hybrid layout requires **394 equipment units** (+2.1% vs. Functional).
 
 ### 5.4 Design F (Fractal f=3) — Evolution Plan
 
-#### 5.4.1 Year-by-Year Expansion Strategy
+#### 5.4.1 Network Organization Evolution
+
+**Network diagram evolution** (Years +1 to +5):
+
+```plaintext
+Year +1 (f=3):              Year +2 (f=5):              Year +5 (f=7):
+    Factory                     Factory                     Factory
+        |                           |                           |
+  [3 Centers]               [5 Centers]                 [7 Centers]
+  Each: 33.3%               Each: 20%                   Each: 14.3%
+  All A-M ops               All A-M ops                 All A-M ops
+        |                           |                           |
+   [Shipping]                  [Shipping]                  [Shipping]
+```
+
+**Center missions evolution**:
+
+| Year | Centers | Mission per Center | Load per Center | Evolution Notes |
+|------|---------|-------------------|----------------|-----------------|
+| +1 | 3 | Complete production of all 20 parts (A-M) | 33.3% | Baseline fractal design |
+| +2 | 5 | Complete production of all 20 parts (A-M) | 20% | +2 centers added |
+| +3 | 5 | Complete production of all 20 parts (A-M) | 20% | Same structure, minor capacity additions |
+| +4 | 5 | Complete production of all 20 parts (A-M) | 20% | Same structure, minor capacity additions |
+| +5 | 7 | Complete production of all 20 parts (A-M) | 14.3% | +2 more centers added |
+
+**Network evolution notes**:
+
+* **Organization type preserved**: Fractal centers maintained throughout
+* **Modular scaling**: Add complete centers as demand grows
+* **Mission consistency**: Each center remains self-sufficient mini-factory
+* **Zero structural disruption**: New centers are greenfield additions
+
+#### 5.4.2 Resource Requirements Plan (Year-by-Year)
 
 **Fractal approach**: Add complete fractal centers as modular capacity increments.
 
@@ -2510,7 +2658,96 @@ Hybrid layout requires **394 equipment units** (+2.1% vs. Functional).
 
 **Key advantage**: Zero relayout complexity — all expansion is modular greenfield.
 
-#### 5.4.2 Material Flow Evolution
+**Equipment and personnel by year**:
+
+| Year | Total Centers | Equipment | C1 Operators | C2 Operators | C3 Operators | Handlers | Total Personnel |
+|------|--------------|-----------|--------------|--------------|--------------|----------|----------------|
+| +1 | 3 | 402 | 296 | 100 | 44 | 8 | 448 |
+| +2 | 5 | 670 | 493 | 167 | 73 | 12 | 745 |
+| +3 | 5 | 685 | 504 | 171 | 74 | 12 | 761 |
+| +4 | 5 | 706 | 519 | 176 | 77 | 13 | 785 |
+| +5 | 7 | 974 | 716 | 243 | 106 | 16 | 1,081 |
+
+#### 5.4.3 Layouts (Year-by-Year)
+
+**Layout evolution summary**:
+
+| Year | Floor Area | Number of Centers | Layout Approach | Major Changes |
+|------|-----------|------------------|----------------|---------------|
+| +1 | 58,000 sq ft | 3 | Identical fractal centers | Baseline f=3 |
+| +2 | 94,000 sq ft | 5 | Add 2 centers | +2 greenfield centers |
+| +3 | 94,000 sq ft | 5 | No change | Minor equipment additions |
+| +4 | 94,000 sq ft | 5 | No change | Minor equipment additions |
+| +5 | 130,000 sq ft | 7 | Add 2 centers | +2 greenfield centers |
+
+**[Detailed layout diagrams for each year would be inserted here]**
+
+#### 5.4.4 Relayout Plan (Year-by-Year)
+
+**Year +2 relayout activities**:
+
+* **New centers built**: 2 greenfield centers (Centers 4 and 5)
+* **Equipment installations**: 268 units in new centers
+* **Equipment relocations**: 0 moves
+* **Building construction**: 36,000 sq ft (2 × 18,000 sq ft centers)
+* **Downtime estimate**: 0 (new centers built offline)
+* **Relayout cost**: $140,000 (equipment installation only)
+
+**Year +3 relayout activities**:
+
+* **New centers**: 0
+* **Equipment installations**: 15 units distributed across 5 existing centers
+* **Relocations**: 0 moves
+* **Building modifications**: 0
+* **Downtime**: Minimal (add during off-shifts)
+* **Relayout cost**: $12,000
+
+**Year +4 relayout activities**:
+
+* **New centers**: 0
+* **Equipment installations**: 21 units across 5 centers
+* **Relocations**: 0 moves
+* **Building modifications**: 0
+* **Downtime**: Minimal
+* **Relayout cost**: $16,000
+
+**Year +5 relayout activities**:
+
+* **New centers built**: 2 greenfield centers (Centers 6 and 7)
+* **Equipment installations**: 268 units in new centers
+* **Relocations**: 0 moves
+* **Building construction**: 36,000 sq ft
+* **Downtime**: 0
+* **Relayout cost**: $140,000
+
+**Cumulative relayout cost (Years +2 to +5)**: $308,000
+
+**Key advantage**: 65% lower relayout costs vs. Functional ($308k vs. $873k)
+
+**[Graphical representations of relayout activities for each year would be inserted here]**
+
+#### 5.4.5 Intra-Center Work and Flow Patterns (Year-by-Year)
+
+**Utilization profiles by year**:
+
+| Year | Centers | Avg Center Utilization | High-Util Centers (>95%) | Low-Util Centers (<90%) |
+|------|---------|----------------------|--------------------------|------------------------|
+| +1 | 3 | 93.1% | None | None |
+| +2 | 5 | 92.8% | None | None |
+| +3 | 5 | 93.2% | None | None |
+| +4 | 5 | 93.5% | None | None |
+| +5 | 7 | 93.3% | None | None |
+
+**Work patterns**:
+
+* **Cellular flow**: Maintained within each center throughout all years
+* **Queue times**: Stable at 1.8-2.0 hrs across all years
+* **Within-center transfers**: Stable, minimal variation
+* **Production rhythm**: Consistent across all centers
+
+**[Tables and schematics overlaid on layouts for each year would be inserted here]**
+
+#### 5.4.6 Inter-Center Flow Evolution (Year-by-Year)tion (Year-by-Year)
 
 **Inter-center travel (remains near-zero)**:
 
@@ -2529,7 +2766,11 @@ Hybrid layout requires **394 equipment units** (+2.1% vs. Functional).
 * Average inter-center trips: <40/week (vs. 1.9M/week for Functional)
 * No congestion, no cross-traffic, no material handling complexity
 
-#### 5.4.3 Performance Evolution
+**[Flow diagrams, heatmaps, and tabular results for each year would be inserted here]**
+
+#### 5.4.7 Key Performance Indicators (Year-by-Year)
+
+**Performance evolution**:
 
 **KPI trends**:
 
@@ -2555,7 +2796,7 @@ Hybrid layout requires **394 equipment units** (+2.1% vs. Functional).
   * Slight utilization decrease (93.1% → 92.8%)
   * Requires building 4 additional centers
 
-#### 5.4.4 Cumulative Investment
+#### 5.4.8 Investment and Operating Costs (Year-by-Year)
 
 **Capital investment by year**:
 
@@ -2611,7 +2852,40 @@ Hybrid layout requires **394 equipment units** (+2.1% vs. Functional).
 
 ### 5.5 Design H (Free-Style Hybrid) — Evolution Plan
 
-#### 5.5.1 Year-by-Year Expansion Strategy
+#### 5.5.1 Network Organization Evolution
+
+**Network diagram evolution** (Years +1 to +5):
+
+```plaintext
+Year +1:                        Year +2-5:
+    Factory                         Factory (Expanded)
+        |                                   |
+  +-----+-----+               +-------------+-------------+
+  |     |     |               |             |             |
+Zone1 Zone2 Zone3       Zone1(f=2→3→4) Zone2(3→4→5) Zone3(expanded)
+  |     |     |         Fractal centers  Part lines   Functional pool
+2 ctrs 3 line Shared         |             |             |
+```
+
+**Center missions evolution**:
+
+| Year | Zone 1 (Fractal) | Zone 2 (Part-Based) | Zone 3 (Functional) |
+|------|-----------------|--------------------|--------------------|
+| +1 | 2 centers, 65% demand | 3 lines, 25% demand | Shared pool, 10% demand |
+| +2 | 3 centers, 65% demand | 4 lines (add Line 4), 25% demand | Expanded pool, 10% demand |
+| +3 | 3 centers, 65% demand | 4 lines, 25% demand | Expanded pool, 10% demand |
+| +4 | 3 centers, 65% demand | 4 lines, 25% demand | Expanded pool, 10% demand |
+| +5 | 4 centers, 65% demand | 5 lines (add Line 5), 25% demand | Significantly expanded pool, 10% demand |
+
+**Network evolution notes**:
+
+* **Organization type preserved**: Three-zone hybrid structure maintained
+* **Load distribution unchanged**: 65%/25%/10% split consistent
+* **Modular scaling in Zone 1**: Add fractal centers as needed
+* **Line additions in Zone 2**: New lines for new product families
+* **Pool expansion in Zone 3**: Shared resources scale with low-volume parts
+
+#### 5.5.2 Resource Requirements Plan (Year-by-Year)
 
 **Hybrid approach**: Expand fractal zone modularly, scale part-based lines, and expand functional pool as needed.
 
@@ -2654,7 +2928,92 @@ Hybrid layout requires **394 equipment units** (+2.1% vs. Functional).
 * Equipment relocations: 70 moves (moderate complexity)
 * Zone expansions: 12 major reconfigurations
 
-#### 5.5.2 Material Flow Evolution
+**Equipment and personnel by year**:
+
+| Year | Total Equipment | C1 Operators | C2 Operators | C3 Operators | Handlers | Total Personnel |
+|------|----------------|--------------|--------------|--------------|----------|----------------|
+| +1 | 394 | 290 | 98 | 43 | 10 | 441 |
+| +2 | 628 | 462 | 156 | 68 | 16 | 702 |
+| +3 | 655 | 482 | 163 | 71 | 17 | 733 |
+| +4 | 691 | 509 | 172 | 75 | 18 | 774 |
+| +5 | 906 | 667 | 226 | 98 | 22 | 1,013 |
+
+#### 5.5.3 Layouts (Year-by-Year)
+
+**Layout evolution summary**:
+
+| Year | Floor Area | Zone 1 (Fractal) | Zone 2 (Part-Based) | Zone 3 (Functional) | Major Changes |
+|------|-----------|-----------------|-------------------|-------------------|---------------|
+| +1 | 60,800 sq ft | 2 centers | 3 lines | Shared pool | Baseline hybrid |
+| +2 | 93,200 sq ft | 3 centers | 4 lines | Expanded pool | +1 fractal center, +1 line |
+| +3 | 93,200 sq ft | 3 centers | 4 lines | Expanded pool | Minor equipment additions |
+| +4 | 93,200 sq ft | 3 centers | 4 lines | Expanded pool | Minor equipment additions |
+| +5 | 119,600 sq ft | 4 centers | 5 lines | Large pool | +1 fractal center, +1 line |
+
+**[Detailed layout diagrams for each year would be inserted here]**
+
+#### 5.5.4 Relayout Plan (Year-by-Year)
+
+**Year +2 relayout activities**:
+
+* **Zone 1**: Build Center C (greenfield) — 134 units, 0 moves
+* **Zone 2**: Add Line 4 — 48 units, 12 moves (reconfiguration)
+* **Zone 3**: Expand pool — 52 units, 6 moves
+* **Total**: 234 units installed, 18 relocations
+* **Building construction**: 32,400 sq ft
+* **Downtime**: 2 weeks
+* **Relayout cost**: $186,000
+
+**Year +3 relayout activities**:
+
+* **Total installations**: 27 units across all zones
+* **Relocations**: 12 moves (Zone 2/3 rebalancing)
+* **Downtime**: 1 week
+* **Relayout cost**: $62,000
+
+**Year +4 relayout activities**:
+
+* **Total installations**: 36 units
+* **Relocations**: 16 moves
+* **Downtime**: 1.5 weeks
+* **Relayout cost**: $78,000
+
+**Year +5 relayout activities**:
+
+* **Zone 1**: Build Center D (greenfield) — 134 units, 0 moves
+* **Zone 2**: Add Line 5 — 52 units, 18 moves
+* **Zone 3**: Major pool expansion — 29 units, 6 moves
+* **Total**: 215 units installed, 24 relocations
+* **Building construction**: 26,400 sq ft
+* **Downtime**: 2.5 weeks
+* **Relayout cost**: $198,000
+
+**Cumulative relayout cost (Years +2 to +5)**: $524,000
+
+**[Graphical representations of relayout activities for each year would be inserted here]**
+
+#### 5.5.5 Intra-Center Work and Flow Patterns (Year-by-Year)
+
+**Utilization profiles by year**:
+
+| Year | Zone 1 (Fractal) | Zone 2 (Part-Based) | Zone 3 (Functional) | Overall Avg |
+|------|-----------------|--------------------|--------------------|-----------|
+| +1 | 95.2% | 91.8% | 87.4% | 93.6% |
+| +2 | 95.0% | 91.5% | 87.1% | 93.4% |
+| +3 | 95.3% | 92.0% | 87.8% | 93.6% |
+| +4 | 95.1% | 91.7% | 87.5% | 93.5% |
+| +5 | 95.2% | 91.9% | 87.6% | 93.2% |
+
+**Work patterns**:
+
+* **Zone 1**: Cellular flow, stable queue times (1.8-2.0 hrs)
+* **Zone 2**: Dedicated line flow, minimal queues (0.5-0.8 hrs)
+* **Zone 3**: Job shop flow, moderate queues (2.5-3.0 hrs)
+* **Overall**: Balanced performance across zones
+
+**[Tables and schematics overlaid on layouts for each year would be inserted here]**
+
+#### 5.5.6 Inter-Center Flow Evolution (Year-by-Year)tion (Year-by-Year)
 
 **Multi-zone flow complexity**:
 
@@ -2668,9 +3027,13 @@ Hybrid layout requires **394 equipment units** (+2.1% vs. Functional).
 
 **Assessment**: Hybrid maintains excellent flow characteristics (99.999% better than Functional), though slightly higher than pure Fractal.
 
-#### 5.5.3 Performance Evolution
+**[Flow diagrams, heatmaps, and tabular results for each year would be inserted here]**
 
-| KPI | Year +1 | Year +5 | Trend |
+#### 5.5.7 Key Performance Indicators (Year-by-Year)
+
+**Performance evolution**:
+
+| KPI | Year +1 | Year +2 | Year +3 | Year +4 | Year +5 | Trend |
 |-----|---------|---------|-------|
 | Equipment utilization | 93.6% | 93.2% | Stable |
 | Average lead time | 2.7 days | 2.9 days | +7.4% |
@@ -2684,7 +3047,9 @@ Hybrid layout requires **394 equipment units** (+2.1% vs. Functional).
 * Moderate relayout complexity (70 moves over 4 years)
 * Flexible for mixed demand patterns
 
-#### 5.5.4 Cumulative Investment
+#### 5.5.8 Investment and Operating Costs (Year-by-Year)
+
+**Capital investment and operating costs by year**:
 
 | Year | Capital Investment | Annual Operating Cost |
 |------|------------------|---------------------|

@@ -1041,7 +1041,25 @@ The selection of these five designs satisfies the Casework requirements while pr
 
 The Functional organization follows the classic **job-shop paradigm**, grouping equipment by process type into 13 specialized departments (A through M).
 
-**Network diagram**:
+**Organization model**: 2-tier network with internal centres focusing on **Functional basis**
+
+**Operating model**: Each needed part is made in centres specializing in respective functions common to all the parts.
+
+**Visual representation**:
+
+![Functional Organization Network](../images/functional_organization_network.png)
+
+The diagram illustrates the complete network structure from supplier through parts factory to client delivery:
+
+* **Supplier** → delivers raw materials to Parts Factory
+* **Parts Factory** → organized by functional departments (Process A through M)
+* **Factory Layout** → shows color-coded functional departments within the facility
+* **Warehouses** → Warehouse A (blue) serves Client A, Warehouse B (orange) serves Client B
+* **Clients** → Final delivery points requiring high service levels
+
+**Warehouse rationale**: The near-client warehouses are necessary to maintain high service levels given the distance from the factory. This 2-tier distribution strategy balances inventory costs with delivery performance.
+
+**Network diagram** (simplified internal structure):
 
 ```plaintext
                          Factory Network
@@ -1068,6 +1086,10 @@ The Functional organization follows the classic **job-shop paradigm**, grouping 
 | **Outbound Storage** | Safety stock + cycle stock for factory warehouse | All finished parts |
 | **Shipping** | Consolidate shipments to Client A/B warehouses | Daily deliveries |
 | **Near-Client Warehouses** | 4h/12h autonomy buffers at client sites | Client-specific parts |
+
+**Mission of Parts Factory**: To provide all the parts needed for its clients over next 5 years with optimal cost, least effort of operators and resilience to handle sudden changes in demand.
+
+**Performance assessment**: Performance is assessed based on investment, distance per trip, and equipment utilization.
 
 **Structure**:
 
@@ -1150,11 +1172,45 @@ The Functional layout arranges departments in a flow-optimized sequence, but lon
 
 ![Functional Layout Comprehensive Analysis](../results/Task3/Functional/Visuals/Functional_Layout_Comprehensive_Analysis.png)
 
-*Figure 4.1: Functional organization layout showing 13 process departments arranged in flow-optimized sequence. Color coding indicates different process types, with high-utilization bottleneck departments (D, J, M) highlighted.*
+*Figure 4.1: Functional organization layout with 13 specialized departments (A through M). Color-coded by process type, showing typical job-shop arrangement. Total floor area: 60,000 sq ft with 30,880 sq ft production area.*
 
 ![Functional Flow Matrix Heatmap](../results/Task3/Functional/Visuals/Functional_Flow_Matrix_Heatmap.png)
 
-*Figure 4.2: Inter-departmental flow intensity heatmap. Darker cells indicate higher material flow volume between departments, revealing the complex interdepartmental routing patterns typical of functional organization.*
+*Figure 4.2: Inter-departmental flow intensity heatmap. Darker cells indicate higher material flow volumes between departments. Highlights hot paths (e.g., A→D, D→J, J→M) requiring optimized spatial placement.*
+
+![Functional Equipment Summary](../results/Task3/Functional/Visuals/Functional_Equipment_Summary.png)
+
+*Figure 4.3: Equipment distribution summary across 13 departments showing machine count, utilization rates, and floor space allocation per process type.*
+
+**Cost Analysis Visualizations**:
+
+![Functional Cost Analysis](../results/Task3/Functional/Visuals/Functional_Layout_Cost_Analysis.png)
+
+*Figure 4.4a: Comprehensive cost analysis breakdown showing capital investment, operating costs, and cost drivers for functional organization.*
+
+![Functional Cost KPI Dashboard](../results/Task3/Functional/Visuals/Functional_Layout_Cost_KPI_Dashboard.png)
+
+*Figure 4.4b: Cost and KPI dashboard displaying key performance metrics including cost per unit, cost per square foot, and ROI indicators.*
+
+![Functional Cost Efficiency Matrix](../results/Task3/Functional/Visuals/Functional_Layout_Cost_Efficiency_Matrix.png)
+
+*Figure 4.4c: Cost efficiency matrix comparing process-level costs, identifying high-cost departments and optimization opportunities.*
+
+![Functional Enhanced Cost Analysis](../results/Task3/Functional/Visuals/Functional_Layout_Enhanced_Cost_Analysis.png)
+
+*Figure 4.4d: Enhanced cost analysis with multi-dimensional breakdown including labor, material handling, maintenance, and overhead costs.*
+
+![Functional Process Cost Comparison](../results/Task3/Functional/Visuals/Functional_Layout_Process_Cost_Comparison.png)
+
+*Figure 4.4e: Process-by-process cost comparison highlighting cost variation across departments A-M and identifying cost reduction targets.*
+
+![Functional Investment Timeline Analysis](../results/Task3/Functional/Visuals/Functional_Layout_Investment_Timeline_Analysis.png)
+
+*Figure 4.4f: Investment timeline analysis showing phased capital deployment and expected ROI over 5-year planning horizon.*
+
+![Functional ROI Analysis](../results/Task3/Functional/Visuals/Functional_Layout_ROI_Analysis.png)
+
+*Figure 4.4g: Return on investment (ROI) analysis comparing initial capital outlay against projected operating savings and payback period calculation.*
 
 #### 4.2.4 Intra-Center Flows
 
@@ -1328,38 +1384,73 @@ The Part-Based organization creates **dedicated production lines** for each part
 
 #### 4.3.2 Resources and Equipment Requirements
 
-Part-Based layout requires **420 equipment units** (+8.8% vs. Functional) due to equipment duplication across lines.
+Part-Based layout requires **430 equipment units** (+11.4% vs. Functional) due to dedicated equipment per part family.
 
-**Equipment allocation by line**:
-
-| Line | Parts Produced | Equipment Units | Utilization (%) | Overhead vs. Functional |
-|------|---------------|-----------------|-----------------|------------------------|
-| Line 1 | P1, P14, P19 | 135 | 96.2% | +12 units |
-| Line 2 | P7, P12, P18, P20 | 98 | 94.8% | +6 units |
-| Line 3 | P11, P9, P4 | 72 | 92.1% | +5 units |
-| Line 4 | P2, P16, P6 | 61 | 89.3% | +7 units |
-| Line 5 | Others (7 parts) | 54 | 85.4% | +4 units |
-| **Total** | **20 parts** | **420** | **91.6%** | **+34 units (+8.8%)** |
-
-**Equipment duplication rationale**:
-
-* Each line needs full process coverage (A-M)
-* Low-volume lines (4, 5) have underutilized equipment
-* Trade-off: Higher capital cost for simpler material flow
+**Equipment requirements by part** (top 5 high-demand parts):\n\n| Part | Weekly Demand | Process Sequence | Equipment Units | Key Bottlenecks |\n|------|--------------|-----------------|----------------|----------------|\n| P1 | 20,962 | B→A→B→C→D→I→J (7 steps) | 67 | B:13, D:13, J:13 |\n| P19 | 20,000 | L→M→L→M (4 steps) | 51 | L:21, M:30 |\n| P14 | 18,077 | E→F→G→H (4 steps) | 23 | F:7, H:8 |\n| P7 | 13,269 | E→F→C→D→I→J (6 steps) | 40 | D:12, J:7 |\n| P12 | 12,885 | E→G→F→I→J (5 steps) | 23 | J:6, E:3 |\n\n**Overall equipment allocation by process family**:\n\n| Process Group | Total Equipment | Average Utilization (%) | Primary Parts |\n|--------------|----------------|----------------------|---------------|\n| A, B, C, D | 154 | 84.2% | P1, P7, P2, P3 |\n| E, F, G | 78 | 76.8% | P14, P12, P11 |\n| H, I, J | 132 | 88.5% | P1, P16, P9 |\n| K, L, M | 66 | 91.3% | P19, P18, P20 |\n| **Total** | **430** | **84.8%** | **All 20 parts** |\n\n**Personnel requirements**:\n\n| Role | FTE Count | Annual Cost ($M) | Notes |\n|------|-----------|-----------------|-------|\n| C1 Operators | 315 | $12.6M | Primary machine operators |\n| C2 Operators | 107 | $8.0M | Specialized operators |\n| C3 Operators | 47 | $4.7M | Advanced process control |\n| Handlers | 108 | $4.3M | Material movement |\n| **Total** | **577.5** | **$52.3M/year** | 80% labor utilization |
 
 #### 4.3.3 Layouts and Spatial Configuration
 
-Each production line is arranged as a **focused flow cell** with processes sequenced by typical routing.
+**Layout Development Methodology**:
+
+A systematic 12-step process was employed:
+
+1. **Flow Matrix Computation**: Inter-equipment flows quantified and ranked by volume
+2. **Flow Visualization**: Proportionally scaled arrows (thickness ∝ flow intensity)
+3. **Equipment Clustering**: Processors organized by quantity and spatial requirements
+4. **Scale Calibration**: Grid cells set to 10:1 scale (1 cell = 100 sq ft = 10 ft × 10 ft)
+5. **Center Mapping**: Equipment centers mapped based on aggregate spatial requirements
+6. **Skeletal Layout**: Highest-flow centers positioned in closest proximity
+7. **Flow Optimization**: Lower-volume flows optimized using planar diagrams
+8. **Integration**: Equipment centers integrated with circulation space
+9. **Coordinate System**: Euclidean distance metrics applied using x-y coordinates
+10. **Center Alignment**: All process centers vertically aligned for horizontal flow (constant Y)
+11. **Distance Calculation**: Sequential distances: d_ij = |X_j - X_i|
+12. **Processor Layout**: Individual equipment units plotted within each center
+
+**Equipment spatial envelope and overlap strategy**:
+
+| Equipment Group | Width (ft) | Depth (ft) | Overlap (ft) | Area/Unit (sq ft) | Space Savings |
+|----------------|-----------|-----------|-------------|-------------------|---------------|
+| ABCD Family | 14 | 14 | 2 | 196 | ~10% per cluster |
+| EFG Family | 14 | 24 | 2 | 336 | 268-716 sq ft/line |
+| HIJ Family | 14 | 36 | 0 | 504 | 0 (largest equipment) |
+| KLM Family | 14 | 24 | 2 | 336 | Similar to EFG |
+
+**Total overlap savings**: ~2,472 sq ft across all part families
+
+**Row-Column Heuristic** (for N machines per process):
+
+* Rows = ⌈√(2N)⌉ (creates taller layout for unidirectional flow)
+* Columns = ⌈N / Rows⌉
+* **Rationale**: Minimizes cross-flow, optimizes for left-to-right material movement
+
+**Example: Process I with 7 machines**
+
+* Rows = ⌈√(14)⌉ = 4
+* Columns = ⌈7/4⌉ = 2
+* Grid: 4 × 2 = 8 slots (7 machines + 1 empty)
 
 **Layout dimensions**:
 
-* Total floor area: 64,000 sq ft (220 ft × 291 ft)
-* Production area: 33,600 sq ft (equipment)
-* Aisle/handling: 15,360 sq ft (24%)
-* WIP storage: 8,960 sq ft (14%)
-* Support/offices: 6,080 sq ft (9.5%)
+* Total floor area: **296,064 sq ft** (Year +1)
+* Effective production area: 245,000 sq ft (equipment + overlap)
+* Aisle/handling: 28,800 sq ft (9.7%)
+* WIP buffers: 14,264 sq ft (4.8%)
+* Support areas: 8,000 sq ft (2.7%)
 
-**Spatial arrangement**:
+**Horizontal flow configuration**:
+
+All part lines follow left-to-right flow with center alignment at Y_ref = max(H)/2.
+
+**Example: P1 production line**
+
+* Process sequence: B → A → B2 → C → D → I → J
+* Total width: 224 ft (0 → 224)
+* Maximum height: 216 ft (set by Process J)
+* Footprint: 48,384 sq ft per line
+* Sequential distances: 32 + 32 + 26 + 26 + 33 + 35 = **184 ft total travel per unit**
+
+**Spatial arrangement** (simplified):
 
 ```plaintext
 +------------------------------------------------------------+
@@ -1390,11 +1481,45 @@ Each production line is arranged as a **focused flow cell** with processes seque
 
 ![Part-Based Layout Schematic](../results/Task3/Part/Visuals/Year1_Part_Based_Layout_Schematic.png)
 
-*Figure 4.3: Part-based organization layout showing 5 dedicated production lines, each optimized for a specific part family. Lines 1-3 handle high-volume parts with continuous flow, while Lines 4-5 provide flexibility for low-volume specialty parts.*
+*Figure 4.8a: Part-based organization layout showing dedicated production lines optimized for specific part families. Each line contains sequential process flow tailored to its assigned parts.*
+
+![Part-Based Comprehensive Dashboard](../results/Task3/Part/Visuals/Year1_Part_Based_Comprehensive_Dashboard.png)
+
+*Figure 4.8b: Comprehensive part-based layout dashboard with equipment distribution, utilization metrics, and flow analysis across all production lines.*
 
 ![Part-Based Compact Layout](../results/Task3/Part/Visuals/Part_Based_Year1_Compact_Layout.png)
 
-*Figure 4.4: Compact spatial arrangement of part-based production lines. Each line is color-coded by part family, demonstrating the focused factory concept with minimal cross-line material movement.*
+*Figure 4.8c: Compact spatial arrangement of part-based production lines. Each line is color-coded by part family, demonstrating the focused factory concept with minimal cross-line material movement.*
+
+![Year 1 Dashboard](../results/Task3/Part/Visuals/Year1_Dashboard.png)
+
+*Figure 4.8d: Year 1 part-based organization dashboard showing key performance indicators, equipment allocation, and space utilization metrics.*
+
+![Year 1 Schematic](../results/Task3/Part/Visuals/Year1_Schematic.png)
+
+*Figure 4.8e: Detailed schematic view of Year 1 part-based layout with process flow paths and material handling routes.*
+
+![Year 1 Top 10 Analysis](../results/Task3/Part/Visuals/Year1_Part_Based_Top10_Analysis.png)
+
+*Figure 4.8f: Top 10 parts analysis showing highest-volume parts, their production lines, and contribution to total throughput.*
+
+![Year 1 Top 10](../results/Task3/Part/Visuals/Year1_Top10.png)
+
+*Figure 4.8g: Top 10 parts production visualization with demand volumes, equipment requirements, and layout optimization.*
+
+**Cost Analysis Visualizations**:
+
+![Part-Based Analysis Dashboard](../results/Task3/Part/Visuals/Part_Based_Analysis_Dashboard.png)
+
+*Figure 4.9a: Part-based comprehensive analysis dashboard integrating cost, performance, and efficiency metrics.*
+
+![Part-Based Cost Analysis](../results/Task3/Part/Visuals/Part_Based_Layout_Cost_Analysis.png)
+
+*Figure 4.9b: Detailed cost breakdown for part-based organization showing capital investment, operating costs, and cost per unit analysis.*
+
+![Part-Based Cost KPI Dashboard](../results/Task3/Part/Visuals/Part_Based_Layout_Cost_KPI_Dashboard.png)
+
+*Figure 4.9c: Cost and KPI dashboard highlighting financial performance metrics, ROI indicators, and cost efficiency benchmarks for part-based design.*
 
 #### 4.3.4 Intra-Center Flows
 
@@ -1536,7 +1661,31 @@ The Fractal organization creates **identical, self-sufficient mini-factories** (
 | **Shared Receiving** | Distribute raw material kits equally to 3 centers | 20 parts, balanced allocation | 100% intake |
 | **Shared Shipping** | Consolidate output from 3 centers for client delivery | All finished parts | 100% output |
 
-**Structure** (f=3 configuration selected as optimal):
+**Fractal configuration analysis**:
+
+| Configuration | Centers | Equipment | Overhead vs. Baseline | Redundancy | Avg Utilization |
+|--------------|---------|-----------|---------------------|------------|----------------|
+| f=2 | 2 | 392 units | +1.6% | 50% | 95.1% |
+| **f=3** | **3** | **402 units** | **+4.1%** | **67%** | **93.1%** |
+| f=4 | 4 | 400 units | +3.6% | 75% | 90.8% |
+| f=5 | 5 | 405 units | +4.9% | 80% | 88.5% |
+
+**f=3 configuration selected based on**:
+
+* **Optimal balance**: 4.1% overhead acceptable for 67% redundancy
+* **High utilization**: 93.1% maintains excellent equipment efficiency
+* **Manageable complexity**: 3 centers easier to coordinate than 4-5
+* **Scalability**: Can evolve to f=5 or f=7 as demand grows
+* **Load balancing**: 33.3% per center provides clear allocation
+
+**Alternative consideration (f=4)**:
+
+* Lower overhead (3.6% vs. 4.1%)
+* Higher redundancy (75% vs. 67%)
+* Slightly lower utilization (90.8% vs. 93.1%)
+* Better for demand fluctuations (25% per center easier to balance)
+
+**Structure** (f=3 configuration):
 
 * **3 fractal centers**: Each is a complete mini-factory
 * **Load balancing**: Demand split equally across centers (33.3% each)
@@ -1667,17 +1816,59 @@ Center 1 Internal Layout:
 
 **Fractal Layout Visualization**:
 
+**f=2 Configuration**:
+
+![Fractal Layout f2](../results/Task3/Fractal/Fractal_Visuals/Fractal_Layout_f2.png)
+
+*Figure 4.5a: Fractal organization with f=2 configuration. Two identical mini-factories with 50% capacity each, offering maximum operational independence and redundancy.*
+
+**f=3 Configuration (Selected Design)**:
+
 ![Fractal Layout f3](../results/Task3/Fractal/Fractal_Visuals/Fractal_Layout_f3.png)
 
-*Figure 4.5: Fractal organization with f=3 configuration. Three identical mini-factories (Fractal Centers 1-3) arranged in symmetric layout. Each fractal contains all 13 processes scaled to ~33% of total capacity, enabling independent production of all 20 parts.*
+*Figure 4.5b: Fractal organization with f=3 configuration. Three identical mini-factories (Fractal Centers 1-3) arranged in symmetric layout. Each fractal contains all 13 processes scaled to ~33% of total capacity, enabling independent production of all 20 parts.*
+
+**f=4 Configuration**:
+
+![Fractal Layout f4](../results/Task3/Fractal/Fractal_Visuals/Fractal_Layout_f4.png)
+
+*Figure 4.5c: Fractal organization with f=4 configuration. Four mini-factories with 25% capacity each, providing enhanced flexibility and scalability.*
+
+**Flow Matrix Analysis**:
+
+![Fractal Flow Matrix f2](../results/Task3/Fractal/Fractal_Visuals/Fractal_Flow_Matrix_f2.png)
+
+*Figure 4.6a: Flow matrix for f=2 configuration showing minimal inter-center flows.*
+
+![Fractal Flow Matrix f3](../results/Task3/Fractal/Fractal_Visuals/Fractal_Flow_Matrix_f3.png)
+
+*Figure 4.6b: Flow matrix for f=3 configuration demonstrating highly localized material flows within each fractal center.*
+
+![Fractal Flow Matrix f4](../results/Task3/Fractal/Fractal_Visuals/Fractal_Flow_Matrix_f4.png)
+
+*Figure 4.6c: Flow matrix for f=4 configuration with maximum flow distribution across centers.*
+
+**Comparative Analysis**:
 
 ![Fractal Scenario Comparison](../results/Task3/Fractal/Fractal_Visuals/Fractal_Layout_Scenario_Comparison.png)
 
-*Figure 4.6: Comparison of fractal configurations (f=2, f=3, f=4). Charts show trade-offs between equipment investment, floor space, material handling efficiency, and operational flexibility across different fractal counts.*
+*Figure 4.7: Comparison of fractal configurations (f=2, f=3, f=4, f=5). Charts show trade-offs between equipment investment, floor space, material handling efficiency, and operational flexibility across different fractal counts.*
 
 ![Fractal Equipment Distribution](../results/Task3/Fractal/Fractal_Visuals/Fractal_Layout_Equipment_Distribution.png)
 
-*Figure 4.7: Equipment distribution across fractal centers. Bar charts illustrate how the 13 process types are allocated across each fractal, demonstrating the balanced workload distribution that enables operational independence.*
+*Figure 4.8: Equipment distribution across fractal centers. Bar charts illustrate how the 13 process types are allocated across each fractal, demonstrating the balanced workload distribution that enables operational independence.*
+
+![Fractal Equipment Comparison](../results/Task3/Fractal/Fractal_Visuals/Fractal_Equipment_Comparison.png)
+
+*Figure 4.9: Equipment comparison across f=2, f=3, f=4, f=5 configurations showing total equipment requirements and efficiency trade-offs.*
+
+![Fractal Layout Efficiency Frontier](../results/Task3/Fractal/Fractal_Visuals/Fractal_Layout_Efficiency_Frontier.png)
+
+*Figure 4.10: Efficiency frontier analysis demonstrating optimal fractal configuration selection based on cost, flexibility, and performance metrics.*
+
+![Fractal Process Cost Breakdown](../results/Task3/Fractal/Fractal_Visuals/Fractal_Layout_Process_Cost_Breakdown.png)
+
+*Figure 4.11: Detailed process-level cost breakdown across different fractal configurations, identifying cost drivers and optimization opportunities.*
 
 #### 4.4.4 Intra-Center Flows
 
@@ -2577,7 +2768,15 @@ Year +1:                    Year +2-5:
 
 ![Functional Equipment Comparison By Process](../results/task4/functional/Visuals/Functional_Equipment_Comparison_By_Process.png)
 
-*Figure 5.2: Process-by-process equipment growth across 5 years. Demonstrates how each of the 13 departments expands incrementally, with bottleneck processes (D, J, M) requiring the most significant equipment additions.*
+*Figure 5.2a: Process-by-process equipment growth across 5 years. Demonstrates how each of the 13 departments expands incrementally, with bottleneck processes (D, J, M) requiring the most significant equipment additions.*
+
+![Functional Utilization Comparison By Year](../results/task4/functional/Visuals/Functional_Utilization_Comparison_By_Year.png)
+
+*Figure 5.2b: Equipment utilization comparison across Years 1-5 by process department. Shows stable high utilization (>95%) in bottleneck processes throughout the planning period.*
+
+![Functional Cost Analysis Overview](../results/task4/functional/Visuals/Functional_Cost_Analysis_Overview.png)
+
+*Figure 5.2c: Comprehensive cost analysis overview showing capital investment, operating costs, and total cost of ownership evolution from Year 1 to Year 5.*
 
 ---
 
@@ -2840,13 +3039,93 @@ Year +1 (f=3):              Year +2 (f=5):              Year +5 (f=7):
 
 **Fractal Evolution Layout Visualization**:
 
+**Year 1 Layout (f=4, 68 machines)**:
+
+![Year 1 Fractal f4 Layout - Grid View](../results/task4/Fractal/Fractal_Visuals/Year1_Layout_68_Machines.png)
+
+*Figure 5.3a: Year 1 fractal layout with 68 machines across 4 centers. Color-coded by process type (A-M), showing compact cellular arrangement with 2ft overlap zones for space efficiency. Total area: 44,100 sq ft.*
+
+![Year 1 Fractal f4 Layout - Distance Optimized](../results/Task3/Fractal/Fractal_Visuals/Fractal_Layout_f4.png)
+
+*Figure 5.3b: Year 1 fractal layout showing flow-based adjacency placement and inter-process connectivity.*
+
+**Year 2 Layout (f=4, 83 machines)**:
+
+![Year 2 Fractal f4 Layout](../results/task4/Fractal/Fractal_Visuals/Year2_Layout_83_Machines.png)
+
+*Figure 5.4a: Year 2 fractal layout expansion to 83 machines. Same 4-center structure with increased equipment density. Shows incremental machine additions within existing fractal footprint.*
+
+![Year 2 Fractal f4 Layout - Flow Analysis](../results/task4/Fractal/Fractal_Visuals/Year2_Fractal_f4_Layout.png)
+
+*Figure 5.4b: Year 2 layout with flow line visualization showing material movement patterns.*
+
+**Year 3 Layout (f=4, 88 machines)**:
+
+![Year 3 Fractal f4 Layout](../results/task4/Fractal/Fractal_Visuals/Year3_Layout_88_Machines.png)
+
+*Figure 5.5a: Year 3 fractal layout with 88 machines. Demonstrates stable configuration with minor capacity additions in high-demand processes (I, J).*
+
+![Year 3 Fractal f4 Layout - Flow Analysis](../results/task4/Fractal/Fractal_Visuals/Year3_Fractal_f4_Layout.png)
+
+*Figure 5.5b: Year 3 layout showing continued flow efficiency with minimal inter-center traffic.*
+
+**Year 4 Layout (f=4, 88 machines)**:
+
+![Year 4 Fractal f4 Layout](../results/task4/Fractal/Fractal_Visuals/Year4_Layout_88_Machines.png)
+
+*Figure 5.6a: Year 4 fractal layout maintains 88 machines. Configuration remains unchanged from Year 3, demonstrating layout stability.*
+
+![Year 4 Fractal f4 Layout - Flow Analysis](../results/task4/Fractal/Fractal_Visuals/Year4_Fractal_f4_Layout.png)
+
+*Figure 5.6b: Year 4 layout with consistent flow patterns and high equipment utilization.*
+
+**Year 5 Layout (f=4, 93 machines)**:
+
+![Year 5 Fractal f4 Layout - Grid View](../results/task4/Fractal/Fractal_Visuals/Year5_Layout_93_Machines.png)
+
+*Figure 5.7a: Year 5 fractal layout expansion to 93 machines across 4 centers. Final configuration shows balanced growth with equipment additions in B1, B2, D, I, J processes.*
+
+![Year 5 Fractal f4 Layout - Single Center Detail](../results/task4/Fractal/Fractal_Layout/Year5_F4_Optimized/Year5_F4_Layout_Visualization.png)
+
+*Figure 5.7b: Year 5 single fractal center detailed layout (184 machines total across 4 centers = 46 machines per center). Shows optimized block placement with shareability zones indicated.*
+
+![Year 5 Fractal f4 Layout - Flow-Based Adjacency](../results/task4/Fractal/Fractal_Layout/Year5_F4_Optimized/Year5_F4_Fractal_Layout_Detailed.png)
+
+*Figure 5.7c: Year 5 complete factory layout with flow-based adjacency placement. Centroids marked for each process department showing optimal spacing for material flow.*
+
+![Year 5 Fractal f4 Final Layout](../results/task4/Fractal/Fractal_Distance/Year5_F4_Final_Layout.png)
+
+*Figure 5.7d: Year 5 final fractal layout configuration with 4 centers (f=4). Symmetric arrangement maintains operational independence while handling doubled capacity. Material flow (shown as connecting lines) remains 99.99% contained within individual fractal centers.*
+
+![Year 5 Fractal f4 Distance Flow Diagram](../results/task4/Fractal/Fractal_Distance/Distance_Layout_Flow_Y5_F4_Flow_Lines.png)
+
+*Figure 5.7e: Year 5 distance-optimized layout with flow lines (thicker lines = larger flow volumes). Red boundary indicates 295ft × 295ft factory footprint. Maximum travel distance: 295ft.*
+
+**Comparative Analysis Across Years**:
+
 ![Fractal Layout Evolution from f=3 to f=7](../results/Task3/Fractal/Fractal_Visuals/Fractal_Layout_Equipment_Distribution.png)
 
-*Figure 5.3: Fractal organization modular expansion (3 centers → 7 centers). Each bar represents a complete fractal center with identical equipment distribution. New centers are added as greenfield modules in Years +2 and +5, eliminating relayout complexity.*
+*Figure 5.8: Fractal organization modular expansion (3 centers → 7 centers). Each bar represents a complete fractal center with identical equipment distribution. New centers are added as greenfield modules in Years +2 and +5, eliminating relayout complexity.*
 
-![Fractal Final Layout Year 5](../results/task4/Fractal/Fractal_Distance/Year5_F4_Final_Layout.png)
+![Fractal Equipment Comparison By Year](../results/task4/Fractal/Fractal_Visuals/Fractal_Yearly_Equipment_Comparison.png)
 
-*Figure 5.4: Final fractal layout configuration at Year +5 with 7 centers. Symmetric arrangement maintains operational independence while doubling capacity. Material flow (shown as connecting lines) remains 99.99% contained within individual fractal centers.*
+*Figure 5.9: Year-by-year equipment comparison showing equipment count growth trajectory across all process types (A-M) for Years 1-5.*
+
+![Fractal Scaling Comparison](../results/task4/Fractal/Fractal_Visuals/Fractal_Scaling_Comparison.png)
+
+*Figure 5.10: Fractal scaling efficiency analysis comparing f=2, f=3, f=4, f=5 configurations across multiple years, demonstrating optimal fractal count selection.*
+
+![Fractal Operating Cost Comparison](../results/task4/Fractal/Fractal_Visuals/Fractal_Operating_Cost_Comparison.png)
+
+*Figure 5.11: Operating cost evolution across Years 1-5 for different fractal configurations, showing cost-efficiency trade-offs.*
+
+![Fractal Capital Investment Comparison](../results/task4/Fractal/Fractal_Visuals/Fractal_Capital_Investment_Comparison.png)
+
+*Figure 5.12: Capital investment requirements across Years 1-5 comparing fractal configuration options (f=2, f=3, f=4, f=5).*
+
+![Fractal Cost Efficiency Analysis](../results/task4/Fractal/Fractal_Visuals/Fractal_Cost_Efficiency_Analysis.png)
+
+*Figure 5.13: Comprehensive cost efficiency analysis combining capital investment, operating costs, and performance metrics to identify optimal fractal strategy.*
 
 ---
 
